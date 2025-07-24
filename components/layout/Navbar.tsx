@@ -1,0 +1,147 @@
+
+import React, { useState, useEffect, memo } from 'react';
+import { Page, ServiceId, Course, Job } from '../../types.ts';
+import { MenuIcon, XIcon } from '../icons/Icons.tsx';
+
+const Logo: React.FC = () => (
+    <div className="flex items-center gap-2" aria-label="DeepBio Logo">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
+        <path d="M4 4C4 4 7 6 12 12S20 20 20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M20 4C20 4 17 6 12 12S4 20 4 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M6.5 6.5H4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M17.5 6.5H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M6.5 17.5H4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M17.5 17.5H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M9 9H7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M16.5 9H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M9 15H7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M16.5 15H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+      <span className="text-2xl font-bold text-primary font-heading">DeepBio</span>
+    </div>
+);
+
+
+interface NavbarProps {
+    activeTab: Page;
+    setActiveTab: (tab: Page) => void;
+    setSelectedService: (service: ServiceId | null) => void;
+    setSelectedCourse: (course: Course | null) => void;
+    setSelectedJob: (job: Job | null) => void;
+    setEstimatorActive: (isActive: boolean) => void;
+}
+
+const NAV_ITEMS: { name: string, tab: Page }[] = [
+    { name: 'Home', tab: 'home' },
+    { name: 'About', tab: 'about' },
+    { name: 'Services', tab: 'services' },
+    { name: 'Resources', tab: 'resources' },
+    { name: 'Courses', tab: 'courses' },
+    { name: 'Research', tab: 'research' },
+    { name: 'Team', tab: 'team' },
+    { name: 'Contact', tab: 'contact' },
+    { name: 'Careers', tab: 'careers' },
+
+];
+
+const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, setSelectedService, setSelectedCourse, setSelectedJob, setEstimatorActive }) => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [menuOpen]);
+    
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, tab: Page) => {
+        e.preventDefault();
+        setActiveTab(tab);
+        setSelectedService(null);
+        setSelectedCourse(null);
+        setSelectedJob(null);
+        setEstimatorActive(false);
+        setMenuOpen(false); // Close menu on navigation
+    };
+
+    return (
+        <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 font-heading">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-20">
+                    <a
+                        href="#"
+                        onClick={(e) => handleNavClick(e, 'home')}
+                        className="flex-shrink-0 flex items-center"
+                        aria-label="Back to homepage"
+                    >
+                         <Logo />
+                    </a>
+                    
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center">
+                        <nav className="flex space-x-6">
+                            {NAV_ITEMS.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href="#"
+                                    onClick={(e) => handleNavClick(e, item.tab)}
+                                    className={`text-base font-medium transition-colors duration-300 px-1 py-2 ${
+                                        activeTab === item.tab 
+                                        ? 'text-primary border-b-2 border-primary' 
+                                        : 'text-gray-500 hover:text-primary'
+                                    }`}
+                                    aria-current={activeTab === item.tab ? 'page' : undefined}
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden flex items-center">
+                        <button 
+                            onClick={() => setMenuOpen(!menuOpen)} 
+                            aria-label="Toggle menu"
+                            aria-expanded={menuOpen}
+                            className="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                        >
+                            {menuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {menuOpen && (
+                <div className="md:hidden absolute top-20 left-0 w-full h-[calc(100vh-80px)] bg-white z-40 animate-fade-in-down">
+                    <div className="flex flex-col h-full">
+                        <nav className="flex flex-col items-center justify-center flex-grow space-y-6">
+                            {NAV_ITEMS.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href="#"
+                                    onClick={(e) => handleNavClick(e, item.tab)}
+                                    className={`text-2xl font-medium transition-colors duration-300 ${
+                                        activeTab === item.tab 
+                                        ? 'text-primary' 
+                                        : 'text-gray-600 hover:text-primary'
+                                    }`}
+                                    aria-current={activeTab === item.tab ? 'page' : undefined}
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+                </div>
+            )}
+        </header>
+    );
+};
+
+export default memo(Navbar);
