@@ -42,7 +42,7 @@ const leadership = [
     name: 'Md. Jubayer Hossain',
     role: 'Founder & Chief Executive Officer',
     desc: 'Mr. Jubayer is a visionary leader with extensive experience in bioinformatics and AI strategy.',
-    img: './img/team/jubayer-ceo.jpg',
+    img: 'https://github.com/hossainlab/deepbioltd/blob/main/img/team/jubayer-ceo.jpg?raw=true',
     color: 'border-primary',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
