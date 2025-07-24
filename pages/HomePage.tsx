@@ -35,10 +35,10 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                 <SectionTitle title="Explore Areas of Interest" subtitle="We focus on key areas where computation can make a significant impact on health and science." />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                     {[
-                        { id: 'ai-health-innovation', title: "AI in Health Innovation", desc: "Leveraging machine learning for predictive modeling in healthcare.", img: './img/home/ai-for-health.jpg' },
-                        { id: 'multi-omics', title: "Multi-Omics Data", desc: "Comprehensive analysis of multi-omics data for insights into disease and traits.", img: './img/home/multi-omics.png' },
-                        { id: 'drug-discovery', title: "Insilico Drug Discovery & Development", desc: "Accelerating the identification of novel therapeutic compounds.", img: './img/home/drug-discovery.jpg' },
-                        { id: 'biomedical-informatics', title: "Biomedical Informatics", desc: "Using data science to monitor disease and inform public health policy.", img: './img/home/biomedical.jpg' },
+                        { id: 'ai-health-innovation', title: "AI in Health Innovation", desc: "Leveraging machine learning for predictive modeling in healthcare.", img: 'https://github.com/hossainlab/deepbioltd/blob/main/img/home/ai-for-health.jpg?raw=true' },
+                        { id: 'multi-omics', title: "Multi-Omics Data", desc: "Comprehensive analysis of multi-omics data for insights into disease and traits.", img: 'https://github.com/hossainlab/deepbioltd/blob/main/img/home/multi-omics.png?raw=true' },
+                        { id: 'drug-discovery', title: "Insilico Drug Discovery & Development", desc: "Accelerating the identification of novel therapeutic compounds.", img: 'https://github.com/hossainlab/deepbioltd/blob/main/img/home/drug-discovery.jpg?raw=true' },
+                        { id: 'biomedical-informatics', title: "Biomedical Informatics", desc: "Using data science to monitor disease and inform public health policy.", img: 'https://github.com/hossainlab/deepbioltd/blob/main/img/home/biomedical.jpg?raw=true' },
                     ].map((interest) => (
                         <ServiceCard
                             key={interest.id}
