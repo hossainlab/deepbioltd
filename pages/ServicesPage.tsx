@@ -51,17 +51,17 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onServiceClick }) => {
       <section className="py-20 px-8 bg-light-gray">
         <SectionTitle title="Why Choose Us?" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center">
             <div className="mb-4 flex justify-center"><UsersIcon size={48} className="text-primary" /></div>
             <h3 className="text-2xl font-semibold font-heading text-primary mb-2">Experienced Team</h3>
             <p className="text-light-text">Our team comprises highly skilled professionals with extensive experience in bioinformatics.</p>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center">
             <div className="mb-4 flex justify-center"><LightbulbIcon size={48} className="text-primary" /></div>
             <h3 className="text-2xl font-semibold font-heading text-primary mb-2">Cutting-Edge Technology</h3>
             <p className="text-light-text">We utilize the latest computational tools and platforms for superior results.</p>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center">
             <div className="mb-4 flex justify-center"><ClockIcon size={48} className="text-primary" /></div>
             <h3 className="text-2xl font-semibold font-heading text-primary mb-2">Timely Delivery</h3>
             <p className="text-light-text">Committed to delivering projects on time and within budget, without compromising quality.</p>
