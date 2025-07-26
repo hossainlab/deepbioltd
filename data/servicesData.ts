@@ -41,7 +41,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Uncover molecular signatures, biomarkers, and cellular mechanisms from population-level RNA data.',
         icon: React.createElement(LayersIcon),
         services: [
-            { id: 'dge-analysis', title: 'Differential Gene Expression (DGE) Analysis', description: 'Identify genes that are up- or down-regulated between experimental conditions.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=DGE' },
+            { id: 'dge-analysis', title: 'Differential Gene Expression (DGE) Analysis', description: 'Identify genes that are up- or down-regulated between experimental conditions.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=bulkRNA-Seq' },
             { id: 'transcriptome-assembly', title: 'Transcriptome Assembly', description: 'Reconstruct full-length transcripts from RNA-seq data, with or without a reference.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Transcriptome' },
             { id: 'functional-characterization', title: 'Functional Characterization (GO, KEGG)', description: 'Determine the biological functions and pathways associated with your gene lists.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Functional' },
             { id: 'pathway-enrichment-analysis', title: 'Pathway Analysis & Enrichment Studies', description: 'Discover which biological pathways are significantly impacted in your experiment.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Pathway' },
@@ -92,12 +92,12 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Accelerate discovery with machine learning and deep learning services for complex biological data.',
         icon: React.createElement(CpuIcon),
         services: [
-            { id: 'ai-gene-expression', title: 'AI for Gene Expression Analysis', description: 'Uncover complex patterns in gene expression data using advanced machine learning models.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Gene' },
+            { id: 'ai-gene-expression', title: 'AI for Gene Expression Analysis', description: 'Uncover complex patterns in gene expression data using advanced machine learning models.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+for+Multi-omics' },
             { id: 'ai-cell-type-annotation', title: 'Deep Learning for Cell Type Annotation', description: 'Accurate, automated cell type identification in scRNA-seq using CNNs and Transfer Learning.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Cell' },
             { id: 'ai-biomarker-discovery', title: 'AI-Driven Biomarker Discovery', description: 'Employ feature selection and interpretability (SHAP) to find meaningful clinical biomarkers.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Biomarker' },
             { id: 'ai-survival-modeling', title: 'AI for Survival Modeling & Risk Stratification', description: 'Leverage DeepSurv and Random Survival Forests for accurate patient outcome prediction.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Survival' },
             { id: 'ai-multi-omics-integration', title: 'AI for Multi-Omics Integration', description: 'Build holistic biological models by integrating transcriptomics, proteomics, and genomics data.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Multi-Omics' },
-            { id: 'ai-drug-repurposing', title: 'AI for Drug Repurposing', description: 'Use GNNs and other deep learning methods to find new therapeutic uses for existing drugs.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Drug+Repurpose' },
+            { id: 'ai-drug-repurposing', title: 'AI for Drug Repurposing', description: 'Use GNNs and other deep learning methods to find new therapeutic uses for existing drugs.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+for+Drug+Repurpose' },
             { id: 'ai-nlp-literature-mining', title: 'NLP for Literature Mining', description: 'Extract insights and relationships from millions of scientific papers using BioBERT and SciSpacy.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+NLP' },
         ]
     },
