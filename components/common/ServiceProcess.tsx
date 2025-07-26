@@ -1,67 +1,50 @@
 
 import React from 'react';
 import SectionTitle from './SectionTitle.tsx';
-import { HandshakeIcon, ClipboardEditIcon, TargetIcon, UsersCogIcon, UsersRoundIcon, GaugeIcon } from '../icons/Icons.tsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandshake, faClipboard, faBullseye, faUsersCog, faUsers, faGauge } from '@fortawesome/free-solid-svg-icons';
 
 const processSteps = [
     {
         num: 1,
         title: 'Initial Meeting',
-        icon: <HandshakeIcon size={48} className="text-primary" />,
-        details: [
-            'Meet and greet online via video conf, chat or email with no commitment',
-            'Discuss collaboration opportunities',
-            'Sign NDA/CDA and get ready for more details',
+        icon: <FontAwesomeIcon icon={faHandshake} size="3x" className="text-primary" />,        details: [
+            'Initiate collaboration with a no-commitment meeting to discuss opportunities and sign NDAs.'
         ],
     },
     {
         num: 2,
         title: 'Draft Proposal',
-        icon: <ClipboardEditIcon size={48} className="text-primary" />,
-        details: [
-            'Learn more about client need',
-            'Draft a collaboration proposal',
-            'Present collaboration proposal',
+        icon: <FontAwesomeIcon icon={faClipboard} size="3x" className="text-primary" />,        details: [
+            'Understand client needs, then draft and present a tailored collaboration proposal.'
         ],
     },
     {
         num: 3,
         title: 'Choose a Plan',
-        icon: <TargetIcon size={48} className="text-primary" />,
-        details: [
-            'Select a service model or choose a billing plan',
-            'Draft out service agreement and SOW',
-            'Agreement signoff',
+        icon: <FontAwesomeIcon icon={faBullseye} size="3x" className="text-primary" />,        details: [
+            'Choose a service model or billing plan, finalize the service agreement, and sign off.'
         ],
     },
     {
         num: 4,
         title: 'Kick-off Meeting',
-        icon: <UsersCogIcon size={48} className="text-primary" />,
-        details: [
-            'Develop a work breakdown structure',
-            'Define Key Performance Indicators',
-            'Scheduling out the effort',
+        icon: <FontAwesomeIcon icon={faUsersCog} size="3x" className="text-primary" />,        details: [
+            'Kick-off by developing a work breakdown structure, defining KPIs, and scheduling efforts.'
         ],
     },
     {
         num: 5,
         title: 'Active Collaboration',
-        icon: <UsersRoundIcon size={48} className="text-primary" />,
-        details: [
-            'Project execution and steering',
-            'Regular interaction with client and gathering feedback',
-            'Activity and effort/hourly logging',
+        icon: <FontAwesomeIcon icon={faUsers} size="3x" className="text-primary" />,        details: [
+            'Actively collaborate, execute the project, gather feedback, and log all activities and efforts.'
         ],
     },
     {
         num: 6,
         title: 'Reporting Results',
-        icon: <GaugeIcon size={48} className="text-primary" />,
-        details: [
-            'Reporting results',
-            'Reviewing results',
-            'Documenting results',
+        icon: <FontAwesomeIcon icon={faGauge} size="3x" className="text-primary" />,        details: [
+            'Report, review, and meticulously document all project results.'
         ],
     },
 ];
@@ -72,24 +55,18 @@ const ServiceProcess: React.FC = () => {
             <SectionTitle title="Service Model: How it works?" />
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                 {processSteps.map((step) => (
-                    <div key={step.num} className="text-center flex flex-col items-center">
-                        <div className="relative w-32 h-36 mb-6 flex items-center justify-center">
-                            <div className="absolute inset-0 bg-primary/10" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
-                            <div className="relative">
+                    <div key={step.num} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 text-center flex flex-col items-center">
+                        <div className="relative w-32 h-32 mb-6 flex items-center justify-center rounded-full bg-primary/10 mx-auto">
+                            <div className="relative z-10">
                                 {step.icon}
                             </div>
                         </div>
                         <h3 className="text-2xl font-bold font-heading text-dark-text mb-4">
                             <span className="text-primary">{step.num}.</span> {step.title}
                         </h3>
-                        <ul className="text-light-text space-y-1 text-left max-w-xs">
-                            {step.details.map((detail, index) => (
-                                <li key={index} className="flex items-start">
-                                   <span className="text-primary mr-2">&#8226;</span>
-                                   <span>{detail}</span>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="text-light-text text-center max-w-sm">
+                            <p className="mb-2 last:mb-0">{step.details}</p>
+                        </div>
                     </div>
                 ))}
             </div>
