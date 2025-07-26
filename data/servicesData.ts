@@ -10,11 +10,11 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Explore genomic variation and its implications in health and disease with our comprehensive analysis services.',
         icon: React.createElement(DnaIcon),
         services: [
-            { id: 'genomic-analysis', title: 'Genomic Analysis Service', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Genomics' },
-            { id: 'ngs-data-analysis', title: 'NGS Data Analysis', description: 'End-to-end analysis for data from all major NGS platforms, including Illumina and PacBio.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=NGS' },
-            { id: 'variant-calling', title: 'Variant Calling (SNPs, INDELs)', description: 'Accurate identification of single nucleotide polymorphisms and insertions/deletions.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Variant+Calling' },
+            { id: 'genomic-analysis', title: 'Genomic Analysis Service', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assemblyg' },
+            { id: 'ngs-data-analysis', title: 'NGS Data Analysis', description: 'End-to-end analysis for data from all major NGS platforms, including Illumina and PacBio.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
+            { id: 'variant-calling', title: 'Variant Calling (SNPs, INDELs)', description: 'Accurate identification of single nucleotide polymorphisms and insertions/deletions.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'cnv-analysis', title: 'Copy Number Variation (CNV) Analysis', description: 'Detecting gains and losses of genomic regions associated with diseases.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=CNV' },
-            { id: 'gwas', title: 'Genome-Wide Association Studies (GWAS)', description: 'Identifying genetic variants associated with specific traits or diseases across populations.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=GWAS' },
+            { id: 'gwas', title: 'Genome-Wide Association Studies (GWAS)', description: 'Identifying genetic variants associated with specific traits or diseases across populations.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'genome-assembly', title: 'Genome Assembly (de novo and hybrid)', description: 'Constructing complete genomes from sequencing reads, even for novel organisms.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'snp-epistasis-analysis', title: 'SNP and Epistasis Analysis', description: 'Investigating complex gene-gene interactions to uncover hidden genetic effects.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Epistasis' },
             { id: 'genetic-linkage-analysis', title: 'Genetic Linkage Analysis', description: 'Mapping disease genes by tracking inheritance patterns in families.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Linkage' },
@@ -26,12 +26,12 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'From atomic-level simulations to large-scale screening, we fuel drug discovery and protein engineering.',
         icon: React.createElement(ShapesIcon),
         services: [
-            { id: 'molecular-docking', title: 'Molecular Docking', description: 'Predict the binding affinity and interaction of small molecules with target proteins.', image: 'img/services/molecular-docking.jpg' },
-            { id: 'molecular-dynamics', title: 'Molecular Dynamics Simulation', description: 'Simulate the movements and interactions of molecules to understand biological processes.', image: 'img/services/molecular-dynamics-simulation.jpg' },
-            { id: 'insilico-drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'img/services/drug-design.jpg' },
-            { id: 'virtual-screening', title: 'Virtual Screening', description: 'High-throughput computational screening of large compound libraries to find potential hits.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Screening' },
+            { id: 'molecular-docking', title: 'Molecular Docking', description: 'Predict the binding affinity and interaction of small molecules with target proteins.', image: 'public/img/services/molecular-docking.jpg' },
+            { id: 'molecular-dynamics', title: 'Molecular Dynamics Simulation', description: 'Simulate the movements and interactions of molecules to understand biological processes.', image: 'public/img/services/molecular-dynamics-simulation.jpg' },
+            { id: 'insilico-drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'public/img/services/drug-design.jpg' },
+            { id: 'virtual-screening', title: 'Virtual Screening', description: 'High-throughput computational screening of large compound libraries to find potential hits.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
             { id: 'pathway-integration', title: 'Gene–Protein–Pathway Integration', description: 'Connect genomic and proteomic data with biological pathways for a systems-level view.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
-            { id: 'protein-modeling', title: 'Protein Structure Prediction & Modeling', description: 'Accurate 3D structure prediction and refinement for proteins using AlphaFold and more.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Protein' },
+            { id: 'protein-modeling', title: 'Protein Structure Prediction & Modeling', description: 'Accurate 3D structure prediction and refinement for proteins using AlphaFold and more.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration'},
 
         ]
     },
@@ -41,7 +41,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Uncover molecular signatures, biomarkers, and cellular mechanisms from population-level RNA data.',
         icon: React.createElement(LayersIcon),
         services: [
-            { id: 'dge-analysis', title: 'Differential Gene Expression (DGE) Analysis', description: 'Identify genes that are up- or down-regulated between experimental conditions.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=bulkRNA-Seq' },
+            { id: 'dge-analysis', title: 'Differential Gene Expression (DGE) Analysis', description: 'Identify genes that are up- or down-regulated between experimental conditions.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Transcriptome' },
             { id: 'transcriptome-assembly', title: 'Transcriptome Assembly', description: 'Reconstruct full-length transcripts from RNA-seq data, with or without a reference.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Transcriptome' },
             { id: 'functional-characterization', title: 'Functional Characterization (GO, KEGG)', description: 'Determine the biological functions and pathways associated with your gene lists.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Functional' },
             { id: 'pathway-enrichment-analysis', title: 'Pathway Analysis & Enrichment Studies', description: 'Discover which biological pathways are significantly impacted in your experiment.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Pathway' },
@@ -55,7 +55,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Resolve cellular heterogeneity and uncover rare cell populations with high-resolution single-cell analytics.',
         icon: React.createElement(BookTextIcon),
         services: [
-            { id: 'single-cell-rna-seq', title: 'Single-Cell RNA-Seq Service', description: 'Comprehensive scRNA-Seq data analysis from QC to advanced interpretation.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=scRNA-Seq' },
+            { id: 'single-cell-rna-seq', title: 'Single-Cell RNA-Seq Service', description: 'Comprehensive scRNA-Seq data analysis from QC to advanced interpretation.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Clustering' },
             { id: 'sc-clustering-annotation', title: 'Single-cell Clustering & Cell Type Annotation', description: 'Identify distinct cell populations and annotate them based on marker gene expression.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Clustering' },
             { id: 'sc-dge-analysis', title: 'Differential Expression in Single Cells', description: 'Find genes that are differentially expressed between conditions within specific cell types.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=scDGE' },
             { id: 'sc-trajectory-analysis', title: 'Lineage Tracing and Pseudotime Analysis', description: 'Model dynamic biological processes like cell differentiation and development.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Trajectory' },
@@ -97,7 +97,7 @@ export const serviceCategories: ServiceCategory[] = [
             { id: 'ai-biomarker-discovery', title: 'AI-Driven Biomarker Discovery', description: 'Employ feature selection and interpretability (SHAP) to find meaningful clinical biomarkers.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Biomarker' },
             { id: 'ai-survival-modeling', title: 'AI for Survival Modeling & Risk Stratification', description: 'Leverage DeepSurv and Random Survival Forests for accurate patient outcome prediction.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Survival' },
             { id: 'ai-multi-omics-integration', title: 'AI for Multi-Omics Integration', description: 'Build holistic biological models by integrating transcriptomics, proteomics, and genomics data.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+Multi-Omics' },
-            { id: 'ai-drug-repurposing', title: 'AI for Drug Repurposing', description: 'Use GNNs and other deep learning methods to find new therapeutic uses for existing drugs.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+for+Drug+Repurpose' },
+            { id: 'ai-drug-repurposing', title: 'AI for Drug Repurposing', description: 'Use GNNs and other deep learning methods to find new therapeutic uses for existing drugs.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+NLP' },
             { id: 'ai-nlp-literature-mining', title: 'NLP for Literature Mining', description: 'Extract insights and relationships from millions of scientific papers using BioBERT and SciSpacy.', image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=AI+NLP' },
         ]
     },
