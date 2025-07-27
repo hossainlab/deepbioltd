@@ -10,7 +10,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Explore genomic variation and its implications in health and disease with our comprehensive analysis services.',
         icon: React.createElement(DnaIcon),
         services: [
-            { id: 'genomic-analysis', title: 'Genomic Analysis Service', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assemblyg' },
+            { id: 'genomic-analysis', title: 'Genomic Analysis', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assemblyg' },
             { id: 'ngs-data-analysis', title: 'NGS Data Analysis', description: 'End-to-end analysis for data from all major NGS platforms, including Illumina and PacBio.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'variant-calling', title: 'Variant Calling (SNPs, INDELs)', description: 'Accurate identification of single nucleotide polymorphisms and insertions/deletions.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'cnv-analysis', title: 'Copy Number Variation (CNV) Analysis', description: 'Detecting gains and losses of genomic regions associated with diseases.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=CNV' },
@@ -26,9 +26,9 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'From atomic-level simulations to large-scale screening, we fuel drug discovery and protein engineering.',
         icon: React.createElement(ShapesIcon),
         services: [
-            { id: 'molecular-docking', title: 'Molecular Docking', description: 'Predict the binding affinity and interaction of small molecules with target proteins.', image: 'public/img/services/molecular-docking.jpg' },
-            { id: 'molecular-dynamics', title: 'Molecular Dynamics Simulation', description: 'Simulate the movements and interactions of molecules to understand biological processes.', image: 'public/img/services/molecular-dynamics-simulation.jpg' },
-            { id: 'insilico-drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'public/img/services/drug-design.jpg' },
+            { id: 'molecular-docking', title: 'Molecular Docking', description: 'Predict the binding affinity and interaction of small molecules with target proteins.', image: 'img/services/molecular-docking.jpg' },
+            { id: 'molecular-dynamics', title: 'Molecular Dynamics Simulation', description: 'Simulate the movements and interactions of molecules to understand biological processes.', image: 'img/services/molecular-dynamics-simulation.jpg' },
+            { id: 'insilico-drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'img/services/drug-design.jpg' },
             { id: 'virtual-screening', title: 'Virtual Screening', description: 'High-throughput computational screening of large compound libraries to find potential hits.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
             { id: 'pathway-integration', title: 'Gene–Protein–Pathway Integration', description: 'Connect genomic and proteomic data with biological pathways for a systems-level view.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
             { id: 'protein-modeling', title: 'Protein Structure Prediction & Modeling', description: 'Accurate 3D structure prediction and refinement for proteins using AlphaFold and more.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration'},

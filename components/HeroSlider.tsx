@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons.tsx';
 
 const slides = [
@@ -30,6 +30,7 @@ const slides = [
 ];
 
 const HeroSlider: React.FC = () => {
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
@@ -45,17 +46,41 @@ const HeroSlider: React.FC = () => {
     return () => clearInterval(slideInterval);
   }, [nextSlide]);
 
+  useEffect(() => {
+    slideRefs.current.forEach((slideEl, index) => {
+      if (slideEl) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const img = new Image();
+                img.src = slides[index].image;
+                img.onload = () => {
+                  slideEl.style.backgroundImage = `url(${slides[index].image})`;
+                };
+                observer.unobserve(slideEl);
+              }
+            });
+          },
+          { rootMargin: '0px', threshold: 0.1 }
+        );
+        observer.observe(slideEl);
+      }
+    });
+  }, [slides]);
+
   return (
     <section className="relative w-full h-[60vh] max-h-[500px] overflow-hidden font-heading">
       {slides.map((slide, index) => (
         <div
-          key={index}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out flex items-center justify-center text-white ${
-            index === currentSlide ? 'opacity-100 z-10' : 'opacity-0'
-          }`}
-          style={{ backgroundImage: `url(${slide.image})` }}
-        >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+            key={index}
+            ref={(el) => (slideRefs.current[index] = el)}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out flex items-center justify-center text-white ${
+              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0'
+            }`}
+            data-src={slide.image}
+          >
+            <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-20 text-center p-8 max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">{slide.title}</h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-8 font-sans">{slide.subtitle}</p>
