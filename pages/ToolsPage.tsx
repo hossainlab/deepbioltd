@@ -50,7 +50,7 @@ const cheminformaticsTools = [
 const ToolsPage: React.FC = () => {
     return (
         <div className="font-sans">
-            <SectionTitle title="Bioinformatics Tools & Technologies" subtitle="Explore the cutting-edge software, robust packages, and versatile programming languages that power our innovative bioinformatics solutions and drive scientific discovery." />
+            <SectionTitle title="Bioinformatics Tools & Technologies" subtitle="The powerful software, packages, and languages we use to drive scientific discovery." />
             <section className="py-10 px-8">
                 <div className="max-w-7xl mx-auto space-y-16">
                     

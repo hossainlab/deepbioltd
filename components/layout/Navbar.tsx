@@ -28,10 +28,10 @@ const NAV_ITEMS: { name: string, path: string }[] = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Resources', path: '/resources' },
-    { name: 'Courses', path: '/courses' },
     { name: 'Research', path: '/research' },
     { name: 'Team', path: '/team' },
+    { name: 'Courses', path: '/courses' },
+    { name: 'Resources', path: '/resources' },
     { name: 'Contact', path: '/contact' },
     { name: 'Careers', path: '/careers' },
 ];
