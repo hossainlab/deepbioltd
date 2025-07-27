@@ -39,7 +39,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onServiceClick }) => {
                   image={service.image}
                   title={service.title}
                   description={service.description}
-                  onClick={() => onServiceClick(service.id)}
+                  to={`/services/${service.id}`}
                   showButton={true}
                 />
               ))}

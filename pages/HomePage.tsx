@@ -47,7 +47,7 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                             title={interest.title}
                             description={interest.desc}
                             image={interest.img}
-                            onClick={() => setSelectedService(interest.id as ServiceId)}
+                            to={`/services/${interest.id}`}
                             showButton={false}
                         />
                     ))}
@@ -68,6 +68,7 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                             onClick={() => setSelectedService(service.id as ServiceId)}
                             showButton={true}
                             buttonText="Learn More"
+                            to={`/services/${service.id}`} 
                         />
                     ))}
                 </div>

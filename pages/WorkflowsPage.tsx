@@ -31,17 +31,14 @@ const WorkflowSection: React.FC<{ title: string; children: React.ReactNode }> = 
 
 const WorkflowsPage: React.FC = () => {
     return (
-        <div className="font-sans bg-white">
-            <PageHero
-                title="Our Scientific Workflows"
-                subtitle="Streamlined, reproducible, and efficient pipelines for delivering high-quality bioinformatics insights."
+        <div className="font-sans">
+            <SectionTitle
+                title="Bioinformatics Workflows & Pipelines"
+                subtitle="Our comprehensive suite of automated workflows and pipelines designed to streamline your research from raw data to actionable insights."
             />
-            <section className="py-20 px-8">
+            <section className="py-10 px-8">
                 <div className="max-w-7xl mx-auto">
-                    <SectionTitle
-                        title="The Core of Our Efficiency"
-                        subtitle="We have developed robust, automated, and scalable workflows to ensure rapid turnaround times without compromising scientific rigor. Our pipelines are built on principles of reproducibility and are tailored for each specific research question."
-                    />
+
 
                     <WorkflowSection title="NGS Data Analysis Pipeline">
                         <WorkflowStep
