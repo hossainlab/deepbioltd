@@ -85,11 +85,12 @@ const CareersPage: React.FC<CareersPageProps> = () => {
                                                 <span>{job.type}</span>
                                             </div>
                                         </div>
-                                        <span
-                                            className="mt-4 sm:mt-0 px-6 py-2 rounded-full text-sm font-semibold text-white bg-secondary hover:bg-primary transition-colors duration-300 self-start sm:self-center"
+                                        <Link
+                                            to={`/jobs/${job.id}`}
+                                            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                                         >
                                             View & Apply
-                                        </span>
+                                        </Link>
                                     </div>
                                 </Link>
                             ))

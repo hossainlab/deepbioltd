@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Job } from '../../types.ts';
+import { allJobs } from '../../data/jobsData.ts';
 import { ChevronLeftIcon, CheckCircleIcon, UploadCloudIcon, MapPinIcon, BriefcaseIcon } from '../../components/icons/Icons.tsx';
+import LoadingSpinner from '../../components/common/LoadingSpinner.tsx';
 
-interface JobDetailPageProps {
-  job: Job;
-  onBack: () => void;
-}
+interface JobDetailPageProps {}
 
 const JobSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
     <div className="mb-8">
@@ -15,7 +15,19 @@ const JobSection: React.FC<{ title: string; children: React.ReactNode }> = ({ ti
     </div>
 );
 
-const JobDetailPage: React.FC<JobDetailPageProps> = ({ job, onBack }) => {
+const JobDetailPage: React.FC<JobDetailPageProps> = () => {
+    const { jobId } = useParams<{ jobId: string }>();
+    const navigate = useNavigate();
+    const [job, setJob] = useState<Job | undefined>(undefined);
+
+    useEffect(() => {
+        const foundJob = allJobs.find(j => j.id === jobId);
+        setJob(foundJob);
+    }, [jobId]);
+
+    const handleBack = () => {
+        navigate('/careers');
+    };
     const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
     const [resumeFile, setResumeFile] = useState<File | null>(null);
     const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null);
@@ -63,8 +75,8 @@ const JobDetailPage: React.FC<JobDetailPageProps> = ({ job, onBack }) => {
         setTimeout(() => {
             console.log("Mock submitting application:", {
                 ...formData,
-                jobId: job.id,
-                jobTitle: job.title,
+                jobId: job?.id,
+                jobTitle: job?.title,
                 resumeFile: resumeFile.name,
                 coverLetterFile: coverLetterFile?.name || 'N/A',
             });
@@ -74,11 +86,15 @@ const JobDetailPage: React.FC<JobDetailPageProps> = ({ job, onBack }) => {
         }, 1500);
     };
 
+  if (!job) {
+        return <LoadingSpinner />;
+    }
+
   return (
     <div className="font-sans bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button
-            onClick={onBack}
+            onClick={handleBack}
             className="flex items-center text-lg mb-8 text-primary hover:underline font-semibold"
         >
             <ChevronLeftIcon className="mr-2" /> Back to all openings
