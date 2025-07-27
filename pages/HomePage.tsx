@@ -71,12 +71,12 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                     ))}
                 </div>
                 <div className="mt-16 text-center">
-                    <button
-                        onClick={() => window.location.href = '/services'}
-                        className="px-8 py-3 rounded-full text-lg font-semibold text-white bg-primary hover:bg-secondary transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                    <a
+                        href="/services"
+                        className="px-8 py-3 rounded-full text-lg font-semibold text-white bg-primary hover:bg-secondary transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-block"
                     >
                         See All Our Services
-                    </button>
+                </a>
                 </div>
             </section>
 
