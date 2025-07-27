@@ -10,13 +10,13 @@ export const serviceCategories: ServiceCategory[] = [
         description: 'Explore genomic variation and its implications in health and disease with our comprehensive analysis services.',
         icon: React.createElement(DnaIcon),
         services: [
-            { id: 'genomic-analysis', title: 'Genomic Analysis', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assemblyg' },
-            { id: 'ngs-data-analysis', title: 'NGS Data Analysis', description: 'End-to-end analysis for data from all major NGS platforms, including Illumina and PacBio.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
+            { id: 'genomic-analysis', title: 'Genomic Analysis', description: 'Holistic analysis of genomic data for deep insights into disease and traits.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Genomic+Analysis' },
+            { id: 'ngs-data-analysis', title: 'NGS Data Analysis', description: 'End-to-end analysis for data from all major NGS platforms, including Illumina and PacBio.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=NGS' },
             { id: 'variant-calling', title: 'Variant Calling (SNPs, INDELs)', description: 'Accurate identification of single nucleotide polymorphisms and insertions/deletions.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
             { id: 'cnv-analysis', title: 'Copy Number Variation (CNV) Analysis', description: 'Detecting gains and losses of genomic regions associated with diseases.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=CNV' },
-            { id: 'gwas', title: 'Genome-Wide Association Studies (GWAS)', description: 'Identifying genetic variants associated with specific traits or diseases across populations.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
+            { id: 'gwas', title: 'Genome-Wide Association Studies (GWAS)', description: 'Identifying genetic variants associated with specific traits or diseases across populations.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=CNV' },
             { id: 'genome-assembly', title: 'Genome Assembly (de novo and hybrid)', description: 'Constructing complete genomes from sequencing reads, even for novel organisms.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Assembly' },
-            { id: 'snp-epistasis-analysis', title: 'SNP and Epistasis Analysis', description: 'Investigating complex gene-gene interactions to uncover hidden genetic effects.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Epistasis' },
+            { id: 'snp-epistasis-analysis', title: 'SNP and Epistasis Analysis', description: 'Investigating complex gene-gene interactions to uncover hidden genetic effects.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Epistasis+SNP' },
             { id: 'genetic-linkage-analysis', title: 'Genetic Linkage Analysis', description: 'Mapping disease genes by tracking inheritance patterns in families.', image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Linkage' },
         ]
     },
