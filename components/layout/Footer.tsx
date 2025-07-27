@@ -1,15 +1,12 @@
 
 import React, { memo } from 'react';
-import { Page, Course } from '../../types.ts';
+import { Link } from 'react-router-dom';
 import { LinkedinIcon, GithubIcon, XIcon, OrcidIcon } from '../icons/Icons.tsx';
 import { faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // ...existing imports...
 
-interface FooterProps {
-    setActiveTab: (tab: Page) => void;
-    setSelectedCourse: (course: Course | null) => void;
-}
+interface FooterProps {}
 
 const FooterLogo: React.FC = () => (
     <div className="flex items-center gap-2" aria-label="DeepBio Logo">
@@ -29,22 +26,17 @@ const FooterLogo: React.FC = () => (
     </div>
 );
 
-const Footer: React.FC<FooterProps> = ({ setActiveTab, setSelectedCourse }) => {
-    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, tab: Page) => {
-        e.preventDefault();
-        setActiveTab(tab);
-        setSelectedCourse(null);
-        window.scrollTo(0, 0);
-    };
+const Footer: React.FC<FooterProps> = () => {
+
 
     return (
         <footer className="bg-primary text-gray-300 font-roboto">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     <div className="col-span-2 lg:col-span-2">
-                         <a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="inline-block mb-4">
+                         <Link to="/" className="inline-block mb-4">
                             <FooterLogo />
-                        </a>
+                        </Link>
                         <p className="text-sm max-w-sm">
                            Innovating at the intersection of AI, bioinformatics, and public health informatics to advance global health.
                         </p>
@@ -74,19 +66,19 @@ const Footer: React.FC<FooterProps> = ({ setActiveTab, setSelectedCourse }) => {
                     <div>
                         <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase mb-4">Services</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'services')}>Genomics</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'services')}>Drug Design</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'services')}>Protein Modeling</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'services')}>AI in Health</a></li>
+                            <li><Link to="/services" className="hover:text-white">Genomics</Link></li>
+                            <li><Link to="/services" className="hover:text-white">Drug Design</Link></li>
+                            <li><Link to="/services" className="hover:text-white">Protein Modeling</Link></li>
+                            <li><Link to="/services" className="hover:text-white">AI in Health</Link></li>
                         </ul>
                     </div>
                      <div>
                         <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase mb-4">Company</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'about')}>About Us</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'research')}>Research</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'careers')}>Careers</a></li>
-                            <li><a href="#" className="hover:text-white" onClick={(e) => handleLinkClick(e, 'team')}>Team</a></li>
+                            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
+                            <li><Link to="/research" className="hover:text-white">Research</Link></li>
+                            <li><Link to="/careers" className="hover:text-white">Careers</Link></li>
+                            <li><Link to="/team" className="hover:text-white">Team</Link></li>
                         </ul>
                     </div>
                      <div>

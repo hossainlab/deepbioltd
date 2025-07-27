@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons.tsx';
 
 const slides = [
@@ -84,11 +85,12 @@ const HeroSlider: React.FC = () => {
           <div className="relative z-20 text-center p-8 max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">{slide.title}</h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-8 font-sans">{slide.subtitle}</p>
-            <button
-              className="px-8 py-3 rounded-full text-lg font-semibold bg-secondary text-white transition-transform transform hover:scale-105 duration-300"
+            <Link
+              to={slide.buttonLink}
+              className="px-8 py-3 rounded-full text-lg font-semibold bg-secondary text-white transition-transform transform hover:scale-105 duration-300 inline-block"
             >
               {slide.buttonText}
-            </button>
+            </Link>
           </div>
         </div>
       ))}

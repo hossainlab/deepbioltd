@@ -1,16 +1,15 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import PageHero from '../components/common/PageHero.tsx';
 import { ClockIcon, BookOpenIcon } from '../components/icons/Icons.tsx';
 import { Course } from '../types.ts';
 import { allCourses } from '../data/coursesData.ts';
 
-interface CoursesPageProps {
-    setSelectedCourse: (course: Course) => void;
-}
+interface CoursesPageProps {}
 
-const CoursesPage: React.FC<CoursesPageProps> = ({ setSelectedCourse }) => {
+const CoursesPage: React.FC<CoursesPageProps> = () => {
     return (
         <div className="font-sans bg-white">
             <PageHero
@@ -22,10 +21,10 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ setSelectedCourse }) => {
                     <SectionTitle title="Our Courses & Workshops" subtitle="Enhance your skills in bioinformatics, AI, and public health informatics with our expert-led programs." />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {allCourses.map((course) => (
-                            <div 
+                            <Link 
                                 key={course.id} 
+                                to={`/courses/${course.id}`}
                                 className="bg-light-gray rounded-lg shadow-lg overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer flex flex-col"
-                                onClick={() => setSelectedCourse(course)}
                             >
                                 <img src={course.image} alt={course.title} className="w-full h-48 object-cover" loading="lazy" />
                                 <div className="p-6 flex flex-col flex-grow">
@@ -36,7 +35,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ setSelectedCourse }) => {
                                         <span className="flex items-center"><ClockIcon size={16} className="inline-block mr-1" /> {course.duration}</span>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

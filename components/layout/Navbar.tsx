@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, memo } from 'react';
-import { Page, ServiceId, Course, Job } from '../../types.ts';
+import { Link, useLocation } from 'react-router-dom';
 import { MenuIcon, XIcon } from '../icons/Icons.tsx';
 
 const Logo: React.FC = () => (
@@ -22,29 +22,21 @@ const Logo: React.FC = () => (
 );
 
 
-interface NavbarProps {
-    activeTab: Page;
-    setActiveTab: (tab: Page) => void;
-    setSelectedService: (service: ServiceId | null) => void;
-    setSelectedCourse: (course: Course | null) => void;
-    setSelectedJob: (job: Job | null) => void;
-    setEstimatorActive: (isActive: boolean) => void;
-}
+interface NavbarProps {}
 
-const NAV_ITEMS: { name: string, tab: Page }[] = [
-    { name: 'Home', tab: 'home' },
-    { name: 'About', tab: 'about' },
-    { name: 'Services', tab: 'services' },
-    { name: 'Resources', tab: 'resources' },
-    { name: 'Courses', tab: 'courses' },
-    { name: 'Research', tab: 'research' },
-    { name: 'Team', tab: 'team' },
-    { name: 'Contact', tab: 'contact' },
-    { name: 'Careers', tab: 'careers' },
-
+const NAV_ITEMS: { name: string, path: string }[] = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Resources', path: '/resources' },
+    { name: 'Courses', path: '/courses' },
+    { name: 'Research', path: '/research' },
+    { name: 'Team', path: '/team' },
+    { name: 'Contact', path: '/contact' },
+    { name: 'Careers', path: '/careers' },
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, setSelectedService, setSelectedCourse, setSelectedJob, setEstimatorActive }) => {
+const Navbar: React.FC<NavbarProps> = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -58,13 +50,9 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, setSelectedSer
         };
     }, [menuOpen]);
     
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, tab: Page) => {
-        e.preventDefault();
-        setActiveTab(tab);
-        setSelectedService(null);
-        setSelectedCourse(null);
-        setSelectedJob(null);
-        setEstimatorActive(false);
+    const location = useLocation();
+
+    const handleNavClick = () => {
         setMenuOpen(false); // Close menu on navigation
     };
 
@@ -72,32 +60,32 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, setSelectedSer
         <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 font-heading">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
-                    <a
-                        href="#"
-                        onClick={(e) => handleNavClick(e, 'home')}
+                    <Link
+                        to="/"
+                        onClick={handleNavClick}
                         className="flex-shrink-0 flex items-center"
                         aria-label="Back to homepage"
                     >
                          <Logo />
-                    </a>
+                    </Link>
                     
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center">
                         <nav className="flex space-x-6">
                             {NAV_ITEMS.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
-                                    href="#"
-                                    onClick={(e) => handleNavClick(e, item.tab)}
+                                    to={item.path}
+                                    onClick={handleNavClick}
                                     className={`text-base font-medium transition-colors duration-300 px-1 py-2 ${
-                                        activeTab === item.tab 
+                                        location.pathname === item.path 
                                         ? 'text-primary border-b-2 border-primary' 
                                         : 'text-gray-500 hover:text-primary'
                                     }`}
-                                    aria-current={activeTab === item.tab ? 'page' : undefined}
+                                    aria-current={location.pathname === item.path ? 'page' : undefined}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
                         </nav>
                     </div>
@@ -122,19 +110,19 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, setSelectedSer
                     <div className="flex flex-col h-full">
                         <nav className="flex flex-col items-center justify-center flex-grow space-y-6">
                             {NAV_ITEMS.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
-                                    href="#"
-                                    onClick={(e) => handleNavClick(e, item.tab)}
+                                    to={item.path}
+                                    onClick={handleNavClick}
                                     className={`text-2xl font-medium transition-colors duration-300 ${
-                                        activeTab === item.tab 
+                                        location.pathname === item.path 
                                         ? 'text-primary' 
                                         : 'text-gray-600 hover:text-primary'
                                     }`}
-                                    aria-current={activeTab === item.tab ? 'page' : undefined}
+                                    aria-current={location.pathname === item.path ? 'page' : undefined}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
                         </nav>
                     </div>

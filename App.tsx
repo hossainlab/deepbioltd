@@ -1,8 +1,7 @@
-
-import React, { useState, useCallback, Suspense, lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar.tsx';
 import Footer from './components/layout/Footer.tsx';
-import HeroSlider from './components/HeroSlider.tsx';
 import { Page, ServiceId, Course, Job } from './types.ts';
 import LoadingSpinner from './components/common/LoadingSpinner.tsx';
 
@@ -66,169 +65,58 @@ const GENERIC_SERVICES: ServiceId[] = [
 ];
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<Page>('home');
-  const [selectedService, setSelectedService] = useState<ServiceId | null>(null);
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [estimatorActive, setEstimatorActive] = useState(false);
-
-  const handleSetEstimatorActive = useCallback((isActive: boolean) => {
-    setEstimatorActive(isActive);
-    if (isActive) {
-      setActiveTab('estimator');
-      setSelectedService(null);
-      setSelectedCourse(null);
-      setSelectedJob(null);
-    } else if (activeTab === 'estimator') {
-      setActiveTab('home');
-    }
-    window.scrollTo(0, 0);
-  }, [activeTab]);
-
-  const handleSetSelectedService = useCallback((service: ServiceId | null) => {
-    setSelectedService(service);
-    setSelectedCourse(null);
-    setSelectedJob(null);
-    setEstimatorActive(false);
-    if (service) {
-      setActiveTab('services');
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
-  const handleSetSelectedCourse = useCallback((course: Course | null) => {
-    setSelectedCourse(course);
-    setSelectedService(null);
-    setSelectedJob(null);
-    setEstimatorActive(false);
-    if (course) {
-        setActiveTab('courses');
-    }
-    window.scrollTo(0, 0);
-  }, []);
-  
-  const handleSetSelectedJob = useCallback((job: Job | null) => {
-    setSelectedJob(job);
-    setSelectedService(null);
-    setSelectedCourse(null);
-    setEstimatorActive(false);
-    if (job) {
-        setActiveTab('careers');
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
-  const renderPageContent = () => {
-    if (estimatorActive) {
-      return <ProjectEstimatorPage onBack={() => handleSetEstimatorActive(false)} setActiveTab={setActiveTab} />;
-    }
-
-    if (selectedCourse) {
-      return <CourseDetailPage course={selectedCourse} onBack={() => handleSetSelectedCourse(null)} />;
-    }
-    
-    if (selectedJob) {
-      return <JobDetailPage job={selectedJob} onBack={() => handleSetSelectedJob(null)} />;
-    }
-
-    if (selectedService) {
-      switch(selectedService) {
-        case 'molecular-dynamics':
-          return <MolecularDynamicsSimulationServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'drug-design':
-          return <DrugDesignServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'molecular-docking':
-          return <MolecularDockingServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'protein-modeling':
-          return <ProteinModelingServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'genomic-analysis':
-          return <GenomicAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'ngs-data-analysis':
-          return <NgsDataAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'bulk-rna-seq':
-          return <BulkRnaSeqServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'single-cell-rna-seq':
-          return <SingleCellRnaSeqServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'variant-calling':
-          return <VariantCallingServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'virtual-screening':
-          return <VirtualScreeningServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'dge-analysis':
-          return <DgeAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'sc-clustering-annotation':
-            return <ScClusteringAnnotationServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'chip-seq-analysis':
-            return <ChipSeqAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'microbiome-diversity-analysis':
-            return <MicrobiomeDiversityAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'ai-biomarker-discovery':
-            return <AiBiomarkerDiscoveryServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'gwas':
-            return <GwasServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'cnv-analysis':
-            return <CnvAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'dna-methylation-analysis':
-            return <DnaMethylationAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'atac-seq-analysis':
-            return <AtacSeqAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'sc-trajectory-analysis':
-            return <ScTrajectoryAnalysisServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        case 'ai-drug-repurposing':
-            return <AiDrugRepurposingServicePage onServiceClick={handleSetSelectedService} setActiveTab={setActiveTab} />;
-        default:
-          if (GENERIC_SERVICES.includes(selectedService)) {
-            return <GenericServicePage serviceId={selectedService} setSelectedService={handleSetSelectedService} setActiveTab={setActiveTab} />;
-          }
-          return <GenericServicePage serviceId="not-found" setSelectedService={handleSetSelectedService} setActiveTab={setActiveTab} />;
-      }
-    }
-
-    switch (activeTab) {
-      case 'home':
-        return <HomePage setSelectedService={handleSetSelectedService} setActiveTab={setActiveTab} setEstimatorActive={handleSetEstimatorActive} />;
-      case 'about':
-        return <AboutPage />;
-      case 'services':
-        return <ServicesPage onServiceClick={handleSetSelectedService} />;
-      case 'tools':
-        return <ToolsPage />;
-      case 'workflows':
-        return <WorkflowsPage />;
-      case 'resources':
-        return <ResourcesPage />;
-      case 'courses':
-        return <CoursesPage setSelectedCourse={setSelectedCourse} />;
-      case 'research':
-        return <ResearchPage />;
-      case 'team':
-        return <TeamPage />;
-      case 'contact':
-        return <ContactPage />;
-      case 'careers':
-        return <CareersPage setSelectedJob={handleSetSelectedJob} />;
-      default:
-        return <HomePage setSelectedService={handleSetSelectedService} setActiveTab={setActiveTab} setEstimatorActive={handleSetEstimatorActive} />;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-dark-text">
-      <Navbar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        setSelectedService={setSelectedService} 
-        setSelectedCourse={setSelectedCourse} 
-        setSelectedJob={setSelectedJob} 
-        setEstimatorActive={handleSetEstimatorActive} 
-      />
-      {activeTab === 'home' && !selectedService && !selectedCourse && !selectedJob && <HeroSlider />}
-      <main>
-        <Suspense fallback={<LoadingSpinner />}>
-            {renderPageContent()}
-        </Suspense>
-      </main>
-      <Footer setActiveTab={setActiveTab} setSelectedCourse={setSelectedCourse} />
-    </div>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/tools" element={<ToolsPage />} />
+              <Route path="/workflows" element={<WorkflowsPage />} />
+              <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/research" element={<ResearchPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/estimator" element={<ProjectEstimatorPage />} />
+              <Route path="/jobs/:jobId" element={<JobDetailPage />} />
+              <Route path="/courses/:courseId" element={<CourseDetailPage />} />
+              <Route path="/services/molecular-dynamics" element={<MolecularDynamicsSimulationServicePage />} />
+              <Route path="/services/drug-design" element={<DrugDesignServicePage />} />
+              <Route path="/services/molecular-docking" element={<MolecularDockingServicePage />} />
+              <Route path="/services/protein-modeling" element={<ProteinModelingServicePage />} />
+              <Route path="/services/genomic-analysis" element={<GenomicAnalysisServicePage />} />
+              <Route path="/services/ngs-data-analysis" element={<NgsDataAnalysisServicePage />} />
+              <Route path="/services/bulk-rna-seq" element={<BulkRnaSeqServicePage />} />
+              <Route path="/services/single-cell-rna-seq" element={<SingleCellRnaSeqServicePage />} />
+              <Route path="/services/variant-calling" element={<VariantCallingServicePage />} />
+              <Route path="/services/virtual-screening" element={<VirtualScreeningServicePage />} />
+              <Route path="/services/dge-analysis" element={<DgeAnalysisServicePage />} />
+              <Route path="/services/sc-clustering-annotation" element={<ScClusteringAnnotationServicePage />} />
+              <Route path="/services/chip-seq-analysis" element={<ChipSeqAnalysisServicePage />} />
+              <Route path="/services/microbiome-diversity-analysis" element={<MicrobiomeDiversityAnalysisServicePage />} />
+              <Route path="/services/ai-biomarker-discovery" element={<AiBiomarkerDiscoveryServicePage />} />
+              <Route path="/services/gwas" element={<GwasServicePage />} />
+              <Route path="/services/cnv-analysis" element={<CnvAnalysisServicePage />} />
+              <Route path="/services/dna-methylation-analysis" element={<DnaMethylationAnalysisServicePage />} />
+              <Route path="/services/atac-seq-analysis" element={<AtacSeqAnalysisServicePage />} />
+              <Route path="/services/sc-trajectory-analysis" element={<ScTrajectoryAnalysisServicePage />} />
+              <Route path="/services/ai-drug-repurposing" element={<AiDrugRepurposingServicePage />} />
+              {GENERIC_SERVICES.map(serviceId => (
+                <Route key={serviceId} path={`/services/${serviceId}`} element={<GenericServicePage serviceId={serviceId} />} />
+              ))}
+              <Route path="*" element={<HomePage />} /> {/* Fallback for unknown routes */}
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

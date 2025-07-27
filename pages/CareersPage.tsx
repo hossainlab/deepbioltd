@@ -1,16 +1,15 @@
 
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Job } from '../types.ts';
 import { allJobs } from '../data/jobsData.ts';
 import PageHero from '../components/common/PageHero.tsx';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import { LightbulbIcon, UsersIcon, BriefcaseIcon, MapPinIcon } from '../components/icons/Icons.tsx';
 
-interface CareersPageProps {
-    setSelectedJob: (job: Job) => void;
-}
+interface CareersPageProps {}
 
-const CareersPage: React.FC<CareersPageProps> = ({ setSelectedJob }) => {
+const CareersPage: React.FC<CareersPageProps> = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredJobs = useMemo(() => {
@@ -76,7 +75,7 @@ const CareersPage: React.FC<CareersPageProps> = ({ setSelectedJob }) => {
                     <div className="space-y-6">
                         {filteredJobs.length > 0 ? (
                             filteredJobs.map(job => (
-                                <div key={job.id} className="bg-light-gray p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-primary border-l-4 border-transparent">
+                                <Link key={job.id} to={`/jobs/${job.id}`} className="bg-light-gray p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-primary border-l-4 border-transparent block">
                                     <div className="flex flex-col sm:flex-row justify-between sm:items-center">
                                         <div>
                                             <h3 className="text-xl font-bold font-heading text-primary">{job.title}</h3>
@@ -86,14 +85,13 @@ const CareersPage: React.FC<CareersPageProps> = ({ setSelectedJob }) => {
                                                 <span>{job.type}</span>
                                             </div>
                                         </div>
-                                        <button
-                                            onClick={() => setSelectedJob(job)}
+                                        <span
                                             className="mt-4 sm:mt-0 px-6 py-2 rounded-full text-sm font-semibold text-white bg-secondary hover:bg-primary transition-colors duration-300 self-start sm:self-center"
                                         >
                                             View & Apply
-                                        </button>
+                                        </span>
                                     </div>
-                                </div>
+                                </Link>
                             ))
                         ) : (
                             <p className="text-center text-light-text py-8">No openings match your search. Please check back later!</p>

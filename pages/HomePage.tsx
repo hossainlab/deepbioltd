@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import ServiceCard from '../components/common/ServiceCard.tsx';
@@ -7,6 +6,7 @@ import { faLightbulb, faUsers, faAward } from '@fortawesome/free-solid-svg-icons
 import { ServiceId, Page } from '../types.ts';
 import { serviceCategories } from '../data/servicesData.ts';
 import ServiceProcess from '../components/common/ServiceProcess.tsx';
+import HeroSlider from '../components/HeroSlider';
 
 const featuredServiceIds: ServiceId[] = [
     'molecular-dynamics', 
@@ -32,6 +32,7 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, setEstimatorActive }) => {
     return (
         <div className="font-sans">
+            <HeroSlider />
             <section className="py-20 px-8 bg-white">
                 <SectionTitle title="Explore Areas of Interest" subtitle="We focus on key areas where computation can make a significant impact on health and science." />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">

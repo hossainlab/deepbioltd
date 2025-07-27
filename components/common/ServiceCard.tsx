@@ -1,11 +1,12 @@
 
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
   image: string;
   title: string;
   description?: string;
-  onClick?: () => void;
+  to?: string;
   showButton?: boolean;
   buttonText?: string;
 }
@@ -14,14 +15,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   image,
   title,
   description,
-  onClick,
+  to,
   showButton = false,
   buttonText = "View More"
 }) => {
   return (
-    <div 
+    <Link 
+      to={to || "#"}
       className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer group h-full flex flex-col"
-      onClick={onClick}
     >
       <div className="overflow-hidden">
         <img 
@@ -45,8 +46,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             {buttonText}
           </button>
         )}
-      </div>
     </div>
+    </Link>
   );
 };
 
