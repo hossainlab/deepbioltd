@@ -75,7 +75,7 @@ const CareersPage: React.FC<CareersPageProps> = () => {
                     <div className="space-y-6">
                         {filteredJobs.length > 0 ? (
                             filteredJobs.map(job => (
-                                <Link key={job.id} to={`/jobs/${job.id}`} className="bg-light-gray p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-primary border-l-4 border-transparent block">
+                                <div key={job.id} className="bg-light-gray p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-primary border-l-4 border-transparent block">
                                     <div className="flex flex-col sm:flex-row justify-between sm:items-center">
                                         <div>
                                             <h3 className="text-xl font-bold font-heading text-primary">{job.title}</h3>
@@ -92,7 +92,7 @@ const CareersPage: React.FC<CareersPageProps> = () => {
                                             View & Apply
                                         </Link>
                                     </div>
-                                </Link>
+                                </div>
                             ))
                         ) : (
                             <p className="text-center text-light-text py-8">No openings match your search. Please check back later!</p>

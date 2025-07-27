@@ -1,17 +1,33 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Course } from '../../types.ts';
+import { allCourses } from '../../data/coursesData.ts';
 import { ChevronLeftIcon, CheckCircleIcon, BookOpenIcon, ClockIcon } from '../../components/icons/Icons.tsx';
 import Accordion from '../../components/common/Accordion.tsx';
+import LoadingSpinner from '../../components/common/LoadingSpinner.tsx';
 
-interface CourseDetailPageProps {
-  course: Course;
-  onBack: () => void;
-}
+interface CourseDetailPageProps {}
 
-const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ course, onBack }) => {
+const CourseDetailPage: React.FC<CourseDetailPageProps> = () => {
+  const { courseId } = useParams<{ courseId: string }>();
+  const navigate = useNavigate();
+  const [course, setCourse] = useState<Course | undefined>(undefined);
+
+  useEffect(() => {
+    const foundCourse = allCourses.find(c => c.id === courseId);
+    setCourse(foundCourse);
+  }, [courseId]);
+
+  const handleBack = () => {
+    navigate('/courses');
+  };
   // #205E92 in RGB is 32, 94, 146
   const primaryColorRgb = '32, 94, 146';
+
+  if (!course) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="font-sans bg-white animate-fade-in">
@@ -21,7 +37,7 @@ const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ course, onBack }) =
       >
         <div className="max-w-7xl mx-auto">
             <button
-                onClick={onBack}
+                onClick={handleBack}
                 className="flex items-center text-lg mb-4 hover:underline"
             >
                 <ChevronLeftIcon className="mr-2" /> Back to Courses
