@@ -2,33 +2,31 @@
 import React from 'react';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import PageHero from '../components/common/PageHero.tsx';
-import { BrainIcon, DnaIcon, ActivityIcon, DownloadIcon } from '../components/icons/Icons.tsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBrain, faDna, faChartLine, faDownload } from '@fortawesome/free-solid-svg-icons';
 
 const researchAreas = [
     {
-        icon: <BrainIcon size={48} className="text-primary" />,
+        icon: <FontAwesomeIcon icon={faBrain} size="2x" className="text-primary" />,
         title: 'AI in Drug Discovery',
         desc: 'Leveraging deep learning and machine learning to accelerate the identification of novel therapeutic candidates and predict drug efficacy.',
     },
     {
-        icon: <DnaIcon size={48} className="text-primary" />,
-        title: 'Genomic Medicine',
+        icon: <FontAwesomeIcon icon={faDna} size="2x" className="text-primary" />,
+        title: 'Genomics',
         desc: 'Analyzing genomic and transcriptomic data to uncover the genetic basis of diseases and develop personalized medicine strategies.',
     },
     {
-        icon: <ActivityIcon size={48} className="text-primary" />,
+        icon: <FontAwesomeIcon icon={faChartLine} size="2x" className="text-primary" />,
         title: 'Public Health Informatics',
         desc: 'Using data science and AI to monitor disease outbreaks, predict epidemiological trends, and inform public health policy.',
     },
 ];
 
 const publications = [
-    { id: 'pub1', title: 'AI-Driven Drug Repurposing for Neglected Tropical Diseases', authors: 'J. Doe, A. Johnson, B. Williams', journal: 'Nature Biotechnology', year: '2023', link: '#', image: 'https://placehold.co/300x200/205E92/FFFFFF?text=Publication+1' },
-    { id: 'pub2', title: 'Genomic Surveillance of Antimicrobial Resistance in Bangladesh', authors: 'C. Davis, F. Wilson, E. Miller', journal: 'The Lancet Digital Health', year: '2022', link: '#', image: 'https://placehold.co/300x200/4DB8FF/FFFFFF?text=Publication+2' },
-    { id: 'pub3', title: 'Machine Learning Models for Early Disease Outbreak Prediction', authors: 'J. Smith, H. Taylor', journal: 'Journal of Biomedical Informatics', year: '2023', link: '#', image: 'https://placehold.co/300x200/205E92/FFFFFF?text=Publication+3' },
-    { id: 'pub4', title: 'Cheminformatics Approaches to Novel Compound Identification', authors: 'A. Johnson, J. Doe', journal: 'Journal of Chemical Information and Modeling', year: '2021', link: '#', image: 'https://placehold.co/300x200/4DB8FF/FFFFFF?text=Publication+4' },
-    { id: 'pub5', title: 'Integrated Multi-omics Analysis of Cancer Progression', authors: 'E. Miller, C. Davis', journal: 'Cell Systems', year: '2024', link: '#', image: 'https://placehold.co/300x200/205E92/FFFFFF?text=Publication+5' },
-    { id: 'pub6', title: 'Virtual Screening for Novel SARS-CoV-2 Inhibitors', authors: 'Team DeepBio', journal: 'Virology Journal', year: '2022', link: '#', image: 'https://placehold.co/300x200/4DB8FF/FFFFFF?text=Publication+6' },
+     { id: 'pub1', title: 'Pan-cancer analysis reveals immunological and prognostic significance of CCT5 in human tumors', authors: 'Ahmed, M.Z., Billah, M.M., Ferdous, J., Hossain, M.J. et al.', journal: 'Sci Rep', year: '2025', link: 'https://doi.org/10.1038/s41598-025-88339-z', image: 'https://placehold.co/300x200/205E92/FFFFFF?text=CCT5' },
+    { id: 'pub2', title: 'Global, regional, and national trends in routine childhood vaccination coverage from 1980 to 2023 with forecasts to 2030: a systematic analysis for the Global Burden of Disease Study 2023', authors: 'The Lancet', journal: 'The Lancet', year: '2025', link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)01037-2/', image: 'https://placehold.co/300x200/4DB8FF/FFFFFF?text=GBD' },
+    { id: 'pub3', title: 'Resistance and Co-Resistance of Metallo-Beta-Lactamase Genes in Diarrheal and Urinary-Tract Pathogens in Bangladesh', authors: 'Shanta, A.S.; Islam, N.; Al Asad, M.; Akter, K.; Habib, M.B.; Hossain, M.J.; Nahar, S.; Godman, B.; Islam, S.', journal: 'Microorganisms', year: '2024', link: 'https://doi.org/10.3390/microorganisms12081589', image: 'https://placehold.co/300x200/FF5733/FFFFFF?text=AMR' },
 ];
 
 const technicalReports = [
@@ -85,12 +83,12 @@ const ResearchPage: React.FC = () => {
                     <SectionTitle title="Technical Reports" subtitle="In-depth documents and whitepapers detailing our methodologies and technologies." />
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                         {technicalReports.map((report, index) => (
-                            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden p-4 text-center group flex flex-col">
+                            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden p-4 text-center group flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                                 <img src={report.image} alt={report.title} className="w-full h-32 object-cover mb-4 rounded" loading="lazy" />
                                 <h4 className="font-semibold text-lg text-primary mb-2 font-heading flex-grow">{report.title}</h4>
                                 <p className="text-sm text-light-text mb-4">{report.desc}</p>
                                 <button className="mt-auto px-4 py-2 rounded-full text-sm font-semibold text-white bg-secondary hover:bg-primary transition-colors duration-300">
-                                    <DownloadIcon size={16} className="inline-block mr-2" /> Download
+                                    <FontAwesomeIcon icon={faDownload} size="sm" className="inline-block mr-2" /> Download
                                 </button>
                             </div>
                         ))}
