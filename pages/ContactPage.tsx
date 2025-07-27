@@ -77,7 +77,7 @@ const ContactPage: React.FC = () => (
                             <PhoneIcon size={24} className="text-secondary mr-4 mt-1 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold font-heading text-primary">Phone</h3>
-                                <p className="text-gray-700">+881843381652</p>
+                                <p className="text-gray-700">+8801843381652</p>
                             </div>
                         </div>
                         <div className="flex items-start">

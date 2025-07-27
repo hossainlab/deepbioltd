@@ -47,7 +47,6 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                             title={interest.title}
                             description={interest.desc}
                             image={interest.img}
-                            to={`/services/${interest.id}`}
                             showButton={false}
                         />
                     ))}
@@ -65,7 +64,6 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                             title={service.title}
                             description={service.description}
                             image={service.image}
-                            onClick={() => setSelectedService(service.id as ServiceId)}
                             showButton={true}
                             buttonText="Learn More"
                             to={`/services/${service.id}`} 
@@ -74,7 +72,7 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                 </div>
                 <div className="mt-16 text-center">
                     <button
-                        onClick={() => setActiveTab('services')}
+                        onClick={() => window.location.href = '/services'}
                         className="px-8 py-3 rounded-full text-lg font-semibold text-white bg-primary hover:bg-secondary transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
                     >
                         See All Our Services
@@ -82,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, s
                 </div>
             </section>
 
-            <section className="py-20 px-8 bg-light-gray">
+    <section className="py-20 px-8 bg-light-gray">
     <SectionTitle title="Our Core Values" subtitle="The principles that guide our work and culture." />
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2">

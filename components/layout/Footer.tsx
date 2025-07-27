@@ -85,7 +85,7 @@ const Footer: React.FC<FooterProps> = () => {
                         <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase mb-4">Contact</h4>
                         <ul className="space-y-3 text-sm">
                             <li><a href="mailto:info@deepbio.com" className="hover:text-white">Email: deepbiobd@gmail.com</a></li>
-                            <li><a href="tel:+12072070429" className="hover:text-white">Phone: +881843381652</a></li>
+                            <li><a href="tel:+12072070429" className="hover:text-white">Phone: +8801843381652</a></li>
                             <li className="pt-1"><p className="leading-relaxed">Dhaka, Bangladesh</p></li>
                         </ul>
                     </div>
