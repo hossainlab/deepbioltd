@@ -52,7 +52,7 @@ const MolecularDynamicsSimulationServicePage: React.FC<ServicePageProps> = ({ on
                         <p className="text-gray-700 mb-6 leading-relaxed">
                             Molecular Dynamics (MD) simulation is a powerful computational technique used to study the physical movements of atoms and molecules. This method is widely used in various fields, including chemistry, physics, and biology, to simulate the behavior of complex systems at the atomic level, providing a view of the dynamic evolution of the system.
                         </p>
-                        <img src="https://placehold.co/600x400/F9FAFB/4DB8FF?text=MD+Simulation+Diagram" alt="MD Simulation Diagram" className="rounded-lg shadow-xl w-full mb-8" loading="lazy" />
+                        <img src="img/services/molecular-dynamics-simulation-service.jpg" alt="MD Simulation Diagram" className="rounded-lg shadow-xl w-full mb-8" loading="lazy" />
                         
                         <ServiceSectionTitle title="Applications of MD Simulation" />
                         <div className="space-y-6 mt-6">
@@ -111,8 +111,7 @@ const MolecularDynamicsSimulationServicePage: React.FC<ServicePageProps> = ({ on
                         <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50">
                             <p className="text-gray-600 italic">
                                 Our workflows are based on established best practices in the field. A detailed list of software, versions, and parameters will be included in your final report. Key literature includes:
-                                <br />- Abraham, M. J., et al. (2015). GROMACS: High performance molecular simulations through multi-level parallelism from laptops to supercomputers. SoftwareX.
-                                <br />- Humphrey, W., Dalke, A., & Schulten, K. (1996). VMD: visual molecular dynamics. Journal of molecular graphics.
+                                <br />- Zhou C, Li J, Wang S, et al. Development of molecular dynamics and research progress in the study of slag[J]. Materials, 2023, 16(15): 5373.
                             </p>
                         </blockquote>
 

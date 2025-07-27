@@ -2,6 +2,7 @@
 import { Course } from '../types.ts';
 
 export const allCourses: Course[] = [
+    // Course 1
     { 
         id: 'genomics-fundamentals', 
         title: 'Genomics Fundamentals for Biologists', 
@@ -30,6 +31,7 @@ export const allCourses: Course[] = [
             { title: "Module 4: Applications", content: ["Variant Calling and Annotation", "Introduction to GWAS", "Clinical Genomics"] }
         ]
     },
+     // Course 2
     { 
         id: 'advanced-transcriptomics-analysis', 
         title: 'Advanced Transcriptomics Data Analysis', 
@@ -58,6 +60,7 @@ export const allCourses: Course[] = [
             { title: "Module 4: Data Integration", content: ["Integrating with Proteomics", "Integrating with Epigenomics", "Multi-omics Factor Analysis"] }
         ]
     },
+     // Course 
     { 
         id: 'insilico-drug-design-techniques', 
         title: 'Insilico Drug Design Techniques', 

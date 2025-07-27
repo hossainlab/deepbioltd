@@ -70,21 +70,21 @@ const ContactPage: React.FC = () => (
                             <MapPinIcon size={24} className="text-secondary mr-4 mt-1 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold font-heading text-primary">Address</h3>
-                                <p className="text-gray-700">Suite 206, 17 Ramsey Road, Shirley, NY 11967, USA</p>
+                                <p className="text-gray-700">100, Shukrabad, Dhanmondi, Dhaka-1207</p>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <PhoneIcon size={24} className="text-secondary mr-4 mt-1 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold font-heading text-primary">Phone</h3>
-                                <p className="text-gray-700">+1 (207) 207-0429</p>
+                                <p className="text-gray-700">+881843381652</p>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <MailIcon size={24} className="text-secondary mr-4 mt-1 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold font-heading text-primary">E-mail</h3>
-                                <p className="text-gray-700">info@deepbio.com</p>
+                                <p className="text-gray-700">deepbiobd@gmail.com</p>
                             </div>
                         </div>
                     </div>

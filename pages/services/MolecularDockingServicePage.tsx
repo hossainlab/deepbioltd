@@ -52,7 +52,7 @@ const MolecularDockingServicePage: React.FC<ServicePageProps> = ({ onServiceClic
                         <p className="text-gray-700 mb-6 leading-relaxed">
                              Molecular docking is a key computational tool in structural molecular biology and computer-assisted drug design. The goal of ligand-protein docking is to predict the predominant binding mode(s) of a ligand with a protein of known three-dimensional structure. Successful docking methods explore high-dimensional spaces effectively and use a scoring function that correctly ranks candidate dockings.
                         </p>
-                        <img src="https://placehold.co/600x400/F9FAFB/205E92?text=Molecular+Docking" alt="Molecular Docking Diagram" className="rounded-lg shadow-xl w-full mb-8" loading="lazy" />
+                        <img src="img/services/molecualr-dcoking-service.jpg" alt="Molecular Docking Diagram" className="rounded-lg shadow-xl w-full mb-8" loading="lazy" />
                         
                         <ServiceSectionTitle title="Applications of Molecular Docking" />
                          <div className="space-y-6 mt-6">
@@ -98,8 +98,7 @@ const MolecularDockingServicePage: React.FC<ServicePageProps> = ({ onServiceClic
                         <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50">
                             <p className="text-gray-600 italic">
                                 Our docking protocols are optimized based on leading academic research and industry standards. Key publications informing our methods include:
-                                <br />- Friesner, R. A., et al. (2004). Glide: a new approach for rapid, accurate docking and scoring. 1. Method and assessment of docking accuracy. Journal of medicinal chemistry.
-                                <br />- Trott, O., & Olson, A. J. (2010). AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. Journal of computational chemistry.
+                                <br />- Doss C G P, Chakraborty C, Narayan V, et al. Computational approaches and resources in single amino acid substitutions analysis toward clinical research. Advances in protein chemistry and structural biology, 2024, 94: 365-423.
                             </p>
                         </blockquote>
 
