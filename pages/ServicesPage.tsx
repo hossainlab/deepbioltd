@@ -24,9 +24,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onServiceClick }) => {
         {serviceCategories.map((category) => (
           <div key={category.id}>
             <div className="text-center mb-12">
-              <div className="inline-block p-4 bg-primary/10 rounded-full mb-4">
-                  {React.cloneElement(category.icon, { size: 48, className: 'text-primary' })}
-              </div>
+
               <h2 className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-4">
                 {category.title}
               </h2>
