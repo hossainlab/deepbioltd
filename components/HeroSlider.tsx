@@ -71,7 +71,7 @@ const HeroSlider: React.FC = () => {
   }, [slides]);
 
   return (
-    <section className="relative w-full h-[60vh] max-h-[500px] overflow-hidden font-heading">
+    <section className="relative w-full h-screen max-h-[700px] overflow-hidden font-heading flex items-center justify-center">
       {slides.map((slide, index) => (
         <div
             key={index}
@@ -83,8 +83,8 @@ const HeroSlider: React.FC = () => {
           >
             <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-20 text-center p-8 max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">{slide.title}</h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 font-sans">{slide.subtitle}</p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">{slide.title}</h1>
+            <p className="text-md sm:text-lg md:text-xl lg:text-2xl mb-8 font-sans">{slide.subtitle}</p>
             <Link
               to={slide.buttonLink}
               className="px-8 py-3 rounded-full text-lg font-semibold bg-secondary text-white transition-transform transform hover:scale-105 duration-300 inline-block"
