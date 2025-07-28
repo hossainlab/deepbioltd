@@ -29,7 +29,7 @@ interface HomePageProps {
   setEstimatorActive: (isActive: boolean) => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ setSelectedService, setActiveTab, setEstimatorActive }) => {
+const HomePage: React.FC<HomePageProps> = ({  }) => {
     return (
         <div className="font-sans">
             <HeroSlider />
