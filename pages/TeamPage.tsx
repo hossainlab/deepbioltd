@@ -82,7 +82,7 @@ const leadership = [
 const teamMembers = [
   {
     name: 'Incoming...',
-    role: 'Bioinformatics Scientist',
+    role: 'Head of Operations',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=BS',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -93,7 +93,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'AI/ML Engineer',
+    role: 'AI/ML Scientist',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=BW',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -104,7 +104,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'Public Health Analyst',
+    role: 'Bioinformatician I',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=CD',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -115,7 +115,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'Software Developer',
+    role: 'Bioinformatician I',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=DB',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -126,7 +126,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'Data Scientist',
+    role: 'Computational Biologist I',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=EM',
     socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -137,7 +137,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'Genomics Specialist',
+    role: 'Computational Biologist I',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=FW', 
      socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
@@ -148,7 +148,7 @@ const teamMembers = [
   },
   {
     name: 'Incoming...',
-    role: 'Research Associate',
+    role: 'Software Engineer',
     img: 'https://placehold.co/120x120/EEEEEE/333333?text=GM', 
      socials: {
       linkedin: 'https://linkedin.com/in/jubayer',
