@@ -37,6 +37,10 @@ const HomePage: React.FC<HomePageProps> = ({  }) => {
                 <SectionTitle title="Explore Areas of Interest" subtitle="We focus on key areas where computation can make a significant impact on health and science." />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
                     {[
+                        { id: 'single-cell-genomics', title: "Single Cell Genomics", desc: "Decoding cellular diversity using single-cell technologies for precision health insights.", img: 'https://www.activemotif.com/uploads/images/web_site/services-hp-dec2015/scrna-2022-services-icons-web.png' },
+                        { id: 'brain-genomics', title: "Brain Genomics", desc: "Unraveling brain disorders through genomic and neural data to advance diagnosis and therapy.", img: 'https://genengnews.com/wp-content/uploads/2018/08/Oct6_2016_ENIGMA_Brain2432552431-1.jpg' },
+                        { id: 'cancer-genomics', title: "Cancer Genomics", desc: "Investigating genetic alterations in cancer to discover biomarkers, drivers, and targeted treatments.", img: 'https://cdn.prod.website-files.com/642af736b8df4b680292fb9b/649c47d7f4475d586ee67537_Untitled%20design%20(11).jpg' },
+                        { id: 'epigenomics', title: "Epigenomics", desc: "Studying heritable changes in gene expression to understand development, disease, and environmental influences.", img: 'https://www.genome.gov/sites/default/files/media/images/2020-08/Epigenomics_dynamic2020-01-2.jpg' },
                         { id: 'ai-health-innovation', title: "AI in Health Innovation", desc: "Leveraging machine learning for predictive modeling in healthcare.", img: '/img/home/ai-for-health.jpg' },
                         { id: 'multi-omics', title: "Multi-Omics Data", desc: "Comprehensive analysis of multi-omics data for insights into disease and traits.", img: '/img/home/multi-omics.png' },
                         { id: 'drug-discovery', title: "Insilico Drug Discovery & Development", desc: "Accelerating the identification of novel therapeutic compounds.", img: '/img/home/drug-discovery.jpg' },

@@ -46,7 +46,7 @@ const AiDrugRepurposingServicePage = lazy(() => import('./pages/services/AiDrugR
 
 const GENERIC_SERVICES: ServiceId[] = [
     'genomics', 'transcriptomics', 'cheminformatics', 'multi-omics', 
-    'insilico-drug-design', 'molecular-simulations', 
+    'molecular-simulations', 
     'biomedical-informatics', 'ai-health-innovation', 'drug-discovery', 
     'vaccine-design', 'bioinformatics-services',
     'statistical-analysis', 'drug-development',
@@ -56,7 +56,7 @@ const GENERIC_SERVICES: ServiceId[] = [
     'genetic-linkage-analysis', 'genome-assembly',
     'metabolic-pathway-reconstruction', 'pathway-integration',
     'transcriptome-assembly', 'gene-annotation-profiling', 'functional-characterization',
-    'pathway-enrichment-analysis', 'cfrna-analysis', 'mirna-profiling', 'ncrna-function',
+    'pathway-enrichment-analysis', 'cfrna-analysis', 'mirna-profiling', 'ncrna-function', 'drug-design',
     'sc-dge-analysis',
     'sc-cell-communication',
     'epigenomics-integration',
@@ -88,6 +88,7 @@ const App: React.FC = () => {
               <Route path="/courses/:courseId" element={<CourseDetailPage />} />
               <Route path="/services/molecular-dynamics" element={<MolecularDynamicsSimulationServicePage />} />
               <Route path="/services/drug-design" element={<DrugDesignServicePage />} />
+              <Route path="/services/bulk-rna-seq" element={<BulkRnaSeqServicePage />} />
               <Route path="/services/molecular-docking" element={<MolecularDockingServicePage />} />
               <Route path="/services/protein-modeling" element={<ProteinModelingServicePage />} />
               <Route path="/services/genomic-analysis" element={<GenomicAnalysisServicePage />} />

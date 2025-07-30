@@ -28,7 +28,7 @@ export const serviceCategories: ServiceCategory[] = [
         services: [
             { id: 'molecular-docking', title: 'Molecular Docking', description: 'Predict the binding affinity and interaction of small molecules with target proteins.', image: 'img/services/molecular-docking.jpg' },
             { id: 'molecular-dynamics', title: 'Molecular Dynamics Simulation', description: 'Simulate the movements and interactions of molecules to understand biological processes.', image: 'img/services/molecular-dynamics-simulation.jpg' },
-            { id: 'insilico-drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'img/services/drug-design.jpg' },
+            { id: 'drug-design', title: 'Insilico Drug Design', description: 'Design novel drug candidates with improved efficacy and safety profiles computationally.', image: 'img/services/drug-design.jpg' },
             { id: 'virtual-screening', title: 'Virtual Screening', description: 'High-throughput computational screening of large compound libraries to find potential hits.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
             { id: 'pathway-integration', title: 'Gene–Protein–Pathway Integration', description: 'Connect genomic and proteomic data with biological pathways for a systems-level view.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration' },
             { id: 'protein-modeling', title: 'Protein Structure Prediction & Modeling', description: 'Accurate 3D structure prediction and refinement for proteins using AlphaFold and more.', image: 'https://placehold.co/400x300/4DB8FF/FFFFFF?text=Integration'},
@@ -47,6 +47,7 @@ export const serviceCategories: ServiceCategory[] = [
             { id: 'pathway-enrichment-analysis', title: 'Pathway Analysis & Enrichment Studies', description: 'Discover which biological pathways are significantly impacted in your experiment.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Pathway' },
             { id: 'mirna-profiling', title: 'MicroRNA Expression Profiling', description: 'Analyze the expression of small non-coding RNAs that regulate gene expression.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=miRNA' },
             { id: 'ncrna-function', title: 'Non-coding RNA Function Elucidation', description: 'Investigate the roles of lncRNAs, circRNAs, and other non-coding transcripts.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=lncRNA' },
+            { id: 'bulk-rna-seq', title: 'Bulk RNA-Seq Analysis', description: 'Comprehensive analysis of bulk RNA sequencing data for gene expression studies.', image: 'https://placehold.co/400x300/205E92/FFFFFF?text=Bulk+RNA-Seq' },
         ]
     },
     {
