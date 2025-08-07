@@ -1,7 +1,6 @@
 
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Job } from '../types.ts';
 import { allJobs } from '../data/jobsData.ts';
 import PageHero from '../components/common/PageHero.tsx';
 import SectionTitle from '../components/common/SectionTitle.tsx';

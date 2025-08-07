@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { LinkedinIcon, GithubIcon, XIcon, OrcidIcon } from '../icons/Icons.tsx';
+import { LinkedinIcon, GithubIcon, XIcon } from '../icons/Icons.tsx';
 import { faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // ...existing imports...

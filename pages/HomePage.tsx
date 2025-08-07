@@ -24,12 +24,12 @@ const allServices = serviceCategories.flatMap(category => category.services);
 const featuredServices = featuredServiceIds.map(id => allServices.find(s => s.id === id)).filter(Boolean);
 
 interface HomePageProps {
-  setSelectedService: (service: ServiceId) => void;
-  setActiveTab: (tab: Page) => void;
-  setEstimatorActive: (isActive: boolean) => void;
+  setSelectedService?: (service: ServiceId) => void;
+  setActiveTab?: (tab: Page) => void;
+  setEstimatorActive?: (isActive: boolean) => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({  }) => {
+const HomePage: React.FC<HomePageProps> = () => {
     return (
         <div className="font-sans">
             <HeroSlider />

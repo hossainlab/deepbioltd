@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar.tsx';
 import Footer from './components/layout/Footer.tsx';
-import { Page, ServiceId, Course, Job } from './types.ts';
+import { ServiceId } from './types.ts';
 import LoadingSpinner from './components/common/LoadingSpinner.tsx';
 
 const HomePage = lazy(() => import('./pages/HomePage.tsx'));

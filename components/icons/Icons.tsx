@@ -50,51 +50,51 @@ export const LightbulbIcon: React.FC<IconProps> = memo(({ color = 'currentColor'
   </svg>
 ));
 
-export const UsersIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const UsersIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
     <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
   </svg>
 ));
 
-export const AwardIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const AwardIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17.35 22l-5.35-3-5.35 3 1.873-9.11Z"/>
   </svg>
 ));
 
-export const ClockIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const ClockIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
   </svg>
 ));
 
-export const CheckCircleIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const CheckCircleIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/>
   </svg>
 ));
 
-export const DownloadIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const DownloadIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/>
     <line x1="12" x2="12" y1="15" y2="3"/>
   </svg>
 ));
 
-export const MailIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const MailIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
   </svg>
 ));
 
-export const PhoneIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const PhoneIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.65A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
   </svg>
 ));
 
-export const MapPinIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const MapPinIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
   </svg>
@@ -106,13 +106,13 @@ export const ChevronLeftIcon: React.FC<IconProps> = memo(({ color = 'currentColo
   </svg>
 ));
 
-export const ChevronRightIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const ChevronRightIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="m9 18 6-6-6-6"/>
   </svg>
 ));
 
-export const ChevronDownIcon: React.FC<IconProps> = memo(({ color = 'currentColor', size = 24, className }) => (
+export const ChevronDownIcon: React.FC<IconProps> = memo(({ size = 24, className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m6 9 6 6 6-6"/></svg>
 ));
 

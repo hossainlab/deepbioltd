@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import PageHero from '../components/common/PageHero.tsx';
 import { ClockIcon, BookOpenIcon } from '../components/icons/Icons.tsx';
-import { Course } from '../types.ts';
 import { allCourses } from '../data/coursesData.ts';
 
 interface CoursesPageProps {}

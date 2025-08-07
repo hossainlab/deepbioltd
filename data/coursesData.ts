@@ -214,7 +214,7 @@ export const allCourses: Course[] = [
     description: 'A comprehensive course on analyzing single-cell transcriptomics data for biological discovery.',
     longDescription: 'This course introduces learners to the principles and practice of single-cell RNA sequencing (scRNA-seq) analysis. It is designed for biologists, bioinformaticians, and health researchers aiming to explore cellular heterogeneity, identify cell types, and uncover regulatory mechanisms at single-cell resolution. Through hands-on tutorials in Python using Scanpy and R using Seurat, participants will learn the full scRNA-seq pipeline from raw data processing to clustering, visualization, and interpretation of results.',
     image: 'https://placehold.co/400x250/4682B4/FFFFFF?text=scRNA-Seq',
-    level: 'Intermediate to Advanced',
+    level: 'Advanced',
     duration: '6 Weeks',
     color: '#4682B4',
     whatYouWillLearn: [
@@ -360,7 +360,7 @@ export const allCourses: Course[] = [
     description: 'A practical course on analyzing biomedical datasets to identify diagnostic and prognostic biomarkers.',
     longDescription: 'This course is designed for life science students and researchers interested in discovering biomarkers from biomedical data. Participants will learn how to analyze transcriptomic, proteomic, and clinical datasets using statistical and machine learning approaches. The course emphasizes practical workflows, public data sources (such as GEO, TCGA, and CPTAC), and reproducible research methods. Case studies in cancer, infectious diseases, and neurological disorders will be used to illustrate real-world applications of biomarker discovery.',
     image: 'https://placehold.co/400x250/B22222/FFFFFF?text=Biomarker+Discovery',
-    level: 'Intermediate to Advanced',
+    level: 'Advanced',
     duration: '6 Weeks',
     color: '#B22222',
     whatYouWillLearn: [
@@ -437,7 +437,7 @@ export const allCourses: Course[] = [
     description: 'An introductory course on analyzing microbiome and metagenomics data using bioinformatics tools.',
     longDescription: 'This course is designed for students, researchers, and health professionals who are interested in understanding and analyzing microbial communities through metagenomic data. Participants will learn about sequencing technologies, taxonomic and functional profiling, and the use of public microbiome datasets (e.g., from MG-RAST, Qiita, and ENA). The course includes hands-on training using QIIME2 and online platforms for 16S rRNA and shotgun metagenomics analysis, emphasizing reproducibility and biological interpretation in human and environmental microbiome studies.',
     image: 'https://placehold.co/400x250/228B22/FFFFFF?text=Metagenomics',
-    level: 'Beginner to Intermediate',
+    level: 'Intermediate',
     duration: '5 Weeks',
     color: '#228B22',
     whatYouWillLearn: [

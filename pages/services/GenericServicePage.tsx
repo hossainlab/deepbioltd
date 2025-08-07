@@ -6,8 +6,8 @@ import Breadcrumb, { BreadcrumbItem } from '../../components/common/Breadcrumb.t
 
 interface GenericServicePageProps {
   serviceId: ServiceId;
-  setSelectedService: (service: ServiceId | null) => void;
-  setActiveTab: (tab: Page) => void;
+  setSelectedService?: (service: ServiceId | null) => void;
+  setActiveTab?: (tab: Page) => void;
 }
 
 const serviceNameMapping: Record<string, string> = {
@@ -42,12 +42,12 @@ const GenericServicePage: React.FC<GenericServicePageProps> = ({ serviceId, setS
 
   const handleNav = (page?: Page, serviceId?: ServiceId | null) => {
     if (page) {
-        setActiveTab(page);
-        setSelectedService(null);
+        setActiveTab?.(page);
+        setSelectedService?.(null);
     } else if (serviceId) {
-        setSelectedService(serviceId);
+        setSelectedService?.(serviceId);
     } else {
-        setSelectedService(null);
+        setSelectedService?.(null);
     }
     window.scrollTo(0, 0);
   };
@@ -82,7 +82,7 @@ const GenericServicePage: React.FC<GenericServicePageProps> = ({ serviceId, setS
             <div className="absolute inset-0 bg-black/50"></div>
             <div className="relative h-full flex flex-col justify-center items-start max-w-7xl mx-auto px-8 text-white">
                 <h1 className="text-5xl font-bold font-heading">{serviceTitle}</h1>
-                <button onClick={() => setActiveTab('contact')} className="mt-6 border border-white px-6 py-2 text-lg hover:bg-white hover:text-black transition-colors duration-300 flex items-center">
+                <button onClick={() => setActiveTab?.('contact')} className="mt-6 border border-white px-6 py-2 text-lg hover:bg-white hover:text-black transition-colors duration-300 flex items-center">
                     Inquire Now <ChevronRightIcon className="ml-2" size={20} />
                 </button>
             </div>

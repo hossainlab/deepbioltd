@@ -8,10 +8,10 @@ import { ServiceId } from '../types.ts';
 import { serviceCategories } from '../data/servicesData.ts';
 
 interface ServicesPageProps {
-  onServiceClick: (service: ServiceId) => void;
+  onServiceClick?: (service: ServiceId) => void;
 }
 
-const ServicesPage: React.FC<ServicesPageProps> = ({ onServiceClick }) => {
+const ServicesPage: React.FC<ServicesPageProps> = () => {
 
   return (
     <div className="font-sans">

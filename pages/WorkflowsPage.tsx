@@ -1,6 +1,5 @@
 
 import React, { memo } from 'react';
-import PageHero from '../components/common/PageHero.tsx';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import { CheckCircleIcon } from '../components/icons/Icons.tsx';
 

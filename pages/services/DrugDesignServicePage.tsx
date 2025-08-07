@@ -9,18 +9,18 @@ import FeatureCard from '../../components/common/FeatureCard.tsx';
 import { serviceLinks } from '../../data/serviceSidebarLinks.ts';
 
 interface ServicePageProps {
-  onServiceClick: (service: ServiceId | null) => void;
-  setActiveTab: (tab: Page) => void;
+  onServiceClick?: (service: ServiceId | null) => void;
+  setActiveTab?: (tab: Page) => void;
 }
 
 const DrugDesignServicePage: React.FC<ServicePageProps> = ({ onServiceClick, setActiveTab }) => {
     
     const handleNav = (page?: Page, serviceId?: ServiceId) => {
         if (page) {
-            setActiveTab(page);
-            onServiceClick(null);
+            setActiveTab?.(page);
+            onServiceClick?.(null);
         } else if (serviceId) {
-            onServiceClick(serviceId);
+            onServiceClick?.(serviceId);
         }
         window.scrollTo(0, 0);
     };
@@ -37,7 +37,7 @@ const DrugDesignServicePage: React.FC<ServicePageProps> = ({ onServiceClick, set
                 <div className="absolute inset-0 bg-black/50"></div>
                 <div className="relative h-full flex flex-col justify-center items-start max-w-7xl mx-auto px-8 text-white">
                     <h1 className="text-5xl font-bold font-heading">Drug Design Service</h1>
-                    <button onClick={() => setActiveTab('contact')} className="mt-6 border border-white px-6 py-2 text-lg hover:bg-white hover:text-black transition-colors duration-300 flex items-center">
+                    <button onClick={() => setActiveTab?.('contact')} className="mt-6 border border-white px-6 py-2 text-lg hover:bg-white hover:text-black transition-colors duration-300 flex items-center">
                         Inquire Now <ChevronRightIcon className="ml-2" size={20} />
                     </button>
                 </div>
@@ -123,7 +123,7 @@ const DrugDesignServicePage: React.FC<ServicePageProps> = ({ onServiceClick, set
                     <ServiceSidebar 
                         serviceLinks={serviceLinks}
                         currentServiceId="drug-design"
-                        onServiceClick={(id) => onServiceClick(id)}
+                        onServiceClick={(id: ServiceId | null) => onServiceClick?.(id)}
                     />
                 </div>
             </section>

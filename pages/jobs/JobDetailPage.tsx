@@ -30,7 +30,7 @@ const JobDetailPage: React.FC<JobDetailPageProps> = () => {
     };
     const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
     const [resumeFile, setResumeFile] = useState<File | null>(null);
-    const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null);
+    const [, setCoverLetterFile] = useState<File | null>(null);
     const [resumeFileName, setResumeFileName] = useState('');
     const [coverLetterFileName, setCoverLetterFileName] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,13 +73,6 @@ const JobDetailPage: React.FC<JobDetailPageProps> = () => {
         
         // Mock submission logic
         setTimeout(() => {
-            console.log("Mock submitting application:", {
-                ...formData,
-                jobId: job?.id,
-                jobTitle: job?.title,
-                resumeFile: resumeFile.name,
-                coverLetterFile: coverLetterFile?.name || 'N/A',
-            });
             // Simulate a success case
             setSubmitStatus('success');
             setIsSubmitting(false);

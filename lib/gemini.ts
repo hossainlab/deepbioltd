@@ -79,11 +79,10 @@ export async function getProjectEstimate(formData: any): Promise<EstimateResult>
             },
         });
         
-        const text = response.text.trim();
+        const text = response.text?.trim() || '';
         return JSON.parse(text) as EstimateResult;
 
     } catch (error) {
-        console.error("Error generating project estimate:", error);
         throw new Error("Failed to get an estimate from the AI. The model may be overloaded or the request was malformed.");
     }
 }
