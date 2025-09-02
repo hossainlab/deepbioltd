@@ -5,6 +5,8 @@ import { Job } from '../../types.ts';
 import { allJobs } from '../../data/jobsData.ts';
 import { ChevronLeftIcon, CheckCircleIcon, UploadCloudIcon, MapPinIcon, BriefcaseIcon } from '../../components/icons/Icons.tsx';
 import LoadingSpinner from '../../components/common/LoadingSpinner.tsx';
+import { Input } from '../../components/ui/Form.tsx';
+import { Button } from '../../components/ui/Button.tsx';
 
 interface JobDetailPageProps {}
 
@@ -167,18 +169,29 @@ const JobDetailPage: React.FC<JobDetailPageProps> = () => {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 sr-only">Full Name</label>
-                                <input type="text" id="name" placeholder="Full Name" required value={formData.name} onChange={handleInputChange} className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400" />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 sr-only">Email</label>
-                                <input type="email" id="email" placeholder="Email Address" required value={formData.email} onChange={handleInputChange} className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400" />
-                            </div>
-                            <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 sr-only">Phone</label>
-                                <input type="tel" id="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400" />
-                            </div>
+                            <Input 
+                                type="text" 
+                                id="name" 
+                                placeholder="Full Name" 
+                                required 
+                                value={formData.name} 
+                                onChange={handleInputChange}
+                            />
+                            <Input 
+                                type="email" 
+                                id="email" 
+                                placeholder="Email Address" 
+                                required 
+                                value={formData.email} 
+                                onChange={handleInputChange}
+                            />
+                            <Input 
+                                type="tel" 
+                                id="phone" 
+                                placeholder="Phone Number" 
+                                value={formData.phone} 
+                                onChange={handleInputChange}
+                            />
                             <div>
                                 <label
                                     htmlFor="resume-upload"
@@ -206,10 +219,11 @@ const JobDetailPage: React.FC<JobDetailPageProps> = () => {
                                 <p className="text-sm text-center text-red-600">Something went wrong. Please try again.</p>
                             )}
 
-                            <button
+                            <Button
                                 type="submit"
+                                variant="primary"
                                 disabled={isSubmitting}
-                                className="w-full py-3 px-4 rounded-lg text-white font-semibold text-lg bg-primary hover:bg-opacity-90 transition-opacity disabled:bg-gray-400 disabled:cursor-not-allowed flex justify-center items-center"
+                                className="w-full text-lg"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -222,7 +236,7 @@ const JobDetailPage: React.FC<JobDetailPageProps> = () => {
                                 ) : (
                                     'Submit Application'
                                 )}
-                            </button>
+                            </Button>
                             <p className="text-xs text-gray-500 text-center mt-2">By applying, you agree to our terms and data policy.</p>
                         </form>
                     )}

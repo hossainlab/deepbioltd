@@ -33,6 +33,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     return (
         <div className="font-sans">
             <HeroSlider />
+            
             <section className="py-20 px-8 bg-white">
                 <SectionTitle title="Explore Areas of Interest" subtitle="We focus on key areas where computation can make a significant impact on health and science." />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
@@ -127,6 +128,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                     </div>
                 </div>
             </section>
+
 
             <section className="py-20 px-8 bg-light-gray">
                 <SectionTitle title="Research Collaborators & Community Partners" subtitle="Fostering innovation and impact through strong partnerships with academic and community organizations." />

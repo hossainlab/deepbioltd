@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { ServiceId, Page } from '../../types.ts';
-import { ChevronLeftIcon, ChevronRightIcon } from '../../components/icons/Icons.tsx';
-import Breadcrumb, { BreadcrumbItem } from '../../components/common/Breadcrumb.tsx';
+import { ChevronLeftIcon } from '../../components/icons/Icons.tsx';
+import ServicePageTemplate, { ServicePageData } from '../../components/services/ServicePageTemplate.tsx';
+import { servicePageData } from '../../data/servicePageData.ts';
 
 interface GenericServicePageProps {
   serviceId: ServiceId;
@@ -40,24 +41,15 @@ const serviceNameMapping: Record<string, string> = {
 const GenericServicePage: React.FC<GenericServicePageProps> = ({ serviceId, setSelectedService, setActiveTab }) => {
   const serviceTitle = serviceNameMapping[serviceId] || 'Service Not Found';
 
-  const handleNav = (page?: Page, serviceId?: ServiceId | null) => {
+  const handleNav = (page?: Page) => {
     if (page) {
         setActiveTab?.(page);
         setSelectedService?.(null);
-    } else if (serviceId) {
-        setSelectedService?.(serviceId);
     } else {
         setSelectedService?.(null);
     }
     window.scrollTo(0, 0);
   };
-  
-  const breadcrumbItems: BreadcrumbItem[] = [
-        { name: 'Home', page: 'home', onClick: () => handleNav('home') },
-        { name: 'Services', page: 'services', onClick: () => handleNav('services') },
-        { name: serviceTitle, active: true },
-    ];
-
 
   if (serviceId === 'not-found') {
       return (
@@ -76,36 +68,32 @@ const GenericServicePage: React.FC<GenericServicePageProps> = ({ serviceId, setS
       );
   }
 
-  return (
-    <div className="font-sans bg-white animate-fade-in">
-        <section className="relative bg-cover bg-center h-80" style={{backgroundImage: "url('https://placehold.co/1920x1080/6B7280/FFFFFF?text=Service')"}}>
-            <div className="absolute inset-0 bg-black/50"></div>
-            <div className="relative h-full flex flex-col justify-center items-start max-w-7xl mx-auto px-8 text-white">
-                <h1 className="text-5xl font-bold font-heading">{serviceTitle}</h1>
-                <button onClick={() => setActiveTab?.('contact')} className="mt-6 border border-white px-6 py-2 text-lg hover:bg-white hover:text-black transition-colors duration-300 flex items-center">
-                    Inquire Now <ChevronRightIcon className="ml-2" size={20} />
-                </button>
-            </div>
-        </section>
-        
-        <Breadcrumb items={breadcrumbItems} />
+  // Check if we have specific data for this service
+  const serviceData = servicePageData[serviceId];
+  if (serviceData) {
+    return (
+      <ServicePageTemplate 
+        data={serviceData}
+        onServiceClick={setSelectedService}
+        setActiveTab={setActiveTab}
+      />
+    );
+  }
 
-        <div className="py-20 px-8 text-center min-h-[50vh] flex flex-col justify-center items-center">
-            <img src={`https://placehold.co/128x128/F9FAFB/205E92?text=WIP`} className="rounded-full mb-8 shadow-lg" alt="Service Icon" />
-            <h2 className="text-4xl font-bold font-heading text-primary mb-8">Content Coming Soon</h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                We are currently preparing detailed information for our {serviceTitle} services. 
-                Please check back soon or contact us for immediate inquiries.
-            </p>
-            <button
-                className="mt-8 px-6 py-3 rounded-full text-lg font-semibold text-white bg-secondary hover:bg-primary transition-colors duration-300 flex items-center"
-                onClick={() => handleNav('services')}
-            >
-                <ChevronLeftIcon className="mr-2" />
-                Back to All Services
-            </button>
-        </div>
-    </div>
+  // Create generic coming soon data for unknown services
+  const genericServiceData: ServicePageData = {
+    id: serviceId,
+    title: serviceTitle,
+    description: `We are currently preparing detailed information for our ${serviceTitle} services. Please check back soon or contact us for immediate inquiries.`,
+    isComingSoon: true
+  };
+
+  return (
+    <ServicePageTemplate 
+      data={genericServiceData}
+      onServiceClick={setSelectedService}
+      setActiveTab={setActiveTab}
+    />
   );
 };
 

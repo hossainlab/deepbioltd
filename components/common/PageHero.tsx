@@ -1,16 +1,15 @@
 
 import React from 'react';
+import { PageHero as NewPageHero } from '../ui/Typography.tsx';
 
 interface PageHeroProps {
   title: string;
   subtitle: string;
 }
 
+// Legacy PageHero component - redirects to new design system component
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle }) => (
-    <div className="bg-primary text-white text-center py-20 px-4">
-        <h1 className="text-4xl sm:text-5xl font-bold font-heading">{title}</h1>
-        <p className="mt-4 text-xl max-w-3xl mx-auto text-gray-300">{subtitle}</p>
-    </div>
+  <NewPageHero title={title} subtitle={subtitle} />
 );
 
 export default PageHero;

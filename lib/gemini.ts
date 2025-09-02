@@ -1,8 +1,15 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
 import { EstimateResult } from "../types.ts";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+let ai: any = null;
+
+const initializeAI = async () => {
+  if (!ai) {
+    const { GoogleGenAI } = await import("@google/genai");
+    ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  }
+  return ai;
+};
 
 const systemInstruction = `
 You are an expert bioinformatics project manager for DeepBio Limited, an AI and bioinformatics research startup.
@@ -34,22 +41,22 @@ const responseSchema = {
         recommendedServices: {
             type: Type.ARRAY,
             description: "A list of key services recommended for this project (e.g., 'Data QC', 'Differential Expression', 'Pathway Analysis').",
-            items: { type: Type.STRING }
+            items: { type: "string" }
         },
         estimatedTimeline: {
-            type: Type.STRING,
+            type: "string",
             description: "A human-readable estimated timeline (e.g., '2-3 Weeks')."
         },
         estimatedCostRange: {
-            type: Type.STRING,
+            type: "string",
             description: "A human-readable estimated cost range (e.g., '$1500 - $1800 USD')."
         },
         potentialRoadblocks: {
-            type: Type.STRING,
+            type: "string",
             description: "A brief, one-sentence potential roadblock or assumption made for this estimate (e.g., 'Assumes standard data quality from sequencers.')"
         },
         assumptions: {
-            type: Type.STRING,
+            type: "string",
             description: "A brief, one-sentence assumption made to generate this estimate. e.g., 'Assumes a human reference genome will be used.'"
         }
     },
@@ -68,7 +75,8 @@ export async function getProjectEstimate(formData: any): Promise<EstimateResult>
     `;
 
     try {
-        const response = await ai.models.generateContent({
+        const aiInstance = await initializeAI();
+        const response = await aiInstance.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
             config: {

@@ -6,10 +6,13 @@
 }
 
 html, body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.6;
   color: #1F2937;
   background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Ensure root div takes full height */
@@ -30,9 +33,17 @@ html {
   outline-offset: 2px;
 }
 
+/* Override focus styles for specific navbar elements to prevent boxes */
+.navbar-text:focus, .logo-text:focus, button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* Button styles */
 button {
   cursor: pointer;
+  font-family: inherit;
+  text-rendering: optimizeLegibility;
 }
 
 button:disabled {
@@ -53,6 +64,23 @@ a:hover {
 /* Form input styles */
 input, textarea, select {
   font-family: inherit;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for text rendering issues */
+* {
+  font-synthesis: none;
+  font-variant-numeric: normal;
+  font-feature-settings: normal;
+}
+
+/* Specific fix for weird boxes/character rendering */
+.navbar-text, .logo-text, .font-heading, .font-sans {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-variant: normal;
+  text-transform: none;
+  unicode-bidi: normal;
+  font-synthesis: none;
 }
 
 /* Image optimization */

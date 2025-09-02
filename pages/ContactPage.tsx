@@ -2,6 +2,8 @@
 import React from 'react';
 import PageHero from '../components/common/PageHero.tsx';
 import { MapPinIcon, PhoneIcon, MailIcon } from '../components/icons/Icons.tsx';
+import { Input, Select, Textarea } from '../components/ui/Form.tsx';
+import { Button } from '../components/ui/Button.tsx';
 
 const ContactPage: React.FC = () => (
     <div className="font-sans bg-white">
@@ -15,51 +17,42 @@ const ContactPage: React.FC = () => (
                     <h2 className="text-3xl font-bold font-heading mb-6 text-primary">Online Inquiry</h2>
                     <form className="space-y-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700">
-                                    Name <span className="text-red-500">*</span>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    id="contact-name"
-                                    placeholder="e.g. John Doe"
-                                    required
-                                    className="mt-1 block w-full rounded-md bg-gray-700 text-white border border-gray-600 shadow-sm px-4 py-2 transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400" />
-                            </div>
-                            <div>
-                                <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700">
-                                    Email <span className="text-red-500">*</span>
-                                </label>
-                                <input 
-                                    type="email" 
-                                    id="contact-email"
-                                    placeholder="e.g. john.doe@example.com"
-                                    required
-                                    className="mt-1 block w-full rounded-md bg-gray-700 text-white border border-gray-600 shadow-sm px-4 py-2 transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400" />
-                            </div>
-                        </div>
-                        <div>
-                            <label htmlFor="contact-service" className="block text-sm font-medium text-gray-700">Services of Interest</label>
-                            <select id="contact-service" className="mt-1 block w-full rounded-md bg-gray-700 text-white border border-gray-600 shadow-sm px-4 py-2 transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400">
-                                <option>Select a service</option>
-                                <option>AI-Powered Solutions</option>
-                                <option>Bioinformatics Research</option>
-                                <option>Public Health Informatics</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="contact-project-desc" className="block text-sm font-medium text-gray-700">
-                                Project Description <span className="text-red-500">*</span>
-                            </label>
-                            <textarea 
-                                id="contact-project-desc" 
-                                rows={5} 
-                                placeholder="Please describe your project or inquiry..."
+                            <Input
+                                label="Name"
+                                type="text"
+                                id="contact-name"
+                                placeholder="e.g. John Doe"
                                 required
-                                className="mt-1 block w-full rounded-md bg-gray-700 text-white border border-gray-600 shadow-sm px-4 py-2 transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400"></textarea>
+                            />
+                            <Input
+                                label="Email"
+                                type="email"
+                                id="contact-email"
+                                placeholder="e.g. john.doe@example.com"
+                                required
+                            />
                         </div>
-                        <button type="submit" className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-white font-semibold bg-primary hover:bg-opacity-90 transition-opacity">Submit Inquiry</button>
+                        <Select
+                            label="Services of Interest"
+                            id="contact-service"
+                            options={[
+                                { value: '', label: 'Select a service' },
+                                { value: 'ai-solutions', label: 'AI-Powered Solutions' },
+                                { value: 'bioinformatics', label: 'Bioinformatics Research' },
+                                { value: 'public-health', label: 'Public Health Informatics' },
+                                { value: 'other', label: 'Other' }
+                            ]}
+                        />
+                        <Textarea
+                            label="Project Description"
+                            id="contact-project-desc"
+                            rows={5}
+                            placeholder="Please describe your project or inquiry..."
+                            required
+                        />
+                        <Button type="submit" variant="primary" className="w-full">
+                            Submit Inquiry
+                        </Button>
                     </form>
                 </div>
 

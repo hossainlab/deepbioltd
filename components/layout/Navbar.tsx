@@ -17,7 +17,7 @@ const Logo: React.FC = () => (
         <path d="M9 15H7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
         <path d="M16.5 15H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
       </svg>
-      <span className="text-2xl font-bold text-primary font-heading">DeepBio</span>
+      <span className="text-2xl font-bold text-primary logo-text" style={{fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif'}}>DeepBio</span>
     </div>
 );
 
@@ -63,7 +63,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <Link
                         to="/"
                         onClick={handleNavClick}
-                        className="flex-shrink-0 flex items-center"
+                        className="flex-shrink-0 flex items-center focus:outline-none focus:ring-0 active:outline-none"
+                        style={{outline: 'none', boxShadow: 'none'}}
                         aria-label="Back to homepage"
                     >
                          <Logo />
@@ -77,11 +78,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     key={item.name}
                                     to={item.path}
                                     onClick={handleNavClick}
-                                    className={`text-base font-medium transition-colors duration-300 px-1 py-2 ${
+                                    className={`navbar-text text-base font-medium transition-colors duration-300 px-1 py-2 focus:outline-none focus:ring-0 focus:border-primary active:outline-none active:ring-0 ${
                                         location.pathname === item.path 
                                         ? 'text-primary border-b-2 border-primary' 
                                         : 'text-gray-500 hover:text-primary'
                                     }`}
+                                    style={{
+                                        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif',
+                                        outline: 'none',
+                                        boxShadow: 'none'
+                                    }}
                                     aria-current={location.pathname === item.path ? 'page' : undefined}
                                 >
                                     {item.name}
@@ -96,7 +102,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                             onClick={() => setMenuOpen(!menuOpen)} 
                             aria-label="Toggle menu"
                             aria-expanded={menuOpen}
-                            className="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                            className="p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none focus:ring-0 active:outline-none"
+                            style={{outline: 'none', boxShadow: 'none'}}
                         >
                             {menuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
                         </button>
@@ -114,11 +121,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                                     key={item.name}
                                     to={item.path}
                                     onClick={handleNavClick}
-                                    className={`text-2xl font-medium transition-colors duration-300 ${
+                                    className={`navbar-text text-2xl font-medium transition-colors duration-300 focus:outline-none focus:ring-0 active:outline-none active:ring-0 ${
                                         location.pathname === item.path 
                                         ? 'text-primary' 
                                         : 'text-gray-600 hover:text-primary'
                                     }`}
+                                    style={{
+                                        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif',
+                                        outline: 'none',
+                                        boxShadow: 'none'
+                                    }}
                                     aria-current={location.pathname === item.path ? 'page' : undefined}
                                 >
                                     {item.name}

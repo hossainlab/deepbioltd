@@ -71,55 +71,65 @@ const HeroSlider: React.FC = () => {
   }, [slides]);
 
   return (
-    <section className="relative w-full h-screen max-h-[700px] overflow-hidden font-heading flex items-center justify-center">
+    <section className="relative w-full h-screen max-h-[700px] min-h-[500px] overflow-hidden flex items-center justify-center">
       {slides.map((slide, index) => (
         <div
-            key={index}
-            ref={(el) => (slideRefs.current[index] = el)}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out flex items-center justify-center text-white ${
-              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0'
-            }`}
-            data-src={slide.image}
-          >
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-          <div className="relative z-20 text-center p-8 max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">{slide.title}</h1>
-            <p className="text-md sm:text-lg md:text-xl lg:text-2xl mb-8 font-sans">{slide.subtitle}</p>
-            <Link
-              to={slide.buttonLink}
-              className="px-8 py-3 rounded-full text-lg font-semibold bg-secondary text-white transition-transform transform hover:scale-105 duration-300 inline-block"
-            >
-              {slide.buttonText}
-            </Link>
+          key={index}
+          ref={(el) => (slideRefs.current[index] = el)}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out flex items-center justify-center ${
+            index === currentSlide ? 'opacity-100 z-10' : 'opacity-0'
+          }`}
+          data-src={slide.image}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center text-white max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 leading-tight">
+                {slide.title}
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                {slide.subtitle}
+              </p>
+              <Link
+                to={slide.buttonLink}
+                className="inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white bg-secondary-400 hover:bg-secondary-500 border border-transparent rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105"
+              >
+                {slide.buttonText}
+              </Link>
+            </div>
           </div>
         </div>
       ))}
 
+      {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full shadow-lg hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-300 z-30"
+        className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 z-30 group"
         aria-label="Previous slide"
       >
-        <ChevronLeftIcon size={32} />
+        <ChevronLeftIcon size={24} className="group-hover:scale-110 transition-transform" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full shadow-lg hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-300 z-30"
+        className="absolute right-4 sm:right-6 top-1/2 transform -translate-y-1/2 bg-black/30 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 z-30 group"
         aria-label="Next slide"
       >
-        <ChevronRightIcon size={32} />
+        <ChevronRightIcon size={24} className="group-hover:scale-110 transition-transform" />
       </button>
 
+      {/* Slide indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-              index === currentSlide ? 'bg-white' : 'bg-gray-400 hover:bg-gray-300'
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white scale-110 shadow-lg' 
+                : 'bg-white/60 hover:bg-white/80 hover:scale-105'
             }`}
             aria-label={`Go to slide ${index + 1}`}
-          ></button>
+          />
         ))}
       </div>
     </section>

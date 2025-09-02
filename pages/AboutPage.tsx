@@ -10,6 +10,7 @@ const AboutPage: React.FC = () => (
             title="About DeepBio Limited" 
             subtitle="Driving innovation in health and life sciences through data, AI, and bioinformatics." 
         />
+        
         <section className="py-20 px-8">
     <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

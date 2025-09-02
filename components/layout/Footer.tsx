@@ -30,7 +30,7 @@ const Footer: React.FC<FooterProps> = () => {
 
 
     return (
-        <footer className="bg-primary text-gray-300 font-roboto">
+        <footer className="bg-primary text-gray-300 font-sans">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                     <div className="col-span-2 lg:col-span-2">

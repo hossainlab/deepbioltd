@@ -5,6 +5,7 @@ import { allJobs } from '../data/jobsData.ts';
 import PageHero from '../components/common/PageHero.tsx';
 import SectionTitle from '../components/common/SectionTitle.tsx';
 import { LightbulbIcon, UsersIcon, BriefcaseIcon, MapPinIcon } from '../components/icons/Icons.tsx';
+import { Input } from '../components/ui/Form.tsx';
 
 interface CareersPageProps {}
 
@@ -62,12 +63,12 @@ const CareersPage: React.FC<CareersPageProps> = () => {
                     <SectionTitle title="Current Openings" />
 
                     <div className="mb-8 max-w-lg mx-auto">
-                        <input
+                        <Input
                             type="text"
                             placeholder="Search by title, department, or location..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-full shadow-sm transition-all duration-300 focus:ring-2 focus:ring-secondary focus:border-primary placeholder:text-gray-400"
+                            className="rounded-full"
                         />
                     </div>
                     
