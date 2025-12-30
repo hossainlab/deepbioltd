@@ -51,7 +51,7 @@ export const Hero: React.FC = () => {
             </div>
             <div className="group cursor-default">
               <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">2+</div>
-              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Global Partners</div>
+              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Partners</div>
             </div>
             <div className="group cursor-default">
               <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">99%</div>

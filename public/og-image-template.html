@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepBio Social Media Preview Image</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+
+    /* OG Image Container - Exact 1200x630 dimensions */
+    .og-container {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #0A2540 0%, #205E92 50%, #4184C4 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background Pattern */
+    .pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.6;
+    }
+
+    /* DNA Helix Decorative Elements */
+    .dna-helix {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      opacity: 0.08;
+    }
+
+    .dna-circle {
+      position: absolute;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
+
+    .dna-circle:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      top: 50px;
+      left: 50px;
+    }
+
+    .dna-circle:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      top: 100px;
+      left: 100px;
+    }
+
+    .dna-circle:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      top: 150px;
+      left: 150px;
+    }
+
+    /* Gradient Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: #4184C4;
+      top: -150px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: #205E92;
+      bottom: -100px;
+      right: 100px;
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 10;
+      padding: 80px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Logo Area */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-mark {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #4184C4 0%, #205E92 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .logo-mark svg {
+      width: 100%;
+      height: 100%;
+      color: white;
+    }
+
+    .logo-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      width: fit-content;
+      font-size: 16px;
+      font-weight: 700;
+      color: #4184C4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      background: #4184C4;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .headline {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 72px;
+      line-height: 1.1;
+      color: white;
+      letter-spacing: -1.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #4184C4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .description {
+      font-size: 28px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.9);
+      font-weight: 400;
+      max-width: 800px;
+    }
+
+    /* Footer Stats */
+    .footer-stats {
+      display: flex;
+      gap: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: white;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    /* URL */
+    .url {
+      position: absolute;
+      bottom: 80px;
+      right: 80px;
+      font-size: 20px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="og-container">
+    <!-- Background Elements -->
+    <div class="pattern"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="dna-helix">
+      <div class="dna-circle"></div>
+      <div class="dna-circle"></div>
+      <div class="dna-circle"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Logo -->
+      <div class="logo-area">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4C4 4 7 6 12 12S20 20 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 4C20 4 17 6 12 12S4 20 4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6.5 6.5H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17.5 6.5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6.5 17.5H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17.5 17.5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 9H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 15H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16.5 15H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">DeepBio</div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="badge">
+          <div class="badge-dot"></div>
+          Leading Research Hub
+        </div>
+
+        <h1 class="headline">
+          Data-Driven<br>
+          <span class="gradient-text">Life Science.</span>
+        </h1>
+
+        <p class="description">
+          Transforming biological data into clinical breakthroughs through AI and bioinformatics innovation.
+        </p>
+      </div>
+
+      <!-- Footer Stats -->
+      <div class="footer-stats">
+        <div class="stat">
+          <div class="stat-value">250+</div>
+          <div class="stat-label">Genomes Analyzed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2+</div>
+          <div class="stat-label">Partners</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">99%</div>
+          <div class="stat-label">Model Precision</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- URL -->
+    <div class="url">deepbioltd.com</div>
+  </div>
+
+  <script>
+    // Instructions for generating the image:
+    console.log(`
+===========================================
+HOW TO CREATE YOUR OG IMAGE FROM THIS FILE:
+===========================================
+
+OPTION 1 - Browser Screenshot (Easiest):
+1. Open this HTML file in Chrome/Edge
+2. Press F12 to open DevTools
+3. Press Ctrl+Shift+P (Cmd+Shift+P on Mac)
+4. Type "screenshot" and select "Capture node screenshot"
+5. Click on the .og-container element
+6. Save as "og-image.png" in your public folder
+
+OPTION 2 - Using Online Tool:
+1. Visit https://htmlcsstoimage.com/
+2. Paste this HTML code
+3. Set width to 1200px, height to 630px
+4. Download as PNG
+5. Save as "og-image.png" in your public folder
+
+OPTION 3 - Using Puppeteer (Automated):
+Run the generate-og-image.js script (if created)
+
+After generating:
+- Place the image at: /public/og-image.png
+- The meta tags in index.html already reference it
+- Test with: https://www.opengraph.xyz/
+    `);
+  </script>
+</body>
+</html>
