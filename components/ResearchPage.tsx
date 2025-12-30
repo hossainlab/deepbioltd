@@ -1,16 +1,17 @@
 
 import React from 'react';
-import { 
-  Microscope, 
-  Beaker, 
-  Brain, 
-  FlaskConical, 
-  ArrowRight, 
-  User, 
-  Search, 
-  Dna, 
-  ShieldAlert, 
-  Sprout, 
+import { Link } from 'react-router-dom';
+import {
+  Microscope,
+  Beaker,
+  Brain,
+  FlaskConical,
+  ArrowRight,
+  User,
+  Search,
+  Dna,
+  ShieldAlert,
+  Sprout,
   Zap,
   Sparkles,
   Target,
@@ -24,7 +25,6 @@ import {
   Terminal,
   Layers
 } from 'lucide-react';
-import { Publications } from './Publications';
 import { researchMetrics } from '../config/researchMetrics';
 
 const researchGroups = [
@@ -160,10 +160,13 @@ export const ResearchPage: React.FC = () => {
               DeepBio bridges the gap between raw biological data and clinical breakthroughs through rigorous computational research and AI innovation.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
-              <button className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg">
+              <Link
+                to="/publications"
+                className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
+              >
                 View Publications
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -324,11 +327,6 @@ export const ResearchPage: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Publications Section */}
-      <section className="py-32 bg-white">
-        <Publications />
       </section>
     </div>
   );

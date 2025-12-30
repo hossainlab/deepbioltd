@@ -1,12 +1,9 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Activity, Brain, MousePointer2, Sparkles } from 'lucide-react';
 
-interface HeroProps {
-  onNavigate: (view: 'home' | 'research' | 'training') => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+export const Hero: React.FC = () => {
   return (
     <header className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark">
       {/* Background Layer */}
@@ -32,19 +29,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             DeepBio Limited is a Bangladesh-based research startup turning life science data into impactful solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 pt-4">
-            <button 
-              onClick={() => onNavigate('research')}
+            <Link
+              to="/research"
               className="px-10 py-5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group"
             >
               Explore Our Research
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button 
-              onClick={() => onNavigate('training')}
+            </Link>
+            <Link
+              to="/training"
               className="px-10 py-5 border border-white/20 hover:bg-white/5 text-white rounded-2xl font-bold transition-all backdrop-blur-sm hover:border-white/40"
             >
               Training Programs
-            </button>
+            </Link>
           </div>
           
           <div className="grid grid-cols-3 gap-10 pt-16 border-t border-white/10">
