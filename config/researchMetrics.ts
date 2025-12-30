@@ -7,12 +7,12 @@
 
 export const researchMetrics = {
   // Citation metrics
-  citations: "350+",
-  hIndex: 22,
+  citations: "200+",
+  hIndex: 7,
 
   // Publication metrics
-  journals: 58,
-  patents: 14,
+  journals: 16,
+  patents: 0,
 
   // Last updated (for reference)
   lastUpdated: "2025-01-01"
