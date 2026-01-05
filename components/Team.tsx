@@ -7,7 +7,7 @@ const teamMembers = [
     image: "/images/team/jubayer.png"
   },
   {
-    name: "Muhibullah Shahjan",
+    name: "Muhibullah Shahjahan",
     role: "Bioinformatics Analyst",
     image: "/images/team/muhib.png"
   },
