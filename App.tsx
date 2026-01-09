@@ -20,6 +20,7 @@ import { LabOnboardingPage } from './components/LabOnboardingPage';
 import { BigBioLabPage } from './components/BigBioLabPage';
 import { GenerativeGenomicsLabPage } from './components/GenerativeGenomicsLabPage';
 import { InsilicoMedicineLabPage } from './components/InsilicoMedicineLabPage';
+import { ResearchAssistantRecruitmentPage } from './components/ResearchAssistantRecruitmentPage';
 
 const HomePage: React.FC = () => (
   <>
@@ -70,6 +71,7 @@ const AppContent: React.FC = () => {
           <Route path="/our-ambassadors" element={<OurAmbassadorsPage />} />
           <Route path="/ambassador-handbook" element={<AmbassadorHandbookPage />} />
           <Route path="/lab-onboarding" element={<LabOnboardingPage />} />
+          <Route path="/research-assistant-recruitment" element={<ResearchAssistantRecruitmentPage />} />
           <Route path="/labs/bigbio" element={<BigBioLabPage />} />
           <Route path="/labs/generative-genomics" element={<GenerativeGenomicsLabPage />} />
           <Route path="/labs/insilico-medicine" element={<InsilicoMedicineLabPage />} />

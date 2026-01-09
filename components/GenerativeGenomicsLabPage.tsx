@@ -80,6 +80,20 @@ export const GenerativeGenomicsLabPage: React.FC = () => {
               Explore Our Research
             </a>
             <a
+              href="/research-assistant-recruitment"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all shadow-lg hover:-translate-y-1"
+            >
+              <Users className="w-5 h-5" />
+              RA Recruitment
+            </a>
+            <a
+              href="/thesis-support"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all shadow-lg hover:-translate-y-1"
+            >
+              <BookOpen className="w-5 h-5" />
+              Thesis Support
+            </a>
+            <a
               href="/lab-onboarding"
               className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all shadow-lg hover:-translate-y-1"
             >
