@@ -11,6 +11,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [researchMenuOpen, setResearchMenuOpen] = useState(false);
+  const [labsMenuOpen, setLabsMenuOpen] = useState(false);
+  const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -27,7 +29,19 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Thesis Support', path: '/thesis-support' },
   ];
 
+  const labsSubmenu = [
+    { name: 'Lab Onboarding', path: '/lab-onboarding' },
+  ];
+
+  const resourcesSubmenu = [
+    { name: 'DeepBio Ambassadors', path: '/ambassadors' },
+    { name: 'Our Ambassadors', path: '/our-ambassadors' },
+    { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
+  ];
+
   const isResearchPage = ['/research', '/research-programs', '/publications', '/thesis-support'].includes(location.pathname);
+  const isLabsPage = ['/lab-onboarding'].includes(location.pathname);
+  const isResourcesPage = ['/ambassadors', '/our-ambassadors'].includes(location.pathname);
   const isLight = !scrolled && location.pathname === '/' && window.innerWidth >= 1024;
 
   return (
@@ -92,6 +106,101 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             )}
           </div>
 
+          {/* Labs Menu - Modern Hover Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setLabsMenuOpen(true)}
+            onMouseLeave={() => setLabsMenuOpen(false)}
+          >
+            <button
+              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
+                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${isLabsPage ? 'text-brand-primary after:w-full' : ''}
+              `}
+            >
+              Labs
+            </button>
+
+            {/* Modern Dropdown Menu */}
+            {labsMenuOpen && (
+              <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden mt-2">
+                  {labsSubmenu.map((item, index) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setLabsMenuOpen(false)}
+                      className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
+                        ${location.pathname === item.path
+                          ? 'bg-brand-primary/10 text-brand-primary'
+                          : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
+                        }
+                        ${index !== labsSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                      `}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Resources Menu - Modern Hover Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setResourcesMenuOpen(true)}
+            onMouseLeave={() => setResourcesMenuOpen(false)}
+          >
+            <button
+              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
+                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${isResourcesPage ? 'text-brand-primary after:w-full' : ''}
+              `}
+            >
+              Resources
+            </button>
+
+            {/* Modern Dropdown Menu */}
+            {resourcesMenuOpen && (
+              <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden mt-2">
+                  {resourcesSubmenu.map((item, index) => (
+                    item.external ? (
+                      <a
+                        key={item.path}
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setResourcesMenuOpen(false)}
+                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all text-slate-700 hover:bg-slate-50 hover:text-brand-primary
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                        `}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setResourcesMenuOpen(false)}
+                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
+                          ${location.pathname === item.path
+                            ? 'bg-brand-primary/10 text-brand-primary'
+                            : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
+                          }
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                        `}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           <a
             href="mailto:deepbiobd@gmail.com?subject=Partnership Inquiry"
             className="ml-4 px-6 py-2.5 bg-brand-primary text-white rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-brand-primary/25 inline-block"
@@ -135,6 +244,57 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                 >
                   {item.name}
                 </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Labs Submenu - Mobile */}
+          <div className="space-y-4">
+            <div className={`text-xl font-bold ${isLabsPage ? 'text-brand-primary' : 'text-slate-800'}`}>
+              Labs
+            </div>
+            <div className="pl-6 space-y-3 border-l-2 border-slate-200">
+              {labsSubmenu.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block text-left text-lg font-semibold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Resources Submenu - Mobile */}
+          <div className="space-y-4">
+            <div className={`text-xl font-bold ${isResourcesPage ? 'text-brand-primary' : 'text-slate-800'}`}>
+              Resources
+            </div>
+            <div className="pl-6 space-y-3 border-l-2 border-slate-200">
+              {resourcesSubmenu.map((item) => (
+                item.external ? (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="block text-left text-lg font-semibold transition-colors text-slate-600 hover:text-brand-primary"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block text-left text-lg font-semibold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
