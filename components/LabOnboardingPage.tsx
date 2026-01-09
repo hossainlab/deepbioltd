@@ -145,7 +145,16 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Authorship</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Our team follows the ICMJE's Uniform Requirements for Manuscripts Submitted to Biomedical Journals definitions of the roles of authors and contributors to our manuscripts.
+                  Our team follows the{' '}
+                  <a
+                    href="https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-primary hover:text-brand-secondary underline font-semibold transition-colors"
+                  >
+                    ICMJE's Uniform Requirements for Manuscripts Submitted to Biomedical Journals
+                  </a>{' '}
+                  definitions of the roles of authors and contributors to our manuscripts.
                 </p>
               </div>
 
