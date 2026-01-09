@@ -26,7 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Overview', path: '/research' },
     { name: 'Research Programs', path: '/research-programs' },
     { name: 'Publications', path: '/publications' },
-    { name: 'Thesis Support', path: '/thesis-support' },
   ];
 
   const labsSubmenu = [
@@ -42,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
   ];
 
-  const isResearchPage = ['/research', '/research-programs', '/publications', '/thesis-support'].includes(location.pathname);
+  const isResearchPage = ['/research', '/research-programs', '/publications'].includes(location.pathname);
   const isLabsPage = ['/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(location.pathname);
   const isResourcesPage = ['/ambassadors', '/our-ambassadors'].includes(location.pathname);
   const isLight = !scrolled && location.pathname === '/' && window.innerWidth >= 1024;
