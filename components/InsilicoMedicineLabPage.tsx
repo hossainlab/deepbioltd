@@ -2,42 +2,27 @@ import React from 'react';
 import { Heart, Users, BookOpen, Activity, FlaskConical, Atom, Pill } from 'lucide-react';
 
 export const InsilicoMedicineLabPage: React.FC = () => {
-  const incomingPositions = [
+  // TODO: Replace with actual team members after recruitment
+  const teamMembers = [
     {
-      position: 'Principal Investigator',
-      focus: 'AI-Driven Drug Discovery',
-      qualifications: 'PhD in Medicinal Chemistry/Computational Biology with AI expertise',
-      responsibilities: 'Lead drug discovery programs, establish research direction, mentor team'
+      name: "Dr. [Name]",
+      role: "Principal Investigator",
+      image: "/images/team/placeholder.png"
     },
     {
-      position: 'Senior Research Scientist',
-      focus: 'Computer-Aided Drug Design',
-      qualifications: 'PhD with expertise in molecular modeling and virtual screening',
-      responsibilities: 'Design and execute CADD projects, develop computational workflows'
+      name: "Dr. [Name]",
+      role: "Senior Research Scientist",
+      image: "/images/team/placeholder.png"
     },
     {
-      position: 'Structural Biologist',
-      focus: 'Protein Structure Analysis',
-      qualifications: 'PhD in Structural Biology with crystallography/cryo-EM experience',
-      responsibilities: 'Determine protein structures, support structure-based drug design'
+      name: "Dr. [Name]",
+      role: "Structural Biologist",
+      image: "/images/team/placeholder.png"
     },
     {
-      position: 'Machine Learning Scientist',
-      focus: 'AI for Drug Discovery',
-      qualifications: 'PhD in Computer Science/Bioinformatics with ML focus',
-      responsibilities: 'Develop AI models for drug property prediction and optimization'
-    },
-    {
-      position: 'Medicinal Chemist',
-      focus: 'Lead Optimization',
-      qualifications: 'PhD in Medicinal Chemistry with drug development experience',
-      responsibilities: 'Design and optimize drug candidates, analyze SAR data'
-    },
-    {
-      position: 'Research Associate',
-      focus: 'Computational Support',
-      qualifications: 'Master\'s in Chemistry/Biology with computational skills',
-      responsibilities: 'Support computational chemistry projects, data analysis'
+      name: "[Name]",
+      role: "ML Scientist",
+      image: "/images/team/placeholder.png"
     }
   ];
 
@@ -174,46 +159,40 @@ export const InsilicoMedicineLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Incoming Lab Positions */}
-      <section className="py-24 bg-white">
+      {/* Team Section */}
+      <section className="py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-              <Users className="w-4 h-4" />
-              Join Our Team
-            </div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Incoming Lab Positions</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Be part of the AI-driven drug discovery revolution
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {incomingPositions.map((position, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:border-brand-primary/50 transition-all duration-300"
-              >
-                <div className="aspect-square bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <Users className="w-20 h-20 text-brand-primary mx-auto mb-4" />
-                    <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">Open Position</p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{position.position}</h3>
-                  <p className="text-brand-primary font-semibold mb-4">{position.focus}</p>
-                  <div className="mb-4">
-                    <p className="text-sm text-slate-500 font-semibold mb-2">Qualifications:</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{position.qualifications}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500 font-semibold mb-2">Key Responsibilities:</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">{position.responsibilities}</p>
-                  </div>
-                </div>
+          <header className="mb-24 text-center space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary">
+                <Users className="w-6 h-6" />
               </div>
-            ))}
+              <h2 className="text-brand-primary font-bold uppercase tracking-[0.3em] text-xs">Our People</h2>
+            </div>
+            <p className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tighter">Meet Our Team</p>
+            <div className="w-20 h-1.5 brand-gradient mx-auto rounded-full"></div>
+          </header>
+
+          {/* Team Grid */}
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+              {teamMembers.map((member, i) => (
+                <div key={i} className="bg-white border border-gray-200 group cursor-pointer">
+                  <div className="w-full aspect-[5/6] overflow-hidden relative" style={{ backgroundColor: '#8B8B8B' }}>
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                      style={{ mixBlendMode: 'normal' }}
+                    />
+                  </div>
+                  <div className="p-5 bg-white">
+                    <h3 className="text-base font-bold text-black mb-1">{member.name}</h3>
+                    <p className="text-sm text-gray-600">{member.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
