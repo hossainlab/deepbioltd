@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ResearchPage } from './components/ResearchPage';
-import { ResearchProgramsPage } from './components/ResearchProgramsPage';
-import { PublicationsPage } from './components/PublicationsPage';
-import { ThesisProgramPage } from './components/ThesisProgramPage';
-import { Methodology } from './components/Methodology';
-import { TrainingPage } from './components/TrainingPage';
-import { ServicesPage } from './components/ServicesPage';
-import { AboutPage } from './components/AboutPage';
-import { AmbassadorsPage } from './components/AmbassadorsPage';
-import { OurAmbassadorsPage } from './components/OurAmbassadorsPage';
-import { AmbassadorHandbookPage } from './components/AmbassadorHandbookPage';
-import { LabOnboardingPage } from './components/LabOnboardingPage';
-import { BigBioLabPage } from './components/BigBioLabPage';
-import { GenerativeGenomicsLabPage } from './components/GenerativeGenomicsLabPage';
-import { InsilicoMedicineLabPage } from './components/InsilicoMedicineLabPage';
-import { ResearchAssistantRecruitmentPage } from './components/ResearchAssistantRecruitmentPage';
+
+// Lazy load route components for better performance
+const ResearchPage = lazy(() => import('./components/ResearchPage').then(m => ({ default: m.ResearchPage })));
+const ResearchProgramsPage = lazy(() => import('./components/ResearchProgramsPage').then(m => ({ default: m.ResearchProgramsPage })));
+const PublicationsPage = lazy(() => import('./components/PublicationsPage').then(m => ({ default: m.PublicationsPage })));
+const ThesisProgramPage = lazy(() => import('./components/ThesisProgramPage').then(m => ({ default: m.ThesisProgramPage })));
+const Methodology = lazy(() => import('./components/Methodology').then(m => ({ default: m.Methodology })));
+const TrainingPage = lazy(() => import('./components/TrainingPage').then(m => ({ default: m.TrainingPage })));
+const ServicesPage = lazy(() => import('./components/ServicesPage').then(m => ({ default: m.ServicesPage })));
+const AboutPage = lazy(() => import('./components/AboutPage').then(m => ({ default: m.AboutPage })));
+const AmbassadorsPage = lazy(() => import('./components/AmbassadorsPage').then(m => ({ default: m.AmbassadorsPage })));
+const OurAmbassadorsPage = lazy(() => import('./components/OurAmbassadorsPage').then(m => ({ default: m.OurAmbassadorsPage })));
+const AmbassadorHandbookPage = lazy(() => import('./components/AmbassadorHandbookPage').then(m => ({ default: m.AmbassadorHandbookPage })));
+const LabOnboardingPage = lazy(() => import('./components/LabOnboardingPage').then(m => ({ default: m.LabOnboardingPage })));
+const BigBioLabPage = lazy(() => import('./components/BigBioLabPage').then(m => ({ default: m.BigBioLabPage })));
+const GenerativeGenomicsLabPage = lazy(() => import('./components/GenerativeGenomicsLabPage').then(m => ({ default: m.GenerativeGenomicsLabPage })));
+const InsilicoMedicineLabPage = lazy(() => import('./components/InsilicoMedicineLabPage').then(m => ({ default: m.InsilicoMedicineLabPage })));
+const ResearchAssistantRecruitmentPage = lazy(() => import('./components/ResearchAssistantRecruitmentPage').then(m => ({ default: m.ResearchAssistantRecruitmentPage })));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-white">
+    <div className="text-center">
+      <div className="inline-block w-16 h-16 border-4 border-brand-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p className="text-slate-600 font-semibold">Loading...</p>
+    </div>
+  </div>
+);
 
 const HomePage: React.FC = () => (
   <>
@@ -41,15 +53,25 @@ const AppContent: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Throttle scroll event for better performance
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Instant scroll to top on route change for better UX
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
 
   return (
@@ -57,25 +79,27 @@ const AppContent: React.FC = () => {
       <Navbar scrolled={scrolled} />
 
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/research" element={<ResearchPage />} />
-          <Route path="/research-programs" element={<ResearchProgramsPage />} />
-          <Route path="/publications" element={<PublicationsPage />} />
-          <Route path="/thesis-support" element={<ThesisProgramPage />} />
-          <Route path="/methodology" element={<Methodology />} />
-          <Route path="/training" element={<TrainingPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/ambassadors" element={<AmbassadorsPage />} />
-          <Route path="/our-ambassadors" element={<OurAmbassadorsPage />} />
-          <Route path="/ambassador-handbook" element={<AmbassadorHandbookPage />} />
-          <Route path="/lab-onboarding" element={<LabOnboardingPage />} />
-          <Route path="/research-assistant-recruitment" element={<ResearchAssistantRecruitmentPage />} />
-          <Route path="/labs/bigbio" element={<BigBioLabPage />} />
-          <Route path="/labs/generative-genomics" element={<GenerativeGenomicsLabPage />} />
-          <Route path="/labs/insilico-medicine" element={<InsilicoMedicineLabPage />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/research" element={<ResearchPage />} />
+            <Route path="/research-programs" element={<ResearchProgramsPage />} />
+            <Route path="/publications" element={<PublicationsPage />} />
+            <Route path="/thesis-support" element={<ThesisProgramPage />} />
+            <Route path="/methodology" element={<Methodology />} />
+            <Route path="/training" element={<TrainingPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/ambassadors" element={<AmbassadorsPage />} />
+            <Route path="/our-ambassadors" element={<OurAmbassadorsPage />} />
+            <Route path="/ambassador-handbook" element={<AmbassadorHandbookPage />} />
+            <Route path="/lab-onboarding" element={<LabOnboardingPage />} />
+            <Route path="/research-assistant-recruitment" element={<ResearchAssistantRecruitmentPage />} />
+            <Route path="/labs/bigbio" element={<BigBioLabPage />} />
+            <Route path="/labs/generative-genomics" element={<GenerativeGenomicsLabPage />} />
+            <Route path="/labs/insilico-medicine" element={<InsilicoMedicineLabPage />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />
