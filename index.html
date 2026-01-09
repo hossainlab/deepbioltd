@@ -50,6 +50,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="dns-prefetch" href="https://esm.sh">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+    <!-- Performance optimizations -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -93,7 +98,8 @@
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
     <style>
       body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
@@ -103,7 +109,16 @@
       @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
       .animate-float { animation: float 4s ease-in-out infinite; will-change: transform; }
       .scroll-smooth { scroll-behavior: smooth; }
-      @media (prefers-reduced-motion: reduce) { .animate-float { animation: none; } }
+      @media (prefers-reduced-motion: reduce) {
+        .animate-float { animation: none; }
+        * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      }
+      /* Critical CSS for above-the-fold content */
+      #root { min-height: 100vh; }
+      /* Prevent layout shift */
+      img { height: auto; max-width: 100%; }
+      /* Optimize rendering */
+      * { -webkit-tap-highlight-color: transparent; }
     </style>
     <script type="importmap">
     {
