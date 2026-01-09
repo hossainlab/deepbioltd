@@ -1,85 +1,66 @@
-
 import React from 'react';
-import { Microscope, Target, Users, Award, BookOpen, Mail, Linkedin, Github, ExternalLink, FlaskConical } from 'lucide-react';
+import { Microscope, Users, BookOpen, Dna, Brain, Activity, FlaskConical } from 'lucide-react';
 
 export const BigBioLabPage: React.FC = () => {
-  const members = [
+  const incomingPositions = [
     {
-      name: 'Dr. Jane Smith',
-      role: 'Principal Investigator',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
-      bio: 'PhD in Bioinformatics, 15+ years of research experience in computational genomics',
-      linkedin: '#',
-      github: '#',
-      email: 'jane.smith@bigbiolab.org'
+      position: 'Principal Investigator',
+      focus: 'Cancer Genomics & Computational Biology',
+      qualifications: 'PhD in Bioinformatics or related field, 10+ years research experience',
+      responsibilities: 'Lead research direction, mentor team members, secure funding'
     },
     {
-      name: 'Dr. Ahmed Rahman',
-      role: 'Senior Research Scientist',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400',
-      bio: 'Specializes in machine learning applications in genomics and disease prediction',
-      linkedin: '#',
-      github: '#',
-      email: 'ahmed.rahman@bigbiolab.org'
+      position: 'Senior Research Scientist',
+      focus: 'Neurogenomics & Machine Learning',
+      qualifications: 'PhD with expertise in neuroscience and computational methods',
+      responsibilities: 'Design and execute neurogenomics studies, develop ML pipelines'
     },
     {
-      name: 'Dr. Sarah Chen',
-      role: 'Research Scientist',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400',
-      bio: 'Expert in single-cell RNA sequencing and spatial transcriptomics analysis',
-      linkedin: '#',
-      github: '#',
-      email: 'sarah.chen@bigbiolab.org'
+      position: 'Research Scientist',
+      focus: 'Bulk RNA-seq Analysis',
+      qualifications: 'PhD or Master\'s with strong background in transcriptomics',
+      responsibilities: 'Perform RNA-seq data analysis, develop analysis workflows'
     },
     {
-      name: 'Md. Jubayer Hossain',
-      role: 'Bioinformatics Analyst',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
-      bio: 'Focuses on pipeline development and next-generation sequencing data analysis',
-      linkedin: '#',
-      github: '#',
-      email: 'jubayer@bigbiolab.org'
+      position: 'Research Scientist',
+      focus: 'Single-Cell Genomics',
+      qualifications: 'Expertise in single-cell technologies and computational analysis',
+      responsibilities: 'Analyze single-cell datasets, develop visualization tools'
     },
     {
-      name: 'Emily Johnson',
-      role: 'PhD Candidate',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400',
-      bio: 'Researching novel biomarkers for early cancer detection using multi-omics approaches',
-      linkedin: '#',
-      github: '#',
-      email: 'emily.johnson@bigbiolab.org'
+      position: 'Bioinformatics Analyst',
+      focus: 'Cancer Data Analysis',
+      qualifications: 'Master\'s degree with experience in cancer genomics',
+      responsibilities: 'Support cancer genomics projects, pipeline development'
     },
     {
-      name: 'David Kim',
-      role: 'Research Assistant',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
-      bio: 'Supporting computational infrastructure and database management',
-      linkedin: '#',
-      github: '#',
-      email: 'david.kim@bigbiolab.org'
+      position: 'Research Assistant',
+      focus: 'Computational Support',
+      qualifications: 'Bachelor\'s or Master\'s in Bioinformatics/Computer Science',
+      responsibilities: 'Database management, computational infrastructure support'
     }
   ];
 
   const researchAreas = [
     {
+      icon: Dna,
+      title: 'Cancer Genomics',
+      description: 'Advanced genomic analysis to identify cancer biomarkers, understand tumor heterogeneity, and discover therapeutic targets.'
+    },
+    {
+      icon: Brain,
+      title: 'Neurogenomics',
+      description: 'Comprehensive analysis of gene expression patterns in neurological disorders and brain development.'
+    },
+    {
+      icon: Activity,
+      title: 'Bulk RNA-seq',
+      description: 'High-throughput transcriptome analysis to understand gene expression profiles across different conditions and tissues.'
+    },
+    {
       icon: FlaskConical,
-      title: 'Computational Genomics',
-      description: 'Advanced analysis of genomic data to understand genetic variations and their impact on health and disease.'
-    },
-    {
-      icon: Target,
-      title: 'Drug Discovery',
-      description: 'Using AI and machine learning to identify novel drug targets and accelerate the drug development process.'
-    },
-    {
-      icon: Microscope,
-      title: 'Systems Biology',
-      description: 'Integrating multi-omics data to understand complex biological systems and disease mechanisms.'
-    },
-    {
-      icon: Award,
-      title: 'Precision Medicine',
-      description: 'Developing personalized treatment strategies based on individual genetic and molecular profiles.'
+      title: 'Single-Cell Analysis',
+      description: 'Single-cell resolution genomics to uncover cellular heterogeneity and rare cell populations.'
     }
   ];
 
@@ -104,11 +85,11 @@ export const BigBioLabPage: React.FC = () => {
             <span className="brand-text-gradient">Lab</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl leading-relaxed mb-10">
-            Advancing life science research through cutting-edge bioinformatics, AI-driven analysis, and computational biology to address critical public health challenges in Bangladesh and beyond.
+            Advancing cancer genomics, neurogenomics, and transcriptomics research through cutting-edge computational analysis and single-cell technologies.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="#about"
+              href="#mission"
               className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1"
             >
               Learn More
@@ -124,54 +105,55 @@ export const BigBioLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-                About the Lab
-              </div>
-              <h2 className="text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Pioneering Bioinformatics Research in <span className="text-brand-primary">South Asia</span>
-              </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed">
-                <p>
-                  Big Bioinformatics Lab (BigBio Lab) is an independent bioinformatics research and training facility based in Bangladesh. Founded with the mission to bridge the gap in computational biology expertise in resource-limited settings, we focus on cutting-edge research that addresses local and global health challenges.
-                </p>
-                <p>
-                  Our multidisciplinary team combines expertise in genomics, machine learning, and systems biology to tackle complex biological questions. We collaborate with international institutions and local healthcare providers to translate our research into practical applications.
-                </p>
-                <p>
-                  Through our training programs, we're building the next generation of bioinformatics researchers in Bangladesh, fostering a vibrant community of scientists dedicated to advancing life science research through computational approaches.
-                </p>
-              </div>
+      {/* Mission Statement */}
+      <section id="mission" className="py-24 bg-white border-y border-slate-200">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
+              Mission Statement
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800"
-                  alt="Lab Research"
-                  className="w-full h-full object-cover"
-                />
+            <h2 className="text-5xl font-bold text-slate-900 mb-6 leading-tight">
+              Pioneering Genomics Research in <span className="text-brand-primary">Computational Biology</span>
+            </h2>
+            <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+              Big Bioinformatics Lab is dedicated to advancing our understanding of complex biological systems through computational genomics. Our focus areas include cancer genomics, neurogenomics, bulk RNA-seq analysis, and single-cell transcriptomics.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-brand-primary/5 to-brand-primary/10 rounded-2xl p-8 border border-brand-primary/20">
+              <div className="w-14 h-14 rounded-xl bg-brand-primary/20 flex items-center justify-center mb-6">
+                <Dna className="w-7 h-7 text-brand-primary" />
               </div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-brand-primary/20 rounded-3xl -z-10"></div>
-              <div className="absolute -top-8 -left-8 w-64 h-64 bg-brand-secondary/20 rounded-3xl -z-10"></div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Research Excellence</h3>
+              <p className="text-slate-600 leading-relaxed">
+                We are building a world-class team to tackle critical questions in genomics research, combining expertise in molecular biology, machine learning, and high-throughput data analysis to uncover insights into disease mechanisms and therapeutic opportunities.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-brand-secondary/5 to-brand-secondary/10 rounded-2xl p-8 border border-brand-secondary/20">
+              <div className="w-14 h-14 rounded-xl bg-brand-secondary/20 flex items-center justify-center mb-6">
+                <Activity className="w-7 h-7 text-brand-secondary" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Global Impact</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Through collaboration with leading international institutions and healthcare providers, we aim to translate our computational discoveries into practical applications that improve patient outcomes and advance precision medicine.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Research Areas */}
+      {/* Core Research Areas */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-              Research Areas
+              Research Focus
             </div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Our Focus Areas</h2>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">Core Research Areas</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We're pushing the boundaries of bioinformatics research across multiple domains
+              Specialized expertise across multiple domains of computational genomics
             </p>
           </div>
 
@@ -192,56 +174,42 @@ export const BigBioLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Members */}
+      {/* Incoming Lab Positions */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
               <Users className="w-4 h-4" />
-              Our Team
+              Join Our Team
             </div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Meet Our Researchers</h2>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">Incoming Lab Positions</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              A diverse team of experts dedicated to advancing bioinformatics research
+              We're seeking talented researchers to join our growing team
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {members.map((member, index) => (
+            {incomingPositions.map((position, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:border-brand-primary/50 transition-all duration-300"
               >
-                <div className="aspect-square overflow-hidden bg-slate-100">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                <div className="aspect-square bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <Users className="w-20 h-20 text-brand-primary mx-auto mb-4" />
+                    <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">Open Position</p>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                  <p className="text-brand-primary font-semibold mb-4">{member.role}</p>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{member.bio}</p>
-                  <div className="flex gap-3">
-                    <a
-                      href={member.email}
-                      className="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-primary flex items-center justify-center transition-all group/icon"
-                    >
-                      <Mail className="w-5 h-5 text-slate-600 group-hover/icon:text-white transition-colors" />
-                    </a>
-                    <a
-                      href={member.linkedin}
-                      className="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-primary flex items-center justify-center transition-all group/icon"
-                    >
-                      <Linkedin className="w-5 h-5 text-slate-600 group-hover/icon:text-white transition-colors" />
-                    </a>
-                    <a
-                      href={member.github}
-                      className="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-primary flex items-center justify-center transition-all group/icon"
-                    >
-                      <Github className="w-5 h-5 text-slate-600 group-hover/icon:text-white transition-colors" />
-                    </a>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{position.position}</h3>
+                  <p className="text-brand-primary font-semibold mb-4">{position.focus}</p>
+                  <div className="mb-4">
+                    <p className="text-sm text-slate-500 font-semibold mb-2">Qualifications:</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{position.qualifications}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-slate-500 font-semibold mb-2">Key Responsibilities:</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{position.responsibilities}</p>
                   </div>
                 </div>
               </div>
@@ -250,46 +218,26 @@ export const BigBioLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* CTA with Publications */}
       <section className="py-24 bg-brand-dark text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { number: '50+', label: 'Research Publications' },
-              { number: '15+', label: 'Active Projects' },
-              { number: '100+', label: 'Students Trained' },
-              { number: '20+', label: 'Collaborations' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold brand-text-gradient mb-3">{stat.number}</div>
-                <div className="text-slate-300 text-lg">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold text-slate-900 mb-6">Join Our Research Community</h2>
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            Interested in collaborating or joining our lab? We welcome researchers, students, and partners who share our vision.
+          <h2 className="text-5xl font-bold mb-6">Join Our Research Community</h2>
+          <p className="text-xl text-slate-300 mb-10 leading-relaxed">
+            Interested in joining our lab or collaborating on genomics research? Explore our publications and get in touch.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:deepbiobd@gmail.com?subject=Collaboration Inquiry - BigBio Lab"
+              href="/publications"
               className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-lg hover:-translate-y-1"
             >
-              <Mail className="w-5 h-5" />
-              Contact Us
+              <BookOpen className="w-5 h-5" />
+              View Publications
             </a>
             <a
-              href="/lab-onboarding"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-2xl font-bold transition-all hover:-translate-y-1"
+              href="mailto:deepbiobd@gmail.com?subject=BigBio Lab Application"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all hover:-translate-y-1"
             >
-              <ExternalLink className="w-5 h-5" />
-              View Lab Guidelines
+              Contact Us
             </a>
           </div>
         </div>
