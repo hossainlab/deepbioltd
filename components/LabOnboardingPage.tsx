@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BookOpen, Users, Target, GitBranch, Database, Code, MessageSquare, Bot, Shield, CheckCircle, Calendar, Award } from 'lucide-react';
+import { BookOpen, Users, Target, GitBranch, Database, Code, MessageSquare, Bot, Shield, CheckCircle, Calendar, Award, Github, FileText } from 'lucide-react';
 
 export const LabOnboardingPage: React.FC = () => {
   return (
@@ -20,12 +20,32 @@ export const LabOnboardingPage: React.FC = () => {
             Lab Guidelines
           </div>
           <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight mb-8">
-            Big Bioinformatics Lab <br />
+            Lab Member <br />
             <span className="brand-text-gradient">Onboarding</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Welcome to Big Bioinformatics Lab. This comprehensive guide outlines our expectations, practices, and resources to help you succeed.
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10">
+            Welcome to DeepBio Labs. This comprehensive guide outlines our expectations, practices, and resources to help you succeed across all our research labs.
           </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://github.com/bigbiolab/onboarding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all shadow-lg hover:-translate-y-1"
+            >
+              <Github className="w-5 h-5" />
+              View on GitHub
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1"
+            >
+              <FileText className="w-5 h-5" />
+              Apply to Join Lab
+            </a>
+          </div>
         </div>
       </section>
 
@@ -71,12 +91,12 @@ export const LabOnboardingPage: React.FC = () => {
             </div>
             <div className="prose prose-lg max-w-none">
               <p className="text-slate-600 leading-relaxed mb-6">
-                Big Bioinformatics Lab (BigBio Lab) is an independent bioinformatics research and training facility based in Bangladesh. Our goal is to address critical public health challenges through cutting-edge data analysis and capacity building in bioinformatics.
+                DeepBio operates multiple cutting-edge research laboratories dedicated to advancing life science research through computational biology, artificial intelligence, and innovative drug discovery. Our labs work collaboratively to address critical challenges in genomics, medicine, and biotechnology.
               </p>
               <div className="p-6 bg-brand-primary/5 border-l-4 border-brand-primary rounded-r-2xl my-8">
                 <p className="text-slate-700 font-semibold mb-2">Our Vision</p>
                 <p className="text-slate-600">
-                  To become a leading bioinformatics research hub in South Asia, advancing life science research through innovative computational approaches and collaborative training programs.
+                  To become a leading research organization in computational biology and AI-driven life sciences, fostering innovation, collaboration, and excellence across all our laboratory facilities.
                 </p>
               </div>
             </div>
@@ -94,7 +114,7 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Your Role</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  We expect that you will take primary responsibility for the success of your research project and career development. As a member of BigBio Lab, you are expected to participate fully in the team. In general, members are expected to follow working hours that include 4 hours/day to facilitate discussion within the group.
+                  We expect that you will take primary responsibility for the success of your research project and career development. As a member of our labs, you are expected to participate fully in the team. In general, members are expected to follow working hours that include 4 hours/day to facilitate discussion within the group.
                 </p>
               </div>
 
@@ -111,14 +131,14 @@ export const LabOnboardingPage: React.FC = () => {
                   Our team is working hard to develop a reputation for high-quality science that is well presented. Abstracts for meetings must be shared with all co-authors, including mentors, at least one week prior to the deadline for submission.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
-                  Oral presentations on projects must be presented to the research team during a braintrust meeting, and BigBio Lab members are expected to address feedback that is provided. Poster presentations should be shared in the Slack channel at least a week before printing.
+                  Oral presentations on projects must be presented to the research team during a braintrust meeting, and lab members are expected to address feedback that is provided. Poster presentations should be shared in the Slack channel at least a week before printing.
                 </p>
               </div>
 
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Code of Conduct</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  At BigBio Lab Bangladesh, we are committed to maintaining a safe, respectful, and harassment-free environment for all members and visitors. Discrimination or harassment based on gender, gender identity, age, disability, appearance, body size, race, religion, or any other personal characteristic will not be tolerated.
+                  At DeepBio Labs, we are committed to maintaining a safe, respectful, and harassment-free environment for all members and visitors. Discrimination or harassment based on gender, gender identity, age, disability, appearance, body size, race, religion, or any other personal characteristic will not be tolerated.
                 </p>
               </div>
 
@@ -132,7 +152,7 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Ethics</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  We expect BigBio Lab members to be honest in scientific communications both within and outside the team. We expect that BigBio Lab members will design experiments/study in a manner that minimizes both bias and self deception. We expect that BigBio Lab members will keep agreements, be careful, and share their code and results openly with the scientific community.
+                  We expect all lab members to be honest in scientific communications both within and outside the team. We expect that members will design experiments/studies in a manner that minimizes both bias and self-deception. We expect that lab members will keep agreements, be careful, and share their code and results openly with the scientific community.
                 </p>
               </div>
             </div>
@@ -153,7 +173,7 @@ export const LabOnboardingPage: React.FC = () => {
                   Slack
                 </h3>
                 <p className="text-slate-600 leading-relaxed mb-4">
-                  BigBio Lab Bangladesh operates remotely and uses Slack for internal communication. Members should prioritize Slack messages over emails for faster response times.
+                  DeepBio Labs operate remotely and use Slack for internal communication. Members should prioritize Slack messages over emails for faster response times.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-brand-primary/10 text-brand-primary rounded-full text-sm font-semibold">#general</span>
@@ -209,7 +229,7 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Research Meeting</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Research meetings are scheduled for one hour on the third Friday of the month. All members of BigBio Lab Bangladesh are expected to attend. Meetings are designed to provide a supportive environment for learning, constructive criticism, help, and scientific discussions.
+                  Research meetings are scheduled for one hour on the third Friday of the month. All lab members are expected to attend. Meetings are designed to provide a supportive environment for learning, constructive criticism, help, and scientific discussions.
                 </p>
               </div>
 
@@ -363,12 +383,12 @@ export const LabOnboardingPage: React.FC = () => {
             </div>
             <div className="p-8 bg-white rounded-2xl border border-slate-200">
               <p className="text-slate-600 leading-relaxed mb-6">
-                BigBio Lab members are encouraged to share research and updates via public social media. If a member associates their profile with BigBio Lab Bangladesh, they must adhere to the BigBio Lab's code of conduct.
+                Lab members are encouraged to share research and updates via public social media. If a member associates their profile with DeepBio Labs, they must adhere to our code of conduct.
               </p>
               <div className="p-6 bg-brand-primary/5 border-l-4 border-brand-primary rounded-r-2xl">
                 <p className="text-slate-700 font-semibold mb-2">Important Note</p>
                 <p className="text-slate-600">
-                  If required by an employer or collaborator, members should include a disclaimer stating that opinions are personal and do not represent BigBio Lab Bangladesh.
+                  If required by an employer or collaborator, members should include a disclaimer stating that opinions are personal and do not represent DeepBio Labs.
                 </p>
               </div>
             </div>
@@ -422,15 +442,15 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Version Control and GitHub Usage</h3>
                 <p className="text-slate-600 leading-relaxed mb-4">
-                  Our primary version control service is <strong>GitHub</strong>, and lab members should maintain their code in repositories under the <strong>BigBio Lab Bangladesh GitHub organization</strong>.
+                  Our primary version control service is <strong>GitHub</strong>, and lab members should maintain their code in repositories under the <strong>DeepBio GitHub organization</strong>.
                 </p>
               </div>
 
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Creating a BigBio Lab Repository</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Creating a Lab Repository</h3>
                 <div className="space-y-4">
                   {[
-                    { step: '1', title: 'Create a repository under the BigBio Lab Bangladesh organization' },
+                    { step: '1', title: 'Create a repository under the DeepBio GitHub organization' },
                     { step: '2', title: 'Immediately fork this repository into your user account' },
                     { step: '3', title: 'Make commits to your personal repository first' },
                     { step: '4', title: 'Follow the code review process before merging changes' },
@@ -448,7 +468,7 @@ export const LabOnboardingPage: React.FC = () => {
               <div className="p-8 bg-white rounded-2xl border border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Code Review Process</h3>
                 <p className="text-slate-600 leading-relaxed mb-4">
-                  Code moves from personal repositories to BigBio Lab repositories via <strong>pull requests</strong>. All changes must go through this review process:
+                  Code moves from personal repositories to lab repositories via <strong>pull requests</strong>. All changes must go through this review process:
                 </p>
                 <ul className="space-y-3 text-slate-600">
                   <li className="flex items-start gap-3">
@@ -457,7 +477,7 @@ export const LabOnboardingPage: React.FC = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-brand-primary mt-1 flex-shrink-0" />
-                    <span>Create a pull request (PR) into the corresponding BigBio Lab repository</span>
+                    <span>Create a pull request (PR) into the corresponding lab repository</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-brand-primary mt-1 flex-shrink-0" />
@@ -490,7 +510,7 @@ export const LabOnboardingPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6">Questions or Need Support?</h2>
           <p className="text-xl text-slate-300 mb-10">
-            Our team is here to help you succeed as a member of BigBio Lab.
+            Our team is here to help you succeed as a member of DeepBio Labs.
           </p>
           <a
             href="mailto:deepbiobd@gmail.com?subject=Lab Onboarding Support"
