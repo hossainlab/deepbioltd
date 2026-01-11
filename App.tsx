@@ -23,6 +23,7 @@ const BigBioLabPage = lazy(() => import('./components/BigBioLabPage').then(m => 
 const GenerativeGenomicsLabPage = lazy(() => import('./components/GenerativeGenomicsLabPage').then(m => ({ default: m.GenerativeGenomicsLabPage })));
 const InsilicoMedicineLabPage = lazy(() => import('./components/InsilicoMedicineLabPage').then(m => ({ default: m.InsilicoMedicineLabPage })));
 const ResearchAssistantRecruitmentPage = lazy(() => import('./components/ResearchAssistantRecruitmentPage').then(m => ({ default: m.ResearchAssistantRecruitmentPage })));
+const BrochurePage = lazy(() => import('./components/BrochurePage').then(m => ({ default: m.BrochurePage })));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -98,6 +99,7 @@ const AppContent: React.FC = () => {
             <Route path="/labs/bigbio" element={<BigBioLabPage />} />
             <Route path="/labs/generative-genomics" element={<GenerativeGenomicsLabPage />} />
             <Route path="/labs/insilico-medicine" element={<InsilicoMedicineLabPage />} />
+            <Route path="/brochure" element={<BrochurePage />} />
           </Routes>
         </Suspense>
       </main>
