@@ -1,5 +1,6 @@
+'use client'
 
-import React, { useRef } from 'react';
+import React, { useRef } from 'react'
 import { Download, Mail, MapPin, Globe, Microscope, Database, Cpu, FlaskConical, GraduationCap, Target, Eye, Sparkles, CheckCircle2, Dna, Brain, Activity, LineChart, Users2, Workflow } from 'lucide-react';
 import { Logo } from './Logo';
 
