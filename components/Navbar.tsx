@@ -29,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   ];
 
   const labsSubmenu = [
+    { name: 'Cloud Labs', path: '/labs/cloud-labs' },
     { name: 'Big Bioinformatics Lab', path: '/labs/bigbio' },
     { name: 'Generative Genomics Lab', path: '/labs/generative-genomics' },
     { name: 'Insilico Medicine', path: '/labs/insilico-medicine' },
@@ -43,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   ];
 
   const isResearchPage = ['/research', '/research-programs', '/publications'].includes(location.pathname);
-  const isLabsPage = ['/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(location.pathname);
+  const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(location.pathname);
   const isResourcesPage = ['/brochure', '/ambassadors', '/our-ambassadors'].includes(location.pathname);
   const isLight = !scrolled && location.pathname === '/' && window.innerWidth >= 1024;
 
