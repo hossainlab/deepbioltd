@@ -1,19 +1,35 @@
+'use client'
 
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Logo } from './Logo';
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
+import { Logo } from './Logo'
 
-interface NavbarProps {
-  scrolled: boolean;
-}
+export const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [researchMenuOpen, setResearchMenuOpen] = useState(false)
+  const [labsMenuOpen, setLabsMenuOpen] = useState(false)
+  const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
+  const pathname = usePathname()
 
-export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [researchMenuOpen, setResearchMenuOpen] = useState(false);
-  const [labsMenuOpen, setLabsMenuOpen] = useState(false);
-  const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false);
-  const location = useLocation();
+  useEffect(() => {
+    // Throttle scroll event for better performance
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -43,13 +59,13 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
   ];
 
-  const isResearchPage = ['/research', '/research-programs', '/publications'].includes(location.pathname);
-  const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(location.pathname);
-  const isResourcesPage = ['/brochure', '/ambassadors', '/our-ambassadors'].includes(location.pathname);
-  const isLight = !scrolled && location.pathname === '/' && window.innerWidth >= 1024;
+  const isResearchPage = ['/research', '/research-programs', '/publications'].includes(pathname)
+  const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
+  const isResourcesPage = ['/brochure', '/ambassadors', '/our-ambassadors'].includes(pathname)
+  const isLight = !scrolled && pathname === '/' && typeof window !== 'undefined' && window.innerWidth >= 1024
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || location.pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="transition-transform hover:scale-105 active:scale-95 duration-300">
           <Logo isLight={isLight} />
@@ -60,10 +76,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           {navLinks.map((item) => (
             <Link
               key={item.name}
-              to={item.path}
+              href={item.path}
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
-                ${location.pathname === item.path ? 'text-brand-primary after:w-full' : ''}
+                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${pathname === item.path ? 'text-brand-primary after:w-full' : ''}
               `}
             >
               {item.name}
@@ -78,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
                 ${isResearchPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -92,10 +108,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                   {researchSubmenu.map((item, index) => (
                     <Link
                       key={item.path}
-                      to={item.path}
+                      href={item.path}
                       onClick={() => setResearchMenuOpen(false)}
                       className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                        ${location.pathname === item.path
+                        ${pathname === item.path
                           ? 'bg-brand-primary/10 text-brand-primary'
                           : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
                         }
@@ -118,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
                 ${isLabsPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -132,10 +148,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                   {labsSubmenu.map((item, index) => (
                     <Link
                       key={item.path}
-                      to={item.path}
+                      href={item.path}
                       onClick={() => setLabsMenuOpen(false)}
                       className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                        ${location.pathname === item.path
+                        ${pathname === item.path
                           ? 'bg-brand-primary/10 text-brand-primary'
                           : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
                         }
@@ -158,7 +174,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || location.pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
                 ${isResourcesPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -186,10 +202,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                     ) : (
                       <Link
                         key={item.path}
-                        to={item.path}
+                        href={item.path}
                         onClick={() => setResourcesMenuOpen(false)}
                         className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                          ${location.pathname === item.path
+                          ${pathname === item.path
                             ? 'bg-brand-primary/10 text-brand-primary'
                             : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
                           }
@@ -214,7 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`lg:hidden p-2 rounded-lg ${(scrolled || location.pathname !== '/') ? 'text-slate-900' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
+        <button className={`lg:hidden p-2 rounded-lg ${(scrolled || pathname !== '/') ? 'text-slate-900' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
@@ -225,9 +241,9 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           {navLinks.map((item) => (
             <Link
               key={item.name}
-              to={item.path}
+              href={item.path}
               onClick={() => setIsOpen(false)}
-              className={`text-xl font-bold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-800 hover:text-brand-primary'}`}
+              className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-800 hover:text-brand-primary'}`}
             >
               {item.name}
             </Link>
@@ -242,9 +258,9 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               {researchSubmenu.map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
                 >
                   {item.name}
                 </Link>
@@ -261,9 +277,9 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               {labsSubmenu.map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
                 >
                   {item.name}
                 </Link>
@@ -292,9 +308,9 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                 ) : (
                   <Link
                     key={item.path}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-left text-lg font-semibold transition-colors ${location.pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                    className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
                   >
                     {item.name}
                   </Link>
