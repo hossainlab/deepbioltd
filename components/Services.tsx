@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { BrainCircuit, Microscope, ArrowRight, FlaskConical, Layers } from 'lucide-react';
+import React from 'react'
+import Link from 'next/link'
+import { BrainCircuit, Microscope, ArrowRight, FlaskConical, Layers } from 'lucide-react'
 
 const serviceList = [
   {
@@ -55,7 +54,7 @@ export const Services: React.FC = () => {
 
       <div className="mt-20 text-center">
         <Link
-          to="/services"
+          href="/services"
           className="inline-flex items-center gap-2 px-10 py-5 bg-brand-dark text-white rounded-2xl font-bold hover:bg-brand-primary transition-all shadow-xl group"
         >
           Explore Full Service Portfolio <ArrowRight className="w-5 h-5 group-hover:translate-x-1" />

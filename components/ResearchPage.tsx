@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Link from 'next/link'
 import {
   Microscope,
   Beaker,
@@ -139,7 +139,7 @@ export const ResearchPage: React.FC = () => {
       {/* High-Impact Research Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark pt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154235602-3c32e98749e7?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154235602-3c32e98749e7?auhref=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
           <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full animate-pulse"></div>
           <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-indigo-500/10 blur-[150px] rounded-full"></div>
           
@@ -161,7 +161,7 @@ export const ResearchPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Link
-                to="/publications"
+                href="/publications"
                 className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
               >
                 View Publications

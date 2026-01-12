@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Link from 'next/link'
 import { Users, Sparkles, Award, BookOpen, Globe2, UserCheck, TrendingUp, Megaphone, Calendar, MessageSquare, HeartHandshake, ExternalLink, ArrowRight } from 'lucide-react';
 
 export const AmbassadorsPage: React.FC = () => {
@@ -82,7 +82,7 @@ export const AmbassadorsPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark pt-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auhref=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
           <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full animate-pulse"></div>
           <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-brand-secondary/15 blur-[150px] rounded-full"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
@@ -102,7 +102,7 @@ export const AmbassadorsPage: React.FC = () => {
               The DeepBio community is a dynamic ecosystem that brings together researchers, scientists, developers, and enthusiasts who are passionate about advancing life science research through AI and bioinformatics. Join us in fostering collaboration, knowledge sharing, and innovation in computational biology.
             </p>
             <Link
-              to="/our-ambassadors"
+              href="/our-ambassadors"
               className="inline-flex items-center gap-2 text-brand-secondary hover:text-white transition-colors font-semibold text-lg group"
             >
               Check our ambassadors
@@ -119,7 +119,7 @@ export const AmbassadorsPage: React.FC = () => {
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <Link
-                to="/ambassador-handbook"
+                href="/ambassador-handbook"
                 className="px-12 py-6 border-2 border-white/20 hover:bg-white/5 text-white rounded-2xl font-bold transition-all backdrop-blur-sm hover:border-white/40 flex items-center justify-center gap-3 text-lg"
               >
                 View Handbook
@@ -252,7 +252,7 @@ export const AmbassadorsPage: React.FC = () => {
                   <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link
-                  to="/ambassador-handbook"
+                  href="/ambassador-handbook"
                   className="px-12 py-6 border-2 border-slate-300 hover:bg-slate-50 text-slate-900 rounded-2xl font-bold transition-all hover:border-brand-primary flex items-center justify-center gap-3 text-lg"
                 >
                   Ambassador Handbook
