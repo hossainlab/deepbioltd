@@ -9,12 +9,16 @@ import { Logo } from './Logo'
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [researchMenuOpen, setResearchMenuOpen] = useState(false)
   const [labsMenuOpen, setLabsMenuOpen] = useState(false)
   const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
+    // Set initial screen size
+    setIsLargeScreen(window.innerWidth >= 1024)
+
     // Throttle scroll event for better performance
     let ticking = false
     const handleScroll = () => {
@@ -27,8 +31,18 @@ export const Navbar: React.FC = () => {
       }
     }
 
+    // Handle window resize
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024)
+    }
+
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   const navLinks = [
@@ -62,7 +76,7 @@ export const Navbar: React.FC = () => {
   const isResearchPage = ['/research', '/research-programs', '/publications'].includes(pathname)
   const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
   const isResourcesPage = ['/brochure', '/ambassadors', '/our-ambassadors'].includes(pathname)
-  const isLight = !scrolled && pathname === '/' && typeof window !== 'undefined' && window.innerWidth >= 1024
+  const isLight = !scrolled && pathname === '/' && isLargeScreen
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
