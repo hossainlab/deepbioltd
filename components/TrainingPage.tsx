@@ -13,8 +13,68 @@ import {
   ChevronRight,
   Globe2,
   Cpu,
-  Target
+  Target,
+  Play,
+  PlayCircle
 } from 'lucide-react';
+
+// Featured Tutorials - Preview lessons
+const featuredTutorials = [
+  {
+    id: "intro-rnaseq",
+    title: "Introduction to RNA-Seq Analysis",
+    description: "Learn the fundamentals of RNA sequencing data analysis and understand the complete workflow from raw reads to differential expression.",
+    duration: "12:45",
+    thumbnail: "https://img.youtube.com/vi/tlf6wYJrwKY/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=tlf6wYJrwKY",
+    category: "Fundamentals"
+  },
+  {
+    id: "quality-control",
+    title: "Quality Control with FastQC",
+    description: "Master quality assessment of sequencing data using FastQC and learn to interpret key metrics for data quality decisions.",
+    duration: "15:30",
+    thumbnail: "https://img.youtube.com/vi/bz93ReOv87Y/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=bz93ReOv87Y",
+    category: "Data Processing"
+  },
+  {
+    id: "deseq2-analysis",
+    title: "Differential Expression with DESeq2",
+    description: "Perform differential gene expression analysis in R using DESeq2 and create publication-quality visualizations.",
+    duration: "18:20",
+    thumbnail: "https://img.youtube.com/vi/0b24mpzM_9M/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=0b24mpzM_9M",
+    category: "Analysis"
+  },
+  {
+    id: "single-cell-intro",
+    title: "Getting Started with Single-Cell RNA-Seq",
+    description: "Explore the basics of single-cell transcriptomics and understand how it differs from bulk RNA sequencing approaches.",
+    duration: "14:15",
+    thumbnail: "https://img.youtube.com/vi/k9VFNLLQP8c/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=k9VFNLLQP8c",
+    category: "Single-Cell"
+  },
+  {
+    id: "pathway-analysis",
+    title: "Gene Ontology & Pathway Analysis",
+    description: "Learn functional enrichment analysis to understand the biological meaning behind your gene expression results.",
+    duration: "16:50",
+    thumbnail: "https://img.youtube.com/vi/ZCH2-mFl7h4/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=ZCH2-mFl7h4",
+    category: "Interpretation"
+  },
+  {
+    id: "visualization",
+    title: "Publication-Ready Visualizations",
+    description: "Create stunning volcano plots, heatmaps, and PCA plots that meet journal publication standards.",
+    duration: "11:35",
+    thumbnail: "https://img.youtube.com/vi/nD8TDyiJHnA/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=nD8TDyiJHnA",
+    category: "Visualization"
+  }
+];
 
 // Short Courses - Quick, focused training
 const shortCourses = [
@@ -241,8 +301,91 @@ export const TrainingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Featured Tutorials Section */}
+      <section id="featured-tutorials" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <header className="text-center mb-16 space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-bold uppercase tracking-widest">
+              <PlayCircle className="w-4 h-4" />
+              Preview Lessons
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Featured Tutorials</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Get a taste of the hands-on lessons included in the course. Watch these key tutorials to jumpstart your learning.
+            </p>
+          </header>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredTutorials.map((tutorial) => (
+              <a
+                key={tutorial.id}
+                href={tutorial.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-brand-primary/30 hover:shadow-[0_30px_60px_-15px_rgba(32,94,146,0.2)] transition-all duration-500"
+              >
+                {/* Video Thumbnail */}
+                <div className="relative aspect-video overflow-hidden bg-slate-900">
+                  <img
+                    src={tutorial.thumbnail}
+                    alt={tutorial.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-brand-primary transition-all duration-300">
+                      <Play className="w-6 h-6 text-brand-primary group-hover:text-white ml-1 transition-colors" />
+                    </div>
+                  </div>
+
+                  {/* Duration Badge */}
+                  <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-black/70 backdrop-blur-sm rounded-lg text-white text-xs font-semibold">
+                    {tutorial.duration}
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4 px-3 py-1.5 bg-brand-primary/90 backdrop-blur-sm rounded-full text-white text-[10px] font-bold uppercase tracking-wider">
+                    {tutorial.category}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-primary transition-colors leading-snug">
+                    {tutorial.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+                    {tutorial.description}
+                  </p>
+                  <div className="mt-4 flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
+                    <span>Watch Tutorial</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* View All Link */}
+          <div className="text-center mt-12">
+            <a
+              href="#short-courses"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 hover:bg-brand-primary text-white rounded-2xl font-bold transition-all hover:-translate-y-1 hover:shadow-xl group"
+            >
+              Explore Full Courses
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Short Courses Section */}
-      <section id="short-courses" className="py-24 bg-white">
+      <section id="short-courses" className="py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6">
             <header className="text-center mb-20 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-widest">
@@ -313,7 +456,7 @@ export const TrainingPage: React.FC = () => {
       </section>
 
       {/* Specialized Training Section */}
-      <section id="specialized-training" className="py-24 bg-slate-50">
+      <section id="specialized-training" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <header className="text-center mb-20 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-widest">
