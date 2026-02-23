@@ -62,8 +62,8 @@ const researchPrograms = [
     focus: "Oncology & Precision Medicine",
     description: "Comprehensive genomic profiling of South Asian cancer patients to identify population-specific biomarkers and therapeutic targets.",
     icon: Target,
-    color: "bg-rose-100 text-rose-600",
-    borderColor: "border-rose-200"
+    color: "bg-brand-primary/10 text-brand-primary",
+    borderColor: "border-brand-primary/20"
   },
   {
     id: 5,
@@ -73,8 +73,8 @@ const researchPrograms = [
     focus: "Psychiatric Genomics",
     description: "Investigating the genetic architecture of mental health disorders in South Asian populations using whole-genome sequencing.",
     icon: Brain,
-    color: "bg-indigo-100 text-indigo-600",
-    borderColor: "border-indigo-200"
+    color: "bg-brand-secondary/10 text-brand-secondary",
+    borderColor: "border-brand-secondary/20"
   },
   {
     id: 6,
@@ -84,8 +84,8 @@ const researchPrograms = [
     focus: "In-Silico Pharmacology",
     description: "Accelerating drug discovery for neglected tropical diseases through AI-powered molecular screening and docking simulations.",
     icon: FlaskConical,
-    color: "bg-teal-100 text-teal-600",
-    borderColor: "border-teal-200"
+    color: "bg-brand-primary/10 text-brand-primary",
+    borderColor: "border-brand-primary/20"
   }
 ];
 
@@ -126,12 +126,12 @@ export const ResearchProgramsPage: React.FC = () => {
               <div className="relative z-10 w-full px-16 space-y-10">
                 <div className="p-8 glass rounded-[2.5rem] border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.7)] transform -translate-x-12 translate-y-8 hover:-translate-y-2 transition-all duration-700">
                   <div className="flex items-center gap-5 mb-6">
-                    <div className="w-14 h-14 bg-teal-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <div className="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shadow-2xl">
                       <Target className="w-8 h-8 text-white" />
                     </div>
                     <div>
                       <div className="text-slate-800 font-extrabold text-lg">Active Programs</div>
-                      <div className="text-teal-600 text-[11px] font-bold uppercase tracking-[0.2em]">Multi-domain Research</div>
+                      <div className="text-brand-primary text-[11px] font-bold uppercase tracking-[0.2em]">Multi-domain Research</div>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -148,16 +148,16 @@ export const ResearchProgramsPage: React.FC = () => {
 
                 <div className="p-8 glass rounded-[2.5rem] border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.7)] transform translate-x-12 -translate-y-8 hover:translate-y-[-12px] transition-all duration-700">
                   <div className="flex items-center gap-5 mb-6">
-                    <div className="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <div className="w-14 h-14 bg-brand-secondary rounded-2xl flex items-center justify-center shadow-2xl">
                       <Database className="w-8 h-8 text-white" />
                     </div>
                     <div>
                       <div className="text-slate-800 font-extrabold text-lg">Research Output</div>
-                      <div className="text-emerald-600 text-[11px] font-bold uppercase tracking-[0.2em]">Data-Driven Discovery</div>
+                      <div className="text-brand-secondary text-[11px] font-bold uppercase tracking-[0.2em]">Data-Driven Discovery</div>
                     </div>
                   </div>
                   <div className="flex gap-2 items-center text-slate-600">
-                    <Activity className="w-5 h-5 text-emerald-500 animate-pulse" />
+                    <Activity className="w-5 h-5 text-brand-secondary animate-pulse" />
                     <span className="text-xs font-bold uppercase tracking-widest">Real-time Analysis</span>
                   </div>
                 </div>

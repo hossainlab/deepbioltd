@@ -100,36 +100,36 @@ const researchFocusAreas = [
     title: "Cancer Genomics",
     description: "Unlocking the genetic drivers of oncogenesis through multi-layered somatic mutation analysis and tumor microenvironment modeling.",
     icon: Dna,
-    color: "text-rose-500",
-    bg: "bg-rose-50"
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10"
   },
   {
     title: "Neurogenomics",
     description: "Exploring the genomic architecture of neurological disorders using single-cell transcriptomics and complex neural network mapping.",
     icon: Brain,
-    color: "text-indigo-500",
-    bg: "bg-indigo-50"
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10"
   },
   {
     title: "Infectious Diseases",
     description: "Pioneering bioinformatics for rapid pathogen identification and real-time genomic surveillance of emerging infectious threats.",
     icon: ShieldAlert,
-    color: "text-amber-500",
-    bg: "bg-amber-50"
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10"
   },
   {
     title: "Drug Discovery",
     description: "Accelerating the therapeutic pipeline through high-fidelity molecular docking simulations and AI-driven lead optimization.",
     icon: FlaskConical,
-    color: "text-teal-500",
-    bg: "bg-teal-50"
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10"
   },
   {
     title: "AgriBioinformatics",
     description: "Applying computational genomics to enhance crop resilience and food security through precise trait mapping and soil microbiome analysis.",
     icon: Sprout,
-    color: "text-emerald-500",
-    bg: "bg-emerald-50"
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10"
   }
 ];
 
