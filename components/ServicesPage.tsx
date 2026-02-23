@@ -513,6 +513,73 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Case Studies Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Real-World Impact</h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              See how our bioinformatics expertise has driven results across genomics, drug discovery, and beyond.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                category: 'NGS / Transcriptomics',
+                title: 'Drug Resistance Markers in Pediatric Leukemia',
+                description: 'Identified novel drug resistance markers in pediatric leukemia using RNA-Seq analysis of 120 patient samples, leading to publication in a peer-reviewed journal.',
+                metric: '120 patient samples analyzed',
+              },
+              {
+                category: 'Single-Cell Analysis',
+                title: 'Tumor Microenvironment Mapping',
+                description: 'Mapped tumor microenvironment heterogeneity across 50,000+ cells for a pharma client, identifying a rare immune cell subpopulation linked to treatment response.',
+                metric: '50,000+ cells profiled',
+              },
+              {
+                category: 'Molecular Docking',
+                title: 'Antimicrobial Virtual Screening',
+                description: 'Screened 500,000+ compounds against a novel antimicrobial target, shortlisting 12 candidates — 3 validated in wet-lab assays.',
+                metric: '3 hits validated in vitro',
+              },
+              {
+                category: 'Metagenomics',
+                title: 'Gut Microbiome & IBD Flare Prediction',
+                description: 'Characterized gut microbiome shifts in a 200-patient IBD cohort, revealing microbial signatures predictive of disease flare.',
+                metric: '200-patient cohort',
+              },
+              {
+                category: 'ML for Biology',
+                title: 'Antimicrobial Peptide Prediction',
+                description: 'Built a random forest model predicting antimicrobial peptide activity with 94% accuracy, deployed as an internal tool for a biotech startup.',
+                metric: '94% prediction accuracy',
+              },
+              {
+                category: 'Pipeline Automation',
+                title: 'Variant Calling Workflow Automation',
+                description: 'Automated a client\'s manual variant calling workflow from 8 hours to 20 minutes per sample using Nextflow, processing 1,000+ samples.',
+                metric: '24x faster processing',
+              },
+            ].map((study, idx) => (
+              <div
+                key={idx}
+                className="bg-slate-50 border border-slate-100 rounded-[2rem] p-8 hover:shadow-xl transition-all duration-300 flex flex-col"
+              >
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 w-fit bg-brand-primary/10 text-brand-primary">
+                  {study.category}
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 tracking-tight mb-3">{study.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{study.description}</p>
+                <div className="px-4 py-3 bg-brand-primary/5 rounded-xl text-center">
+                  <span className="text-sm font-bold text-brand-primary">{study.metric}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
