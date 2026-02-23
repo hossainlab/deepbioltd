@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
             For general questions, partnerships, or academic inquiries.
           </p>
           <a href="mailto:info@deepbioltd.com" className="text-xl font-bold text-brand-primary hover:text-brand-secondary transition-colors block tracking-tight">
-            deepbiobd@gmail.com
+            info@deepbioltd.com
           </a>
         </div>
 

@@ -236,7 +236,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           <a
-            href="mailto:deepbiobd@gmail.com?subject=Partnership Inquiry"
+            href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
             className="ml-4 px-6 py-2.5 bg-brand-primary text-white rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-brand-primary/25 inline-block"
           >
             Partner With Us
@@ -334,7 +334,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           <a
-            href="mailto:deepbiobd@gmail.com?subject=Partnership Inquiry"
+            href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
             className="w-full py-4 bg-brand-primary text-white rounded-xl text-lg font-bold shadow-xl text-center block"
           >
             Partner With Us

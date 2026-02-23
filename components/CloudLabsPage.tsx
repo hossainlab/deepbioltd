@@ -480,7 +480,7 @@ export const CloudLabsPage: React.FC = () => {
               Apply as Researcher
             </a>
             <a
-              href="mailto:deepbiobd@gmail.com?subject=Cloud Labs Inquiry"
+              href="mailto:info@deepbioltd.com?subject=Cloud Labs Inquiry"
               className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all hover:-translate-y-1"
             >
               Contact Us

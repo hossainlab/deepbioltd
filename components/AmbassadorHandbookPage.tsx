@@ -263,7 +263,7 @@ export const AmbassadorHandbookPage: React.FC = () => {
             Our team is here to help you succeed as a DeepBio Ambassador.
           </p>
           <a
-            href="mailto:deepbiobd@gmail.com?subject=Ambassador Support Request"
+            href="mailto:info@deepbioltd.com?subject=Ambassador Support Request"
             className="inline-flex items-center gap-3 px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 text-lg"
           >
             Contact Ambassador Team

@@ -197,7 +197,7 @@ const ExpertiseModal: React.FC<ExpertiseModalProps> = ({ expertise, onClose }) =
 
           <div className="flex gap-4">
             <a
-              href={`mailto:deepbiobd@gmail.com?subject=Inquiry about ${expertise.title}`}
+              href={`mailto:info@deepbioltd.com?subject=Inquiry about ${expertise.title}`}
               className="flex-1 py-4 bg-brand-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-brand-dark transition-colors"
             >
               <Mail className="w-5 h-5" />
@@ -263,7 +263,7 @@ export const CoreExpertise: React.FC = () => {
           View All Services <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
         <a
-          href="mailto:deepbiobd@gmail.com?subject=Service Inquiry"
+          href="mailto:info@deepbioltd.com?subject=Service Inquiry"
           className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white border-2 border-brand-primary text-brand-primary rounded-2xl font-bold hover:bg-brand-primary hover:text-white transition-all group"
         >
           <Mail className="w-5 h-5" />

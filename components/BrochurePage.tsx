@@ -174,7 +174,7 @@ export const BrochurePage: React.FC = () => {
 
               <div className="pt-8 text-sm text-white/60">
                 <p>Dhaka, Bangladesh</p>
-                <p className="mt-1">deepbiobd@gmail.com | deepbioltd.com</p>
+                <p className="mt-1">info@deepbioltd.com | deepbioltd.com</p>
               </div>
             </div>
           </div>
@@ -428,8 +428,8 @@ export const BrochurePage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-2 text-sm">Email</h4>
-                    <a href="mailto:deepbiobd@gmail.com" className="text-brand-primary hover:underline text-base">
-                      deepbiobd@gmail.com
+                    <a href="mailto:info@deepbioltd.com" className="text-brand-primary hover:underline text-base">
+                      info@deepbioltd.com
                     </a>
                   </div>
                 </div>
@@ -464,7 +464,7 @@ export const BrochurePage: React.FC = () => {
                   Let's collaborate to drive innovation in life sciences and advance your research goals.
                 </p>
                 <a
-                  href="mailto:deepbiobd@gmail.com?subject=Partnership Inquiry"
+                  href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-primary rounded-full font-bold hover:bg-slate-50 transition-all shadow-xl text-sm"
                 >
                   <Mail className="w-5 h-5" />
