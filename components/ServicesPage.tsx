@@ -404,7 +404,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
 
           <div className="flex gap-4">
             <a
-              href={`mailto:deepbiobd@gmail.com?subject=Service Inquiry: ${service.title}`}
+              href={`mailto:info@deepbioltd.com?subject=Service Inquiry: ${service.title}`}
               className="flex-1 py-4 bg-brand-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-brand-dark transition-colors"
             >
               <Mail className="w-5 h-5" />
@@ -464,7 +464,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onLearnMore }) => {
       </div>
 
       <a
-        href={`mailto:deepbiobd@gmail.com?subject=Inquiry: ${service.title}`}
+        href={`mailto:info@deepbioltd.com?subject=Inquiry: ${service.title}`}
         className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-semibold text-center hover:bg-brand-primary hover:text-white transition-all"
       >
         General Inquiry
@@ -522,7 +522,7 @@ export const ServicesPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:deepbiobd@gmail.com?subject=Custom Service Inquiry"
+              href="mailto:info@deepbioltd.com?subject=Custom Service Inquiry"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-brand-primary text-white rounded-2xl font-bold hover:bg-brand-dark transition-all shadow-xl"
             >
               <Mail className="w-5 h-5" />

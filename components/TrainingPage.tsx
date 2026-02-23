@@ -163,7 +163,7 @@ interface WaitlistModalProps {
 const WaitlistModal: React.FC<WaitlistModalProps> = ({ course, onClose }) => {
   if (!course) return null
 
-  const mailtoLink = `mailto:deepbiobd@gmail.com?subject=Course Waitlist: ${encodeURIComponent(course.title)}&body=Hi,%0D%0A%0D%0AI would like to join the waitlist for the "${course.title}" course.%0D%0A%0D%0APlease let me know when enrollment opens.%0D%0A%0D%0AThank you!`
+  const mailtoLink = `mailto:info@deepbioltd.com?subject=Course Waitlist: ${encodeURIComponent(course.title)}&body=Hi,%0D%0A%0D%0AI would like to join the waitlist for the "${course.title}" course.%0D%0A%0D%0APlease let me know when enrollment opens.%0D%0A%0D%0AThank you!`
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -253,7 +253,7 @@ export const TrainingPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:deepbiobd@gmail.com?subject=Custom Training Inquiry"
+              href="mailto:info@deepbioltd.com?subject=Custom Training Inquiry"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-brand-primary text-white rounded-2xl font-bold hover:bg-brand-dark transition-all shadow-xl"
             >
               <Mail className="w-5 h-5" />

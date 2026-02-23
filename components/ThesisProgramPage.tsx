@@ -860,8 +860,8 @@ export const ThesisProgramPage: React.FC = () => {
             <div className="mt-12 text-center">
               <p className="text-slate-600 text-sm">
                 Questions about the program? Contact us at{' '}
-                <a href="mailto:deepbiobd@gmail.com" className="text-brand-primary font-semibold hover:underline">
-                  deepbiobd@gmail.com
+                <a href="mailto:info@deepbioltd.com" className="text-brand-primary font-semibold hover:underline">
+                  info@deepbioltd.com
                 </a>
               </p>
             </div>

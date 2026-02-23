@@ -86,4 +86,4 @@ All rights reserved - DeepBio Limited
 ## Contact
 
 - Website: https://deepbioltd.com
-- Email: deepbiobd@gmail.com
+- Email: info@deepbioltd.com

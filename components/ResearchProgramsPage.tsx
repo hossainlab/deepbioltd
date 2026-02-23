@@ -268,7 +268,7 @@ export const ResearchProgramsPage: React.FC = () => {
             Collaborate with our world-class research teams and contribute to breakthrough discoveries in computational biology
           </p>
           <a
-            href="mailto:deepbiobd@gmail.com?subject=Research Collaboration Inquiry"
+            href="mailto:info@deepbioltd.com?subject=Research Collaboration Inquiry"
             className="inline-flex items-center gap-3 px-10 py-5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 text-lg"
           >
             Contact Research Team
@@ -373,7 +373,7 @@ export const ResearchProgramsPage: React.FC = () => {
                     Join our research team or explore partnership opportunities for this program.
                   </p>
                   <a
-                    href={`mailto:deepbiobd@gmail.com?subject=Collaboration Inquiry: ${selectedProgram.title}`}
+                    href={`mailto:info@deepbioltd.com?subject=Collaboration Inquiry: ${selectedProgram.title}`}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-primary rounded-xl font-bold hover:bg-slate-100 transition-all"
                   >
                     <Mail className="w-5 h-5" />
