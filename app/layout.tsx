@@ -4,6 +4,7 @@ import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import ScrollHandler from '@/components/ScrollHandler'
+import { SmoothScroll } from '@/components/SmoothScroll'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -92,6 +93,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}>
         <div className="relative min-h-screen selection:bg-blue-100 selection:text-blue-900">
+          <SmoothScroll />
           <ScrollHandler />
           <Navbar />
           <main>{children}</main>

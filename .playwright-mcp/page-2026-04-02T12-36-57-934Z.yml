@@ -1,0 +1,1009 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - generic [ref=e7]:
+    - link [ref=e9] [cursor=pointer]:
+      - /url: https://deepbioacademy.com/
+    - generic [ref=e10]:
+      - generic:
+        - navigation:
+          - button "hamburger-icon" [ref=e11] [cursor=pointer]:
+            - generic [ref=e12]: 視
+          - generic [ref=e13]:
+            - list [ref=e14]:
+              - listitem [ref=e15]:
+                - link "Home" [ref=e16] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/
+              - listitem [ref=e17]:
+                - link "About" [ref=e18] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/about/
+              - listitem [ref=e19]:
+                - link "Courses" [ref=e20] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/courses/
+              - listitem [ref=e21]:
+                - link "Instructors" [ref=e22] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/instructors/
+              - listitem [ref=e23]:
+                - link "Blog" [ref=e24] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/blog/
+              - listitem [ref=e25]:
+                - link "Contact" [ref=e26] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/contact/
+            - button "X" [ref=e28] [cursor=pointer]
+  - main [ref=e30]:
+    - generic [ref=e32]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - paragraph [ref=e38]:
+            - text: The Best
+            - generic [ref=e40]:
+              - generic [ref=e41]: O
+              - generic [ref=e42]: "n"
+              - generic [ref=e43]: l
+              - generic [ref=e44]: i
+              - generic [ref=e45]: "n"
+              - generic [ref=e46]: e
+              - generic [ref=e48]: C
+              - generic [ref=e49]: o
+              - generic: u
+              - generic: r
+              - generic: s
+              - generic: e
+              - generic: s
+            - text: You'll Ever Find
+          - generic [ref=e50]:
+            - paragraph [ref=e53]: Master bioinformatics and computational biology with expert-led training from DeepBio Academy.
+            - generic [ref=e54]:
+              - link "Watch Demo Courses" [ref=e56] [cursor=pointer]:
+                - /url: https://www.youtube.com/@hossainlab
+                - generic [ref=e57]:
+                  - img [ref=e59]
+                  - generic [ref=e62]: Watch Demo Courses
+              - link "Explore All Courses" [ref=e64] [cursor=pointer]:
+                - /url: https://deepbioacademy.com/courses/
+                - generic [ref=e65]:
+                  - img [ref=e67]
+                  - generic [ref=e69]: Explore All Courses
+        - link "video-popup" [ref=e76] [cursor=pointer]:
+          - /url: https://www.youtube.com/embed/D6jEeuxZDGU?feature=oembed?playlist=D6jEeuxZDGU&mute=0&autoplay=0&loop=no&controls=0&start=0&end=
+          - img [ref=e77]
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - heading "popular courses" [level=3] [ref=e84]
+          - generic [ref=e85]:
+            - paragraph [ref=e88]:
+              - text: Discover Our Most Popular
+              - generic [ref=e90]:
+                - generic [ref=e91]: O
+                - generic [ref=e92]: "n"
+                - generic [ref=e93]: l
+                - generic [ref=e94]: i
+                - generic [ref=e95]: "n"
+                - generic [ref=e96]: e
+                - generic [ref=e98]: C
+                - generic [ref=e99]: o
+                - generic: u
+                - generic: r
+                - generic: s
+                - generic: e
+                - generic: s
+            - paragraph [ref=e101]: Discover our most popular online bioinformatics courses designed for every learner. Enhance your skills, grow professionally, and achieve your goals through expert-led, flexible learning.
+            - link "View All Courses" [ref=e103] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/courses/
+              - generic [ref=e104]:
+                - img [ref=e106]
+                - generic [ref=e109]: View All Courses
+        - generic [ref=e114]:
+          - generic [ref=e116]:
+            - link "Beginner" [ref=e118] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/unix-for-life-sciences/
+              - generic [ref=e121]: Beginner
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - link "UNIX" [ref=e125] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/course-category/unix/
+                - heading "Unix for Life Sciences" [level=2] [ref=e126]:
+                  - link "Unix for Life Sciences" [ref=e127] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/unix-for-life-sciences/
+                - generic [ref=e129]:
+                  - link "DeepBio Academy" [ref=e130] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e131]
+                  - link "DeepBio Academy" [ref=e132] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e133]: DeepBio Academy
+                - generic [ref=e134]:
+                  - paragraph [ref=e136]: "Command Line Fluency: Master essential Unix commands for file navigation, management, and system interaction."
+                  - paragraph [ref=e138]:
+                    - text: "Data Manipulation: Use powerful text-processing tools like"
+                    - code [ref=e139]: grep
+                    - text: ","
+                    - code [ref=e140]: sed
+                    - text: ", and"
+                    - code [ref=e141]: awk
+                    - text: to filter and reformat common omics file types (FASTQ, BAM, VCF).
+                  - paragraph [ref=e143]: "Bioinformatics Pipelines: Learn to chain commands using pipes and redirection to build efficient data processing workflows."
+                - generic [ref=e144]:
+                  - generic [ref=e145]:
+                    - img [ref=e146]
+                    - generic [ref=e149]: 20h
+                  - generic [ref=e150]:
+                    - img [ref=e151]
+                    - generic [ref=e153]: "2"
+              - generic [ref=e155]:
+                - generic [ref=e156]:
+                  - deletion [ref=e157]:
+                    - generic [ref=e159]: ৳ 5,100.00
+                  - generic [ref=e162]: ৳ 4,080.00
+                - link "Buy Now" [ref=e163] [cursor=pointer]:
+                  - /url: "?add-to-cart=964"
+          - generic [ref=e165]:
+            - link "Placeholder" [ref=e167] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/structural-biology-and-ai/
+              - img "Placeholder" [ref=e168]
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - link "Computational Biology" [ref=e172] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/course-category/computational-biology/
+                - heading "Structural Biology and AI" [level=2] [ref=e173]:
+                  - link "Structural Biology and AI" [ref=e174] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/structural-biology-and-ai/
+                - generic [ref=e176]:
+                  - link "DeepBio Academy" [ref=e177] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e178]
+                  - link "DeepBio Academy" [ref=e179] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e180]: DeepBio Academy
+                - generic [ref=e182]: "The year 2026 marks a historic shift in structural biology: AI is no longer a niche tool but the primary driver of molecular discovery. This course explores the convergence of Experimental Structural Biology (Cryo-EM, Crystallography)…"
+              - generic [ref=e184]:
+                - generic [ref=e185]:
+                  - deletion [ref=e186]:
+                    - generic [ref=e188]: ৳ 5,100.00
+                  - generic [ref=e191]: ৳ 4,080.00
+                - link "Buy Now" [ref=e192] [cursor=pointer]:
+                  - /url: "?add-to-cart=570"
+          - generic [ref=e194]:
+            - link "Intermediate Placeholder" [ref=e196] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/bulk-rna-seq-analysis-with-r/
+              - generic [ref=e199]: Intermediate
+              - img "Placeholder" [ref=e200]
+            - generic [ref=e201]:
+              - generic [ref=e202]:
+                - link "Bioinformatics" [ref=e204] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/course-category/bioinformatics/
+                - heading "Bulk RNA-Seq Analysis with R" [level=2] [ref=e205]:
+                  - link "Bulk RNA-Seq Analysis with R" [ref=e206] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/bulk-rna-seq-analysis-with-r/
+                - generic [ref=e208]:
+                  - link "DeepBio Academy" [ref=e209] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e210]
+                  - link "DeepBio Academy" [ref=e211] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e212]: DeepBio Academy
+                - generic [ref=e214]: This course provides a rigorous foundation in the statistical analysis of Bulk RNA-Seq data, the cornerstone of modern transcriptomics. While single-cell analysis offers resolution, bulk RNA-seq remains the gold standard for high-sensitivity gene discovery, biomarker…
+              - generic [ref=e216]:
+                - generic [ref=e217]:
+                  - deletion [ref=e218]:
+                    - generic [ref=e220]: ৳ 5,100.00
+                  - generic [ref=e223]: ৳ 4,080.00
+                - link "Buy Now" [ref=e224] [cursor=pointer]:
+                  - /url: "?add-to-cart=569"
+          - generic [ref=e226]:
+            - link "Placeholder" [ref=e228] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/ai-for-drug-discovery/
+              - img "Placeholder" [ref=e229]
+            - generic [ref=e230]:
+              - generic [ref=e231]:
+                - link "AI in Biology" [ref=e233] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/course-category/ai-in-biology/
+                - heading "AI for Drug Discovery" [level=2] [ref=e234]:
+                  - link "AI for Drug Discovery" [ref=e235] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/ai-for-drug-discovery/
+                - generic [ref=e237]:
+                  - link "DeepBio Academy" [ref=e238] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e239]
+                  - link "DeepBio Academy" [ref=e240] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e241]: DeepBio Academy
+                - generic [ref=e242]:
+                  - paragraph [ref=e244]: "Target Identification & Validation: Use Multi-modal AI to integrate genomics, spatial transcriptomics, and literature to identify novel disease drivers."
+                  - paragraph [ref=e246]: "Generative Molecular Design: Master Diffusion models and Graph Neural Networks (GNNs) to \"design\" rather than \"screen\" for novel, drug-like small molecules."
+                  - paragraph [ref=e248]: "High-Throughput Virtual Screening: Implement AI-enhanced molecular docking (e.g., OpenFold3, AlphaFold3, or Boltz-1) to predict protein-ligand interactions with near-experimental precision."
+              - generic [ref=e250]:
+                - generic [ref=e251]:
+                  - deletion [ref=e252]:
+                    - generic [ref=e254]: ৳ 5,100.00
+                  - generic [ref=e257]: ৳ 4,080.00
+                - link "Buy Now" [ref=e258] [cursor=pointer]:
+                  - /url: "?add-to-cart=568"
+          - generic [ref=e260]:
+            - link "Placeholder" [ref=e262] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/the-academic-research-workflow/
+              - img "Placeholder" [ref=e263]
+            - generic [ref=e264]:
+              - generic [ref=e265]:
+                - link "Research Workflow" [ref=e267] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/course-category/research-workflow/
+                - heading "The Academic Research Workflow" [level=2] [ref=e268]:
+                  - link "The Academic Research Workflow" [ref=e269] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/the-academic-research-workflow/
+                - generic [ref=e271]:
+                  - link "DeepBio Academy" [ref=e272] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e273]
+                  - link "DeepBio Academy" [ref=e274] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e275]: DeepBio Academy
+                - generic [ref=e276]:
+                  - paragraph [ref=e278]: "AI-Powered Discovery: Learn to use tools like Elicit, Consensus, and Semantic Scholar to map literature landscapes and find research gaps in minutes, not months."
+                  - paragraph [ref=e280]: "Reproducible Computing: Master the \"Gold Standard\" of research—using Nextflow, Docker, and GitHub to ensure your analysis can be replicated by any scientist, anywhere."
+                  - paragraph [ref=e282]: "Data Management Plans (DMP): Structure your metadata and raw sequencing files to meet the rigorous requirements of top-tier journals and funding bodies."
+                - generic [ref=e284]:
+                  - img [ref=e285]
+                  - generic [ref=e287]: "1"
+              - generic [ref=e289]:
+                - generic [ref=e290]:
+                  - deletion [ref=e291]:
+                    - generic [ref=e293]: ৳ 5,100.00
+                  - generic [ref=e296]: ৳ 4,080.00
+                - link "Buy Now" [ref=e297] [cursor=pointer]:
+                  - /url: "?add-to-cart=567"
+          - generic [ref=e299]:
+            - link "Intermediate Placeholder" [ref=e301] [cursor=pointer]:
+              - /url: https://deepbioacademy.com/course/single-cell-analysis-with-python/
+              - generic [ref=e304]: Intermediate
+              - img "Placeholder" [ref=e305]
+            - generic [ref=e306]:
+              - generic [ref=e307]:
+                - generic [ref=e308]:
+                  - link "Bioinformatics" [ref=e309] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course-category/bioinformatics/
+                  - link "Single-Cell" [ref=e310] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course-category/single-cell/
+                - heading "Single-Cell Analysis with Python" [level=2] [ref=e311]:
+                  - link "Single-Cell Analysis with Python" [ref=e312] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/course/single-cell-analysis-with-python/
+                - generic [ref=e314]:
+                  - link "DeepBio Academy" [ref=e315] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - img "DeepBio Academy" [ref=e316]
+                  - link "DeepBio Academy" [ref=e317] [cursor=pointer]:
+                    - /url: https://deepbioacademy.com/author/deepbiobdgmail-com/?post_type=mto-course
+                    - generic [ref=e318]: DeepBio Academy
+                - generic [ref=e319]:
+                  - paragraph [ref=e321]:
+                    - text: "Mastering AnnData: Learn to manipulate the"
+                    - code [ref=e322]: .X
+                    - text: ","
+                    - code [ref=e323]: .obs
+                    - text: ","
+                    - code [ref=e324]: .var
+                    - text: ", and"
+                    - code [ref=e325]: .obsm
+                    - text: slots that make Python-based single-cell analysis so memory-efficient.
+                  - paragraph [ref=e327]: "Scalable Preprocessing: Perform quality control, normalization, and log-transformation on massive datasets that would typically crash traditional R environments."
+                  - paragraph [ref=e329]:
+                    - text: "Deep Generative Modeling: Introduction to"
+                    - code [ref=e330]: scvi-tools
+                    - text: for probabilistic modeling of technical noise and batch effects.
+              - generic [ref=e332]:
+                - generic [ref=e333]:
+                  - deletion [ref=e334]:
+                    - generic [ref=e336]: ৳ 5,100.00
+                  - generic [ref=e339]: ৳ 4,080.00
+                - link "Buy Now" [ref=e340] [cursor=pointer]:
+                  - /url: "?add-to-cart=566"
+      - generic [ref=e345]:
+        - paragraph [ref=e348]:
+          - text: We’re More Than a E-learning —
+          - generic [ref=e350]:
+            - generic [ref=e351]: W
+            - generic [ref=e352]: e
+            - generic [ref=e353]: ’
+            - generic [ref=e354]: r
+            - generic [ref=e355]: e
+            - generic [ref=e357]: "Y"
+            - generic [ref=e358]: o
+            - generic [ref=e359]: u
+            - generic: r
+            - generic: c
+            - generic: a
+            - generic: r
+            - generic: e
+            - generic: e
+            - generic: r
+            - generic: b
+            - generic: u
+            - generic: i
+            - generic: l
+            - generic: d
+            - generic: e
+            - generic: r
+        - generic [ref=e360]:
+          - list [ref=e363]:
+            - listitem [ref=e364]: Learn skills from industry experts
+            - listitem [ref=e365]: Study anytime, anywhere at convenience
+            - listitem [ref=e366]: Complete hands-on projects for mastery
+            - listitem [ref=e367]: Join a community to share knowledge
+          - link "Contact with Us" [ref=e370] [cursor=pointer]:
+            - /url: http://deepbiobd@gmail.com
+            - generic [ref=e371]:
+              - img [ref=e373]
+              - generic [ref=e376]: Contact with Us
+      - generic [ref=e378]:
+        - generic [ref=e380]:
+          - generic [ref=e381]: Online Courses
+          - generic [ref=e382]:
+            - generic [ref=e383]: "0"
+            - generic [ref=e384]: +
+        - generic [ref=e386]:
+          - generic [ref=e387]: Experienced Instructors
+          - generic [ref=e388]:
+            - generic [ref=e389]: "0"
+            - generic [ref=e390]: +
+        - generic [ref=e392]:
+          - generic [ref=e393]: Total Certifications
+          - generic [ref=e394]:
+            - generic [ref=e395]: "0"
+            - generic [ref=e396]: K
+        - generic [ref=e398]:
+          - generic [ref=e399]: Active Students
+          - generic [ref=e400]:
+            - generic [ref=e401]: "0"
+            - generic [ref=e402]: K+
+      - generic [ref=e406]:
+        - link "video-popup" [ref=e412] [cursor=pointer]:
+          - /url: https://www.youtube.com/embed/nhwtzU4zNQo?feature=oembed?playlist=nhwtzU4zNQo&mute=0&autoplay=0&loop=no&controls=0&start=0&end=
+          - img [ref=e413]
+        - generic [ref=e415]:
+          - heading "M y g o a l i s t o d e m y s t i f y b i o i n f o r m a t i c s a n d c o m p u t a t i o n a l b i o l o g y . . ." [level=2] [ref=e417]:
+            - generic [ref=e418]:
+              - generic [ref=e421]: M
+              - generic [ref=e424]: "y"
+            - generic [ref=e425]:
+              - generic [ref=e428]: g
+              - generic [ref=e431]: o
+              - generic [ref=e434]: a
+              - generic [ref=e437]: l
+            - generic [ref=e438]:
+              - generic [ref=e441]: i
+              - generic [ref=e444]: s
+            - generic [ref=e445]:
+              - generic [ref=e448]: t
+              - generic [ref=e451]: o
+            - generic [ref=e452]:
+              - generic [ref=e455]: d
+              - generic [ref=e458]: e
+              - generic [ref=e461]: m
+              - generic [ref=e464]: "y"
+              - generic [ref=e467]: s
+              - generic [ref=e470]: t
+              - generic [ref=e473]: i
+              - generic [ref=e476]: f
+              - generic [ref=e479]: "y"
+            - generic [ref=e480]:
+              - generic [ref=e483]: b
+              - generic [ref=e486]: i
+              - generic [ref=e489]: o
+              - generic [ref=e492]: i
+              - generic [ref=e495]: "n"
+              - generic [ref=e498]: f
+              - generic [ref=e501]: o
+              - generic [ref=e504]: r
+              - generic [ref=e507]: m
+              - generic [ref=e510]: a
+              - generic [ref=e513]: t
+              - generic [ref=e516]: i
+              - generic [ref=e519]: c
+              - generic [ref=e522]: s
+            - generic [ref=e523]:
+              - generic [ref=e526]: a
+              - generic [ref=e529]: "n"
+              - generic [ref=e532]: d
+            - generic [ref=e533]:
+              - generic [ref=e536]: c
+              - generic [ref=e539]: o
+              - generic [ref=e542]: m
+              - generic [ref=e545]: p
+              - generic [ref=e548]: u
+              - generic [ref=e551]: t
+              - generic [ref=e554]: a
+              - generic [ref=e557]: t
+              - generic [ref=e560]: i
+              - generic [ref=e563]: o
+              - generic [ref=e566]: "n"
+              - generic [ref=e569]: a
+              - generic [ref=e572]: l
+            - generic [ref=e573]:
+              - generic [ref=e576]: b
+              - generic [ref=e579]: i
+              - generic [ref=e582]: o
+              - generic [ref=e585]: l
+              - generic [ref=e588]: o
+              - generic [ref=e591]: g
+              - generic [ref=e594]: "y"
+              - generic [ref=e597]: .
+              - generic [ref=e600]: .
+              - generic [ref=e603]: .
+          - heading "Md. Jubayer Hossain • CEO & Founder" [level=2] [ref=e605]
+      - generic [ref=e608]:
+        - heading "Categories" [level=3] [ref=e611]
+        - generic [ref=e612]:
+          - paragraph [ref=e615]:
+            - text: Explore our
+            - generic [ref=e617]:
+              - generic [ref=e618]: C
+              - generic [ref=e619]: o
+              - generic [ref=e620]: u
+              - generic [ref=e621]: r
+              - generic [ref=e622]: s
+              - generic [ref=e623]: e
+              - generic [ref=e625]: C
+              - generic [ref=e626]: a
+              - generic: t
+              - generic: e
+              - generic: g
+              - generic: o
+              - generic: r
+              - generic: i
+              - generic: e
+              - generic: s
+          - heading "to find your perfect learning path." [level=2] [ref=e628]
+      - generic [ref=e631]:
+        - generic [ref=e632]:
+          - heading "testimonials" [level=3] [ref=e635]
+          - generic [ref=e636]:
+            - heading "P e o p l e A r e S a y i n g" [level=2] [ref=e638]:
+              - generic [ref=e639]:
+                - generic [ref=e642]: P
+                - generic [ref=e645]: e
+                - generic [ref=e648]: o
+                - generic [ref=e651]: p
+                - generic [ref=e654]: l
+                - generic [ref=e657]: e
+              - generic [ref=e658]:
+                - generic [ref=e661]: A
+                - generic [ref=e664]: r
+                - generic [ref=e667]: e
+              - generic [ref=e668]:
+                - generic [ref=e671]: S
+                - generic [ref=e674]: a
+                - generic [ref=e677]: "y"
+                - generic [ref=e680]: i
+                - generic [ref=e683]: "n"
+                - generic [ref=e686]: g
+            - paragraph [ref=e688]: What People Say About Their Learning Experiences and Achievements Through Our Courses
+        - generic [ref=e691]:
+          - generic [ref=e692]:
+            - paragraph [ref=e694]: “Bioinformatics and Computational Biology are at the forefront of modern science, shaping breakthroughs in genomics, drug discovery, and personalized medicine. Programs like the Professional Training in Bioinformatics & Computational Biology by DeepBio, under the guidance of Md. Jubayer Hossain, provide students in Bangladesh with an invaluable opportunity to gain hands-on expertise in these rapidly evolving fields.”
+            - generic [ref=e696]:
+              - figure [ref=e697]
+              - generic [ref=e698]:
+                - generic [ref=e699]: Sayed Mashequl Bari
+                - paragraph [ref=e700]: Assistant Professor, Faculty of Fisheries and Marine Science
+          - generic [ref=e701]:
+            - paragraph [ref=e703]:
+              - text: “My research journey was significantly shaped by my experience at CHIRAL Bangladesh, for which I am deeply grateful. Through their structured internship training program, I received mentorship and foundational training in research methodology, research ethics, mobile data collection, academic writing, and data analysis using R. These sessions helped me understand the principles of responsible research and evidence-based scientific inquiry. During the internship, I conducted literature reviews, designed questionnaires and collected data using KoboToolbox, and contributed to the development of health campaign resources. The program also emphasized professionalism, encouraging regular participation in sessions, assignments, and collaborative learning.
+              - text: In addition to the internship, I had the opportunity to participate in the Bioinformatics BootCamp Cohort 4.0, which greatly expanded my understanding of computational biology. Through this program, I learned to explore biological databases such as NCBI, perform advanced BLAST searches, and study comparative genomics. The training also introduced me to multiple sequence alignment, phylogenetic analysis, selection analysis, next-generation sequencing applications, structural bioinformatics, and protein domain and motif analysis, as well as protein–protein interaction studies. These experiences helped me appreciate how bioinformatics tools can be applied to investigate complex biological questions.
+              - text: I also completed the “R for Research” training program, where I developed practical skills in statistical analysis and data visualization. This program taught me how to create publication-ready tables and figures, analyze and visualize Likert-scale data, and perform statistical tests such as descriptive statistics, correlation analysis, ANOVA, and t-tests. The program emphasized reproducible research and included hands-on projects with real datasets, which strengthened my confidence in applying computational and statistical methods to research problems.
+              - text: Later, I joined the Big Bioinformatics Lab, where I began learning RNA-seq analysis using R and am currently learning Salmon-based pipelines for transcriptomic data analysis. I remain sincerely thankful to CHIRAL Bangladesh for providing the mentorship, training, and research opportunities that laid the foundation for my growth in computational and biomedical research.”
+            - generic [ref=e705]:
+              - figure [ref=e706]
+              - generic [ref=e707]:
+                - generic [ref=e708]: Michael Lee
+                - paragraph [ref=e709]: Intermediate Student
+          - generic [ref=e710]:
+            - paragraph [ref=e712]: “The mentorship in this course helped me a lot in understanding the fundamentals of scientific research and the use of R programming for data analysis. Through the guidance of the mentor, I learned how to approach a research problem, analyze data systematically, and interpret results more effectively!”
+            - generic [ref=e714]:
+              - figure [ref=e715]
+              - generic [ref=e716]:
+                - generic [ref=e717]: Priya Sharma
+                - paragraph [ref=e718]: Beginner Student
+          - generic [ref=e719]:
+            - paragraph [ref=e721]: “Bioinformatics and Computational Biology are at the forefront of modern science, shaping breakthroughs in genomics, drug discovery, and personalized medicine. Programs like the Professional Training in Bioinformatics & Computational Biology by DeepBio, under the guidance of Md. Jubayer Hossain, provide students in Bangladesh with an invaluable opportunity to gain hands-on expertise in these rapidly evolving fields.”
+            - generic [ref=e723]:
+              - figure [ref=e724]
+              - generic [ref=e725]:
+                - generic [ref=e726]: Sayed Mashequl Bari
+                - paragraph [ref=e727]: Assistant Professor, Faculty of Fisheries and Marine Science
+          - generic [ref=e728]:
+            - paragraph [ref=e730]:
+              - text: “My research journey was significantly shaped by my experience at CHIRAL Bangladesh, for which I am deeply grateful. Through their structured internship training program, I received mentorship and foundational training in research methodology, research ethics, mobile data collection, academic writing, and data analysis using R. These sessions helped me understand the principles of responsible research and evidence-based scientific inquiry. During the internship, I conducted literature reviews, designed questionnaires and collected data using KoboToolbox, and contributed to the development of health campaign resources. The program also emphasized professionalism, encouraging regular participation in sessions, assignments, and collaborative learning.
+              - text: In addition to the internship, I had the opportunity to participate in the Bioinformatics BootCamp Cohort 4.0, which greatly expanded my understanding of computational biology. Through this program, I learned to explore biological databases such as NCBI, perform advanced BLAST searches, and study comparative genomics. The training also introduced me to multiple sequence alignment, phylogenetic analysis, selection analysis, next-generation sequencing applications, structural bioinformatics, and protein domain and motif analysis, as well as protein–protein interaction studies. These experiences helped me appreciate how bioinformatics tools can be applied to investigate complex biological questions.
+              - text: I also completed the “R for Research” training program, where I developed practical skills in statistical analysis and data visualization. This program taught me how to create publication-ready tables and figures, analyze and visualize Likert-scale data, and perform statistical tests such as descriptive statistics, correlation analysis, ANOVA, and t-tests. The program emphasized reproducible research and included hands-on projects with real datasets, which strengthened my confidence in applying computational and statistical methods to research problems.
+              - text: Later, I joined the Big Bioinformatics Lab, where I began learning RNA-seq analysis using R and am currently learning Salmon-based pipelines for transcriptomic data analysis. I remain sincerely thankful to CHIRAL Bangladesh for providing the mentorship, training, and research opportunities that laid the foundation for my growth in computational and biomedical research.”
+            - generic [ref=e732]:
+              - figure [ref=e733]
+              - generic [ref=e734]:
+                - generic [ref=e735]: Michael Lee
+                - paragraph [ref=e736]: Intermediate Student
+          - generic [ref=e737]:
+            - paragraph [ref=e739]: “The mentorship in this course helped me a lot in understanding the fundamentals of scientific research and the use of R programming for data analysis. Through the guidance of the mentor, I learned how to approach a research problem, analyze data systematically, and interpret results more effectively!”
+            - generic [ref=e741]:
+              - figure [ref=e742]
+              - generic [ref=e743]:
+                - generic [ref=e744]: Priya Sharma
+                - paragraph [ref=e745]: Beginner Student
+          - generic [ref=e746]:
+            - paragraph [ref=e748]: “Bioinformatics and Computational Biology are at the forefront of modern science, shaping breakthroughs in genomics, drug discovery, and personalized medicine. Programs like the Professional Training in Bioinformatics & Computational Biology by DeepBio, under the guidance of Md. Jubayer Hossain, provide students in Bangladesh with an invaluable opportunity to gain hands-on expertise in these rapidly evolving fields.”
+            - generic [ref=e750]:
+              - figure [ref=e751]
+              - generic [ref=e752]:
+                - generic [ref=e753]: Sayed Mashequl Bari
+                - paragraph [ref=e754]: Assistant Professor, Faculty of Fisheries and Marine Science
+          - generic [ref=e755]:
+            - paragraph [ref=e757]:
+              - text: “My research journey was significantly shaped by my experience at CHIRAL Bangladesh, for which I am deeply grateful. Through their structured internship training program, I received mentorship and foundational training in research methodology, research ethics, mobile data collection, academic writing, and data analysis using R. These sessions helped me understand the principles of responsible research and evidence-based scientific inquiry. During the internship, I conducted literature reviews, designed questionnaires and collected data using KoboToolbox, and contributed to the development of health campaign resources. The program also emphasized professionalism, encouraging regular participation in sessions, assignments, and collaborative learning.
+              - text: In addition to the internship, I had the opportunity to participate in the Bioinformatics BootCamp Cohort 4.0, which greatly expanded my understanding of computational biology. Through this program, I learned to explore biological databases such as NCBI, perform advanced BLAST searches, and study comparative genomics. The training also introduced me to multiple sequence alignment, phylogenetic analysis, selection analysis, next-generation sequencing applications, structural bioinformatics, and protein domain and motif analysis, as well as protein–protein interaction studies. These experiences helped me appreciate how bioinformatics tools can be applied to investigate complex biological questions.
+              - text: I also completed the “R for Research” training program, where I developed practical skills in statistical analysis and data visualization. This program taught me how to create publication-ready tables and figures, analyze and visualize Likert-scale data, and perform statistical tests such as descriptive statistics, correlation analysis, ANOVA, and t-tests. The program emphasized reproducible research and included hands-on projects with real datasets, which strengthened my confidence in applying computational and statistical methods to research problems.
+              - text: Later, I joined the Big Bioinformatics Lab, where I began learning RNA-seq analysis using R and am currently learning Salmon-based pipelines for transcriptomic data analysis. I remain sincerely thankful to CHIRAL Bangladesh for providing the mentorship, training, and research opportunities that laid the foundation for my growth in computational and biomedical research.”
+            - generic [ref=e759]:
+              - figure [ref=e760]
+              - generic [ref=e761]:
+                - generic [ref=e762]: Michael Lee
+                - paragraph [ref=e763]: Intermediate Student
+          - generic [ref=e764]:
+            - paragraph [ref=e766]: “The mentorship in this course helped me a lot in understanding the fundamentals of scientific research and the use of R programming for data analysis. Through the guidance of the mentor, I learned how to approach a research problem, analyze data systematically, and interpret results more effectively!”
+            - generic [ref=e768]:
+              - figure [ref=e769]
+              - generic [ref=e770]:
+                - generic [ref=e771]: Priya Sharma
+                - paragraph [ref=e772]: Beginner Student
+      - generic [ref=e774]:
+        - generic [ref=e775]:
+          - heading "Best Value" [level=3] [ref=e778]
+          - generic [ref=e779]:
+            - paragraph [ref=e782]:
+              - text: Membership Tiers for
+              - generic [ref=e784]:
+                - generic [ref=e785]: E
+                - generic [ref=e786]: v
+                - generic [ref=e787]: e
+                - generic [ref=e788]: r
+                - generic [ref=e789]: "y"
+                - generic [ref=e790]: o
+                - generic [ref=e791]: "n"
+                - generic [ref=e792]: e
+            - paragraph [ref=e794]: Choose the ideal track for your professional growth. Targeted access gives full entry to modules, expert pipelines, and toolsets to help you achieve research excellence effectively.
+            - generic [ref=e796]:
+              - generic [ref=e797]:
+                - generic [ref=e799] [cursor=pointer]: Monthly
+                - generic [ref=e800] [cursor=pointer]: Yearly
+              - generic: Save 30%
+        - generic [ref=e801]:
+          - generic [ref=e802]:
+            - generic [ref=e803]:
+              - heading "DeepBio Associate" [level=2] [ref=e805]
+              - paragraph [ref=e808]: Master the language of biological data. This course is designed to transition beginners from wet-lab intuition to computational fluency. You will move beyond simply “using tools” to understanding the fundamental logic, vocabulary, and “grammar” of the biological sequences that define life.
+              - link "Start with basic" [ref=e810] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e812]: Start with basic
+            - list [ref=e815]:
+              - listitem [ref=e816]:
+                - img [ref=e818]
+                - generic [ref=e820]: Access to all recorded video lessons
+              - listitem [ref=e821]:
+                - img [ref=e823]
+                - generic [ref=e825]: Downloadable materials & exercises
+              - listitem [ref=e826]:
+                - img [ref=e828]
+                - generic [ref=e830]: Your progress build step by step
+              - listitem [ref=e831]:
+                - img [ref=e833]
+                - generic [ref=e835]: Community access
+          - generic [ref=e836]:
+            - generic [ref=e837]:
+              - heading "DeepBio Professional" [level=2] [ref=e839]
+              - paragraph [ref=e842]: Ready to move beyond basic sequence alignment? This course is designed for those who have mastered the “alphabet” of bioinformatics and are ready to build complex, automated “sentences.” We focus on Intermediate Bioinformatics, where the goal is to transition from running one-off scripts to building robust, real-life pipelines that handle massive datasets with confidence.
+              - link "Get full access" [ref=e844] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e846]: Get full access
+            - list [ref=e849]:
+              - listitem [ref=e850]:
+                - img [ref=e852]
+                - generic [ref=e854]: Access to all recorded video lessons
+              - listitem [ref=e855]:
+                - img [ref=e857]
+                - generic [ref=e859]: Downloadable materials & exercises
+              - listitem [ref=e860]:
+                - img [ref=e862]
+                - generic [ref=e864]: Your progress build step by step
+              - listitem [ref=e865]:
+                - img [ref=e867]
+                - generic [ref=e869]: Community access
+          - generic [ref=e870]:
+            - generic [ref=e871]:
+              - heading "DeepBio Fellow" [level=2] [ref=e873]
+              - generic [ref=e875]:
+                - paragraph [ref=e876]: To lead in the global computational biology landscape and scale a startup like DeepBio Limited, “Advanced Bioinformatics” is more than just running scripts—it is the ability to architect complex systems and communicate high-level data insights with precision and authority.
+                - paragraph [ref=e877]: This course is specifically tailored for senior researchers and biotech professionals to achieve mastery in both large-scale system design and professional scientific leadership.
+              - link "Get full access" [ref=e879] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e881]: Get full access
+            - list [ref=e884]:
+              - listitem [ref=e885]:
+                - img [ref=e887]
+                - generic [ref=e889]: Access to all recorded video lessons
+              - listitem [ref=e890]:
+                - img [ref=e892]
+                - generic [ref=e894]: Downloadable materials & exercises
+              - listitem [ref=e895]:
+                - img [ref=e897]
+                - generic [ref=e899]: Your progress build step by step
+              - listitem [ref=e900]:
+                - img [ref=e902]
+                - generic [ref=e904]: Community access
+        - generic [ref=e905]:
+          - generic [ref=e906]:
+            - heading "Trusted by Students across Bangladesh" [level=2] [ref=e908]
+            - paragraph [ref=e910]: Join a growing network of local researchers and students who are mastering bioinformatics to solve regional and global biological challenges.
+          - generic [ref=e911]:
+            - region "Image Carousel" [ref=e916]:
+              - generic [ref=e917]:
+                - group [ref=e918]:
+                  - figure [ref=e919]:
+                    - img [ref=e920]
+                - group [ref=e921]:
+                  - figure [ref=e922]:
+                    - img [ref=e923]
+                - group [ref=e924]:
+                  - figure [ref=e925]:
+                    - img [ref=e926]
+                - group [ref=e927]:
+                  - figure [ref=e928]:
+                    - img [ref=e929]
+                - group "1 / 6" [ref=e930]:
+                  - figure [ref=e931]:
+                    - img "Dhaka_University_logo" [ref=e932]
+                - group "2 / 6" [ref=e933]:
+                  - figure [ref=e934]:
+                    - img "Jahangirnagar_University_Logo" [ref=e935]
+                - group "3 / 6" [ref=e936]:
+                  - figure [ref=e937]:
+                    - img "jnu_logo" [ref=e938]
+                - group "4 / 6" [ref=e939]:
+                  - figure [ref=e940]:
+                    - img "just_logo" [ref=e941]
+                - group [ref=e942]:
+                  - figure [ref=e943]:
+                    - img [ref=e944]
+                - group [ref=e945]:
+                  - figure [ref=e946]:
+                    - img [ref=e947]
+                - group [ref=e948]:
+                  - figure [ref=e949]:
+                    - img [ref=e950]
+                - group [ref=e951]:
+                  - figure [ref=e952]:
+                    - img [ref=e953]
+                - group [ref=e954]:
+                  - figure [ref=e955]:
+                    - img [ref=e956]
+                - group [ref=e957]:
+                  - figure [ref=e958]:
+                    - img [ref=e959]
+            - region "Image Carousel" [ref=e964]:
+              - generic [ref=e965]:
+                - group [ref=e966]:
+                  - figure [ref=e967]:
+                    - img [ref=e968]
+                - group [ref=e969]:
+                  - figure [ref=e970]:
+                    - img [ref=e971]
+                - group [ref=e972]:
+                  - figure [ref=e973]:
+                    - img [ref=e974]
+                - group [ref=e975]:
+                  - figure [ref=e976]:
+                    - img [ref=e977]
+                - group "1 / 4" [ref=e978]:
+                  - figure [ref=e979]:
+                    - img "meta_logo" [ref=e980]
+                - group "2 / 4" [ref=e981]:
+                  - figure [ref=e982]:
+                    - img "nstu_logo" [ref=e983]
+                - group "3 / 4" [ref=e984]:
+                  - figure [ref=e985]:
+                    - img "diu_logo" [ref=e986]
+                - group "4 / 4" [ref=e987]:
+                  - figure [ref=e988]:
+                    - img "Islamic_University,_Bangladesh_logo.svg" [ref=e989]
+                - group [ref=e990]:
+                  - figure [ref=e991]:
+                    - img [ref=e992]
+                - group [ref=e993]:
+                  - figure [ref=e994]:
+                    - img [ref=e995]
+                - group [ref=e996]:
+                  - figure [ref=e997]:
+                    - img [ref=e998]
+                - group [ref=e999]:
+                  - figure [ref=e1000]:
+                    - img [ref=e1001]
+      - generic [ref=e1003]:
+        - generic [ref=e1004]:
+          - heading "Our Experts" [level=3] [ref=e1007]
+          - generic [ref=e1008]:
+            - paragraph [ref=e1011]:
+              - text: Discover the People Powering
+              - generic [ref=e1013]:
+                - generic [ref=e1014]: o
+                - generic [ref=e1015]: u
+                - generic [ref=e1016]: r
+                - generic [ref=e1018]: L
+                - generic [ref=e1019]: e
+                - generic [ref=e1020]: a
+                - generic [ref=e1021]: r
+                - generic [ref=e1022]: "n"
+                - generic: i
+                - generic: "n"
+                - generic: g
+                - generic: J
+                - generic: o
+                - generic: u
+                - generic: r
+                - generic: "n"
+                - generic: e
+                - generic: "y"
+            - link "View All Team" [ref=e1024] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e1025]:
+                - img [ref=e1027]
+                - generic [ref=e1030]: View All Team
+        - generic [ref=e1031]:
+          - generic [ref=e1032]:
+            - generic [ref=e1034]:
+              - heading "Md. Jubayer Hossain" [level=2] [ref=e1036]
+              - paragraph [ref=e1038]: Founder & CEO
+              - list [ref=e1040]:
+                - listitem [ref=e1041]:
+                  - link [ref=e1042] [cursor=pointer]:
+                    - /url: https://www.facebook.com/jhossain.me
+                    - img [ref=e1044]
+                - listitem [ref=e1046]:
+                  - link [ref=e1047] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/in/hossainmj
+                    - img [ref=e1049]
+                - listitem [ref=e1051]:
+                  - img [ref=e1054] [cursor=pointer]
+            - generic [ref=e1057]:
+              - heading "Nishat Afrin Mim" [level=2] [ref=e1059]
+              - paragraph [ref=e1061]: Program Coordinator
+              - list [ref=e1063]:
+                - listitem [ref=e1064]:
+                  - img [ref=e1067] [cursor=pointer]
+                - listitem [ref=e1069]:
+                  - img [ref=e1072] [cursor=pointer]
+                - listitem [ref=e1074]:
+                  - img [ref=e1077] [cursor=pointer]
+          - generic [ref=e1080]:
+            - generic [ref=e1082]:
+              - heading "Muhibullah Shahjahan" [level=2] [ref=e1084]
+              - paragraph [ref=e1086]: Bioinformatics Analyst
+              - list [ref=e1088]:
+                - listitem [ref=e1089]:
+                  - img [ref=e1092] [cursor=pointer]
+                - listitem [ref=e1094]:
+                  - img [ref=e1097] [cursor=pointer]
+                - listitem [ref=e1099]:
+                  - img [ref=e1102] [cursor=pointer]
+            - generic [ref=e1106]:
+              - heading "Najnin Suktara" [level=2] [ref=e1108]
+              - paragraph [ref=e1110]: Academic Operations Manager
+              - list [ref=e1112]:
+                - listitem [ref=e1113]:
+                  - img [ref=e1116] [cursor=pointer]
+                - listitem [ref=e1118]:
+                  - img [ref=e1121] [cursor=pointer]
+                - listitem [ref=e1123]:
+                  - img [ref=e1126] [cursor=pointer]
+          - generic [ref=e1129]:
+            - generic [ref=e1131]:
+              - heading "Musab Shahriar" [level=2] [ref=e1133]
+              - paragraph [ref=e1135]: CADD Scientist
+              - list [ref=e1137]:
+                - listitem [ref=e1138]:
+                  - img [ref=e1141] [cursor=pointer]
+                - listitem [ref=e1143]:
+                  - img [ref=e1146] [cursor=pointer]
+                - listitem [ref=e1148]:
+                  - img [ref=e1151] [cursor=pointer]
+            - generic [ref=e1155]:
+              - heading "Tasmim Rahman Adib" [level=2] [ref=e1157]
+              - paragraph [ref=e1159]: AI Scientist
+              - list [ref=e1161]:
+                - listitem [ref=e1162]:
+                  - img [ref=e1165] [cursor=pointer]
+                - listitem [ref=e1167]:
+                  - img [ref=e1170] [cursor=pointer]
+                - listitem [ref=e1172]:
+                  - img [ref=e1175] [cursor=pointer]
+          - generic [ref=e1178]:
+            - generic [ref=e1180]:
+              - heading "Pritom Kundu" [level=2] [ref=e1182]
+              - paragraph [ref=e1185]: CADD Scientist
+              - list [ref=e1187]:
+                - listitem [ref=e1188]:
+                  - img [ref=e1191] [cursor=pointer]
+                - listitem [ref=e1193]:
+                  - img [ref=e1196] [cursor=pointer]
+                - listitem [ref=e1198]:
+                  - img [ref=e1201] [cursor=pointer]
+            - generic [ref=e1205]:
+              - heading "Tajrian Rahman" [level=2] [ref=e1207]
+              - paragraph [ref=e1209]: Finance Manager
+              - list [ref=e1211]:
+                - listitem [ref=e1212]:
+                  - img [ref=e1215] [cursor=pointer]
+                - listitem [ref=e1217]:
+                  - img [ref=e1220] [cursor=pointer]
+                - listitem [ref=e1222]:
+                  - img [ref=e1225] [cursor=pointer]
+      - generic [ref=e1229]:
+        - generic [ref=e1230]:
+          - heading "Frequently Asked" [level=3] [ref=e1232]
+          - paragraph [ref=e1235]:
+            - text: Find Answers to All Your
+            - generic [ref=e1237]:
+              - generic [ref=e1238]: C
+              - generic [ref=e1239]: o
+              - generic [ref=e1240]: u
+              - generic [ref=e1241]: r
+              - generic [ref=e1242]: s
+              - generic [ref=e1243]: e
+              - generic [ref=e1245]: Q
+              - generic [ref=e1246]: u
+              - generic: e
+              - generic: s
+              - generic: t
+              - generic: i
+              - generic: o
+              - generic: "n"
+              - generic: s
+          - link "Contact Us" [ref=e1248] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e1249]:
+              - img [ref=e1251]
+              - generic [ref=e1254]: Contact Us
+        - generic [ref=e1258]:
+          - generic [ref=e1259]:
+            - link "What is DeepBio Academy?" [expanded] [ref=e1261] [cursor=pointer]:
+              - /url: "#collapse-e5769b969ce153805445"
+              - generic [ref=e1262]: What is DeepBio Academy?
+              - img [ref=e1265]
+            - generic "What is DeepBio Academy?" [ref=e1266]:
+              - paragraph [ref=e1268]: DeepBio Academy is the educational wing of DeepBio Limited, a Bangladeshi bioinformatics startup. We focus on providing high-quality, reproducible computational biology training specifically designed for students and researchers in Bangladesh.
+          - link "Do I need prior coding experience to start?" [ref=e1271] [cursor=pointer]:
+            - /url: "#collapse-d60c5eb69ce153805445"
+            - generic [ref=e1272]: Do I need prior coding experience to start?
+            - img [ref=e1275]
+          - link "Will I receive a formal certificate upon completion?" [ref=e1278] [cursor=pointer]:
+            - /url: "#collapse-c6cc55e69ce153805445"
+            - generic [ref=e1279]: Will I receive a formal certificate upon completion?
+            - img [ref=e1282]
+          - link "How do these courses improve my chances for higher studies or jobs?" [ref=e1285] [cursor=pointer]:
+            - /url: "#collapse-28f83d569ce153805445"
+            - generic [ref=e1286]: How do these courses improve my chances for higher studies or jobs?
+            - img [ref=e1289]
+          - link "Is there community support available?" [ref=e1292] [cursor=pointer]:
+            - /url: "#collapse-0c07fb169ce153805445"
+            - generic [ref=e1293]: Is there community support available?
+            - img [ref=e1296]
+      - generic [ref=e1299]:
+        - generic [ref=e1302]:
+          - generic [ref=e1303]:
+            - heading "4.9/5" [level=2] [ref=e1305]
+            - heading "from 500+ reviews" [level=2] [ref=e1307]
+          - generic [ref=e1308]:
+            - heading "98%" [level=2] [ref=e1310]
+            - heading "support satisfaction" [level=2] [ref=e1312]
+        - generic [ref=e1326]:
+          - heading "Direct Contact With Us" [level=2] [ref=e1328]
+          - generic [ref=e1337]:
+            - generic [ref=e1340]:
+              - generic [ref=e1341]: Full Name *
+              - textbox "Full Name *" [ref=e1342]:
+                - /placeholder: "Name "
+            - generic [ref=e1345]:
+              - generic [ref=e1346]: Email Address
+              - textbox "Email Address" [ref=e1347]:
+                - /placeholder: "Email "
+            - generic [ref=e1350]:
+              - generic [ref=e1351]: Subject (required)
+              - textbox "Subject (required)" [ref=e1352]:
+                - /placeholder: "What is your message about? "
+            - generic [ref=e1355]:
+              - generic [ref=e1356]: Message
+              - textbox "Message" [ref=e1357]:
+                - /placeholder: " Type your message here.   "
+            - button "Send Message" [ref=e1360] [cursor=pointer]:
+              - generic [ref=e1361]: Send Message
+  - generic [ref=e1363]:
+    - generic [ref=e1365]:
+      - heading "Start Learning Today & Achieve Success" [level=2] [ref=e1367]
+      - link "Explore All Courses" [ref=e1369] [cursor=pointer]:
+        - /url: https://deepbioacademy.com/courses/
+        - generic [ref=e1370]:
+          - img [ref=e1372]
+          - generic [ref=e1375]: Explore All Courses
+    - generic [ref=e1377]:
+      - generic [ref=e1378]:
+        - generic [ref=e1379]:
+          - generic [ref=e1380]:
+            - list [ref=e1383]:
+              - listitem [ref=e1384]:
+                - link "Home" [ref=e1385] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/
+                  - generic [ref=e1386]: Home
+              - listitem [ref=e1387]:
+                - link "About" [ref=e1388] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1389]: About
+              - listitem [ref=e1390]:
+                - link "Courses" [ref=e1391] [cursor=pointer]:
+                  - /url: https://deepbioacademy.com/courses/
+                  - generic [ref=e1392]: Courses
+            - list [ref=e1395]:
+              - listitem [ref=e1396]:
+                - link "Categories" [ref=e1397] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1398]: Categories
+              - listitem [ref=e1399]:
+                - link "Team" [ref=e1400] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1401]: Team
+              - listitem [ref=e1402]:
+                - link "Testimonials" [ref=e1403] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1404]: Testimonials
+              - listitem [ref=e1405]:
+                - link "Contact us" [ref=e1406] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1407]: Contact us
+            - list [ref=e1410]:
+              - listitem [ref=e1411]:
+                - link "+8801843381652" [ref=e1412] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1413]: "+8801843381652"
+              - listitem [ref=e1414]:
+                - link "academy@deepbioltd.com" [ref=e1415] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1416]: academy@deepbioltd.com
+              - listitem [ref=e1417]:
+                - link "Virtual HQ" [ref=e1418] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1419]: Virtual HQ
+          - list [ref=e1422]:
+            - listitem [ref=e1423]:
+              - link "LinkedIn" [ref=e1424] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/deepbioltd/
+                - img [ref=e1426]
+                - generic [ref=e1428]: LinkedIn
+            - listitem [ref=e1429]:
+              - link "Twitter" [ref=e1430] [cursor=pointer]:
+                - /url: https://twitter.com/deepbioltd
+                - img [ref=e1432]
+                - generic [ref=e1435]: Twitter
+            - listitem [ref=e1436]:
+              - link "Instagram" [ref=e1437] [cursor=pointer]:
+                - /url: https://www.facebook.com/deepbioltd
+                - img [ref=e1439]
+                - generic [ref=e1441]: Instagram
+        - heading "DeepBio Academy" [level=3] [ref=e1443]:
+          - link "DeepBio Academy" [ref=e1444] [cursor=pointer]:
+            - /url: https://deepbioacademy.com/
+      - generic [ref=e1445]:
+        - paragraph [ref=e1447]: © 2026 DeepBio Academy. All Right Reserved
+        - paragraph [ref=e1449]: Terms and Conditions.
+        - paragraph [ref=e1451]:
+          - text: Powered by
+          - link "DeepBio Limited" [ref=e1452] [cursor=pointer]:
+            - /url: https://deepbioltd.com/
+  - button " ×" [ref=e1453] [cursor=pointer]:
+    - generic [ref=e1454]: 
+    - generic: ×
+  - generic [ref=e1455]: mobile
+  - status [ref=e1456]
