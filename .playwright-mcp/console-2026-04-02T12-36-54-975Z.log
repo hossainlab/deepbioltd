@@ -1,0 +1,9 @@
+[     547ms] [LOG] PixelYourSite Free version 11.2.0.4 @ https://deepbioacademy.com/:0
+[    1105ms] [LOG] [LiteSpeed] Start Load JS Delayed @ https://deepbioacademy.com/:1521
+[    1105ms] [LOG] [LiteSpeed] Load  JSHandle@node @ https://deepbioacademy.com/:1521
+[    1111ms] [LOG] {reload: yes} @ https://deepbioacademy.com/:1521
+[    1174ms] [LOG] PixelYourSite Free version 11.2.0.4 @ https://deepbioacademy.com/:0
+[    1625ms] ReferenceError: wp is not defined
+    at data:text/javascript;base64,d3AuaTE4bi5zZXRMb2NhbGVEYXRhKHsndGV4dCBkaXJlY3Rpb25cdTAwMDRsdHInOlsnbHRyJ119KQ==:1:1
+[    1666ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://deepbioacademy.com/wp-content/litespeed/js/018286c3c27857940abd80e05eff4074.js?ver=00c4d:6
+[    2286ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 821388787706690. @ https://connect.facebook.net/en_US/fbevents.js:177

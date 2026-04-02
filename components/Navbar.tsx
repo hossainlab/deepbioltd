@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Training', path: '/training' },
+    { name: 'Academy', path: 'https://deepbioacademy.com/', external: true },
   ];
 
   const researchSubmenu = [
@@ -87,18 +87,32 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
-                ${pathname === item.path ? 'text-brand-primary after:w-full' : ''}
-              `}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
+                  ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                `}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
+                  ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                  ${pathname === item.path ? 'text-brand-primary after:w-full' : ''}
+                `}
+              >
+                {item.name}
+              </Link>
+            )
+          )}
 
           {/* Research Menu - Modern Hover Dropdown */}
           <div
@@ -252,16 +266,29 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-slate-100 p-8 flex flex-col gap-6 animate-in slide-in-from-top-2">
-          {navLinks.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              onClick={() => setIsOpen(false)}
-              className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-800 hover:text-brand-primary'}`}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navLinks.map((item) =>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="text-xl font-bold transition-colors text-slate-800 hover:text-brand-primary"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-800 hover:text-brand-primary'}`}
+              >
+                {item.name}
+              </Link>
+            )
+          )}
 
           {/* Research Submenu - Mobile */}
           <div className="space-y-4">
