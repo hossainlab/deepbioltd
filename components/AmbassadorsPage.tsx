@@ -110,7 +110,7 @@ export const AmbassadorsPage: React.FC = () => {
             </Link>
             <div className="flex flex-col sm:flex-row gap-6 pt-4 justify-center">
               <a
-                href="https://forms.gle/ZxPyH6xtueLohBFg7"
+                href="https://forms.gle/jnchCr6vPqSGetuv9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
@@ -243,7 +243,7 @@ export const AmbassadorsPage: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4 justify-center">
                 <a
-                  href="https://forms.gle/ZxPyH6xtueLohBFg7"
+                  href="https://forms.gle/jnchCr6vPqSGetuv9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
