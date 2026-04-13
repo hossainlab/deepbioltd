@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="transition-transform hover:scale-105 active:scale-95 duration-300">
+        <Link href="/" className="transition-transform hover:scale-105 active:scale-95 duration-300" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Logo isLight={isLight} />
         </Link>
 
