@@ -35,12 +35,14 @@ export const Hero: React.FC = () => {
               Explore Our Research
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link
-              href="/training"
+            <a
+              href="https://deepbioacademy.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-10 py-5 border border-white/20 hover:bg-white/5 text-white rounded-2xl font-bold transition-all backdrop-blur-sm hover:border-white/40"
             >
               Training Programs
-            </Link>
+            </a>
           </div>
           
           <div className="grid grid-cols-3 gap-10 pt-16 border-t border-white/10">
