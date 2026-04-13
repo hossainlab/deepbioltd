@@ -574,6 +574,60 @@ export const AmbassadorHandbookPage: React.FC = () => {
               ))}
             </div>
 
+            <h3 className="text-xl font-bold text-slate-900 mb-4">Using Your Ambassador ID</h3>
+            <div className="p-6 bg-brand-primary/5 border-l-4 border-brand-primary rounded-r-2xl mb-6">
+              <p className="font-semibold text-slate-800 mb-1">What is your Ambassador ID?</p>
+              <p className="text-slate-600 text-sm">Your Ambassador ID is a unique coupon code assigned to you when you join the program. When a student enters your ID at checkout on the DeepBio website, they receive a <strong>10% discount</strong> on their purchase — and that enrolment is automatically recorded against your account in WooCommerce. There are no referral links, no Bitly URLs, and no third-party trackers. Your ID is the only tracking method we use.</p>
+            </div>
+            <p className="text-slate-600 text-sm mb-5">Include your Ambassador ID clearly in every piece of promotional content you create. Below are the recommended ways to use it across different formats:</p>
+            <div className="space-y-4 mb-8">
+              {[
+                {
+                  format: 'Facebook & LinkedIn Posts',
+                  icon: '📢',
+                  example: '"Enrol in DeepBio Academy and use my Ambassador ID <strong>DBA-YYYY-NNNN</strong> at checkout for 10% off. Link in bio."',
+                  tip: 'Place the ID near the end of your post with a clear call to action. Bold it or put it on its own line so it stands out.',
+                },
+                {
+                  format: 'WhatsApp Groups & University Forums',
+                  icon: '💬',
+                  example: '"If you are interested in joining DeepBio, you can get 10% off by using my code <strong>DBA-YYYY-NNNN</strong> when you enrol."',
+                  tip: 'Keep it conversational. Mention the discount first — it gives people a reason to act.',
+                },
+                {
+                  format: 'Flyers & Infographics',
+                  icon: '🖼️',
+                  example: 'Add a clearly visible label: "Use code <strong>DBA-YYYY-NNNN</strong> for 10% off at checkout."',
+                  tip: 'Use a contrasting colour or box to make the ID easy to spot at a glance. Place it near the call-to-action button or enrolment link.',
+                },
+                {
+                  format: 'Videos',
+                  icon: '🎥',
+                  example: 'Say it on camera: "Use my code <strong>DBA-YYYY-NNNN</strong> when you enrol — you will get 10% off." Display the code as text on screen for at least 3 seconds.',
+                  tip: 'Mention it both verbally and visually. Viewers who watch without sound will still see it.',
+                },
+                {
+                  format: 'Workshop Presentations',
+                  icon: '🎓',
+                  example: 'Include a slide at the end: "Ready to enrol? Use code <strong>DBA-YYYY-NNNN</strong> for 10% off your first course."',
+                  tip: 'Leave this slide visible during the Q&A so attendees can note it down or take a photo.',
+                },
+              ].map((item, i) => (
+                <div key={i} className="p-5 bg-white rounded-2xl border border-slate-200">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">{item.icon}</span>
+                    <h4 className="font-semibold text-slate-800">{item.format}</h4>
+                  </div>
+                  <div className="bg-slate-50 rounded-xl p-3 mb-3 text-sm text-slate-700 italic" dangerouslySetInnerHTML={{ __html: item.example }} />
+                  <p className="text-xs text-slate-500"><span className="font-semibold text-slate-600">Tip: </span>{item.tip}</p>
+                </div>
+              ))}
+            </div>
+            <div className="p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-slate-700 mb-8">
+              <AlertTriangle className="w-4 h-4 text-amber-500 inline mr-2" />
+              <strong>ID Format:</strong> Every Ambassador ID follows the structure <span className="font-mono bg-white px-2 py-0.5 rounded border border-slate-200 text-brand-primary">DBA-YYYY-NNNN</span> — where <strong>DBA</strong> stands for DeepBio Ambassador, <strong>YYYY</strong> is the program year, and <strong>NNNN</strong> is your unique 4-digit sequential number (e.g. <span className="font-mono bg-white px-2 py-0.5 rounded border border-slate-200 text-brand-primary">DBA-YYYY-NNNN</span>). Your exact ID is issued via WhatsApp during onboarding. Do not modify it or create your own variant — only your officially assigned ID is registered and tracked in our WooCommerce system.
+            </div>
+
             <h3 className="text-xl font-bold text-slate-900 mb-4">Minimum Monthly Requirements</h3>
             <div className="rounded-2xl border border-slate-200 overflow-hidden mb-8">
               <table className="w-full text-sm">
@@ -585,8 +639,8 @@ export const AmbassadorHandbookPage: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {[
-                    ['University forum/group posts', '4 posts (links required)'],
-                    ['Personal Facebook or LinkedIn posts', '2 posts (links required)'],
+                    ['University forum/group posts', 'Minimum 10 posts per month (direct post URLs required)'],
+                    ['Personal Facebook or LinkedIn posts', 'Minimum 10 posts per month (direct post URLs required)'],
                     ['Ambassador ID mentioned in posts', 'Every promotional post must include your Ambassador ID so students know they get 10% off'],
                   ].map(([activity, min], i) => (
                     <tr key={i} className="hover:bg-slate-50">
