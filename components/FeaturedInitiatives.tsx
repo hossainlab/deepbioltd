@@ -118,31 +118,34 @@ export const FeaturedInitiatives: React.FC = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {initiatives.map((item, i) => (
-          <div key={i} className="relative overflow-hidden rounded-3xl bg-brand-dark flex flex-col">
+          <div 
+            key={i} 
+            className="group relative overflow-hidden rounded-3xl bg-brand-dark flex flex-col transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-brand-primary/30 shadow-2xl hover:shadow-brand-primary/10"
+          >
             {/* Glow */}
-            <div className={`absolute ${item.glowPos} w-64 h-64 ${item.glow} blur-[100px] rounded-full pointer-events-none`} />
+            <div className={`absolute ${item.glowPos} w-64 h-64 ${item.glow} blur-[100px] rounded-full pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-700`} />
 
             <div className="relative z-10 p-8 flex flex-col flex-1">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest mb-6 w-fit">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest mb-6 w-fit transition-colors group-hover:bg-brand-primary/20 group-hover:border-brand-primary/30">
                 <item.badgeIcon className="w-3 h-3" />
                 {item.badge}
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
+              <h3 className="text-2xl font-bold text-white mb-3 leading-tight group-hover:text-brand-secondary transition-colors">
                 {item.titlePrefix}<span className="brand-text-gradient"> {item.titleGradient}</span>
               </h3>
 
               {/* Description */}
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1 group-hover:text-slate-300 transition-colors">
                 {item.description}
               </p>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-2 mb-6">
                 {item.stats.map((stat, j) => (
-                  <div key={j} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                  <div key={j} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/20">
                     <div className="text-white font-bold text-sm">{stat.value}</div>
                     <div className="text-slate-500 text-[10px] uppercase tracking-wider mt-0.5">{stat.label}</div>
                   </div>
@@ -154,7 +157,7 @@ export const FeaturedInitiatives: React.FC = () => {
                 href={item.cta.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3.5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-xl font-bold text-sm transition-all group hover:-translate-y-0.5"
+                className="flex items-center justify-center gap-2 w-full py-3.5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-xl font-bold text-sm transition-all group-hover:shadow-lg group-hover:shadow-brand-primary/30"
               >
                 {item.cta.label}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
