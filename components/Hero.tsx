@@ -2,12 +2,22 @@ import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, Activity, Brain, MousePointer2, Sparkles } from 'lucide-react'
 
+import Image from 'next/image'
+
 export const Hero: React.FC = () => {
   return (
     <header className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auhref=format&fit=crop&q=60&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-brand-dark">
+          <Image 
+            src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auhref=format&fit=crop&q=60&w=2000" 
+            alt="Hero Background"
+            fill
+            className="object-cover opacity-10 mix-blend-overlay"
+            priority
+          />
+        </div>
         <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full animate-pulse"></div>
         <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-brand-secondary/15 blur-[150px] rounded-full transition-all duration-[10s]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark"></div>
@@ -63,13 +73,12 @@ export const Hero: React.FC = () => {
 
         <div className="relative hidden lg:block">
            <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-2xl border border-white/5 animate-float flex items-center justify-center bg-slate-900">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auhref=format&fit=crop&q=80&w=1200" 
                 className="absolute inset-0 w-full h-full object-cover opacity-60" 
                 alt="Molecular Research Visualization" 
-                // Fix: changed fetchpriority to fetchPriority for React compatibility
-                fetchPriority="high"
-                decoding="async"
+                fill
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
               

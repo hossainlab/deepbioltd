@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Image from 'next/image'
+
 const partners = [
   { name: 'GNOBB', logo: '/partner_logos/GNOBB.png', scale: 'scale-110' },
   { name: 'ASI School of Life', logo: '/partner_logos/ASISchoolofLife.png', scale: 'scale-125' },
@@ -34,9 +36,11 @@ export const Partners: React.FC = () => {
                 <div className="absolute inset-0 bg-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className={`relative z-10 w-full h-full flex items-center justify-center p-4 ${partner.scale} transition-transform duration-500 group-hover:scale-[1.15]`}>
-                  <img
+                  <Image
                     src={partner.logo}
                     alt={partner.name}
+                    width={200}
+                    height={80}
                     className={`max-h-full max-w-full object-contain ${partner.hasBg ? 'mix-blend-multiply' : ''}`}
                   />
                 </div>

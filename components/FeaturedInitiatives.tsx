@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { ArrowRight, GraduationCap, Activity, Users, Code, Compass, Server } from 'lucide-react'
 
 const initiatives = [
