@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowRight, GraduationCap, Activity, Users } from 'lucide-react'
+import { ArrowRight, GraduationCap, Activity, Users, Code, Compass, Server } from 'lucide-react'
 
 const initiatives = [
   {
@@ -8,7 +8,7 @@ const initiatives = [
     title: 'DeepBio Academy',
     titleGradient: 'Academy',
     titlePrefix: 'DeepBio',
-    description: 'Expert-led courses in bioinformatics, computational biology, and AI in life sciences — built to democratise cutting-edge biological education.',
+    description: 'Expert-led online training in bioinformatics, computational biology, and AI in life sciences — built to democratise cutting-edge biological education.',
     stats: [
       { value: '6+', label: 'Courses' },
       { value: '500+', label: 'Students' },
@@ -17,6 +17,54 @@ const initiatives = [
     cta: { label: 'Explore Courses', href: 'https://deepbioacademy.com/courses/' },
     glow: 'bg-brand-secondary/20',
     glowPos: 'top-0 left-0',
+  },
+  {
+    badge: 'Research Internship',
+    badgeIcon: Code,
+    title: 'GSA Bioinformatics Internship',
+    titleGradient: 'Bioinformatics Internship',
+    titlePrefix: 'GSA',
+    description: 'A collaborative initiative jointly organized by GNOBB, ASI School of Life, and SPSB — committed to nurturing the next generation of bioinformatics researchers through accessible, high-quality, and impact-driven training.',
+    stats: [
+      { value: '6-Month', label: 'Duration' },
+      { value: 'Hybrid', label: 'Model' },
+      { value: 'Research', label: 'Focused' },
+    ],
+    cta: { label: 'Explore Program', href: 'https://gsabioinfointernship.github.io/' },
+    glow: 'bg-brand-primary/20',
+    glowPos: 'bottom-0 left-0',
+  },
+  {
+    badge: 'Career Resource',
+    badgeIcon: Compass,
+    title: 'DeepBio Career Guide',
+    titleGradient: 'Career Guide',
+    titlePrefix: 'DeepBio',
+    description: 'A comprehensive resource bridging the gap between academia and industry with curated paths, skill-gap analysis, and mentorship.',
+    stats: [
+      { value: '50+', label: 'Specialized Roles' },
+      { value: '95%', label: 'Satisfaction' },
+      { value: 'Industry', label: 'Focused' },
+    ],
+    cta: { label: 'Explore Careers', href: 'https://careerguide.deepbioltd.com/' },
+    glow: 'bg-brand-primary/15',
+    glowPos: 'top-0 left-0',
+  },
+  {
+    badge: 'HPC Infrastructure',
+    badgeIcon: Server,
+    title: 'BioHPC Lab',
+    titleGradient: 'Lab',
+    titlePrefix: 'BioHPC',
+    description: 'High-performance computing platform providing scalable infrastructure and GPU-accelerated nodes for large-scale biological data analysis.',
+    stats: [
+      { value: 'GPU', label: 'Accelerated' },
+      { value: 'Scalable', label: 'Nodes' },
+      { value: 'Cloud', label: 'Native' },
+    ],
+    cta: { label: 'Explore Lab', href: 'https://biohpclab.vercel.app/' },
+    glow: 'bg-brand-secondary/10',
+    glowPos: 'bottom-0 right-0',
   },
   {
     badge: 'AI-Powered Tool',
@@ -40,7 +88,7 @@ const initiatives = [
     title: 'BMP',
     titleGradient: 'Mentorship Program',
     titlePrefix: 'Bioinformatics',
-    description: 'A structured mentorship program connecting aspiring bioinformaticians with experienced researchers to accelerate their academic and professional growth.',
+    description: 'A structured mentorship program connecting aspiring bioinformaticians with experienced researchers to accelerate their growth.',
     stats: [
       { value: '1:1', label: 'Mentoring' },
       { value: 'Structured', label: 'Curriculum' },
@@ -60,14 +108,14 @@ export const FeaturedInitiatives: React.FC = () => {
           Featured Initiatives
         </div>
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
-          Beyond Research
+          Our Initiatives
         </h2>
         <p className="text-lg text-slate-500 mt-4 max-w-2xl mx-auto">
-          Tools, platforms, and programs we have built to extend the impact of our work across education, clinical practice, and mentorship.
+          DeepBio’s core ecosystem of platforms, programs, and tools designed to drive global impact across research, clinical diagnostics, and professional development.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {initiatives.map((item, i) => (
           <div key={i} className="relative overflow-hidden rounded-3xl bg-brand-dark flex flex-col">
             {/* Glow */}

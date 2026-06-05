@@ -1,4 +1,5 @@
 import { Hero } from '@/components/Hero'
+import { Partners } from '@/components/Partners'
 import { WhoWeServe } from '@/components/WhoWeServe'
 import { CoreExpertise } from '@/components/CoreExpertise'
 import { FeaturedInitiatives } from '@/components/FeaturedInitiatives'
@@ -9,6 +10,9 @@ export default function HomePage() {
     <>
       <section id="home">
         <Hero />
+      </section>
+      <section className="py-24 bg-white border-y border-slate-50">
+        <Partners />
       </section>
       <section id="who-we-serve" className="py-24 bg-slate-50">
         <WhoWeServe />
