@@ -68,6 +68,7 @@ export const Navbar: React.FC = () => {
 
   const resourcesSubmenu = [
     { name: 'Company Brochure', path: '/brochure' },
+    { name: 'Case Studies', path: '/case-studies' },
     { name: 'DeepBio Ambassadors', path: '/ambassadors' },
     { name: 'Our Ambassadors', path: '/our-ambassadors' },
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
@@ -75,7 +76,7 @@ export const Navbar: React.FC = () => {
 
   const isResearchPage = ['/research', '/research-programs', '/publications'].includes(pathname)
   const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
-  const isResourcesPage = ['/brochure', '/ambassadors', '/our-ambassadors'].includes(pathname)
+  const isResourcesPage = ['/brochure', '/case-studies', '/ambassadors', '/our-ambassadors'].includes(pathname)
   const isLight = !scrolled && pathname === '/' && isLargeScreen
 
   return (
