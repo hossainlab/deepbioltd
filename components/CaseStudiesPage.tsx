@@ -53,6 +53,26 @@ const caseStudies: CaseStudy[] = [
     tags: ['Oncology', 'Survival Analysis', 'Risk Stratification', 'Clinical']
   },
   {
+    id: 'pcsk9-binder-design',
+    title: 'PCSK9 Binder Design & Optimization',
+    category: 'Structural Biology',
+    description: 'Computational design and optimization of high-affinity binders targeting PCSK9 for cholesterol management therapeutics.',
+    featuredImage: '/case_studies/img/PCSK9 Binder Design & Optimization.png',
+    pdfUrl: '/case_studies/pdf/PCSK9 Binder Design & Optimization.pdf',
+    icon: FlaskConical,
+    tags: ['Protein Design', 'Binder Optimization', 'PCSK9', 'Therapeutics']
+  },
+  {
+    id: 'gbm-subtype-classification',
+    title: 'Glioblastoma (GBM) Subtype Classification',
+    category: 'Genomics',
+    description: 'High-dimensional transcriptomic profiling and UMAP visualization of Glioblastoma (GBM) subtypes to reveal cellular heterogeneity and molecular signatures.',
+    featuredImage: '/case_studies/img/figures_umap_gbm_subtypes.png',
+    pdfUrl: '#',
+    icon: Microscope,
+    tags: ['Glioblastoma', 'UMAP', 'Subtype Discovery', 'Transcriptomics']
+  },
+  {
     id: 'variant-annotation',
     title: 'Variant Annotation',
     category: 'Genomics',
@@ -317,31 +337,23 @@ export const CaseStudiesPage: React.FC = () => {
                 className="group bg-white rounded-[2.5rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2"
               >
                 {/* Image Section */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-64 overflow-hidden bg-white flex items-center justify-center border-b border-slate-50 p-6">
                   <img
                     src={study.featuredImage}
                     alt={study.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60"></div>
                   <div className="absolute bottom-4 left-6">
-                    <span className="px-3 py-1 rounded-full bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
                       {study.category}
                     </span>
-                  </div>
-                  <div className="absolute top-4 right-6">
-                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white">
-                      <study.icon className="w-5 h-5" />
-                    </div>
                   </div>
                 </div>
 
                 {/* Content Section */}
                 <div className="p-8 flex-grow flex flex-col">
-                  <h3 className="text-lg font-bold text-slate-900 mb-4 leading-tight group-hover:text-brand-primary transition-colors">
-                    {study.title}
-                  </h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">
+                    <span className="block text-slate-900 font-bold mb-2">{study.title}</span>
                     {study.description}
                   </p>
 
