@@ -43,6 +43,16 @@ const caseStudies: CaseStudy[] = [
     tags: ['RNA-Seq', 'Transcriptomics', 'DESeq2', 'MASH']
   },
   {
+    id: 'breast-cancer-survival',
+    title: 'Breast Cancer Survival Risk Stratification',
+    category: 'Clinical',
+    description: 'Advanced risk stratification and survival analysis for breast cancer patients using multi-modal data and Kaplan-Meier estimation.',
+    featuredImage: '/case_studies/img/figures_km_stratified.png',
+    pdfUrl: '/case_studies/pdf/Breast Cancer Survival Risk Stratification.pdf',
+    icon: Activity,
+    tags: ['Oncology', 'Survival Analysis', 'Risk Stratification', 'Clinical']
+  },
+  {
     id: 'variant-annotation',
     title: 'Variant Annotation',
     category: 'Genomics',
