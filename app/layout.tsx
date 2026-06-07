@@ -35,6 +35,14 @@ export const metadata: Metadata = {
     siteName: 'DeepBio Limited',
     title: 'DeepBio Limited | Leading Bioinformatics & AI Research in Bangladesh',
     description: 'Transform life science data into impactful solutions. Premier bioinformatics and AI research hub specializing in genomic surveillance, clinical diagnostics, and computational biology in Bangladesh.',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'DeepBio Limited - Data-Driven Life Science Research',
+      },
+    ],
   },
 
   twitter: {
@@ -43,6 +51,7 @@ export const metadata: Metadata = {
     creator: '@deepbioltd',
     title: 'DeepBio Limited | Leading Bioinformatics & AI Research in Bangladesh',
     description: 'Transform life science data into impactful solutions. Premier bioinformatics and AI research hub specializing in genomic surveillance, clinical diagnostics, and computational biology.',
+    images: ['/opengraph-image'],
   },
 
   alternates: {
