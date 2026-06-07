@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import {
   FileText,
-  ArrowRight,
   Sparkles,
   Download,
   Microscope,
@@ -61,6 +60,16 @@ const caseStudies: CaseStudy[] = [
     pdfUrl: '/case_studies/pdf/PCSK9 Binder Design & Optimization.pdf',
     icon: FlaskConical,
     tags: ['Protein Design', 'Binder Optimization', 'PCSK9', 'Therapeutics']
+  },
+  {
+    id: 'primer-design',
+    title: 'Primer Design',
+    category: 'Genomics',
+    description: 'Automated optimization of PCR primers for high specificity and efficiency in genomic assays.',
+    featuredImage: '/case_studies/img/primer_design.png',
+    pdfUrl: '/case_studies/pdf/Primer Design.pdf',
+    icon: Dna,
+    tags: ['PCR', 'Genomics', 'Assay Design']
   },
   {
     id: 'gbm-subtype-classification',
@@ -123,16 +132,6 @@ const caseStudies: CaseStudy[] = [
     pdfUrl: '#',
     icon: FlaskConical,
     tags: ['Protein Design', 'Therapeutics', 'Docking']
-  },
-  {
-    id: 'primer-design',
-    title: 'Primer Design',
-    category: 'Structural Biology',
-    description: 'Automated optimization of PCR primers for high specificity and efficiency in genomic assays.',
-    featuredImage: '/biohpc/hpc01.jpg',
-    pdfUrl: '#',
-    icon: Dna,
-    tags: ['PCR', 'Genomics', 'Assay Design']
   },
   {
     id: 'binding-affinity-ml',
@@ -367,7 +366,7 @@ export const CaseStudiesPage: React.FC = () => {
                   </div>
 
                   {/* CTA */}
-                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-50">
+                  <div className="flex items-center justify-center mt-auto pt-6 border-t border-slate-50">
                     <a
                       href={study.pdfUrl}
                       className="flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-brand-primary transition-colors"
@@ -375,12 +374,6 @@ export const CaseStudiesPage: React.FC = () => {
                       <Download className="w-4 h-4" />
                       View PDF
                     </a>
-                    <Link
-                      href="#"
-                      className="flex items-center gap-1 text-sm font-bold text-brand-primary hover:gap-2 transition-all"
-                    >
-                      Details <ArrowRight className="w-4 h-4" />
-                    </Link>
                   </div>
                 </div>
               </div>
