@@ -76,20 +76,10 @@ const caseStudies: CaseStudy[] = [
     title: 'Gene Regulatory Network Inference in Glioblastoma',
     category: 'Systems Biology',
     description: 'Deciphering complex transcriptional regulatory networks in Glioblastoma to identify key drivers of tumor progression and therapeutic targets.',
-    featuredImage: '/biohpc/hpc01.jpg',
+    featuredImage: '/case_studies/img/figures_umap_gbm_subtypes.png',
     pdfUrl: '/case_studies/pdf/Gene Regulatory Network Inference.pdf',
     icon: Layers,
     tags: ['GRN', 'Glioblastoma', 'Transcription Factors', 'Systems Biology']
-  },
-  {
-    id: 'gbm-subtype-classification',
-    title: 'Glioblastoma (GBM) Subtype Classification',
-    category: 'Genomics',
-    description: 'High-dimensional transcriptomic profiling and UMAP visualization of Glioblastoma (GBM) subtypes to reveal cellular heterogeneity and molecular signatures.',
-    featuredImage: '/case_studies/img/figures_umap_gbm_subtypes.png',
-    pdfUrl: '#',
-    icon: Microscope,
-    tags: ['Glioblastoma', 'UMAP', 'Subtype Discovery', 'Transcriptomics']
   },
   {
     id: 'variant-annotation',
@@ -106,7 +96,7 @@ const caseStudies: CaseStudy[] = [
     title: 'scRNA-seq Cell Annotation',
     category: 'Genomics',
     description: 'Automated identification and labeling of cell types within single-cell transcriptomic datasets.',
-    featuredImage: '/biohpc/hpc02.jpg',
+    featuredImage: '/case_studies/img/figures_02_umap_celltypes.png',
     pdfUrl: '#',
     icon: Microscope,
     tags: ['Single-Cell', 'scRNA-seq', 'Cell Typing']
