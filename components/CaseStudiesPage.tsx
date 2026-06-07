@@ -72,6 +72,16 @@ const caseStudies: CaseStudy[] = [
     tags: ['PCR', 'Genomics', 'Assay Design']
   },
   {
+    id: 'gene-regulatory-network',
+    title: 'Gene Regulatory Network Inference in Glioblastoma',
+    category: 'Systems Biology',
+    description: 'Deciphering complex transcriptional regulatory networks in Glioblastoma to identify key drivers of tumor progression and therapeutic targets.',
+    featuredImage: '/biohpc/hpc01.jpg',
+    pdfUrl: '/case_studies/pdf/Gene Regulatory Network Inference.pdf',
+    icon: Layers,
+    tags: ['GRN', 'Glioblastoma', 'Transcription Factors', 'Systems Biology']
+  },
+  {
     id: 'gbm-subtype-classification',
     title: 'Glioblastoma (GBM) Subtype Classification',
     category: 'Genomics',
