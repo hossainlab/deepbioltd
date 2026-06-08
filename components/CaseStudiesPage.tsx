@@ -82,6 +82,16 @@ const caseStudies: CaseStudy[] = [
     tags: ['GRN', 'Glioblastoma', 'Transcription Factors', 'Systems Biology']
   },
   {
+    id: 'phylogenetic-polygenic-risk',
+    title: 'Phylogenetic Polygenic Risk Assessment',
+    category: 'Genomics',
+    description: 'Advanced assessment of polygenic risk scores integrated with phylogenetic information to enhance disease susceptibility prediction across diverse genetic backgrounds.',
+    featuredImage: '/case_studies/img/figures_workflow_abstract.png',
+    pdfUrl: '/case_studies/pdf/Cardiometabolic Polygenic Risk Assessment.pdf',
+    icon: Activity,
+    tags: ['Phylogenetics', 'Polygenic Risk', 'Genomics', 'Cardiometabolic']
+  },
+  {
     id: 'variant-annotation',
     title: 'Variant Annotation',
     category: 'Genomics',
@@ -218,7 +228,7 @@ const caseStudies: CaseStudy[] = [
 
   // Systems Biology & Networks
   {
-    id: 'gene-regulatory-network',
+    id: 'gene-regulatory-network-analysis',
     title: 'Gene Regulatory Network Analysis',
     category: 'Systems Biology',
     description: 'Mapping the complex interactions between transcription factors and target genes to uncover regulatory mechanisms.',
