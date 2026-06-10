@@ -428,98 +428,92 @@ export const BioHPCLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Infrastructure Investment - Investor-Friendly Redesign */}
+      {/* Fractional Investment Roadmap - Enterprise Redesign */}
       <section id="investment-tiers" className="py-32 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-black uppercase tracking-widest mb-6">
-              Co-Ownership Model
+              Asset Allocation
             </div>
             <h2 className="text-6xl font-black text-slate-900 mb-8 leading-tight tracking-tighter">Infrastructure <span className="text-brand-primary">Assets</span></h2>
             <p className="text-2xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
-              We've simplified high-tech infrastructure into clear, co-ownable units. Each "Node" is a high-performance computer dedicated to life-saving research.
+              Participate in the deployment of high-density computational nodes through fractional ownership.
             </p>
           </div>
 
-          <div className="space-y-32">
+          <div className="space-y-20">
             {[
               { 
                 id: "01", 
-                code: "APEX-G1",
-                title: "Genomic Computing Node", 
-                tagline: "Dedicated to rapid DNA sequencing & Virus tracking.",
-                components: [
-                  { name: "NVIDIA AI Processor (GPU)", desc: "The 'Brain' for AI calculations" },
-                  { name: "AMD High-Core CPU", desc: "Main processing engine" },
-                  { name: "Enterprise Memory (RAM)", desc: "High-speed workspace for data" },
-                  { name: "Research Storage & Chassis", desc: "Secure housing & data vault" }
+                code: "ALPHA",
+                title: "BioHPC Workstation (α)", 
+                specs: [
+                  { label: "Compute", value: "NVIDIA A100 (80GB) Tensor Core" },
+                  { label: "Processor", value: "128-Core AMD EPYC™ 9754" },
+                  { label: "Memory", value: "1TB DDR5-4800MHz ECC" },
+                  { label: "Storage", value: "200TB Enterprise RAID" }
                 ],
-                image: "/images/biohpc/hpc02.jpg"
+                image: "/images/biohpc/hpc02.jpg",
+                status: "Open for Investment"
               },
               { 
                 id: "02", 
-                code: "STRUX-S1",
-                title: "Structural Biology Node", 
-                tagline: "Specialized for Drug Design & Protein Modeling.",
-                components: [
-                  { name: "NVIDIA H100 Hopper GPU", desc: "Next-gen AI accelerator" },
-                  { name: "AMD Threadripper CPU", desc: "Extreme multitasking power" },
-                  { name: "Ultra-Fast DDR5 RAM", desc: "Maximum data fluidity" },
-                  { name: "Liquid Cooling & Infrastructure", desc: "Heat management & network" }
+                code: "BETA",
+                title: "BioHPC Workstation (β)", 
+                specs: [
+                  { label: "Compute", value: "NVIDIA H100 (80GB) Hopper" },
+                  { label: "Processor", value: "96-Core AMD Threadripper™ PRO" },
+                  { label: "Memory", value: "512GB DDR5-5600MHz ECC" },
+                  { label: "Storage", value: "400TB Distributed Object" }
                 ],
-                image: "/images/biohpc/hpc03.jpg"
+                image: "/images/biohpc/hpc03.jpg",
+                status: "Open for Investment"
               }
             ].map((unit, idx) => (
-              <div key={idx} className="group relative bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden hover:border-brand-primary/30 transition-all duration-700">
+              <div key={idx} className="group relative bg-white rounded-[4rem] border border-slate-200 shadow-2xl overflow-hidden hover:border-brand-primary/30 transition-all duration-700">
                 <div className="flex flex-col lg:flex-row">
-                  {/* Left: Visual & Status */}
-                  <div className="lg:w-1/3 relative h-64 lg:h-auto">
-                    <img src={unit.image} alt={unit.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    <div className="absolute bottom-8 left-8 right-8">
-                      <div className="inline-block px-3 py-1 rounded-lg bg-brand-primary text-white text-[10px] font-black uppercase tracking-widest mb-2">
-                        {unit.code}
+                  {/* Image Side */}
+                  <div className="lg:w-2/5 relative h-80 lg:h-auto overflow-hidden">
+                    <img src={unit.image} alt={unit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                    <div className="absolute top-10 left-10">
+                      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em]">
+                        Asset {unit.id} // {unit.code}
                       </div>
-                      <h4 className="text-white text-xl font-bold">{unit.title}</h4>
                     </div>
                   </div>
 
-                  {/* Right: Breakdown */}
-                  <div className="lg:w-2/3 p-10 lg:p-16">
-                    <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-12">
+                  {/* Content Side */}
+                  <div className="lg:w-3/5 p-12 lg:p-16 flex flex-col">
+                    <div className="flex justify-between items-start mb-12">
                       <div>
-                        <h3 className="text-4xl font-black text-slate-900 mb-2 tracking-tight">{unit.title}</h3>
-                        <p className="text-slate-500 font-medium">{unit.tagline}</p>
+                        <h3 className="text-5xl font-black text-slate-900 mb-4 tracking-tighter">{unit.title}</h3>
                       </div>
-                      <div className="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest border border-emerald-100 shrink-0">
-                        99.9% Uptime Goal
+                      <div className="hidden sm:flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{unit.status}</span>
                       </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-8 mb-12">
-                      {unit.components.map((comp, cIdx) => (
-                        <div key={cIdx} className="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-white group-hover:shadow-md transition-all">
-                          <div>
-                            <p className="text-sm font-black text-slate-900">{comp.name}</p>
-                            <p className="text-[10px] text-slate-500 font-bold uppercase">{comp.desc}</p>
-                          </div>
+                    <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-16">
+                      {unit.specs.map((spec, sIdx) => (
+                        <div key={sIdx} className="space-y-1">
+                          <p className="text-[10px] font-black text-brand-secondary uppercase tracking-widest">{spec.label}</p>
+                          <p className="text-lg font-bold text-slate-700 leading-tight">{spec.value}</p>
                         </div>
                       ))}
                     </div>
 
-                    {/* Investment Slots Simplified */}
-                    <div className="pt-10 border-t border-slate-100">
-                      <div className="flex flex-col md:flex-row items-center gap-10">
-                        <div className="flex-grow w-full">
+                    <div className="mt-auto pt-12 border-t border-slate-100">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8">
+                        <div className="flex-grow max-w-md">
                           <div className="flex justify-between mb-4">
-                            <span className="text-xs font-black text-slate-900 uppercase tracking-widest">Co-Ownership Slots</span>
-                            <span className="text-xs font-bold text-slate-400">Available: 10 units</span>
+                            <span className="text-sm font-black text-slate-900 uppercase tracking-widest">Co-Ownership Slots</span>
+                            <span className="text-sm font-bold text-slate-400">Available: 10 units per Node</span>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex gap-1.5">
                             {[...Array(10)].map((_, i) => (
-                              <div key={i} className="h-3 flex-grow rounded-full bg-slate-100 border border-slate-200/50 relative overflow-hidden group/slot">
-                                <div className="absolute inset-0 bg-brand-primary/5 -translate-x-full group-hover/slot:translate-x-0 transition-transform duration-500"></div>
-                              </div>
+                              <div key={i} className="h-2.5 flex-grow rounded-full bg-slate-100 border border-slate-200/50"></div>
                             ))}
                           </div>
                         </div>
@@ -531,35 +525,17 @@ export const BioHPCLabPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-32 p-12 bg-white rounded-[3rem] border border-slate-100 shadow-2xl max-w-5xl mx-auto">
-            <h3 className="text-3xl font-black text-slate-900 text-center mb-12">How Your Investment Works</h3>
-            <div className="grid md:grid-cols-3 gap-12">
-              {[
-                { 
-                  title: "1. Asset Purchase", 
-                  desc: "Your capital directly funds the procurement of specialized HPC hardware components listed above.",
-                  icon: Coins
-                },
-                { 
-                  title: "2. Research Usage", 
-                  desc: "DeepBio leases this compute power to pharmaceutical companies and research labs globally.",
-                  icon: FlaskConical
-                },
-                { 
-                  title: "3. Yield Distribution", 
-                  desc: "Profit from lease contracts is shared with node co-owners on a quarterly basis.",
-                  icon: TrendingUp
-                }
-              ].map((item, i) => (
-                <div key={i} className="space-y-4">
-                  <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-brand-primary" />
-                  </div>
-                  <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.title}</h4>
-                  <p className="text-slate-500 leading-relaxed text-sm font-medium">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mt-32 grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            {[
+              { title: "Asset Management", desc: "Professionally maintained by CHIRAL Hub technical team with 99.9% uptime guarantee." },
+              { title: "Profit Sharing", desc: "Transparent quarterly distribution based on CaaS utilization and research contract margins." },
+              { title: "Strategic Exit", desc: "Multiple exit paths including internal buy-back or verified slot transfer within our network." }
+            ].map((item, i) => (
+              <div key={i} className="text-center space-y-4">
+                <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.title}</h4>
+                <p className="text-slate-500 leading-relaxed text-sm font-medium">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
