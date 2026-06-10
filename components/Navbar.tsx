@@ -59,6 +59,7 @@ export const Navbar: React.FC = () => {
   ];
 
   const labsSubmenu = [
+    { name: 'BioHPC Lab', path: '/labs/biohpc' },
     { name: 'Cloud Labs', path: '/labs/cloud-labs' },
     { name: 'Big Bioinformatics Lab', path: '/labs/bigbio' },
     { name: 'Generative Genomics Lab', path: '/labs/generative-genomics' },
@@ -69,14 +70,15 @@ export const Navbar: React.FC = () => {
   const resourcesSubmenu = [
     { name: 'Company Brochure', path: '/brochure' },
     { name: 'Case Studies', path: '/case-studies' },
+    { name: 'Career Guide', path: '/career-guide' },
     { name: 'DeepBio Ambassadors', path: '/ambassadors' },
     { name: 'Our Ambassadors', path: '/our-ambassadors' },
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
   ];
 
   const isResearchPage = ['/research', '/research-programs', '/publications'].includes(pathname)
-  const isLabsPage = ['/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
-  const isResourcesPage = ['/brochure', '/case-studies', '/ambassadors', '/our-ambassadors'].includes(pathname)
+  const isLabsPage = ['/labs/biohpc', '/labs/cloud-labs', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
+  const isResourcesPage = ['/brochure', '/case-studies', '/career-guide', '/ambassadors', '/our-ambassadors'].includes(pathname)
   const isLight = !scrolled && pathname === '/' && isLargeScreen
 
   return (
