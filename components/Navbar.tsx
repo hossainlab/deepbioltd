@@ -209,7 +209,7 @@ export const Navbar: React.FC = () => {
                 ${isResourcesPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
-              Resources
+              More
             </button>
 
             {/* Modern Dropdown Menu */}
@@ -334,7 +334,7 @@ export const Navbar: React.FC = () => {
           {/* Resources Submenu - Mobile */}
           <div className="space-y-4">
             <div className={`text-xl font-bold ${isResourcesPage ? 'text-brand-primary' : 'text-slate-800'}`}>
-              Resources
+              More
             </div>
             <div className="pl-6 space-y-3 border-l-2 border-slate-200">
               {resourcesSubmenu.map((item) => (

@@ -179,38 +179,77 @@ export const BioHPCLabPage: React.FC = () => {
       ========================================== */}
 
       {/* Lab Hero */}
-      <section className="relative py-32 overflow-hidden bg-brand-dark">
+      <section className="relative py-32 lg:py-48 overflow-hidden bg-brand-dark">
+        {/* Decorative Background Elements */}
         <div className="absolute inset-0 z-0">
+          {/* Background Image with Overlay */}
           <div className="absolute inset-0 bg-[url('/images/biohpc/hpc01.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
-          <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          
+          {/* Dynamic Blurred Blobs */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-primary/20 blur-[120px] rounded-full opacity-50"></div>
+          <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-brand-secondary/10 blur-[100px] rounded-full"></div>
+          <div className="absolute top-1/2 -right-48 w-[500px] h-[500px] bg-brand-primary/10 blur-[100px] rounded-full"></div>
+
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+          
+          {/* Animated Particles (CSS only simulation) */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-brand-secondary rounded-full animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+            <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-brand-primary rounded-full animate-pulse delay-700 shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-white rounded-full animate-pulse delay-1000 shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+          </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-secondary text-[10px] font-bold uppercase tracking-[0.3em] backdrop-blur-md mb-8">
-            <Microscope className="w-4 h-4" />
-            Advanced Research Facility
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-brand-secondary text-[10px] font-black uppercase tracking-[0.4em] backdrop-blur-xl mb-12 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <div className="relative">
+              <Cpu className="w-4 h-4 text-brand-primary animate-pulse" />
+              <div className="absolute inset-0 bg-brand-primary/20 blur-md rounded-full"></div>
+            </div>
+            Advanced HPC Infrastructure
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight mb-8 max-w-4xl">
-            BioHPC <br />
-            <span className="brand-text-gradient text-outline">Lab</span>
+
+          <h1 className="text-6xl md:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            <span className="block mb-2">BioHPC</span>
+            <span className="brand-text-gradient bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">Laboratory</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl leading-relaxed mb-10 font-medium">
-            Democratizing high-performance computing for genomic surveillance, structural biology, and deep-learning drug discovery. We provide the raw power behind scientific breakthroughs.
+
+          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-14 font-medium animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-400">
+            Powering the next generation of genomic discovery through <span className="text-white">massive computational scale</span> and specialized biological intelligence.
           </p>
-          <div className="flex flex-wrap gap-4">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-600">
             <a
               href="#what-we-do"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1"
+              className="group relative inline-flex items-center gap-4 px-10 py-5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-black transition-all shadow-[0_20px_40px_rgba(32,94,146,0.4)] hover:-translate-y-2 overflow-hidden"
             >
-              Explore Lab Services
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <span>Explore Lab Services</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#investor-portal"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/10 transition-all hover:-translate-y-1"
+              className="inline-flex items-center gap-4 px-10 py-5 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-2xl font-black hover:bg-white/10 transition-all hover:-translate-y-2 shadow-xl"
             >
-              Investment Portal
+              <Database className="w-5 h-5 text-brand-secondary" />
+              Infrastructure Assets
             </a>
+          </div>
+
+          {/* Floating Metrics Badge */}
+          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto border-t border-white/5 pt-12 animate-in fade-in duration-1000 delay-800">
+            {[
+              { label: "Processing Power", value: "2.5 PFLOPS" },
+              { label: "Data Throughput", value: "400 GB/s" },
+              { label: "Storage Capacity", value: "5 PB" },
+              { label: "Network Latency", value: "< 1.2ms" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-2xl font-black text-white mb-1">{stat.value}</div>
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -389,103 +428,100 @@ export const BioHPCLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Fractional Investment Roadmap - Enterprise Redesign */}
+      {/* Infrastructure Investment - Investor-Friendly Redesign */}
       <section id="investment-tiers" className="py-32 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-black uppercase tracking-widest mb-6">
-              Asset Allocation
+              Co-Ownership Model
             </div>
             <h2 className="text-6xl font-black text-slate-900 mb-8 leading-tight tracking-tighter">Infrastructure <span className="text-brand-primary">Assets</span></h2>
             <p className="text-2xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
-              Participate in the deployment of high-density computational nodes through fractional ownership.
+              We've simplified high-tech infrastructure into clear, co-ownable units. Each "Node" is a high-performance computer dedicated to life-saving research.
             </p>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-32">
             {[
               { 
                 id: "01", 
-                code: "ALPHA",
-                title: "BioHPC Workstation α", 
-                specs: [
-                  { label: "Compute", value: "NVIDIA A100 (80GB) Tensor Core" },
-                  { label: "Processor", value: "128-Core AMD EPYC™ 9754" },
-                  { label: "Memory", value: "1TB DDR5-4800MHz ECC" },
-                  { label: "Storage", value: "200TB Enterprise RAID" }
+                code: "APEX-G1",
+                title: "Genomic Computing Node", 
+                tagline: "Dedicated to rapid DNA sequencing & Virus tracking.",
+                components: [
+                  { name: "NVIDIA AI Processor (GPU)", desc: "The 'Brain' for AI calculations" },
+                  { name: "AMD High-Core CPU", desc: "Main processing engine" },
+                  { name: "Enterprise Memory (RAM)", desc: "High-speed workspace for data" },
+                  { name: "Research Storage & Chassis", desc: "Secure housing & data vault" }
                 ],
-                image: "/images/biohpc/hpc02.jpg",
-                status: "Open for Investment"
+                image: "/images/biohpc/hpc02.jpg"
               },
               { 
                 id: "02", 
-                code: "BETA",
-                title: "BioHPC Workstation β", 
-                specs: [
-                  { label: "Compute", value: "NVIDIA H100 (80GB) Hopper" },
-                  { label: "Processor", value: "96-Core AMD Threadripper™ PRO" },
-                  { label: "Memory", value: "512GB DDR5-5600MHz ECC" },
-                  { label: "Storage", value: "400TB Distributed Object" }
+                code: "STRUX-S1",
+                title: "Structural Biology Node", 
+                tagline: "Specialized for Drug Design & Protein Modeling.",
+                components: [
+                  { name: "NVIDIA H100 Hopper GPU", desc: "Next-gen AI accelerator" },
+                  { name: "AMD Threadripper CPU", desc: "Extreme multitasking power" },
+                  { name: "Ultra-Fast DDR5 RAM", desc: "Maximum data fluidity" },
+                  { name: "Liquid Cooling & Infrastructure", desc: "Heat management & network" }
                 ],
-                image: "/images/biohpc/hpc03.jpg",
-                status: "Open for Investment"
+                image: "/images/biohpc/hpc03.jpg"
               }
             ].map((unit, idx) => (
-              <div key={idx} className="group relative bg-white rounded-[4rem] border border-slate-200 shadow-2xl overflow-hidden hover:border-brand-primary/30 transition-all duration-700">
+              <div key={idx} className="group relative bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden hover:border-brand-primary/30 transition-all duration-700">
                 <div className="flex flex-col lg:flex-row">
-                  {/* Image Side */}
-                  <div className="lg:w-2/5 relative h-80 lg:h-auto overflow-hidden">
-                    <img src={unit.image} alt={unit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-                    <div className="absolute top-10 left-10">
-                      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em]">
-                        Asset {unit.id} // {unit.code}
+                  {/* Left: Visual & Status */}
+                  <div className="lg:w-1/3 relative h-64 lg:h-auto">
+                    <img src={unit.image} alt={unit.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <div className="inline-block px-3 py-1 rounded-lg bg-brand-primary text-white text-[10px] font-black uppercase tracking-widest mb-2">
+                        {unit.code}
                       </div>
+                      <h4 className="text-white text-xl font-bold">{unit.title}</h4>
                     </div>
                   </div>
 
-                  {/* Content Side */}
-                  <div className="lg:w-3/5 p-12 lg:p-16 flex flex-col">
-                    <div className="flex justify-between items-start mb-12">
+                  {/* Right: Breakdown */}
+                  <div className="lg:w-2/3 p-10 lg:p-16">
+                    <div className="flex flex-col sm:flex-row justify-between items-start gap-6 mb-12">
                       <div>
-                        <h3 className="text-5xl font-black text-slate-900 mb-4 tracking-tighter">{unit.title}</h3>
-                        <div className="flex items-center gap-4">
-                          <p className="text-brand-primary font-black text-2xl">10 Lakh BDT</p>
-                          <div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
-                          <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Full Valuation</p>
-                        </div>
+                        <h3 className="text-4xl font-black text-slate-900 mb-2 tracking-tight">{unit.title}</h3>
+                        <p className="text-slate-500 font-medium">{unit.tagline}</p>
                       </div>
-                      <div className="hidden sm:flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{unit.status}</span>
+                      <div className="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest border border-emerald-100 shrink-0">
+                        99.9% Uptime Goal
                       </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-16">
-                      {unit.specs.map((spec, sIdx) => (
-                        <div key={sIdx} className="space-y-1">
-                          <p className="text-[10px] font-black text-brand-secondary uppercase tracking-widest">{spec.label}</p>
-                          <p className="text-lg font-bold text-slate-700 leading-tight">{spec.value}</p>
+                    <div className="grid sm:grid-cols-2 gap-8 mb-12">
+                      {unit.components.map((comp, cIdx) => (
+                        <div key={cIdx} className="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-white group-hover:shadow-md transition-all">
+                          <div>
+                            <p className="text-sm font-black text-slate-900">{comp.name}</p>
+                            <p className="text-[10px] text-slate-500 font-bold uppercase">{comp.desc}</p>
+                          </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-auto pt-12 border-t border-slate-100">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-8">
-                        <div className="flex-grow max-w-md">
+                    {/* Investment Slots Simplified */}
+                    <div className="pt-10 border-t border-slate-100">
+                      <div className="flex flex-col md:flex-row items-center gap-10">
+                        <div className="flex-grow w-full">
                           <div className="flex justify-between mb-4">
-                            <span className="text-sm font-black text-slate-900 uppercase tracking-widest">Investment Slots</span>
-                            <span className="text-sm font-bold text-slate-400">0 of 10 Secured</span>
+                            <span className="text-xs font-black text-slate-900 uppercase tracking-widest">Co-Ownership Slots</span>
+                            <span className="text-xs font-bold text-slate-400">Available: 10 units</span>
                           </div>
-                          <div className="flex gap-1.5">
+                          <div className="flex gap-2">
                             {[...Array(10)].map((_, i) => (
-                              <div key={i} className="h-2.5 flex-grow rounded-full bg-slate-100 border border-slate-200/50"></div>
+                              <div key={i} className="h-3 flex-grow rounded-full bg-slate-100 border border-slate-200/50 relative overflow-hidden group/slot">
+                                <div className="absolute inset-0 bg-brand-primary/5 -translate-x-full group-hover/slot:translate-x-0 transition-transform duration-500"></div>
+                              </div>
                             ))}
                           </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Entry Point</p>
-                          <p className="text-3xl font-black text-slate-900 leading-none">1 Lakh <span className="text-brand-primary text-sm font-black ml-1">BDT</span></p>
                         </div>
                       </div>
                     </div>
@@ -495,17 +531,35 @@ export const BioHPCLabPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-32 grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            {[
-              { title: "Asset Management", desc: "Professionally maintained by CHIRAL Hub technical team with 99.9% uptime guarantee." },
-              { title: "Profit Sharing", desc: "Transparent quarterly distribution based on CaaS utilization and research contract margins." },
-              { title: "Strategic Exit", desc: "Multiple exit paths including internal buy-back or verified slot transfer within our network." }
-            ].map((item, i) => (
-              <div key={i} className="text-center space-y-4">
-                <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.title}</h4>
-                <p className="text-slate-500 leading-relaxed text-sm font-medium">{item.desc}</p>
-              </div>
-            ))}
+          <div className="mt-32 p-12 bg-white rounded-[3rem] border border-slate-100 shadow-2xl max-w-5xl mx-auto">
+            <h3 className="text-3xl font-black text-slate-900 text-center mb-12">How Your Investment Works</h3>
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                { 
+                  title: "1. Asset Purchase", 
+                  desc: "Your capital directly funds the procurement of specialized HPC hardware components listed above.",
+                  icon: Coins
+                },
+                { 
+                  title: "2. Research Usage", 
+                  desc: "DeepBio leases this compute power to pharmaceutical companies and research labs globally.",
+                  icon: FlaskConical
+                },
+                { 
+                  title: "3. Yield Distribution", 
+                  desc: "Profit from lease contracts is shared with node co-owners on a quarterly basis.",
+                  icon: TrendingUp
+                }
+              ].map((item, i) => (
+                <div key={i} className="space-y-4">
+                  <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-brand-primary" />
+                  </div>
+                  <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight">{item.title}</h4>
+                  <p className="text-slate-500 leading-relaxed text-sm font-medium">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
