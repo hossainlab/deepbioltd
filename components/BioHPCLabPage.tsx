@@ -230,10 +230,16 @@ function ServerRackSVG() {
         const colors = ['#3b82f6', '#a855f7', '#10b981', '#f97316'];
         const labels = ['α', 'β', 'γ', 'δ'];
         return (
-          <g key={i} className="animate-in fade-in slide-in-from-left-4" style={{ animationDelay: `${300 + i * 200}ms`, animationFillMode: 'both', animationDuration: '500ms' }}>
-            <rect x="82" y={y} width="236" height="80" rx="6" fill="#1e293b" stroke={colors[i]} strokeWidth="1.5" />
-            <circle cx="100" cy={y + 15} r="4" fill={colors[i]} className="animate-pulse" style={{ animationDelay: `${i * 500}ms` }} />
-            <circle cx="115" cy={y + 15} r="4" fill="#22c55e" className="animate-pulse" style={{ animationDelay: `${i * 300}ms` }} />
+          <g key={i}>
+            <rect x="82" y={y} width="236" height="80" rx="6" fill="#1e293b" stroke={colors[i]} strokeWidth="1.5">
+              <animate attributeName="opacity" values="0;1" dur="0.5s" fill="freeze" begin={`${0.3 + i * 0.2}s`} />
+            </rect>
+            <circle cx="100" cy={y + 15} r="4" fill={colors[i]}>
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin={`${i * 0.5}s`} />
+            </circle>
+            <circle cx="115" cy={y + 15} r="4" fill="#22c55e">
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`} />
+            </circle>
             <circle cx="130" cy={y + 15} r="4" fill="#334155" />
             {[0, 1, 2, 3, 4, 5].map((d) => (
               <rect key={d} x={155 + d * 24} y={y + 8} width="18" height="14" rx="2" fill="#0f172a" stroke="#475569" strokeWidth="0.5" />
@@ -241,18 +247,22 @@ function ServerRackSVG() {
             <text x="100" y={y + 45} fill={colors[i]} fontSize="14" fontWeight="bold" fontFamily="monospace">Node {labels[i]}</text>
             <text x="100" y={y + 62} fill="#94a3b8" fontSize="10" fontFamily="monospace">32C/64T • 128GB • RTX 4080S</text>
             {[0, 1, 2].map((v) => (
-              <rect key={v} x={270 + v * 14} y={y + 30} width="10" height="30" rx="2" fill="#0f172a" stroke="#334155" strokeWidth="0.5"
-                className="animate-pulse" style={{ animationDelay: `${v * 200 + i * 100}ms` }}
-              />
+              <rect key={v} x={270 + v * 14} y={y + 30} width="10" height="30" rx="2" fill="#0f172a" stroke="#334155" strokeWidth="0.5">
+                <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite" begin={`${v * 0.2 + i * 0.1}s`} />
+              </rect>
             ))}
           </g>
         );
       })}
-      <g className="animate-in fade-in" style={{ animationDelay: '1500ms', animationFillMode: 'both', animationDuration: '500ms' }}>
-        <rect x="82" y="460" width="236" height="20" rx="4" fill="#1e293b" stroke="#06b6d4" strokeWidth="1" />
-        <text x="160" y="474" fill="#06b6d4" fontSize="9" fontFamily="monospace">10GbE SWITCH</text>
+      <g>
+        <rect x="82" y="460" width="236" height="20" rx="4" fill="#1e293b" stroke="#06b6d4" strokeWidth="1">
+          <animate attributeName="opacity" values="0;1" dur="0.5s" fill="freeze" begin="1.5s" />
+        </rect>
+        <text x="200" y="474" fill="#06b6d4" fontSize="9" fontFamily="monospace" textAnchor="middle">10GbE SWITCH</text>
         {[0, 1, 2, 3].map((p) => (
-          <circle key={p} cx={100 + p * 18} cy={470} r="3" fill="#06b6d4" className="animate-pulse" style={{ animationDelay: `${p * 150}ms` }} />
+          <circle key={p} cx={100 + p * 18} cy={470} r="3" fill="#06b6d4">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin={`${1.5 + p * 0.15}s`} />
+          </circle>
         ))}
       </g>
     </svg>
