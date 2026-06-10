@@ -29,10 +29,7 @@ import {
   FlaskConical,
   Dna,
   Brain,
-  Sprout,
-  Atom,
-  Link2,
-  Move
+  Sprout
 } from 'lucide-react';
 import Image from 'next/image';
 import { PHASES } from '@/lib/biohpc/data';
@@ -66,90 +63,42 @@ export const BioHPCLabPage: React.FC = () => {
     {
       icon: Activity,
       title: 'Pathogen Surveillance',
-      desc: 'Real-time variant identification and genomic tracking of infectious diseases to safeguard public health.',
-      requirement: "High-IOPS Storage | 32+ Core Compute"
+      desc: 'Real-time variant identification and genomic tracking of infectious diseases to safeguard public health.'
     },
     {
       icon: Users,
       title: 'Single-Cell Genomics',
-      desc: 'Analyzing cellular heterogeneity at unprecedented resolution to understand complex biological systems.',
-      requirement: "512GB+ RAM | 64+ Core CPU"
+      desc: 'Analyzing cellular heterogeneity at unprecedented resolution to understand complex biological systems.'
     },
     {
       icon: Brain,
       title: 'Neurogenomics',
-      desc: 'Deciphering the genetic basis of neurological disorders through high-throughput neural data processing.',
-      requirement: "High-VRAM GPU | 100TB+ Storage"
+      desc: 'Deciphering the genetic basis of neurological disorders through high-throughput neural data processing.'
     },
     {
       icon: Microscope,
       title: 'Cancer Genomics',
-      desc: 'Identifying driver mutations and therapeutic targets to enable personalized oncology and precision medicine.',
-      requirement: "128+ Core Compute | 256GB+ RAM"
+      desc: 'Identifying driver mutations and therapeutic targets to enable personalized oncology and precision medicine.'
     },
     {
       icon: FlaskConical,
       title: 'Drug Discovery & Design',
-      desc: 'Accelerating the R&D cycle through molecular docking, virtual screening, and protein-ligand simulations.',
-      requirement: "Multi-GPU (A100/H100) Cluster"
+      desc: 'Accelerating the R&D cycle through molecular docking, virtual screening, and protein-ligand simulations.'
     },
     {
       icon: Sprout,
       title: 'Agricultural Genomics',
-      desc: 'Optimizing crop resilience and yield through genomic selection and plant-pathogen interaction studies.',
-      requirement: "64+ Core CPU | 128GB+ RAM"
+      desc: 'Optimizing crop resilience and yield through genomic selection and plant-pathogen interaction studies.'
     },
     {
       icon: ShieldCheck,
       title: 'Metagenomics & AMR',
-      desc: 'Characterizing microbial communities and tracking Antimicrobial Resistance (AMR) across diverse environments.',
-      requirement: "Ultra-High Storage | 64+ Core CPU"
+      desc: 'Characterizing microbial communities and tracking Antimicrobial Resistance (AMR) across diverse environments.'
     },
     {
       icon: Zap,
       title: 'AI Integration',
-      desc: 'Deploying custom Deep Learning architectures to automate complex biological pattern recognition.',
-      requirement: "Tensor Core Optimized GPU nodes"
-    }
-  ];
-
-  const softwareStack = [
-    {
-      category: "Quantum Chemistry",
-      icon: Atom,
-      tools: [
-        { name: "Gaussian", desc: "Electronic structure modeling and molecular property prediction." },
-        { name: "ORCA", desc: "High-performance quantum mechanical calculations for large molecules." },
-        { name: "Q-Chem / GAMESS", desc: "Comprehensive packages for ab-initio quantum chemistry." },
-        { name: "WebMO / Gabedit", desc: "Advanced GUIs for designing and managing quantum workflows." }
-      ]
-    },
-    {
-      category: "Molecular Docking & Design",
-      icon: Link2,
-      tools: [
-        { name: "AutoDock Vina", desc: "State-of-the-art virtual screening and lead optimization." },
-        { name: "Discovery Studio", desc: "Comprehensive environment for life science modeling and simulations." },
-        { name: "LigPlot+", desc: "2D visualization of protein-ligand interactions and chemical bonds." }
-      ]
-    },
-    {
-      category: "Molecular Dynamics & Viz",
-      icon: Move,
-      tools: [
-        { name: "GROMACS / NAMD", desc: "High-speed MD simulations for complex biological processes." },
-        { name: "PyMOL", desc: "Industry-standard 3D molecular visualization and rendering." },
-        { name: "VMD", desc: "Visualizing and analyzing trajectories from MD simulations." }
-      ]
-    },
-    {
-      category: "Advanced Analytics",
-      icon: Brain,
-      tools: [
-        { name: "Deep Learning", desc: "Custom neural networks for generative chemistry and predictive modeling." },
-        { name: "Large-Scale Single-Cell", desc: "High-dimensional transcriptomic and multi-omic data integration." },
-        { name: "Bio-Pipeline Automation", desc: "Automated workflows using Nextflow and Snakemake protocols." }
-      ]
+      desc: 'Deploying custom Deep Learning architectures to automate complex biological pattern recognition.'
     }
   ];
 
@@ -271,43 +220,6 @@ export const BioHPCLabPage: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{offer.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{offer.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Computational Technology Stack */}
-      <section id="tech-stack" className="py-24 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-              The Engine Room
-            </div>
-            <h2 className="text-5xl font-black text-slate-900 mb-6">Computational Stack</h2>
-            <p className="text-xl text-slate-600 leading-relaxed">
-              Leveraging industry-standard scientific software and custom deep learning architectures.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {softwareStack.map((category, idx) => (
-              <div key={idx} className="bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 hover:border-brand-primary/20 transition-all duration-500 group">
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <category.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">{category.category}</h3>
-                </div>
-
-                <div className="grid gap-6">
-                  {category.tools.map((tool, tIdx) => (
-                    <div key={tIdx} className="relative pl-6 border-l-2 border-slate-200 group-hover:border-brand-primary/30 transition-colors">
-                      <h4 className="text-lg font-bold text-slate-900 mb-1">{tool.name}</h4>
-                      <p className="text-sm text-slate-500 leading-relaxed">{tool.desc}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
