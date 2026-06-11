@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Cloud, Server, Zap, Shield, Globe, Users, Database, Terminal, Network, Lock, Gauge, CheckCircle2 } from 'lucide-react';
 
 export const CloudLabsPage: React.FC = () => {
@@ -186,9 +187,11 @@ export const CloudLabsPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-                  <img
+                  <Image
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
                     alt="Linux"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -202,9 +205,11 @@ export const CloudLabsPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-                  <img
+                  <Image
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                     alt="Python"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -218,9 +223,11 @@ export const CloudLabsPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-                  <img
+                  <Image
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg"
                     alt="R"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -398,11 +405,13 @@ export const CloudLabsPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
-                <img
+              <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-2xl">
+                <Image
                   src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000"
                   alt="Cloud Infrastructure"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-brand-primary/10 rounded-3xl -z-10"></div>

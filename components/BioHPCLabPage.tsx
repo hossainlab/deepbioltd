@@ -669,7 +669,7 @@ export const BioHPCLabPage: React.FC = () => {
             Advanced HPC Infrastructure
           </div>
 
-          <h1 className="text-6xl md:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+          <h1 className="text-4xl sm:text-6xl md:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
             <span className="block mb-2">BioHPC</span>
             <span className="brand-text-gradient bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">Laboratory</span>
           </h1>
@@ -815,7 +815,7 @@ export const BioHPCLabPage: React.FC = () => {
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-brand-secondary text-[11px] font-black uppercase tracking-[0.5em] mb-12">
             Strategic Investment Portal
           </div>
-          <h2 className="text-6xl md:text-8xl font-black text-white leading-tight tracking-tighter mb-8">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-tight tracking-tighter mb-8">
             Investing in <br /> <span className="brand-text-gradient">The Infrastructure Moat</span>
           </h2>
           <p className="text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">

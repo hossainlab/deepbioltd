@@ -15,6 +15,18 @@ export const Navbar: React.FC = () => {
   const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
   const pathname = usePathname()
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   useEffect(() => {
     // Set initial screen size
     setIsLargeScreen(window.innerWidth >= 1024)

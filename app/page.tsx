@@ -1,9 +1,11 @@
 import { Hero } from '@/components/Hero'
 import { Partners } from '@/components/Partners'
-import { WhoWeServe } from '@/components/WhoWeServe'
-import { CoreExpertise } from '@/components/CoreExpertise'
-import { FeaturedInitiatives } from '@/components/FeaturedInitiatives'
-import { Contact } from '@/components/Contact'
+import dynamic from 'next/dynamic'
+
+const WhoWeServe = dynamic(() => import('@/components/WhoWeServe').then(m => m.WhoWeServe))
+const CoreExpertise = dynamic(() => import('@/components/CoreExpertise').then(m => m.CoreExpertise))
+const FeaturedInitiatives = dynamic(() => import('@/components/FeaturedInitiatives').then(m => m.FeaturedInitiatives))
+const Contact = dynamic(() => import('@/components/Contact').then(m => m.Contact))
 
 export default function HomePage() {
   return (

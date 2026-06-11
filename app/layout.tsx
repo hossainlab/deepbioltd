@@ -100,8 +100,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}>
-        <div className="relative min-h-screen selection:bg-blue-100 selection:text-blue-900">
+      <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased overflow-x-hidden`}>
+        <div className="relative min-h-screen selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
           <SmoothScroll />
           <ScrollHandler />
           <Navbar />
