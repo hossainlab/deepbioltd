@@ -124,11 +124,18 @@ export default function CareerGuidePage() {
       linkedin: "https://www.linkedin.com/in/mshahariar/"
     },
     {
+      name: "Fuad Hossain",
+      title: "Team Lead, Big Bioinformatics Lab, CHIRAL",
+      bio: "Mr. Hossain is a Team Lead at Big Bioinformatics Lab, specializing in large-scale biological data analysis and computational genomics.",
+      image: "/images/career-guide/speakers/fuad.png",
+      linkedin: "https://www.linkedin.com/in/fuad-hossain/"
+    },
+    {
       name: "Pritom Kundu",
       title: "Team Lead, Insilico Medicine, CHIRAL",
       bio: "Mr. Kundu is a Team Lead at Insilico Medicine, specializing in the integration of AI and bioinformatics for innovative healthcare solutions.",
       image: "/images/career-guide/speakers/pritom.png",
-      linkedin: "https://www.linkedin.com/in/mshahariar/"
+      linkedin: "https://www.linkedin.com/in/pritom-kundu/"
     }
   ];
 
@@ -204,10 +211,12 @@ export default function CareerGuidePage() {
   ];
 
   const partners = [
-    { name: "Partner Organization 1", logo: "https://placehold.co/400x200/205E92/ffffff?text=Partner+1" },
-    { name: "Partner Organization 2", logo: "https://placehold.co/400x200/205E92/ffffff?text=Partner+2" },
-    { name: "Partner Organization 3", logo: "https://placehold.co/400x200/205E92/ffffff?text=Partner+3" },
-    { name: "Partner Organization 4", logo: "https://placehold.co/400x200/205E92/ffffff?text=Partner+4" }
+    { name: "GNOBB", logo: "/partner_logos/GNOBB.png" },
+    { name: "ASI School of Life", logo: "/partner_logos/ASISchoolofLife.png" },
+    { name: "CHIRAL Bangladesh", logo: "/partner_logos/chiral_logo.jpg" },
+    { name: "SPSB", logo: "/partner_logos/SPSB.png" },
+    { name: "GSA Bioinformatics Internship", logo: "/partner_logos/GSABioinformaticsInternship.png" },
+    { name: "cBLAST", logo: "/partner_logos/cBLAST.jpg" }
   ];
 
   const getTypeColor = (type: string) => {
@@ -273,7 +282,7 @@ export default function CareerGuidePage() {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/10 mt-16 max-w-5xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/10 mt-16 max-w-5xl">
             <div className="group cursor-default">
               <div className="text-3xl font-bold text-white mb-1 group-hover:text-brand-secondary transition-colors">9PM - 11PM</div>
               <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Monthly Session</div>
@@ -622,7 +631,7 @@ export default function CareerGuidePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
             {partners.map((partner, i) => (
               <div key={i} className="group p-8 bg-slate-50 rounded-3xl border border-slate-200 flex items-center justify-center grayscale hover:grayscale-0 hover:border-brand-primary/50 hover:bg-white hover:shadow-xl transition-all duration-500">
-                <img src={partner.logo} alt={partner.name} className="h-12 w-auto object-contain" />
+                <Image src={partner.logo} alt={partner.name} width={200} height={48} className="h-12 w-auto object-contain" />
               </div>
             ))}
           </div>

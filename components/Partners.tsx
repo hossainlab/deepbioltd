@@ -41,6 +41,7 @@ export const Partners: React.FC = () => {
                     alt={partner.name}
                     width={200}
                     height={80}
+                    sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 16vw"
                     className={`max-h-full max-w-full object-contain ${partner.hasBg ? 'mix-blend-multiply' : ''}`}
                   />
                 </div>

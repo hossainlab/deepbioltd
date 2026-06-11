@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Twitter, Linkedin, Github, Globe, Mail, MapPin } from 'lucide-react';
 
 interface Ambassador {
@@ -64,7 +65,7 @@ export const OurAmbassadorsPage: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight mb-8">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight mb-8">
             Our <span className="brand-text-gradient">Ambassadors</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -89,10 +90,12 @@ export const OurAmbassadorsPage: React.FC = () => {
               >
                 {/* Ambassador Image */}
                 <div className="relative aspect-square overflow-hidden bg-slate-100">
-                  <img
+                  <Image
                     src={ambassador.image}
                     alt={ambassador.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -191,10 +194,12 @@ export const OurAmbassadorsPage: React.FC = () => {
                   className="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 opacity-75 hover:opacity-100"
                 >
                   <div className="relative aspect-square overflow-hidden bg-slate-100">
-                    <img
+                    <Image
                       src={ambassador.image}
                       alt={ambassador.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
 

@@ -56,6 +56,7 @@ export const Team: React.FC = () => {
                 src={member.image}
                 alt={member.name}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
               />
             </div>

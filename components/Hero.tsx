@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
             <Sparkles className="w-3 h-3 animate-pulse" />
             Leading Life Science Research Hub in Bangladesh
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight">
             Data-Driven <br />
             <span className="brand-text-gradient">Life Science.</span>
           </h1>
@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
             </a>
           </div>
           
-          <div className="grid grid-cols-3 gap-10 pt-16 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 pt-16 border-t border-white/10">
             <div className="group cursor-default">
               <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">250+</div>
               <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Genomes Analyzed</div>

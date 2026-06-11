@@ -17,6 +17,7 @@ import {
   Filter,
 } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface CaseStudy {
   id: string
@@ -303,7 +304,7 @@ export const CaseStudiesPage: React.FC = () => {
             Biomni Lab Use Cases
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
             Case <span className="brand-text-gradient">Studies</span>
           </h1>
 
@@ -347,10 +348,12 @@ export const CaseStudiesPage: React.FC = () => {
               >
                 {/* Image Section */}
                 <div className="relative h-64 overflow-hidden bg-white flex items-center justify-center border-b border-slate-50 p-6">
-                  <img
+                  <Image
                     src={study.featuredImage}
                     alt={study.title}
-                    className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain p-6 transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute bottom-4 left-6">
                     <span className="px-3 py-1 rounded-full bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">

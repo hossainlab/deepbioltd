@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Heart, Users, BookOpen, Activity, FlaskConical, Atom, Pill } from 'lucide-react';
 
 export const InsilicoMedicineLabPage: React.FC = () => {
@@ -193,11 +194,12 @@ export const InsilicoMedicineLabPage: React.FC = () => {
               {teamMembers.map((member, i) => (
                 <div key={i} className="bg-white border border-gray-200 group cursor-pointer">
                   <div className="w-full aspect-[5/6] overflow-hidden relative" style={{ backgroundColor: '#8B8B8B' }}>
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                      style={{ mixBlendMode: 'normal' }}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>
                   <div className="p-5 bg-white">
