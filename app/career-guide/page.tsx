@@ -124,13 +124,6 @@ export default function CareerGuidePage() {
       linkedin: "https://www.linkedin.com/in/mshahariar/"
     },
     {
-      name: "Fuad Hossain",
-      title: "Team Lead, Big Bioinformatics Lab, CHIRAL",
-      bio: "Mr. Hossain is a Team Lead at Big Bioinformatics Lab, specializing in large-scale biological data analysis and computational genomics.",
-      image: "/images/career-guide/speakers/fuad.png",
-      linkedin: "https://www.linkedin.com/in/fuad-hossain/"
-    },
-    {
       name: "Pritom Kundu",
       title: "Team Lead, Insilico Medicine, CHIRAL",
       bio: "Mr. Kundu is a Team Lead at Insilico Medicine, specializing in the integration of AI and bioinformatics for innovative healthcare solutions.",
@@ -139,28 +132,73 @@ export default function CareerGuidePage() {
     }
   ];
 
+  const managementTeam = [
+    {
+      name: "Fatema Tuj Johora Fariha",
+      role: "Program Director",
+      image: "https://api.dicebear.com/7.x/initials/svg?seed=FF&backgroundColor=0f172a&fontFamily=Arial&fontSize=40",
+      linkedin: "#"
+    },
+    {
+      name: "Hafeza Bhuiyan Lata",
+      role: "Assistant Director",
+      image: "/career-guide-team/Hafeza Bhuiyan Lata.jpg",
+      linkedin: "#"
+    },
+    {
+      name: "Sharmin Sultana Lincoln",
+      role: "Program Host",
+      image: "/career-guide-team/Sharmin Sultana Lincoln.jpeg",
+      linkedin: "https://www.linkedin.com/in/sharmin-sultana-lincoln-966462370"
+    },
+    {
+      name: "Ellina Tasneem Bushra",
+      role: "Program Host",
+      image: "/career-guide-team/Ellina Tasneem Bushra.jpg",
+      linkedin: "https://www.linkedin.com/in/ellina-tasneem-bushra-453ab6386"
+    },
+    {
+      name: "Faiza Wamea Haque",
+      role: "Communications & Outreach Manager",
+      image: "/career-guide-team/Faiza Wamea Haque.jpg",
+      linkedin: "https://www.linkedin.com/in/faiza-wamea-haque-68b108244"
+    },
+    {
+      name: "Nafisa Nawal",
+      role: "Creative Design & Brand Lead",
+      image: "/career-guide-team/Nafisa Nawal.jpeg",
+      linkedin: "https://www.linkedin.com/in/nnawal/"
+    },
+    {
+      name: "Md. Nazmul Hasan",
+      role: "Coordinator",
+      image: "/career-guide-team/Md. Nazmul Hasan.jpg",
+      linkedin: "https://www.linkedin.com/in/mnh24"
+    },
+    {
+      name: "Moriom Islam Mim",
+      role: "Coordinator",
+      image: "/career-guide-team/Moriom Islam Mim.jpg",
+      linkedin: "https://www.linkedin.com/in/moriom-islam-mim"
+    }
+  ];
+
   const ambassadors = [
     { name: "MD. HABIB UN NOBI", university: "Jahangirnagar University", image: "/images/career-guide/ambassador_photo/Md. Habib Un Nobi_JU - Md. Habib Un Nobi.jpg", facebook: "https://www.facebook.com/share/1ChWDwb5UK/", linkedin: "https://www.linkedin.com/in/md-habib-un-nobi-9b694437a" },
     { name: "Md Sane Hossain", university: "Bangladesh University of Health Sciences", image: "/images/career-guide/ambassador_photo/Md Sane Hossain -BUHS - Md. Sane Hossain.jpg", facebook: "https://www.facebook.com/share/18K73unKn6/", linkedin: "https://www.linkedin.com/in/md-sane-hossain-7753371ab" },
-    { name: "Nafisa Nawal", university: "National University (Chittagong College)", image: "/images/career-guide/ambassador_photo/picture nafisa  - Nafisa Nawal.jpeg", facebook: "https://www.facebook.com/nafisa.nawal.167", linkedin: "https://www.linkedin.com/in/nnawal/" },
     { name: "MD Towfiqul Islam", university: "North South University", image: "/images/career-guide/ambassador_photo/TowfiqulIslam_NSU - 8433 Towfiqul Islam.jpg", facebook: "https://www.facebook.com/turzo.tawfik", linkedin: "https://www.linkedin.com/in/towfiqul-islam-88075789" },
     { name: "Md. Tariqul Islam", university: "Jashore University of Science and Technology", image: "/images/career-guide/ambassador_photo/Tariqulislam_JUST - Md.Tariqul Islam.png", facebook: "https://www.facebook.com/share/1ApkyR3928/", linkedin: "https://www.linkedin.com/in/md-tariqul-islam-398790259" },
     { name: "Salman Masud", university: "BRAC University", image: "/images/career-guide/ambassador_photo/Salman Masud_BRACU - Salman Masud.jpg", facebook: "https://www.facebook.com/share/1E9zBV5s4z/", linkedin: "https://www.linkedin.com/in/salman-masud-017072344" },
     { name: "Md. Ashikur Rahman", university: "Bangladesh Agricultural University", image: "/images/career-guide/ambassador_photo/MdAshikurRahman_BAU - Md. Ashikur Rahman.jpg", facebook: "https://www.facebook.com/share/18RkNK7Ebq/", linkedin: "https://www.linkedin.com/in/md-ashikur-rahman-52b034332" },
     { name: "Sweety Akter", university: "Brac University", image: "/images/career-guide/ambassador_photo/SweetyAkter_BRACU - Sweety Akter.jpg", facebook: "https://www.facebook.com/alex.tanhaa.5/", linkedin: "https://www.linkedin.com/in/sweety-akter-6b11b0286" },
     { name: "Jannatul Mawa Etee", university: "Islamic University, Kushtia", image: "/images/career-guide/ambassador_photo/IMG_20260301_210347 - Jannatul Mawa ll-21.png", facebook: "https://www.facebook.com/share/1DdzyHFgdc/", linkedin: "https://www.linkedin.com/in/jannatul-mawa-etee-3476a11b5" },
-    { name: "Sharmin Sultana Lincoln", university: "Military Institute of Science & Technology", image: "/images/career-guide/ambassador_photo/Sharmin_Sultana_Lincoln_MIST - Sharmin Sultana Lincoln.jpeg", facebook: "https://www.facebook.com/share/17CvDpjv68/", linkedin: "https://www.linkedin.com/in/sharmin-sultana-lincoln-966462370" },
     { name: "Habibur Rahman Naim", university: "Jagannath University", image: "/images/career-guide/ambassador_photo/Habibur Rahman Naim.JnU - Habibur Rahman Naim.png", facebook: "https://www.facebook.com/share/184avGhg6Y/", linkedin: "https://www.linkedin.com/in/habibur-rahman-naim-762168361" },
     { name: "Shirsho Saha", university: "Daffodil International University", image: "/images/career-guide/ambassador_photo/Shirsho Saha_DIU - Shirsho Saha 251-59-005.jpg", facebook: "https://www.facebook.com/share/18hn5AJe7x/", linkedin: "https://www.linkedin.com/in/shirsho-saha-0b51933b6" },
     { name: "Ankit Saha", university: "BRAC University", image: "/images/career-guide/ambassador_photo/Ankit Saha_BracU - Ankit Saha.jpg", facebook: "https://www.facebook.com/ankit.saha.455211/", linkedin: null },
     { name: "Md. Anamul Hasan Wasi", university: "Shahjalal University of Science and Technology", image: "/images/career-guide/ambassador_photo/MdAnamulHasanWasi_SUST - Anamul Hasan Wasi.jpg", facebook: "https://www.facebook.com/share/1HMB57JhXB/", linkedin: null },
-    { name: "Moriom Islam Mim", university: "Bangladesh University of Health Sciences", image: "/images/career-guide/ambassador_photo/Moriom Islam _ Bangladesh University of Health Sciences - Moriom Islam.jpg", facebook: "https://www.facebook.com/moriom.islam.9619934", linkedin: "https://www.linkedin.com/in/moriom-islam-mim" },
     { name: "Saju Mandal", university: "Jahangirnagar University", image: "/images/career-guide/ambassador_photo/ChatGPT Image Apr 13, 2026, 02_24_21 PM - Saju Mandal.png", facebook: "https://www.facebook.com/profile.php?id=100031018788823", linkedin: "https://www.linkedin.com/in/saju-biotech" },
-    { name: "Md. Nazmul Hasan", university: "Shamoly Engineering College", image: "/images/career-guide/ambassador_photo/Md.NazmulHasan_ShEC - nazmul. hasan.jpg", facebook: "https://www.facebook.com/mdnazmulhasan.ontor.7", linkedin: "https://www.linkedin.com/in/mnh24" },
-    { name: "Faiza Wamea Haque", university: "Brac University", image: "/images/career-guide/ambassador_photo/Faiza Wamea Haque _Brac University  - Faiza Wamea Haque.jpg", facebook: "https://www.facebook.com/share/1DoJsWyx4m/", linkedin: "https://www.linkedin.com/in/faiza-wamea-haque-68b108244" },
     { name: "MD. Sal Sabil Anwar", university: "BRAC University", image: "/images/career-guide/ambassador_photo/Md.SalSabilAnwar_BRACU - MD. SAL SABIL ANWAR.jpg", facebook: "https://www.facebook.com/share/1MwbnnU2Tn/", linkedin: "https://www.linkedin.com/in/salsabil-anwar-t4a007" },
     { name: "MD. SHAKAWAT HOSSAIN", university: "Shahjalal University of Science And Technology", image: "/images/career-guide/ambassador_photo/ShakawatHossain_SUST.jpg - shakawat hossain.jpeg", facebook: "https://www.facebook.com/shihaab7838/", linkedin: "https://www.linkedin.com/in/md-shakawat-hossain-372143378/" },
-    { name: "Ellina Tasneem Bushra", university: "University of Rajshahi", image: "/images/career-guide/ambassador_photo/EllinaTasneemBushra_RU - Sakib Al Hasan.jpg", facebook: "https://www.facebook.com/share/1DAcK1Yqxn/", linkedin: "https://www.linkedin.com/in/ellina-tasneem-bushra-453ab6386" },
     { name: "Sadia Sultana Mim", university: "University of Rajshahi", image: "/images/career-guide/ambassador_photo/inbound4528769483021909120 - Sadia Mim.jpg", facebook: "https://www.facebook.com/sadia.sultana.mim.783113", linkedin: "https://www.linkedin.com/in/sadia-mim-240931279" },
     { name: "Sanjida Mazumder", university: "Cumilla Medical College", image: "/images/career-guide/ambassador_photo/IMG_1479~2 (1).JPG - Sanjida Mazumder.png", facebook: "https://www.facebook.com/sanjida.mazumder.17", linkedin: null },
     { name: "Nazifa Rounak Ushna", university: "University of Rajshahi", image: "/images/career-guide/ambassador_photo/IMG_20251125_134427 - Feorella Firoza.jpg", facebook: "https://www.facebook.com/share/18p8doyW2z/", linkedin: "https://www.linkedin.com/in/nazifa-rounak-ushna-768485404" }
@@ -211,12 +249,10 @@ export default function CareerGuidePage() {
   ];
 
   const partners = [
-    { name: "GNOBB", logo: "/partner_logos/GNOBB.png" },
-    { name: "ASI School of Life", logo: "/partner_logos/ASISchoolofLife.png" },
-    { name: "CHIRAL Bangladesh", logo: "/partner_logos/chiral_logo.jpg" },
-    { name: "SPSB", logo: "/partner_logos/SPSB.png" },
-    { name: "GSA Bioinformatics Internship", logo: "/partner_logos/GSABioinformaticsInternship.png" },
-    { name: "cBLAST", logo: "/partner_logos/cBLAST.jpg" }
+    { name: "Partner 1", logo: null },
+    { name: "Partner 2", logo: null },
+    { name: "Partner 3", logo: null },
+    { name: "Partner 4", logo: null }
   ];
 
   const getTypeColor = (type: string) => {
@@ -532,8 +568,54 @@ export default function CareerGuidePage() {
         </div>
       </section>
 
+      {/* Management Team Section */}
+      <section id="management" className="py-24 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
+              Team Behind the Event
+            </div>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">Management Team</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              Meet the dedicated professionals who work tirelessly behind the scenes to make every Career Guide session a success.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {managementTeam.map((member, index) => (
+              <div
+                key={index}
+                className="group bg-slate-50 rounded-3xl border border-slate-200 p-8 hover:border-brand-primary/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              >
+                <div className="relative w-32 h-32 mx-auto mb-6">
+                  <div className="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={128}
+                    height={128}
+                    className="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg group-hover:border-brand-primary transition-colors"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-1 text-center group-hover:text-brand-primary transition-colors">
+                  {member.name}
+                </h3>
+                <p className="text-brand-secondary font-bold text-[10px] uppercase tracking-widest text-center mb-6">
+                  {member.role}
+                </p>
+                <div className="flex justify-center pt-4 border-t border-slate-100">
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#0A66C2] transition-colors">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Program Hosts Section */}
-      <section id="hosts" className="py-24 bg-white border-y border-slate-200">
+      <section id="hosts" className="py-24 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
@@ -543,16 +625,16 @@ export default function CareerGuidePage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <a href="https://deepbioltd.com/" target="_blank" rel="noopener noreferrer" className="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-200 hover:border-brand-primary/50 hover:bg-white hover:shadow-2xl transition-all duration-500 text-center">
-              <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 transition-transform p-4">
+            <a href="https://deepbioltd.com/" target="_blank" rel="noopener noreferrer" className="group p-10 bg-white rounded-[2.5rem] border border-slate-200 hover:border-brand-primary/50 hover:bg-slate-50 hover:shadow-2xl transition-all duration-500 text-center">
+              <div className="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 transition-transform p-4">
                 <Image src="/images/career-guide/partners/deepbio.jpg" alt="DeepBio Logo" width={80} height={80} className="object-contain" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-primary transition-colors">DeepBio Limited</h3>
               <p className="text-slate-600 leading-relaxed">Leading bioinformatics company specializing in AI-driven healthcare solutions and computational biology research.</p>
             </a>
             
-            <a href="https://chiralbd.org/" target="_blank" rel="noopener noreferrer" className="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-200 hover:border-brand-primary/50 hover:bg-white hover:shadow-2xl transition-all duration-500 text-center">
-              <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 transition-transform p-4">
+            <a href="https://chiralbd.org/" target="_blank" rel="noopener noreferrer" className="group p-10 bg-white rounded-[2.5rem] border border-slate-200 hover:border-brand-primary/50 hover:bg-slate-50 hover:shadow-2xl transition-all duration-500 text-center">
+              <div className="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 transition-transform p-4">
                 <Image src="/images/career-guide/partners/chiral.jpg" alt="CHIRAL Logo" width={80} height={80} className="object-contain" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-primary transition-colors">CHIRAL Bangladesh</h3>
@@ -563,7 +645,7 @@ export default function CareerGuidePage() {
       </section>
 
       {/* Campus Ambassadors Section */}
-      <section id="ambassadors" className="py-24 bg-slate-50">
+      <section id="ambassadors" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
@@ -630,8 +712,12 @@ export default function CareerGuidePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
             {partners.map((partner, i) => (
-              <div key={i} className="group p-8 bg-slate-50 rounded-3xl border border-slate-200 flex items-center justify-center grayscale hover:grayscale-0 hover:border-brand-primary/50 hover:bg-white hover:shadow-xl transition-all duration-500">
-                <Image src={partner.logo} alt={partner.name} width={200} height={48} className="h-12 w-auto object-contain" />
+              <div key={i} className="group p-8 bg-slate-50 rounded-3xl border border-dashed border-slate-300 flex items-center justify-center hover:border-brand-primary/50 hover:bg-white hover:shadow-xl transition-all duration-500 min-h-[120px]">
+                {partner.logo ? (
+                  <Image src={partner.logo} alt={partner.name} width={200} height={48} className="h-12 w-auto object-contain grayscale group-hover:grayscale-0 transition-all" />
+                ) : (
+                  <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Coming Soon</span>
+                )}
               </div>
             ))}
           </div>
