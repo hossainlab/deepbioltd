@@ -64,6 +64,17 @@ const roles = [
     icon: MessageSquare
   },
   {
+    title: 'Speakers',
+    responsibility: 'Subject Matter Expertise',
+    tasks: [
+      'Deliver insightful presentations on monthly themes',
+      'Share industry-specific trends and skill requirements',
+      'Provide actionable advice for higher education pathways',
+      'Engage with participants during the interactive Q&A'
+    ],
+    icon: GraduationCap
+  },
+  {
     title: 'Communications & Outreach Manager',
     responsibility: 'Ambassador & Partner Network',
     tasks: [
@@ -177,6 +188,7 @@ export const CareerGuideHandbookPage: React.FC = () => {
   const tocItems = [
     { title: 'Program Mission', href: '#mission' },
     { title: 'Management Roles', href: '#roles' },
+    { title: 'Speaker Guidelines', href: '#speaker-guide' },
     { title: 'Ambassador Responsibilities', href: '#ambassadors' },
     { title: 'Participant Guidelines', href: '#participants' },
     { title: 'Operational Workflow', href: '#workflow' },
@@ -292,7 +304,54 @@ export const CareerGuideHandbookPage: React.FC = () => {
             </div>
           </section>
 
-          {/* 03 Ambassadors */}
+          {/* 03 Speaker Guidelines */}
+          <section id="speaker-guide">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                <GraduationCap className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-4xl font-bold text-slate-900">Speaker Guidelines</h2>
+            </div>
+            <p className="text-slate-600 mb-8 leading-relaxed">
+              Our speakers are the heart of the Career Guide. These guidelines ensure a consistent and high-impact experience for all participants.
+            </p>
+            <div className="space-y-6">
+              <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-brand-primary" />
+                  Session Structure
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-slate-600 text-sm">
+                    <CheckCircle className="w-4 h-4 text-brand-primary mt-0.5 flex-shrink-0" />
+                    <span><strong>Presentation (40 mins):</strong> Focused, data-driven insights into industry or academic tracks.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600 text-sm">
+                    <CheckCircle className="w-4 h-4 text-brand-primary mt-0.5 flex-shrink-0" />
+                    <span><strong>Q&A Engagement (20 mins):</strong> Direct interaction with participants to address specific career queries.</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="p-8 bg-white rounded-3xl border border-slate-200">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <Target className="w-5 h-5 text-brand-primary" />
+                  Key Content Pillars
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4 text-sm text-slate-600">
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <span className="font-bold text-slate-900 block mb-1">National Market</span>
+                    Skill gaps, local industry opportunities, and salary trends in Bangladesh.
+                  </div>
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <span className="font-bold text-slate-900 block mb-1">Global Pathways</span>
+                    MS/PhD application strategies, funding landscapes, and research networking.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 04 Ambassadors */}
           <section id="ambassadors">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center flex-shrink-0">
