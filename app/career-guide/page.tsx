@@ -316,6 +316,13 @@ export default function CareerGuidePage() {
               <Calendar className="w-5 h-5" />
               View Schedule
             </a>
+            <Link
+              href="/career-guide/handbook"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-brand-secondary/20 backdrop-blur-md border border-brand-secondary/30 text-brand-secondary rounded-2xl font-bold hover:bg-brand-secondary/30 transition-all shadow-lg hover:-translate-y-1"
+            >
+              <BookOpen className="w-5 h-5" />
+              Program Handbook
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/10 mt-16 max-w-5xl">
