@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brand-dark">
           <Image 
-            src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auhref=format&fit=crop&q=60&w=2000" 
+            src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=60&w=2000" 
             alt="Hero Background"
             fill
             className="object-cover opacity-10 mix-blend-overlay"
@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
         <div className="relative hidden lg:block">
            <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-2xl border border-white/5 animate-float flex items-center justify-center bg-slate-900">
               <Image 
-                src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auhref=format&fit=crop&q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&q=80&w=1200" 
                 className="absolute inset-0 w-full h-full object-cover opacity-60" 
                 alt="Molecular Research Visualization" 
                 fill
