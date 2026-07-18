@@ -9,10 +9,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,8 +23,8 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(32, 94, 146, 0.1);
-  /* Optimize rendering for glass effect */
-  will-change: backdrop-filter;
+  /* Promote to its own layer once; do NOT use will-change here —
+     a persistent will-change keeps a GPU layer alive forever. */
   transform: translateZ(0);
 }
 
