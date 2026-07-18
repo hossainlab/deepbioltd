@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepBio — Bioinformatics Career Guide</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DEEPBIO — Bioinformatics Career Guide (monthly session deck)
+       Reveal.js · DeepBio brand template
+       ═══════════════════════════════════════════════════════════ */
+
+    :root {
+      /* ─── Brand Colors ─── */
+      --db-primary:    #205E92;
+      --db-secondary:  #64B5F6;
+      --db-dark:       #0a1628;
+      --db-accent:     #10b981;
+      --db-warning:    #f59e0b;
+      --db-danger:     #ef4444;
+
+      /* ─── Neutral Palette ─── */
+      --db-white:      #ffffff;
+      --db-gray-50:    #f8fafc;
+      --db-gray-100:   #f1f5f9;
+      --db-gray-200:   #e2e8f0;
+      --db-gray-300:   #cbd5e1;
+      --db-gray-400:   #94a3b8;
+      --db-gray-500:   #64748b;
+      --db-gray-600:   #475569;
+      --db-gray-700:   #334155;
+      --db-gray-800:   #1e293b;
+      --db-gray-900:   #0f172a;
+
+      /* ─── Typography ─── */
+      --font-body:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* ─── Base ─── */
+    .reveal-viewport { background: var(--db-white); }
+
+    .reveal {
+      font-family: var(--font-body);
+      font-size: 21px;
+      color: var(--db-gray-700);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--db-gray-900);
+    }
+
+    .reveal h1 { font-size: 2.7em; }
+    .reveal h2 { font-size: 1.75em; margin-bottom: 0.4em; }
+    .reveal h3 { font-size: 1.25em; }
+
+    .reveal p {
+      line-height: 1.55;
+      color: var(--db-gray-500);
+      margin-bottom: 0.45em;
+    }
+
+    .reveal strong { color: var(--db-gray-800); font-weight: 700; }
+
+    .reveal a {
+      color: var(--db-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ─── Slide container ─── */
+    .reveal .slides > section {
+      padding: 1.7em 2.4em;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* ─── Persistent Footer ─── */
+    .db-footer {
+      position: fixed;
+      bottom: 12px; left: 24px;
+      z-index: 100;
+      font-family: var(--font-body);
+      font-size: 11px; font-weight: 500;
+      color: var(--db-gray-400);
+      pointer-events: none;
+    }
+
+    /* ─── Slide Numbers ─── */
+    .reveal .slide-number {
+      font-family: var(--font-body);
+      font-size: 11px; font-weight: 600;
+      color: var(--db-gray-400);
+      background: transparent;
+      right: 24px; bottom: 12px;
+    }
+
+    /* ─── Progress Bar ─── */
+    .reveal .progress { height: 3px; color: var(--db-primary); }
+
+    /* ═══════════════════════════════════════════════════════════
+       COMPONENT CLASSES
+       ═══════════════════════════════════════════════════════════ */
+
+    /* ─── Tag / Label ─── */
+    .tag {
+      display: inline-block;
+      padding: 0.3em 1em;
+      border-radius: 999px;
+      font-size: 0.5em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--db-primary);
+      background: rgba(32, 94, 146, 0.08);
+      border: 1px solid rgba(32, 94, 146, 0.15);
+      margin-bottom: 0.5em;
+    }
+    .tag-green { color: var(--db-accent);  background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.2); }
+    .tag-amber { color: var(--db-warning); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+    .tag-red   { color: var(--db-danger);  background: rgba(239,68,68,0.08);  border-color: rgba(239,68,68,0.2); }
+
+    /* ─── Accent Text ─── */
+    .text-brand  { color: var(--db-primary); }
+    .text-accent { color: var(--db-secondary); }
+    .text-muted  { color: var(--db-gray-400); }
+    .text-dim    { color: var(--db-gray-500); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sep {
+      width: 50px; height: 3px;
+      background: linear-gradient(90deg, var(--db-primary), var(--db-secondary));
+      border-radius: 2px; margin: 0.6em auto;
+    }
+
+    .section-label {
+      font-size: 0.62em; font-weight: 700; color: var(--db-primary);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35em;
+    }
+
+    /* ─── Cards ─── */
+    .card {
+      background: var(--db-gray-50);
+      border: 1px solid var(--db-gray-200);
+      border-radius: 12px;
+      padding: 1em 1.1em;
+      text-align: left;
+    }
+    .card-bordered {
+      background: var(--db-white);
+      border: 1px solid var(--db-gray-200);
+      border-radius: 12px;
+      padding: 1em 1.1em;
+      text-align: left;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .card-highlight {
+      border-color: var(--db-primary);
+      box-shadow: 0 2px 12px rgba(32, 94, 146, 0.1);
+    }
+    .card h4, .card-bordered h4 {
+      font-size: 0.85em; margin: 0 0 0.3em 0; color: var(--db-gray-800);
+    }
+    .card p, .card-bordered p {
+      font-size: 0.72em; margin: 0; color: var(--db-gray-500); line-height: 1.5;
+    }
+
+    /* ─── Grid Layouts ─── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8em; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6em; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; align-items: start; }
+
+    /* ─── Roadmap Grid ─── */
+    .grid-roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6em;
+      margin-top: 0.7em;
+    }
+    .road-card {
+      background: var(--db-gray-50);
+      border-left: 3px solid var(--db-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 0.55em 0.75em;
+      text-align: left;
+    }
+    .road-card h4 { font-size: 0.6em; margin: 0; color: var(--db-primary); text-transform: uppercase; letter-spacing: 0.06em; }
+    .road-card h5 { font-size: 0.78em; margin: 0.15em 0; color: var(--db-gray-800); font-weight: 700; }
+    .road-card p  { font-size: 0.6em; margin: 0; line-height: 1.4; color: var(--db-gray-500); }
+
+    /* ─── Stat Block ─── */
+    .stat { text-align: center; padding: 0.5em; }
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 2.3em; font-weight: 900;
+      color: var(--db-primary); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.58em; color: var(--db-gray-400);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3em;
+    }
+
+    /* ─── Inline Stats Bar ─── */
+    .stats-bar { display: flex; align-items: center; justify-content: center; gap: 1.6em; margin: 0.6em 0; }
+    .stats-bar .stat-num { font-family: var(--font-heading); font-size: 1.7em; font-weight: 900; color: var(--db-primary); line-height: 1; text-align: center; }
+    .stats-bar .stat-lbl { font-size: 0.5em; color: var(--db-gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25em; text-align: center; }
+    .stats-bar .stat-sep { width: 1px; height: 2.4em; background: var(--db-gray-200); }
+
+    /* ─── Tables ─── */
+    .reveal table { font-size: 0.74em; border-collapse: collapse; width: 100%; }
+    .reveal table th {
+      font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;
+      font-size: 0.7em; letter-spacing: 0.08em; color: var(--db-gray-400);
+      padding: 0.55em 0.8em; border-bottom: 2px solid var(--db-gray-200); text-align: left;
+    }
+    .reveal table td {
+      padding: 0.5em 0.8em; border-bottom: 1px solid var(--db-gray-100); color: var(--db-gray-600);
+    }
+
+    /* ─── Lists ─── */
+    .reveal ul { list-style: none; padding: 0; margin: 0; }
+    .reveal ul li {
+      padding: 0.28em 0 0.28em 1.5em; position: relative;
+      font-size: 0.85em; color: var(--db-gray-600); line-height: 1.5;
+    }
+    .reveal ul li::before {
+      content: "→"; position: absolute; left: 0;
+      color: var(--db-primary); font-weight: 700;
+    }
+    .reveal .no-bullets li::before { content: none; }
+    .reveal .check-list li::before { content: "✓"; color: var(--db-accent); }
+    .reveal .x-list li::before { content: "✗"; color: var(--db-danger); }
+
+    /* ─── Numbered Step List ─── */
+    .step-list { list-style: none; padding: 0; margin: 0; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      padding: 0.45em 0 0.45em 2.3em; position: relative;
+      font-size: 0.8em; color: var(--db-gray-600);
+      border-bottom: 1px solid var(--db-gray-100); list-style: none;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute; left: 0; top: 0.4em;
+      width: 1.6em; height: 1.6em; border-radius: 50%;
+      background: var(--db-primary); color: white;
+      font-size: 0.72em; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; line-height: 1;
+    }
+
+    /* ─── Agenda cards ─── */
+    .agenda-card {
+      position: relative; display: flex; align-items: center; gap: 1em;
+      background: var(--db-white); border: 1px solid var(--db-gray-200);
+      border-radius: 14px; padding: 0.85em 1.1em;
+      box-shadow: 0 2px 8px rgba(15,23,42,0.04); overflow: hidden;
+      text-align: left;
+    }
+    .agenda-card .bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .agenda-card .idx { font-family: var(--font-heading); font-size: 0.95em; font-weight: 900; color: var(--db-gray-300); line-height: 1; }
+    .agenda-card .ttl { font-size: 0.9em; font-weight: 800; color: var(--db-gray-900); }
+    .agenda-card .sub { font-size: 0.66em; color: var(--db-gray-500); line-height: 1.45; margin-top: 0.15em; }
+    .agenda-card .clock { font-size: 0.6em; font-weight: 700; color: var(--db-primary); letter-spacing: 0.04em; margin-top: 0.2em; }
+
+    /* ─── Quote Block ─── */
+    .quote-block {
+      border-left: 3px solid var(--db-primary);
+      padding: 0.8em 1.2em;
+      background: var(--db-gray-50);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--db-gray-600);
+      font-size: 0.85em;
+    }
+
+    /* ─── CTA Box ─── */
+    .cta-box {
+      border: 2px solid var(--db-primary);
+      border-radius: 16px;
+      padding: 1.3em 1.8em;
+      background: rgba(32, 94, 146, 0.03);
+      text-align: center;
+    }
+    .btn {
+      display: inline-block; background: var(--db-primary); color: var(--db-white);
+      padding: 0.6em 1.4em; border-radius: 12px; font-weight: 700; font-size: 0.8em;
+    }
+
+    /* ─── Speaker / Author Info ─── */
+    .speaker-info { text-align: center; margin-top: 0.7em; }
+    .speaker-info .speaker-name  { font-size: 0.82em; font-weight: 600; color: var(--db-gray-700); }
+    .speaker-info .speaker-role  { font-size: 0.7em; color: var(--db-gray-400); }
+    .speaker-info .speaker-email { font-size: 0.66em; color: var(--db-primary); font-weight: 600; }
+
+    .disclaimer { font-size: 0.5em; color: var(--db-gray-400); margin-top: 1em; }
+
+    /* ─── Social Icons Row ─── */
+    .social-row { display: flex; align-items: center; justify-content: center; gap: 0.6em; margin-top: 0.4em; }
+    .social-row a, .social-row span { color: var(--db-gray-400); font-size: 0.7em; transition: color 0.2s; }
+    .social-row a:hover { color: var(--db-primary); }
+    .social-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--db-gray-300); display: inline-block; }
+
+    /* ─── Dark Slide Variant ─── */
+    .dark-slide h1, .dark-slide h2, .dark-slide h3, .dark-slide h4 { color: var(--db-white); }
+    .dark-slide p, .dark-slide li { color: var(--db-gray-400); }
+    .dark-slide .card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+    .dark-slide .card h4 { color: var(--db-white); }
+    .dark-slide .card p  { color: var(--db-gray-400); }
+    .dark-slide .tag { background: rgba(32,94,146,0.2); border-color: rgba(100,181,246,0.3); color: var(--db-secondary); }
+    .dark-slide .stat-value { color: var(--db-secondary); }
+    .dark-slide .quote-block { background: rgba(255,255,255,0.05); color: var(--db-gray-300); }
+    .dark-slide .section-label { color: var(--db-secondary); }
+    .dark-slide .step-list li { color: var(--db-gray-300); border-color: rgba(255,255,255,0.08); }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT / PDF
+       ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .reveal-viewport {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .reveal .slides section { page-break-after: always; page-break-inside: avoid; }
+      .db-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Persistent Footer (logo, bottom-left) ─── -->
+  <div class="db-footer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.6;">
+      <path d="M4 4C4 4 7 6 12 12S20 20 20 20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 4C20 4 17 6 12 12S4 20 4 20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M6.5 6.5H4" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.5 6.5H20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M6.5 17.5H4" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.5 17.5H20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M9 9H7.5" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 9H15" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M9 15H7.5" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 15H15" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══════════════════════════════════════════════════════
+           01 · TITLE
+           ══════════════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">100% Free · Monthly Career Guidance Session</div>
+        <h1 style="margin-top:0.1em;margin-bottom:0.1em;">DeepBio Bioinformatics <span class="gradient-text">Career Guide</span></h1>
+        <p style="font-size:1.05em;color:var(--db-gray-600);font-weight:500;margin-bottom:0.3em;">Build Your Bioinformatics Career in the Age of AI</p>
+        <div class="sep"></div>
+        <div class="speaker-info">
+          <div class="speaker-name">Md. Jubayer Hossain · Founder &amp; CEO, DeepBio Limited</div>
+        </div>
+        <div class="social-row" style="margin-top:0.6em;">
+          <a href="https://deepbioltd.com" style="font-weight:600;color:var(--db-primary);">deepbioltd.com</a>
+          <span class="social-dot"></span>
+          <a href="https://deepbioltd.com/career-guide/" style="font-weight:600;color:var(--db-primary);">deepbioltd.com/career-guide</a>
+        </div>
+        <p class="disclaimer">Information accurate as of the session date · Content subject to change.</p>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           02 · AGENDA (2 hours, 5 segments)
+           ══════════════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Tonight · 2 Hours</div>
+        <h2 style="margin-top:0.1em;margin-bottom:0.15em;">What we'll <span class="gradient-text">cover</span></h2>
+        <p style="font-size:0.74em;margin-bottom:0.9em;">Guidance + open Q&amp;A</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7em;max-width:900px;margin:0 auto;">
+
+          <div class="agenda-card">
+            <div class="bar" style="background:var(--db-primary);"></div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;"><span class="idx">01</span><span class="ttl">Opening &amp; Program Overview</span></div>
+              <div class="sub">Who we are, what we do — and the big question of the night</div>
+            </div>
+          </div>
+
+          <div class="agenda-card">
+            <div class="bar" style="background:var(--db-accent);"></div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;"><span class="idx">02</span><span class="ttl">Industry Guide</span></div>
+              <div class="sub">National &amp; international markets, roles, future-proof careers</div>
+            </div>
+          </div>
+
+          <div class="agenda-card">
+            <div class="bar" style="background:var(--db-secondary);"></div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;"><span class="idx">03</span><span class="ttl">Academic Excellence</span></div>
+              <div class="sub">Global MS &amp; PhD pathways, funding, and applications</div>
+            </div>
+          </div>
+
+          <div class="agenda-card">
+            <div class="bar" style="background:var(--db-warning);"></div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;"><span class="idx">04</span><span class="ttl">Open Discussion</span></div>
+              <div class="sub">Ask anything — live career Q&amp;A</div>
+            </div>
+          </div>
+
+          <div class="agenda-card" style="grid-column:1 / -1;">
+            <div class="bar" style="background:var(--db-gray-500);"></div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;"><span class="idx">05</span><span class="ttl">Closing Remarks &amp; Networking Links</span></div>
+              <div class="sub">Key takeaways, how to stay connected, and your next steps</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           SEGMENT 1 — OPENING (9:00 – 9:10)
+           ══════════════════════════════════════════════════════ -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Segment 01</div>
+        <h2 style="margin-top:0.3em;font-size:2.3em;">Welcome &amp; <span class="gradient-text">Program Overview</span></h2>
+        <p style="font-size:0.85em;">Who we are, what we build — and the question that frames the whole night.</p>
+        <div class="sep"></div>
+      </section>
+
+      <!-- 04 · WHO WE ARE -->
+      <section>
+        <div class="tag">Who We Are</div>
+        <h2 style="margin-top:0.2em;">One ecosystem, <span class="gradient-text">one mission</span></h2>
+        <p style="font-size:0.74em;margin-bottom:0.8em;">Building the bioinformatics ecosystem in Bangladesh — and connecting it to the world.</p>
+        <div class="grid-3">
+          <div class="card-bordered" style="border-top:3px solid var(--db-primary);">
+            <h3 style="font-size:0.95em;margin:0 0 0.3em;color:var(--db-gray-900);">DeepBio Limited</h3>
+            <p style="font-size:0.72em;">A Bangladesh-based research startup turning life-science data into impactful solutions through <strong>AI and bioinformatics</strong> — spanning research, training, and talent development.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-accent);">
+            <h3 style="font-size:0.95em;margin:0 0 0.3em;color:var(--db-gray-900);">DeepBio Academy</h3>
+            <p style="font-size:0.72em;">Our <strong>bioinformatics training platform</strong> — hands-on courses in Python, R, and real-world biological data analysis that take learners from basics to research-ready skills.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-secondary);">
+            <h3 style="font-size:0.95em;margin:0 0 0.3em;color:var(--db-gray-900);">CHIRAL Bangladesh</h3>
+            <p style="font-size:0.72em;">A research organization <strong>advancing bioinformatics education and research</strong> in Bangladesh through programs, mentorship, and industry collaboration.</p>
+          </div>
+        </div>
+        <div class="quote-block" style="margin-top:0.9em;font-size:0.78em;">
+          The Career Guide is our monthly, <strong>100% free</strong> session — giving every student a clear path into computational biology, whatever their background.
+        </div>
+      </section>
+
+      <!-- 05 · WHAT WE DO -->
+      <section>
+        <div class="tag tag-green">What We Do</div>
+        <h2 style="margin-top:0.2em;">An ecosystem for <span class="gradient-text">your growth</span></h2>
+        <div class="grid-4" style="margin-top:0.8em;">
+          <div class="card" style="border-top:3px solid var(--db-primary);">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🔬</div>
+            <h4>Research</h4>
+            <p>Genomics, transcriptomics, single-cell, AI in biomedicine.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🎓</div>
+            <h4>Academy &amp; Training</h4>
+            <p>Hands-on courses in Python, R, and real-world data analysis.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🧪</div>
+            <h4>Internships</h4>
+            <p>GSA Bioinformatics Internship — mentored research to publication.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-warning);">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🧭</div>
+            <h4>Career Guide</h4>
+            <p>This free monthly session — industry + academic pathways.</p>
+          </div>
+        </div>
+        <div class="stats-bar" style="margin-top:1.1em;">
+          <div><div class="stat-num">3,000+</div><div class="stat-lbl">Students Trained</div></div>
+          <div class="stat-sep"></div>
+          <div><div class="stat-num">40+</div><div class="stat-lbl">Campus Ambassadors</div></div>
+          <div class="stat-sep"></div>
+          <div><div class="stat-num">30+</div><div class="stat-lbl">Research Assistants</div></div>
+          <div class="stat-sep"></div>
+          <div><div class="stat-num">250+</div><div class="stat-lbl">Registered · First Month</div></div>
+        </div>
+      </section>
+
+      <!-- 05a · RESEARCH AREAS — DISEASE -->
+      <section>
+        <div class="tag">Research Focus · 1 of 2</div>
+        <h2 style="margin-top:0.2em;">Diseases we <span class="gradient-text">study</span></h2>
+        <p style="font-size:0.74em;margin-bottom:0.9em;">Where our computational biology makes an impact.</p>
+        <div class="grid-3" style="margin-top:0.6em;">
+          <div class="card" style="border-top:3px solid var(--db-primary);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">🧬</div>
+            <h4 style="font-size:0.95em;">Cancer Genomics</h4>
+            <p>Tumor profiling, driver mutations, and biomarker discovery.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">🧠</div>
+            <h4 style="font-size:0.95em;">Neurogenomics</h4>
+            <p>Genomic basis of brain function and neurological disease.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">🦠</div>
+            <h4 style="font-size:0.95em;">Infectious Diseases</h4>
+            <p>Pathogen genomics &amp; surveillance for public health.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05b · RESEARCH AREAS — OMICS TECH -->
+      <section>
+        <div class="tag tag-green">Research Focus · 2 of 2</div>
+        <h2 style="margin-top:0.2em;">Technologies we <span class="gradient-text">work with</span></h2>
+        <p style="font-size:0.74em;margin-bottom:0.9em;">The omics &amp; AI methods powering our research.</p>
+        <div class="grid-3" style="margin-top:0.6em;">
+          <div class="card" style="border-top:3px solid var(--db-primary);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">📊</div>
+            <h4 style="font-size:0.95em;">Bulk RNA-Seq</h4>
+            <p>Differential expression, pathway &amp; enrichment analysis.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">🔬</div>
+            <h4 style="font-size:0.95em;">Single-Cell</h4>
+            <p>scRNA-seq, cell-type atlases, and trajectory inference.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);text-align:center;padding:1.4em 1.1em;">
+            <div style="font-size:1.8em;margin-bottom:0.25em;">🤖</div>
+            <h4 style="font-size:0.95em;">Deep Learning + Drug Discovery</h4>
+            <p>AI models for targets, molecules, and in-silico screening.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05c · FEATURED IN JOURNALS -->
+      <section>
+        <div class="tag">Published Research</div>
+        <h2 style="margin-top:0.2em;">Our work, <span class="gradient-text">peer-reviewed</span></h2>
+        <p style="font-size:0.74em;margin-bottom:1em;">Our studies featured in international, indexed journals.</p>
+        <div class="grid-4" style="max-width:900px;margin:0 auto;align-items:stretch;">
+          <div class="card-bordered" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7em;padding:1.1em 0.9em;">
+            <div style="height:120px;display:flex;align-items:center;justify-content:center;"><img src="journals/sci-reports.jpg" alt="Scientific Reports" style="max-height:120px;max-width:100%;object-fit:contain;border-radius:4px;"></div>
+            <div style="font-size:0.62em;font-weight:700;color:var(--db-gray-700);">Scientific Reports</div>
+          </div>
+          <div class="card-bordered" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7em;padding:1.1em 0.9em;">
+            <div style="height:120px;display:flex;align-items:center;justify-content:center;"><img src="journals/bmc-genomics.jpg" alt="BMC Genomics" style="max-height:120px;max-width:100%;object-fit:contain;border-radius:4px;"></div>
+            <div style="font-size:0.62em;font-weight:700;color:var(--db-gray-700);">BMC Genomics</div>
+          </div>
+          <div class="card-bordered" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7em;padding:1.1em 0.9em;">
+            <div style="height:120px;display:flex;align-items:center;justify-content:center;"><img src="journals/hsr.jpg" alt="Health Science Reports" style="max-height:120px;max-width:100%;object-fit:contain;border-radius:4px;"></div>
+            <div style="font-size:0.62em;font-weight:700;color:var(--db-gray-700);">Health Science Reports</div>
+          </div>
+          <div class="card-bordered" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7em;padding:1.1em 0.9em;">
+            <div style="height:120px;display:flex;align-items:center;justify-content:center;"><img src="journals/microorganisms.png" alt="Microorganisms" style="max-height:60px;max-width:100%;object-fit:contain;"></div>
+            <div style="font-size:0.62em;font-weight:700;color:var(--db-gray-700);">Microorganisms</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05d · WORKING PROJECTS (GitHub) -->
+      <section>
+        <div class="tag tag-green">Open Projects · GitHub</div>
+        <h2 style="margin-top:0.15em;">Some of our <span class="gradient-text">working projects</span></h2>
+        <p style="font-size:0.72em;margin-bottom:0.7em;">Real, open research you can explore — and one day, build.</p>
+        <div class="grid-3" style="gap:0.7em;align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">DeepAMR</h4>
+            <p style="font-size:0.64em;">Antimicrobial-resistance prediction platform using deep learning.</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/hossainlab/DeepAMR</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">AMR Drug Repurposing</h4>
+            <p style="font-size:0.64em;">DL-driven drug repurposing on ChEMBL resistance phenotypes.</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/hossainlab/amr_drug_repurposing</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">TME Cell-State Benchmark</h4>
+            <p style="font-size:0.64em;">Can annotation tools identify non-malignant cell states in the tumour microenvironment?</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/hossainlab/tme-cell-state-annotation-benchmark</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-warning);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">PBMC Immune Landscape</h4>
+            <p style="font-size:0.64em;">Single-cell integration: innate lymphoid cells &amp; immune sex dimorphism in human blood.</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/hossainlab/pmc_immune_landscape</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">COVID-19 Viral Entry</h4>
+            <p style="font-size:0.64em;">Viral entry &amp; innate host–pathogen interactions in SARS-CoV-2.</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/bigbiolab/covid19-viral-entry-innate-immunity</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.85em 0.95em;">
+            <h4 style="font-size:0.82em;margin-bottom:0.25em;">Fezf2 Multi-omics</h4>
+            <p style="font-size:0.64em;">Fezf2 mutation in cortical development &amp; identifying therapeutic targets.</p>
+            <div style="font-size:0.55em;color:var(--db-gray-400);margin-top:0.5em;font-family:monospace;">github.com/hossainlab/fezf2-multiomics</div>
+          </div>
+
+        </div>
+        <p style="font-size:0.6em;text-align:center;margin-top:0.7em;color:var(--db-gray-400);">Explore more at <a href="https://github.com/hossainlab">github.com/hossainlab</a> &amp; <a href="https://github.com/bigbiolab">github.com/bigbiolab</a></p>
+      </section>
+
+      <!-- 05e · OUR INITIATIVES -->
+      <section>
+        <div class="tag">Featured Initiatives</div>
+        <h2 style="margin-top:0.15em;">Our <span class="gradient-text">initiatives</span></h2>
+        <p style="font-size:0.72em;margin-bottom:0.7em;">A core ecosystem of platforms, programs &amp; tools driving impact across research, clinical diagnostics &amp; professional development.</p>
+        <div class="grid-3" style="gap:0.7em;align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">🎓 Online Learning</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">DeepBio Academy</h4>
+            <p style="font-size:0.64em;">Expert-led training in bioinformatics, computational biology &amp; AI in life sciences.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">deepbioacademy.com ↗</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">💻 Research Internship</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">GSA Bioinformatics Internship</h4>
+            <p style="font-size:0.64em;">6-month hybrid, research-focused program by GNOBB, ASI School of Life &amp; SPSB.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">gsabioinfointernship.github.io ↗</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">🧭 Career Resource</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">DeepBio Career Guide</h4>
+            <p style="font-size:0.64em;">Bridges academia &amp; industry — 50+ roles, skill-gap analysis &amp; mentorship.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">deepbioltd.com/career-guide ↗</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-warning);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">🖥️ HPC Infrastructure</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">BioHPC Lab</h4>
+            <p style="font-size:0.64em;">GPU-accelerated, cloud-native, scalable compute for large-scale biological data.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">deepbioltd.com/labs/biohpc ↗</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">🧬 AI-Powered Tool</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">DeepAMR</h4>
+            <p style="font-size:0.64em;">AI antimicrobial-resistance prediction — 95%+ accuracy, 12+ organisms, &lt;15 min results.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">deep-amr.vercel.app ↗</div>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.85em 0.95em;">
+            <div style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25em;">👥 Mentorship Program</div>
+            <h4 style="font-size:0.82em;margin-bottom:0.2em;">Bioinformatics Mentorship Program (BMP)</h4>
+            <p style="font-size:0.64em;">1:1 structured mentoring connecting aspiring bioinformaticians with experienced researchers.</p>
+            <div style="font-size:0.55em;color:var(--db-primary);margin-top:0.5em;font-weight:600;">mdjubayerhossain.com/bmp ↗</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           NEW SECTION — FOUNDATIONS / THE BIOINFORMATICS TOOLKIT
+           ══════════════════════════════════════════════════════ -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Foundations</div>
+        <h2 style="margin-top:0.3em;font-size:2.3em;">The Bioinformatics <span class="gradient-text">Toolkit</span></h2>
+        <p style="font-size:0.85em;">Why NGS skills matter, where beginners stall, and the stack you actually need.</p>
+        <div class="sep"></div>
+      </section>
+
+      <!-- F0 · RESEARCH AREAS / THE OMICS -->
+      <section>
+        <div class="tag">The Research Landscape</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">The world of <span class="gradient-text">omics</span></h2>
+        <p style="font-size:0.76em;color:var(--db-gray-500);margin-bottom:0.7em;">Bioinformatics spans many layers of biology — each "ome" is a research field of its own.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6em;max-width:980px;margin:0 auto;text-align:left;">
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🧬</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Genomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">DNA — whole genomes, variants &amp; structure.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">📜</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Transcriptomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">RNA — gene expression, bulk &amp; single-cell.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🔬</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Proteomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Proteins — abundance, structure &amp; interactions.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-warning);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">⚗️</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Metabolomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Metabolites — the chemical fingerprint of cells.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-danger);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🎚️</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Epigenomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Methylation &amp; chromatin — control of expression.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🦠</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Metagenomics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Microbiomes — communities sequenced together.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🧩</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Multi-omics</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Integrating layers for a systems-level view.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><div style="font-size:1.2em;margin-bottom:0.15em;">🩺</div><h4 style="margin:0 0 0.1em;font-size:0.8em;">Clinical &amp; AI</h4><p style="font-size:0.62em;margin:0;color:var(--db-gray-500);">Diagnostics, precision medicine &amp; AI-for-bio.</p></div>
+        </div>
+        <p style="font-size:0.6em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Different data, shared foundation — and almost all of it starts with sequencing.</p>
+      </section>
+
+      <!-- F0b · REALITY OF COMPUTATIONAL DRUG DISCOVERY -->
+      <section>
+        <div class="tag">A Reality Check</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">The reality of <span class="gradient-text">computational drug discovery</span></h2>
+        <p style="font-size:0.76em;color:var(--db-gray-500);margin-bottom:0.8em;">The hype says "AI designs drugs." The reality is harder — and the right approach matters.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1em;max-width:980px;margin:0 auto;text-align:left;align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid var(--db-danger);padding:1em 1.1em;">
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.18);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.6em;">
+              <span style="font-size:0.62em;font-weight:700;color:var(--db-danger);">⚠️ The Reality</span>
+            </div>
+            <ul style="margin:0;padding-left:1.1em;font-size:0.68em;line-height:1.7;color:var(--db-gray-600);">
+              <li>The majority of drug candidates fail in clinical trials.</li>
+              <li>A model that scores well on a benchmark rarely survives the wet lab.</li>
+              <li>Biology is noisy — garbage data gives confident-but-wrong predictions.</li>
+              <li>No algorithm replaces validation, chemistry &amp; domain biology.</li>
+              <li>"In silico hit" ≠ a real, safe, manufacturable drug.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:1em 1.1em;">
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.6em;">
+              <span style="font-size:0.62em;font-weight:700;color:var(--db-accent);">✓ The Right Approach</span>
+            </div>
+            <ul style="margin:0;padding-left:1.1em;font-size:0.68em;line-height:1.7;color:var(--db-gray-600);">
+              <li>Start from biology &amp; a validated target — not the model.</li>
+              <li>Treat computation as a filter that narrows, not a oracle that decides.</li>
+              <li>Close the loop: predict → test in the lab → feed results back.</li>
+              <li>Care about data quality before model complexity.</li>
+              <li>Pair dry-lab predictions with wet-lab &amp; medicinal-chemistry reality.</li>
+            </ul>
+          </div>
+
+        </div>
+        <p style="font-size:0.6em;text-align:center;margin-top:0.7em;color:var(--db-gray-400);">Computation accelerates discovery — it doesn't shortcut the science.</p>
+      </section>
+
+      <!-- F1 · NGS NO LONGER OPTIONAL (adapted) -->
+      <section>
+        <div class="tag">Why It Matters</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.15em;">NGS data analysis is <span class="gradient-text">no longer optional</span></h2>
+        <p style="font-size:0.78em;margin-bottom:0.6em;color:var(--db-gray-500);">Whether you're in academia or industry, analysing your own sequencing data is now a baseline expectation — not a bonus skill.</p>
+        <div class="grid-3" style="align-items:stretch;">
+          <div class="card" style="border-top:3px solid var(--db-primary);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(32,94,146,0.06);line-height:1;pointer-events:none;user-select:none;">01</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(32,94,146,0.08);border:1px solid rgba(32,94,146,0.15);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-primary);">Academia</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">Own your data, not just your biology</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">RNA-seq is routine in labs of every size. No external bioinformatician knows your system, controls, or hypotheses the way you do — analysing your own data yields deeper, more accurate insight.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(16,185,129,0.06);line-height:1;pointer-events:none;user-select:none;">02</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-accent);">Industry</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">Wet lab + dry lab = an unfair advantage</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Top biotech &amp; pharma seek researchers who move fluidly between bench and computation. This hybrid profile is rare, commands higher salaries, and opens doors closed to specialists on either side.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-warning);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(245,158,11,0.06);line-height:1;pointer-events:none;user-select:none;">03</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-warning);">Career</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">The field has moved — don't get left behind</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">NGS data is universal across life sciences. Labs without bioinformatics skills wait months for collaborators and miss deadlines. Handling this data is simply part of being competitive today.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- F2 · WHY BEGINNERS GET STUCK (adapted) -->
+      <section>
+        <div class="tag tag-red">The Problem</div>
+        <h2 style="margin-top:0.2em;">Why beginners <span class="gradient-text">get stuck</span></h2>
+        <p style="font-size:0.8em;margin-bottom:0.6em;">The biology isn't the hard part. Here's what actually blocks researchers before they begin.</p>
+        <div class="grid-3" style="margin-top:0.6em;">
+          <div class="card" style="border-top:2px solid var(--db-primary);"><div style="font-size:1.3em;margin-bottom:0.2em;">⌨️</div><h4>Linux &amp; terminal terror</h4><p>Most tools skip the basics. Beginners get stuck before analysis even starts.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-accent);"><div style="font-size:1.3em;margin-bottom:0.2em;">🔧</div><h4>Dependency hell</h4><p>PATH variables, conflicting versions, and opaque config feel like black magic.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-secondary);"><div style="font-size:1.3em;margin-bottom:0.2em;">💻</div><h4>The compute gap</h4><p>Laptops can't handle production data. HPC and cloud access feels out of reach.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-warning);"><div style="font-size:1.3em;margin-bottom:0.2em;">🗂️</div><h4>File format maze</h4><p>FASTQ, BAM, VCF — knowing what to use and how to convert is genuinely confusing.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-danger);"><div style="font-size:1.3em;margin-bottom:0.2em;">📖</div><h4>Tutorial overload</h4><p>No coherent "start here" path. Scattered resources with no end-to-end pipeline.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-gray-800);"><div style="font-size:1.3em;margin-bottom:0.2em;">🔄</div><h4>Reproducibility crisis</h4><p>Analyses that only work once. Environment isolation is critical but untaught.</p></div>
+        </div>
+      </section>
+
+      <!-- F2b · THE SOLUTION (adapted) -->
+      <section>
+        <div class="tag tag-green">The Solution</div>
+        <h2 style="margin-top:0.2em;">How we <span class="gradient-text">unblock you</span></h2>
+        <p style="font-size:0.8em;margin-bottom:0.6em;">A guided, end-to-end path that removes each barrier — so you spend time on biology, not setup.</p>
+        <div class="grid-3" style="margin-top:0.6em;">
+          <div class="card" style="border-top:2px solid var(--db-primary);"><div style="font-size:1.3em;margin-bottom:0.2em;">🐧</div><h4>Linux from zero</h4><p>Hands-on terminal basics built for biologists. No prior coding assumed.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-accent);"><div style="font-size:1.3em;margin-bottom:0.2em;">📦</div><h4>Conda &amp; containers</h4><p>One-command environments. Reproducible setups that just work — no dependency hell.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-secondary);"><div style="font-size:1.3em;margin-bottom:0.2em;">☁️</div><h4>Cloud &amp; HPC access</h4><p>Run production-scale data on managed compute. No expensive laptop required.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-warning);"><div style="font-size:1.3em;margin-bottom:0.2em;">🗺️</div><h4>File formats demystified</h4><p>Clear maps of FASTQ, BAM, VCF — when to use each and how to convert.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-danger);"><div style="font-size:1.3em;margin-bottom:0.2em;">🎯</div><h4>One clear path</h4><p>A single end-to-end pipeline. Start here, finish with real results.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-gray-800);"><div style="font-size:1.3em;margin-bottom:0.2em;">🔁</div><h4>Reproducible by default</h4><p>Version control and environment isolation taught from day one. Analyses that run every time.</p></div>
+        </div>
+      </section>
+
+      <!-- F3 · THE BIOINFORMATICS TECH STACK (adapted) -->
+      <section>
+        <div class="tag">The Technical Foundation</div>
+        <h2 style="margin-top:0.2em;">The bioinformatics <span class="gradient-text">tech stack</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">Essential tools for both bulk and single-cell RNA-seq analysis.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em;max-width:940px;margin:0 auto;text-align:left;">
+          <div class="card" style="border-top:3px solid #334155;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(51,65,85,0.08);display:flex;align-items:center;justify-content:center;padding:0.4em;"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux" style="width:100%;height:100%;object-fit:contain;"></div>
+              <h4 style="margin:0;font-size:0.95em;">Linux &amp; CLI</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">The backbone of every pipeline. Terminal commands, environment isolation (Conda &amp; pixi), and high-performance computing (HPC).</p>
+            <div style="margin-top:0.8em;display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;">Bash</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;">salmon</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;">CellRanger</span>
+            </div>
+          </div>
+          <div class="card" style="border-top:3px solid #276CB8;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(39,108,184,0.08);display:flex;align-items:center;justify-content:center;padding:0.4em;"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R" style="width:100%;height:100%;object-fit:contain;"></div>
+              <h4 style="margin:0;font-size:0.95em;">R Programming</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">The standard for statistical genomics. Differential expression (bulk) and high-dimensional cell clustering (single-cell).</p>
+            <div style="margin-top:0.8em;display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#276CB8;background:rgba(39,108,184,0.08);">DESeq2</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#276CB8;background:rgba(39,108,184,0.08);">Seurat</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#276CB8;background:rgba(39,108,184,0.08);">tidyverse</span>
+            </div>
+          </div>
+          <div class="card" style="border-top:3px solid #FFD43B;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(255,212,59,0.08);display:flex;align-items:center;justify-content:center;padding:0.4em;"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" style="width:100%;height:100%;object-fit:contain;"></div>
+              <h4 style="margin:0;font-size:0.95em;">Python</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Power for large-scale data wrangling. Pipeline automation and atlas-scale integration (single-cell).</p>
+            <div style="margin-top:0.8em;display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#d4a017;background:rgba(255,212,59,0.1);">Scanpy</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#d4a017;background:rgba(255,212,59,0.1);">scvi-tools</span>
+              <span class="tag" style="font-size:0.45em;padding:0.1em 0.5em;margin:0;color:#d4a017;background:rgba(255,212,59,0.1);">CellHint</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- F4 · WHY LINUX -->
+      <section>
+        <div class="tag">Deep Dive · 1 of 4</div>
+        <h2 style="margin-top:0.15em;">Why <span class="gradient-text">Linux</span> in bioinformatics?</h2>
+        <p style="font-size:0.74em;margin-bottom:0.7em;">Nearly every serious bioinformatics tool assumes a Linux command line.</p>
+        <div class="two-col" style="align-items:center;gap:1.6em;">
+          <!-- Illustration: terminal + piped commands -->
+          <svg viewBox="0 0 400 250" style="width:100%;max-width:380px;height:auto;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="388" height="200" rx="12" fill="#0a1628"/>
+            <rect x="6" y="10" width="388" height="30" rx="12" fill="#16233b"/>
+            <rect x="6" y="28" width="388" height="12" fill="#16233b"/>
+            <circle cx="26" cy="25" r="5" fill="#ef4444"/><circle cx="44" cy="25" r="5" fill="#f59e0b"/><circle cx="62" cy="25" r="5" fill="#10b981"/>
+            <text x="200" y="29" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">bash — terminal</text>
+            <g font-family="monospace" font-size="13">
+              <text x="22" y="68" fill="#10b981">$</text><text x="38" y="68" fill="#e2e8f0">fastqc reads.fastq.gz</text>
+              <text x="22" y="98" fill="#10b981">$</text><text x="38" y="98" fill="#e2e8f0">bwa mem ref.fa r.fq</text><text x="250" y="98" fill="#64B5F6">|</text>
+              <text x="58" y="120" fill="#e2e8f0">samtools sort -o aln.bam</text>
+              <text x="22" y="150" fill="#10b981">$</text><text x="38" y="150" fill="#e2e8f0">snakemake --cores 32</text>
+              <text x="22" y="180" fill="#10b981">$</text><text x="38" y="180" fill="#e2e8f0">_</text><rect x="50" y="170" width="8" height="14" fill="#10b981"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
+            </g>
+            <text x="200" y="234" text-anchor="middle" fill="#205E92" font-family="Inter,sans-serif" font-size="13" font-weight="700">one line · chained tools · reproducible</text>
+          </svg>
+          <!-- Reasons -->
+          <div style="display:grid;gap:0.55em;">
+            <div class="card" style="border-left:3px solid var(--db-primary);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">🧰 Tools are built for it</h4><p>BWA, samtools, salmon, GATK are CLI-first — many run nowhere else.</p></div>
+            <div class="card" style="border-left:3px solid var(--db-accent);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">🖥️ Servers &amp; HPC run Linux</h4><p>Clusters and cloud nodes are Linux. The terminal reaches real compute.</p></div>
+            <div class="card" style="border-left:3px solid var(--db-secondary);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">⚙️ Automation &amp; scale</h4><p>Bash chains steps, batches thousands of samples, reproduces runs exactly.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- F5 · WHY PYTHON AND R -->
+      <section>
+        <div class="tag">Deep Dive · 2 of 4</div>
+        <h2 style="margin-top:0.15em;">Why <span class="gradient-text">both</span> Python and R?</h2>
+        <p style="font-size:0.74em;margin-bottom:0.8em;">They're complementary — together they cover the whole workflow.</p>
+        <div class="two-col">
+          <div class="card-bordered" style="border-top:3px solid #276CB8;">
+            <h3 style="font-size:0.95em;margin:0 0 0.3em;color:var(--db-gray-900);">R — statistics &amp; genomics</h3>
+            <ul>
+              <li>Bioconductor: the genomics gold standard</li>
+              <li>DESeq2 / edgeR · differential expression</li>
+              <li>Seurat · single-cell analysis</li>
+              <li>ggplot2 · publication-grade figures</li>
+            </ul>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid #FFD43B;">
+            <h3 style="font-size:0.95em;margin:0 0 0.3em;color:var(--db-gray-900);">Python — data &amp; AI</h3>
+            <ul>
+              <li>Large-scale data wrangling &amp; automation</li>
+              <li>Scanpy / scvi-tools · scalable single-cell</li>
+              <li>Machine &amp; deep learning (PyTorch, scikit-learn)</li>
+              <li>Glue code for pipelines &amp; APIs</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:0.66em;text-align:center;margin-top:0.7em;color:var(--db-gray-400);">Fluency in both = no analysis is out of reach.</p>
+      </section>
+
+      <!-- F6 · WHY WORKFLOW MANAGER -->
+      <section>
+        <div class="tag">Deep Dive · 3 of 4</div>
+        <h2 style="margin-top:0.15em;">Why a <span class="gradient-text">workflow manager</span>?</h2>
+        <p style="font-size:0.74em;margin-bottom:0.6em;">Nextflow &amp; Snakemake turn fragile scripts into reliable, shareable pipelines.</p>
+        <!-- Illustration: pipeline DAG (parallel samples → steps → report) -->
+        <svg viewBox="0 0 940 150" style="width:100%;max-width:900px;height:auto;display:block;margin:0.2em auto 0.6em;" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+          <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#94a3b8"/></marker></defs>
+          <!-- parallel sample inputs -->
+          <g font-size="12" font-weight="700">
+            <rect x="10" y="20" width="92" height="30" rx="7" fill="#eef4fa" stroke="#205E92"/><text x="56" y="40" text-anchor="middle" fill="#205E92">Sample A</text>
+            <rect x="10" y="60" width="92" height="30" rx="7" fill="#eef4fa" stroke="#205E92"/><text x="56" y="80" text-anchor="middle" fill="#205E92">Sample B</text>
+            <rect x="10" y="100" width="92" height="30" rx="7" fill="#eef4fa" stroke="#205E92"/><text x="56" y="120" text-anchor="middle" fill="#205E92">Sample C</text>
+          </g>
+          <!-- pipeline steps -->
+          <g font-size="12.5" font-weight="700">
+            <rect x="190" y="60" width="100" height="32" rx="8" fill="#fff" stroke="#64B5F6" stroke-width="1.6"/><text x="240" y="81" text-anchor="middle" fill="#334155">QC</text>
+            <rect x="350" y="60" width="110" height="32" rx="8" fill="#fff" stroke="#64B5F6" stroke-width="1.6"/><text x="405" y="81" text-anchor="middle" fill="#334155">Align</text>
+            <rect x="520" y="60" width="120" height="32" rx="8" fill="#fff" stroke="#64B5F6" stroke-width="1.6"/><text x="580" y="81" text-anchor="middle" fill="#334155">Quantify</text>
+            <rect x="700" y="60" width="130" height="32" rx="8" fill="#10b981"/><text x="765" y="81" text-anchor="middle" fill="#fff">Report</text>
+          </g>
+          <!-- connectors -->
+          <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+            <path d="M102,35 C150,35 150,72 188,72" marker-end="url(#arr)"/>
+            <path d="M102,75 L188,75" marker-end="url(#arr)"/>
+            <path d="M102,115 C150,115 150,80 188,80" marker-end="url(#arr)"/>
+            <path d="M290,76 L348,76" marker-end="url(#arr)"/>
+            <path d="M460,76 L518,76" marker-end="url(#arr)"/>
+            <path d="M640,76 L698,76" marker-end="url(#arr)"/>
+          </g>
+          <text x="470" y="142" text-anchor="middle" fill="#205E92" font-size="12.5" font-weight="700">one pipeline · runs every sample · same result anywhere</text>
+        </svg>
+        <div class="grid-4" style="align-items:stretch;">
+          <div class="card" style="border-top:3px solid var(--db-primary);"><div style="font-size:1.2em;margin-bottom:0.15em;">🔁</div><h4>Reproducible</h4><p>Same inputs → same outputs, every time.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);"><div style="font-size:1.2em;margin-bottom:0.15em;">📈</div><h4>Scalable</h4><p>One command: laptop, HPC, or cloud.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);"><div style="font-size:1.2em;margin-bottom:0.15em;">⏯️</div><h4>Resumable</h4><p>Resume from last step; auto-parallelise.</p></div>
+          <div class="card" style="border-top:3px solid var(--db-warning);"><div style="font-size:1.2em;margin-bottom:0.15em;">📦</div><h4>Portable</h4><p>Containers bundle every dependency.</p></div>
+        </div>
+      </section>
+
+      <!-- F7 · WHY HPC -->
+      <section>
+        <div class="tag">Deep Dive · 4 of 4</div>
+        <h2 style="margin-top:0.15em;">Why <span class="gradient-text">HPC</span>?</h2>
+        <p style="font-size:0.74em;margin-bottom:0.7em;">Real sequencing data outgrows any laptop — high-performance computing is the workhorse.</p>
+        <div class="two-col" style="align-items:center;gap:1.6em;">
+          <!-- Illustration: laptop job fanned out to a cluster of compute nodes -->
+          <svg viewBox="0 0 400 250" style="width:100%;max-width:380px;height:auto;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+            <!-- laptop -->
+            <rect x="20" y="95" width="80" height="52" rx="6" fill="#fff" stroke="#205E92" stroke-width="2"/>
+            <rect x="30" y="103" width="60" height="36" rx="2" fill="#eef4fa"/>
+            <rect x="14" y="147" width="92" height="7" rx="3" fill="#205E92"/>
+            <text x="60" y="172" text-anchor="middle" fill="#64748b" font-size="11" font-weight="700">your laptop</text>
+            <text x="60" y="186" text-anchor="middle" fill="#94a3b8" font-size="9.5">1 job</text>
+            <!-- fan-out arrows -->
+            <g stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#hpcarr)">
+              <defs><marker id="hpcarr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#10b981"/></marker></defs>
+              <path d="M104,108 C150,108 160,40 214,40"/>
+              <path d="M104,118 C150,118 160,90 214,90"/>
+              <path d="M104,128 C150,128 160,140 214,140"/>
+              <path d="M104,138 C150,138 160,190 214,190"/>
+            </g>
+            <!-- cluster: grid of compute nodes -->
+            <g>
+              <text x="320" y="20" text-anchor="middle" fill="#205E92" font-size="11" font-weight="800">HPC CLUSTER</text>
+              <!-- 8 node boxes -->
+              <g fill="#0a1628">
+                <rect x="222" y="28" width="80" height="24" rx="4"/><rect x="312" y="28" width="80" height="24" rx="4"/>
+                <rect x="222" y="78" width="80" height="24" rx="4"/><rect x="312" y="78" width="80" height="24" rx="4"/>
+                <rect x="222" y="128" width="80" height="24" rx="4"/><rect x="312" y="128" width="80" height="24" rx="4"/>
+                <rect x="222" y="178" width="80" height="24" rx="4"/><rect x="312" y="178" width="80" height="24" rx="4"/>
+              </g>
+              <!-- core dots -->
+              <g fill="#10b981">
+                <circle cx="234" cy="40" r="3"/><circle cx="246" cy="40" r="3"/><circle cx="258" cy="40" r="3"/><circle cx="270" cy="40" r="3"/>
+                <circle cx="324" cy="40" r="3"/><circle cx="336" cy="40" r="3"/><circle cx="348" cy="40" r="3"/><circle cx="360" cy="40" r="3"/>
+                <circle cx="234" cy="90" r="3"/><circle cx="246" cy="90" r="3"/><circle cx="258" cy="90" r="3"/><circle cx="270" cy="90" r="3"/>
+                <circle cx="324" cy="90" r="3"/><circle cx="336" cy="90" r="3"/><circle cx="348" cy="90" r="3"/><circle cx="360" cy="90" r="3"/>
+                <circle cx="234" cy="140" r="3"/><circle cx="246" cy="140" r="3"/><circle cx="258" cy="140" r="3"/><circle cx="270" cy="140" r="3"/>
+                <circle cx="324" cy="140" r="3"/><circle cx="336" cy="140" r="3"/><circle cx="348" cy="140" r="3"/><circle cx="360" cy="140" r="3"/>
+                <circle cx="234" cy="190" r="3"/><circle cx="246" cy="190" r="3"/><circle cx="258" cy="190" r="3"/><circle cx="270" cy="190" r="3"/>
+                <circle cx="324" cy="190" r="3"/><circle cx="336" cy="190" r="3"/><circle cx="348" cy="190" r="3"/><circle cx="360" cy="190" r="3"/>
+              </g>
+              <text x="307" y="222" text-anchor="middle" fill="#64748b" font-size="11" font-weight="700">100s of cores · run in parallel</text>
+            </g>
+          </svg>
+          <!-- Reasons -->
+          <div style="display:grid;gap:0.55em;">
+            <div class="card" style="border-left:3px solid var(--db-primary);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">💾 Data is huge</h4><p>A single WGS sample is 100+ GB — beyond any personal machine.</p></div>
+            <div class="card" style="border-left:3px solid var(--db-accent);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">⚡ Parallel = fast</h4><p>Hundreds of cores process many samples at once — days become hours.</p></div>
+            <div class="card" style="border-left:3px solid var(--db-secondary);border-top:none;padding:0.7em 0.9em;"><h4 style="margin:0 0 0.15em;">🗄️ Shared infrastructure</h4><p>Central storage, installed tools, schedulers (SLURM) for production NGS.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           SEGMENT 2 — INDUSTRY GUIDE (9:10 – 9:50)
+           ══════════════════════════════════════════════════════ -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Segment 02</div>
+        <h2 style="margin-top:0.3em;font-size:2.3em;">Choose your <span class="gradient-text">path</span></h2>
+        <div class="sep"></div>
+      </section>
+
+      <!-- 07b · TWO PATHS -->
+      <section>
+        <div class="tag">Two Routes Forward</div>
+        <h2 style="margin-top:0.2em;">Industry <span class="gradient-text">or</span> academia</h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Two proven paths after this session. Pick the one that fits your goals — or explore both.</p>
+        <div class="two-col" style="margin-top:0.4em;text-align:left;max-width:900px;margin-left:auto;margin-right:auto;align-items:stretch;">
+          <div class="card" style="border-top:4px solid var(--db-primary);display:flex;flex-direction:column;">
+            <div style="font-size:1.8em;margin-bottom:0.2em;">💼</div>
+            <h3 style="margin:0 0 0.1em;font-size:1.05em;">Industry</h3>
+            <p style="font-size:0.68em;color:var(--db-gray-500);margin:0 0 0.6em;">Build in biotech, pharma &amp; health-tech</p>
+            <ul style="font-size:0.74em;margin:0;">
+              <li>National &amp; international markets</li>
+              <li>Role expectations &amp; salary trends</li>
+              <li>Closing skill gaps</li>
+              <li>Networking &amp; the careers AI can't replace</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top:4px solid var(--db-secondary);display:flex;flex-direction:column;">
+            <div style="font-size:1.8em;margin-bottom:0.2em;">🎓</div>
+            <h3 style="margin:0 0 0.1em;font-size:1.05em;">Academia</h3>
+            <p style="font-size:0.68em;color:var(--db-gray-500);margin:0 0 0.6em;">Pursue research &amp; higher study globally</p>
+            <ul style="font-size:0.74em;margin:0;">
+              <li>Global MS / PhD applications</li>
+              <li>Finding the right mentor</li>
+              <li>CV, SOP &amp; proposal writing</li>
+              <li>Securing fully funded research</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 · THE LANDSCAPE -->
+      <section>
+        <div class="tag">The Landscape</div>
+        <h2 style="margin-top:0.2em;">Where bioinformaticians <span class="gradient-text">work</span></h2>
+        <div class="two-col" style="margin-top:0.7em;">
+          <div>
+            <h3 style="font-size:0.9em;margin-bottom:0.3em;">🇧🇩 National market</h3>
+            <ul>
+              <li>Research institutes, universities, ICDDR,B-type labs</li>
+              <li>Health-tech &amp; AI startups</li>
+              <li>Pharma / diagnostics &amp; agri-genomics</li>
+              <li>Remote roles for global teams — growing fast</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:0.9em;margin-bottom:0.3em;">🌍 International market</h3>
+            <ul>
+              <li>Biotech &amp; pharma R&amp;D (drug discovery, genomics)</li>
+              <li>Clinical &amp; hospital genomics, precision medicine</li>
+              <li>Big tech &amp; AI-for-bio (foundation models)</li>
+              <li>Academia &amp; national genomics programs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:0.8em;border-left:3px solid var(--db-primary);">
+          <p style="font-size:0.74em;"><strong>What they expect:</strong> coding (Python/R), statistics, domain biology, reproducible workflows, and — increasingly — the judgment to direct and validate AI.</p>
+        </div>
+      </section>
+
+      <!-- 09 · ROLES & DEMAND -->
+      <section>
+        <div class="tag">Roles &amp; Demand</div>
+        <h2 style="margin-top:0.2em;">The map of <span class="gradient-text">opportunities</span></h2>
+        <div style="max-width:840px;margin:0.7em auto 0;">
+          <table>
+            <thead>
+              <tr><th>Role</th><th>Core focus</th><th>Demand signal</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">Bioinformatics Analyst</td><td>NGS pipelines, QC, variant / DEG analysis</td><td style="color:var(--db-primary);font-weight:600;">High · entry</td></tr>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">Computational Biologist</td><td>Modeling, multi-omics, study design</td><td style="color:var(--db-primary);font-weight:600;">High</td></tr>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">Bioinformatics Scientist</td><td>Method development, R&amp;D, leading analyses</td><td style="color:var(--db-primary);font-weight:600;">High · senior</td></tr>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">Genomics Data Scientist</td><td>ML on biological data, statistics</td><td style="color:var(--db-accent);font-weight:600;">Rising fast</td></tr>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">AI-for-Bio Engineer</td><td>Foundation models, agents, validation</td><td style="color:var(--db-accent);font-weight:600;">Emerging · premium</td></tr>
+              <tr><td style="font-weight:600;color:var(--db-gray-800);">Clinical / Translational</td><td>Diagnostics, PRS, regulatory, deployment</td><td style="color:var(--db-primary);font-weight:600;">High · specialized</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.58em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Demand signals are directional, based on current hiring trends in BD and global markets.</p>
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────────────────────────────
+           AI-ERA SUB-SECTION (adapted from mentorship deck)
+           ────────────────────────────────────────────────────── -->
+
+      <!-- AI · 01 — Era of AI intro (three questions) -->
+      <section>
+        <div class="tag">Let's Address It Head-On</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">Bioinformatics in the <span class="gradient-text">Era of AI</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:1.1em;">The three questions every learner is asking right now.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.9em;max-width:920px;margin:0 auto;">
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(32,94,146,0.14);line-height:1;margin-bottom:0.3em;">Q1</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">Can AI replace bioinformaticians?</div>
+          </div>
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(16,185,129,0.16);line-height:1;margin-bottom:0.3em;">Q2</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">Do I still need to learn bioinformatics?</div>
+          </div>
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-secondary);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(100,181,246,0.22);line-height:1;margin-bottom:0.3em;">Q3</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">How do I use AI to learn faster?</div>
+          </div>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:0.6em;margin-top:1.3em;padding:0.5em 1.1em;border:1px solid var(--db-gray-200);border-radius:999px;background:var(--db-gray-50);">
+          <span style="width:0.5em;height:0.5em;border-radius:50%;background:var(--db-primary);"></span>
+          <span style="font-size:0.7em;font-weight:700;color:var(--db-gray-700);">Perspective</span>
+        </div>
+      </section>
+
+      <!-- AI · 02 — Two questions answered -->
+      <section>
+        <div class="tag">Perspective</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.7em;">AI &amp; Bioinformatics — <span class="gradient-text">Two Questions</span></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1em;max-width:920px;margin:0 auto;align-items:stretch;">
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:14px;padding:1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);display:flex;flex-direction:column;">
+            <div style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);line-height:1.3;margin-bottom:0.5em;">Can AI replace bioinformaticians?</div>
+            <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:0.4em;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:999px;padding:0.25em 0.8em;margin-bottom:0.8em;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span style="font-size:0.7em;font-weight:800;color:var(--db-accent);">No — it amplifies you</span>
+            </div>
+            <div style="font-size:0.66em;color:var(--db-gray-500);margin-bottom:0.5em;">AI handles the busywork, so you focus on the science:</div>
+            <ul class="check-list" style="font-size:0.72em;color:var(--db-gray-700);">
+              <li>Debugging errors</li>
+              <li>Setting up environments</li>
+              <li>Looking up commands &amp; functions</li>
+              <li>Formatting code &amp; writing docs</li>
+              <li>Repetitive, boilerplate code</li>
+            </ul>
+          </div>
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-danger);border-radius:14px;padding:1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);display:flex;flex-direction:column;">
+            <div style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);line-height:1.3;margin-bottom:0.5em;">Do I still need to learn bioinformatics?</div>
+            <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:0.4em;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.22);border-radius:999px;padding:0.25em 0.8em;margin-bottom:0.8em;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="14"/><circle cx="12" cy="20" r="0.6" fill="var(--db-danger)"/></svg>
+              <span style="font-size:0.7em;font-weight:800;color:var(--db-danger);">Yes — more than ever</span>
+            </div>
+            <div style="font-size:0.66em;color:var(--db-gray-500);margin-bottom:0.5em;">Without the fundamentals, AI fails <strong style="color:var(--db-gray-700);">silently</strong>:</div>
+            <ul class="x-list" style="font-size:0.72em;color:var(--db-gray-700);">
+              <li>Writes pipelines with commands that don't exist</li>
+              <li>Invents function names that were never real</li>
+              <li>Runs a simple test but calls it GSEA — would you catch it?</li>
+              <li>You can't tell it to fix what you don't understand</li>
+            </ul>
+          </div>
+        </div>
+        <div style="max-width:920px;margin:0.9em auto 0;background:linear-gradient(135deg,rgba(32,94,146,0.06),rgba(100,181,246,0.06));border:1px solid rgba(32,94,146,0.15);border-radius:12px;padding:0.7em 1.2em;text-align:center;">
+          <span style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);">The better you understand, the more AI can help.</span>
+        </div>
+      </section>
+
+      <!-- AI · 03 — Use AI as your learning partner -->
+      <section>
+        <div class="tag">How to Use AI Well</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.8em;">Use AI as your <span class="gradient-text">learning partner</span></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9em;max-width:920px;margin:0 auto;align-items:stretch;">
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">1</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Learn the basics first</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Build solid foundations through courses and mentored practice. You can't skip this step.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">2</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Clarify what you missed</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Ask AI to re-explain any concept or step in different words — until it clicks.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">3</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Unstick yourself fast</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">AI excels at troubleshooting. Paste your error + code and let it help you debug.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.9em;text-align:left;background:rgba(32,94,146,0.04);border:1px solid var(--db-primary);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 10px rgba(32,94,146,0.1);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-accent);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">4</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Accelerate — don't replace</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Use AI to automate the boring parts. <strong style="color:var(--db-gray-700);">Your expertise decides if the results make sense.</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI · 04 — AI + HPC reality check -->
+      <section>
+        <div class="tag tag-amber">Reality Check</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">AI + HPC: <span class="gradient-text">Not There Yet</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:0.9em;">Why AI can't run your bioinformatics — at least, not on its own.</p>
+        <div style="max-width:940px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8em;align-items:stretch;">
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;color:var(--db-warning);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="6" rx="1"/><rect x="2" y="15" width="20" height="6" rx="1"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">Massive compute required</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">Real bioinformatics runs on HPC clusters — not a chatbot in a browser tab.</p>
+          </div>
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-danger);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-danger);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 0 1 5.12-2.12M15 15a3 3 0 0 1-4.24 0"/><line x1="2" y1="2" x2="22" y2="22"/><path d="M5 12a7 7 0 0 1 1.5-4.3M19 12a7 7 0 0 1-1.2 3.9"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">No real integration</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">AI–HPC tooling is unavailable at most institutions today.</p>
+          </div>
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0 0 8 4 4 0 0 0 8 0 4 4 0 0 0 0-8V6a4 4 0 0 0-4-4z"/><path d="M12 2v20"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">It still needs you</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">Even where it exists, an expert must direct and validate every run.</p>
+          </div>
+        </div>
+        <div style="margin-top:0.8em;background:#0a1628;border-radius:14px;padding:1.1em 1.5em;text-align:left;">
+          <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+            <span style="width:0.45em;height:0.45em;border-radius:50%;background:var(--db-secondary);"></span>
+            <span style="font-size:0.6em;font-weight:800;color:var(--db-secondary);text-transform:uppercase;letter-spacing:0.15em;">The Bottom Line</span>
+          </div>
+          <p style="font-size:0.84em;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 0.5em;">AI <strong style="color:var(--db-accent);">rewards</strong> those already well-informed in bioinformatics — and <strong style="color:var(--db-danger);">punishes</strong> those who apply it blindly.</p>
+          <p style="font-size:0.76em;color:rgba(255,255,255,0.6);line-height:1.55;margin:0;">With AI, knowledge is no longer scarce. What's lacking is your <strong style="color:#fff;">experience and judgment</strong>.</p>
+        </div>
+        </div>
+      </section>
+
+      <!-- AI · 05 — Paper section divider -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:999px;padding:0.35em 0.95em;margin-bottom:0.1em;">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+          <span style="font-size:0.6em;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--db-accent);">Peer-Reviewed Evidence</span>
+        </div>
+        <h2 style="margin-top:0.2em;margin-bottom:0.2em;">Rethinking Bioinformatics Expertise<br>in the <span class="gradient-text">Era of AI</span></h2>
+        <p style="font-size:0.72em;margin-bottom:0.1em;color:var(--db-gray-500);">Everything in this section is drawn from one peer-reviewed study — not opinion.</p>
+        <div class="sep" style="margin:0.5em auto;max-width:60px;"></div>
+        <div class="quote-block" style="max-width:640px;margin:0 auto;">
+          "AI is a powerful accelerant whose value depends on expert guidance in design, data curation, interpretation, and governance. Bioinformaticians remain essential — their role is shifting from workflow execution toward AI design, complex discovery, and responsible institutional leadership."
+          <div style="font-size:0.85em;margin-top:0.35em;font-style:normal;color:var(--db-primary);font-weight:600;">&mdash; Goh et al., npj Digital Medicine, 2026</div>
+        </div>
+      </section>
+
+      <!-- AI · 06 — Core argument -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">The Core Argument</span>
+        </div>
+        <h2 style="margin-top:0.2em;">AI won't replace you. <span class="gradient-text">Blind reliance will.</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">AI accelerates science — but only in the hands of someone who knows when the output is wrong.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2em;max-width:940px;margin:0 auto;text-align:left;">
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><polyline points="20,6 9,17 4,12" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">What AI does genuinely well</h4>
+            </div>
+            <ul style="font-size:0.72em;line-height:1.9;color:var(--db-gray-600);padding-left:1.1em;margin:0;">
+              <li>Draft code for variant annotation, DE analysis, QC pipelines</li>
+              <li>Surface candidate hypotheses from vast literature at speed</li>
+              <li>Automate repetitive formatting, documentation, and scripting</li>
+              <li>Predict protein structures (AlphaFold3) and compress raw data to results</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-danger);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">What AI cannot do without you</h4>
+            </div>
+            <ul style="font-size:0.72em;line-height:1.9;color:var(--db-gray-600);padding-left:1.1em;margin:0;">
+              <li>Judge whether a pipeline suits your experimental design</li>
+              <li>Recognise that a plausible-looking result is biologically wrong</li>
+              <li>Know which QC thresholds fit your cohort and platform</li>
+              <li>Verify that output reflects biology — not a misspecified parameter</li>
+            </ul>
+          </div>
+          <div style="grid-column:1/-1;padding:0.6em 1em;background:rgba(32,94,146,0.04);border-left:3px solid rgba(32,94,146,0.2);border-radius:0 6px 6px 0;text-align:left;">
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-500);margin:0;font-style:italic;">"Without expert oversight, AI democratises the <em style="font-style:normal;font-weight:600;color:var(--db-gray-700);">appearance</em> of science — not science itself."<span style="font-style:normal;color:var(--db-gray-400);margin-left:0.6em;">— Goh et al., <em>npj Digital Medicine</em>, 2026</span></p>
+          </div>
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026)</p>
+      </section>
+
+      <!-- AI · 07 — Three transitions -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">The Three Transitions</span>
+        </div>
+        <h2 style="margin-top:0.2em;">Your role is <span class="gradient-text">shifting, not disappearing</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">The paper identifies three career-defining moves for bioinformaticians in the AI era.</p>
+        <div class="grid-3" style="margin-top:0.55em;align-items:stretch;">
+          <div class="card" style="border-top:3px solid var(--db-primary);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(32,94,146,0.07);line-height:1;pointer-events:none;user-select:none;">01</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(32,94,146,0.08);border:1px solid rgba(32,94,146,0.15);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-primary);">Technical</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">AI Consumer → AI Custodian</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Stop using AI to produce outputs. Start being personally responsible for whether those outputs are correct, reproducible, and biologically meaningful. Treat prompts as living methodological assets — version-control them, benchmark them, publish them.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(16,185,129,0.07);line-height:1;pointer-events:none;user-select:none;">02</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-accent);">Scientific</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">Pipeline Executor → Discovery Pioneer</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">The critical shift is from "who can run the analysis" to "who can tell whether the analysis is right." Focus on high-complexity applications — multimodal integration, single-cell trajectories, non-coding variant interpretation — where shallow engagement produces wrong answers.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-warning);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(245,158,11,0.07);line-height:1;pointer-events:none;user-select:none;">03</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-warning);">Organisational</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">Contributor → Institutional Architect</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Institutions are turning to bioinformaticians to shape how AI is governed and deployed at scale. The expert who can bridge biological knowledge, computational fluency, and organisational leadership is the one who determines whether AI produces reliable science — or its appearance.</p>
+          </div>
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026) · <a href="https://doi.org/10.1038/s41746-026-02777-1" style="color:var(--db-gray-400);">doi:10.1038/s41746-026-02777-1</a></p>
+      </section>
+
+      <!-- AI · 08 — What this means for you -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">What This Means For You</span>
+        </div>
+        <h2 style="margin-top:0.2em;">Be the <span class="gradient-text">expert behind the AI</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">Three foundational habits the paper's authors say separate credible AI-assisted science from noise.</p>
+        <div class="grid-3" style="margin-top:0.55em;align-items:stretch;">
+          <div class="card" style="border-top:3px solid #205E92;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/><path d="M14 17.5h7M17.5 14v7" stroke="#205E92" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Own the biology, not just the code</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">An AI can write a DESeq2 script. It cannot decide if the statistical model fits your experimental design, or whether a result near a known locus reflects linkage disequilibrium rather than an independent signal. That judgement is yours alone.</p>
+          </div>
+          <div class="card" style="border-top:3px solid #64B5F6;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(100,181,246,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M9 12l2 2 4-4" stroke="#64B5F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="#64B5F6" stroke-width="1.8"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Audit your data before AI touches it</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Model architecture is not the bottleneck — data quality is. A model trained on biased or mislabelled data produces confident, wrong outputs indistinguishable from correct ones. Run a structured data audit: batch effects, class imbalance, annotation inconsistency.</p>
+          </div>
+          <div class="card" style="border-top:3px solid #10b981;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M12 20V10" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/><path d="M18 20V4" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/><path d="M6 20v-4" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Interrogate, don't accept, XAI outputs</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Feature importance scores and attention maps are starting points, not conclusions. Test whether the features a model attends to are biologically coherent. Validate on an external cohort. Report uncertainty alongside every prediction. Explanation without expertise is just a story.</p>
+          </div>
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026)</p>
+      </section>
+
+      <!-- 12 · BREAKING IN & NETWORKING -->
+      <section>
+        <div class="tag">Breaking In</div>
+        <h2 style="margin-top:0.2em;">From student to <span class="gradient-text">hired</span></h2>
+        <div class="grid-2" style="margin-top:0.7em;">
+          <div>
+            <ul class="step-list">
+              <li><strong>Build a portfolio</strong> — reproduce a paper, analyse a public dataset (GEO/TCGA), publish on GitHub.</li>
+              <li><strong>Get mentored research</strong> — internships like DeepBio's GSA program or Md. Jubayer Hossain's mentorship &amp; internship program (<a href="https://mdjubayerhossain.com/bmp" style="color:var(--db-primary);font-weight:600;">mdjubayerhossain.com/bmp</a>); aim for a publication.</li>
+              <li><strong>Contribute openly</strong> — open-source tools, Kaggle/benchmarks, write-ups.</li>
+              <li><strong>Network deliberately</strong> — LinkedIn, conferences, the DeepBio ambassador community.</li>
+            </ul>
+          </div>
+          <div class="card-bordered card-highlight" style="display:flex;flex-direction:column;justify-content:center;">
+            <h4 style="font-size:0.95em;">Your unfair advantage</h4>
+            <p style="font-size:0.78em;">A portfolio that shows you can <strong>direct and validate AI</strong> — not just run it — is what separates you in an AI-saturated applicant pool. Demonstrate judgment, reproducibility, and biological insight.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           SEGMENT 3 — ACADEMIC EXCELLENCE (9:50 – 10:30)
+           ══════════════════════════════════════════════════════ -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Segment 03</div>
+        <h2 style="margin-top:0.3em;font-size:2.3em;">Academic <span class="gradient-text">Excellence</span></h2>
+        <p style="font-size:0.85em;">Global MS &amp; PhD pathways · funding · the application machine.</p>
+        <div class="sep"></div>
+      </section>
+
+      <!-- 14 · MS vs PhD -->
+      <section>
+        <div class="tag">First Decision</div>
+        <h2 style="margin-top:0.2em;">MS or <span class="gradient-text">PhD</span>?</h2>
+        <div class="two-col" style="margin-top:0.7em;">
+          <div class="card-bordered" style="border-top:3px solid var(--db-primary);">
+            <h3 style="font-size:1em;margin:0 0 0.3em;color:var(--db-gray-900);">Master's (MS)</h3>
+            <ul style="margin-top:0.2em;">
+              <li>1–2 years · coursework + project / thesis</li>
+              <li>Faster route to industry roles</li>
+              <li>Often self-funded; some assistantships</li>
+              <li>Good if you're still exploring focus</li>
+            </ul>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-secondary);">
+            <h3 style="font-size:1em;margin:0 0 0.3em;color:var(--db-gray-900);">Doctorate (PhD)</h3>
+            <ul style="margin-top:0.2em;">
+              <li>4–6 years · original research</li>
+              <li>Usually <strong>fully funded</strong> (stipend + tuition)</li>
+              <li>Required for research / faculty / R&amp;D lead</li>
+              <li>Commit to a research direction &amp; mentor</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:0.8em;border-left:3px solid var(--db-accent);">
+          <p style="font-size:0.74em;"><strong>Rule of thumb:</strong> want to <em>do research</em> and can commit years → PhD (funded). Want to <em>enter industry</em> sooner → MS, then decide.</p>
+        </div>
+      </section>
+
+      <!-- 15 · THE APPLICATION MACHINE -->
+      <section>
+        <div class="tag">The Application Machine</div>
+        <h2 style="margin-top:0.2em;">What a strong <span class="gradient-text">application</span> needs</h2>
+        <div class="grid-2" style="margin-top:0.7em;">
+          <div class="card" style="border-top:3px solid var(--db-primary);">
+            <h4>📄 CV / Résumé</h4>
+            <p>Research, skills, tools, publications/projects. One page, evidence-driven.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <h4>✍️ SOP / Motivation Letter</h4>
+            <p>A specific story: why this field, this lab, this professor — backed by what you've done.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);">
+            <h4>🧑‍🏫 Finding the right mentor</h4>
+            <p>Read recent papers, match interests, shortlist labs with funding and a track record.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-warning);">
+            <h4>📧 Cold-emailing professors</h4>
+            <p>Short, specific, personalized. Reference their work; attach CV; propose fit — not flattery.</p>
+          </div>
+        </div>
+        <p style="font-size:0.64em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Strong recommendation letters + a clear research fit beat a high test score with no story.</p>
+      </section>
+
+      <!-- 16 · FUNDING & SCHOLARSHIPS -->
+      <section>
+        <div class="tag tag-green">Funding</div>
+        <h2 style="margin-top:0.2em;">You can study <span class="gradient-text">fully funded</span></h2>
+        <div class="grid-3" style="margin-top:0.7em;">
+          <div class="card-bordered" style="border-top:3px solid var(--db-primary);">
+            <h4>🇺🇸 North America</h4>
+            <p>PhD usually fully funded via RA/TA-ships + stipend. Apply direct to programs.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-accent);">
+            <h4>🇪🇺 Europe</h4>
+            <p>Funded PhD positions (salaried in many countries), Erasmus Mundus, DAAD, Marie Curie.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-secondary);">
+            <h4>🌏 Asia &amp; Others</h4>
+            <p>MEXT (Japan), Korea, Singapore (A*STAR/NUS/NTU), China CSC scholarships.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:0.8em;border-left:3px solid var(--db-warning);">
+          <p style="font-size:0.74em;"><strong>The funded route is the norm in research.</strong> Assistantships, fellowships, and lab grants mean you can be paid to do a PhD — finding the funded position is part of the search.</p>
+        </div>
+      </section>
+
+      <!-- 17 · RESEARCH READINESS -->
+      <section>
+        <div class="tag">Research Readiness</div>
+        <h2 style="margin-top:0.2em;">Build proof <span class="gradient-text">before</span> you apply</h2>
+        <div class="two-col" style="margin-top:0.7em;">
+          <div>
+            <ul class="check-list">
+              <li>A <strong>publication or preprint</strong> — even a co-authorship signals you can do research.</li>
+              <li>A <strong>reproducible project</strong> on real data, documented on GitHub.</li>
+              <li>Evidence of <strong>AI-era judgment</strong>: validation, data audits, honest limitations.</li>
+              <li>A focused <strong>research interest</strong> that matches target labs.</li>
+            </ul>
+          </div>
+          <div class="card-bordered card-highlight" style="display:flex;flex-direction:column;justify-content:center;">
+            <h4 style="font-size:0.95em;">How DeepBio helps</h4>
+            <p style="font-size:0.78em;">Our mentored internships (GSA program) take students from question → analysis → <strong>published research</strong> — exactly the proof admissions committees and employers look for in the AI era.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 18 · APPLICATION ROADMAP -->
+      <section>
+        <div class="tag">Roadmap</div>
+        <h2 style="margin-top:0.2em;">A 12-month <span class="gradient-text">application plan</span></h2>
+        <div class="grid-roadmap">
+          <div class="road-card"><h4>Months 1–2</h4><h5>Foundation</h5><p>Lock skills (Python/R, stats). Start a portfolio project.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-accent);"><h4>Months 3–4</h4><h5>Research</h5><p>Join a lab / internship. Aim for output. Define interests.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-secondary);"><h4>Months 5–6</h4><h5>Shortlist</h5><p>Match labs &amp; professors. Track deadlines &amp; funding.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-warning);"><h4>Months 7–8</h4><h5>Outreach</h5><p>Email professors. Request recommendation letters early.</p></div>
+          <div class="road-card"><h4>Months 9–10</h4><h5>Apply</h5><p>Polish SOP &amp; CV. Submit. Tests if required.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-accent);"><h4>Months 11–12</h4><h5>Interview</h5><p>Lab interviews, offers, funding negotiation.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-secondary);"><h4>Ongoing</h4><h5>Network</h5><p>Conferences, LinkedIn, community &amp; mentors.</p></div>
+          <div class="road-card" style="border-left-color:var(--db-primary);"><h4>Decision</h4><h5>Commit</h5><p>Accept the best fit — mentor &gt; ranking.</p></div>
+        </div>
+        <p style="font-size:0.6em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Timeline is indicative — start earlier for competitive, fully-funded programs.</p>
+      </section>
+
+      <!-- 19 · RESOURCES (section divider) -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Resources</div>
+        <h2 style="margin-top:0.3em;font-size:2.3em;"><span class="gradient-text">Resources</span></h2>
+        <div class="sep"></div>
+      </section>
+
+      <!-- 19a · FREE COURSE MATERIALS -->
+      <section>
+        <div class="tag">Free Course Materials</div>
+        <h2 style="margin-top:0.2em;">World-class training, <span class="gradient-text">open to all</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Curated open courseware from top institutes — bookmark and work through them.</p>
+        <div class="grid-3" style="margin-top:0.55em;text-align:left;align-items:stretch;">
+          <div class="card" style="border-top:3px solid var(--db-primary);">
+            <h4 style="margin-bottom:0.15em;">HBC Training</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">Harvard Chan Bioinformatics Core</p>
+            <p style="font-size:0.72em;margin:0;">Hands-on HTS analysis — shell, R, RNA-seq, ChIP-seq.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">hbctraining.github.io</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <h4 style="margin-bottom:0.15em;">SIB Training</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">Swiss Institute of Bioinformatics</p>
+            <p style="font-size:0.72em;margin:0;">NGS, sequence &amp; structural analysis, stats, programming.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">sib.swiss/training</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);">
+            <h4 style="margin-bottom:0.15em;">EMBL Bio-IT</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">European Molecular Biology Lab</p>
+            <p style="font-size:0.72em;margin:0;">Python, R, Linux CLI, Git, Snakemake, containers, HPC.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">bio-it.embl.de</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-warning);">
+            <h4 style="margin-bottom:0.15em;">MIT 6.S191</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">Intro to Deep Learning · MIT</p>
+            <p style="font-size:0.72em;margin:0;">Neural nets fundamentals — vision, language, medicine.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">introtodeeplearning.com</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-danger);">
+            <h4 style="margin-bottom:0.15em;">MIT 6.874</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">Computational Systems Biology · MIT</p>
+            <p style="font-size:0.72em;margin:0;">Deep learning for genomics, scRNA-seq, GWAS, drug discovery.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">mit6874.github.io</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-gray-800);">
+            <h4 style="margin-bottom:0.15em;">NGS101</h4>
+            <p style="font-size:0.62em;color:var(--db-gray-400);margin:0 0 0.4em;">The NGS Classroom for Bench Scientists</p>
+            <p style="font-size:0.72em;margin:0;">80+ hands-on lessons — RNA-seq, ChIP/ATAC-seq, genomics. No prior coding.</p>
+            <p style="font-size:0.58em;color:var(--db-primary);margin:0.4em 0 0;word-break:break-all;">ngs101.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19a-1 · YOUTUBE PLAYLISTS -->
+      <section>
+        <div class="tag" style="background:rgba(255,0,0,0.08);color:#cc0000;border-color:rgba(255,0,0,0.2);">▶ YouTube Playlists</div>
+        <h2 style="margin-top:0.2em;">Learn for <span class="gradient-text">free</span> on YouTube</h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Full lecture series from top researchers — watch, pause, repeat.</p>
+        <div class="grid-3" style="margin-top:0.55em;text-align:left;align-items:stretch;">
+          <a href="https://www.youtube.com/playlist?list=PLypiXJdtIca4gtioEPLIExlAKvu64z7rc" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">MIT · Playlist</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">Machine Learning in Computational Biology</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">Taught by Manolis Kellis &amp; Eric Alm.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+          <a href="https://youtu.be/mI0Fo9kaWqo" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Video</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">Next Generation Sequencing: Overview</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">A clear primer on how NGS works — great starting point.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+          <a href="https://youtu.be/tlf6wYJrwKY" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Video</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">A Gentle Introduction to RNA-seq</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">Beginner-friendly walkthrough of RNA-seq concepts.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+          <a href="https://youtu.be/k9VFNLLQP8c" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Video</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">Single Cell Sequencing</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">Intro to single-cell sequencing &amp; what it reveals.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+          <a href="https://youtu.be/3iOjnDfDPc0" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Video</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">How AI Could Transform Drug Development &amp; the Life Sciences</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">AI's impact on drug discovery &amp; life sciences.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+          <a href="https://youtu.be/ykum2nUdYhI" class="card" style="border-top:3px solid #cc0000;display:flex;flex-direction:column;text-decoration:none;color:inherit;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+              <svg viewBox="0 0 24 24" width="26" height="26" style="flex-shrink:0;"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4l6.2 3.6z"/></svg>
+              <span style="font-size:0.5em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Video</span>
+            </div>
+            <h4 style="margin:0 0 0.2em;font-size:0.86em;">AI Drug Discovery: Alex Zhavoronkov on Insilico Medicine</h4>
+            <p style="font-size:0.68em;margin:0;color:var(--db-gray-500);">Generative AI &amp; the future of pharma.</p>
+            <p style="font-size:0.56em;color:#cc0000;margin-top:auto;padding-top:0.6em;font-weight:600;">youtube.com ↗</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- 19a-2 · OUR COURSES, PROGRAMS & INITIATIVES -->
+      <section>
+        <div class="tag tag-green">DeepBio · Hands-on · Mentored · Live</div>
+        <h2 style="margin-top:0.2em;">Want it <span class="gradient-text">guided</span>? Learn with us</h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Free resources are great for self-starters. Our programs add what they can't — <strong>live mentorship, hands-on projects &amp; a path to publication.</strong></p>
+        <div class="two-col" style="margin-top:0.5em;text-align:left;max-width:880px;margin-left:auto;margin-right:auto;align-items:stretch;">
+          <div class="card" style="border-top:4px solid var(--db-primary);display:flex;flex-direction:column;">
+            <div style="font-size:0.55em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.3em;">🎓 Short Live Courses · 8–10 classes</div>
+            <h3 style="margin:0 0 0.2em;font-size:1.05em;">DeepBio Academy</h3>
+            <p style="font-size:0.76em;margin:0;">Expert-led, cohort-based short courses (8–10 live classes) in bioinformatics, computational biology &amp; AI — hands-on projects, certified on completion.</p>
+            <p style="font-size:0.62em;color:var(--db-primary);margin-top:auto;padding-top:0.6em;font-weight:600;">deepbioacademy.com ↗</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--db-secondary);display:flex;flex-direction:column;">
+            <div style="font-size:0.55em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.3em;">👥 1:1 Mentorship · 3 months</div>
+            <h3 style="margin:0 0 0.2em;font-size:1.05em;">Bioinformatics Mentorship Program</h3>
+            <p style="font-size:0.76em;margin:0;">Structured 3-month 1:1 guidance pairing you with experienced researchers — accelerate your growth toward real research output.</p>
+            <p style="font-size:0.62em;color:var(--db-primary);margin-top:auto;padding-top:0.6em;font-weight:600;">mdjubayerhossain.com/bmp ↗</p>
+          </div>
+        </div>
+        <p style="font-size:0.62em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Self-study builds the basics. Mentorship turns it into real research &amp; a career.</p>
+      </section>
+
+      <!-- 19b · LABS & PEOPLE TO FOLLOW -->
+      <section>
+        <div class="tag">People &amp; Labs to Follow</div>
+        <h2 style="margin-top:0.2em;">Learn from the <span class="gradient-text">best in the field</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Follow these labs &amp; professors — their blogs, GitHub, and tools shape modern bioinformatics.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7em;max-width:920px;margin:0 auto;text-align:left;">
+          <div class="card" style="border-left:3px solid var(--db-primary);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Jeff Leek</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Biostatistics &amp; data-science education · jtleek.com</p></div>
+          <div class="card" style="border-left:3px solid var(--db-accent);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Rafael Irizarry (RafaLab)</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Genomics &amp; Bioconductor · Dana-Farber / Harvard</p></div>
+          <div class="card" style="border-left:3px solid var(--db-secondary);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Kasper Hansen (HansenLab)</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Epigenomics &amp; computational biology · JHU</p></div>
+          <div class="card" style="border-left:3px solid var(--db-warning);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Roger Peng</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Data science &amp; reproducibility · rdpeng.org</p></div>
+          <div class="card" style="border-left:3px solid var(--db-primary);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Satija Lab</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Single-cell genomics · creators of Seurat</p></div>
+          <div class="card" style="border-left:3px solid var(--db-accent);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">EMBL-EBI</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Core databases &amp; tools · ebi.ac.uk</p></div>
+          <div class="card" style="border-left:3px solid var(--db-secondary);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">Broad Institute</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Genomics research · MIT &amp; Harvard</p></div>
+          <div class="card" style="border-left:3px solid var(--db-warning);"><h4 style="margin:0 0 0.1em;font-size:0.9em;">SIB</h4><p style="font-size:0.66em;margin:0;color:var(--db-gray-500);">Swiss Institute of Bioinformatics · sib.swiss</p></div>
+        </div>
+        <p style="font-size:0.62em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">Follow on Twitter/X, GitHub &amp; their blogs — read how real experts think and work.</p>
+      </section>
+
+      <!-- 19c · PhD FINDER -->
+      <section>
+        <div class="tag">PhD Finder</div>
+        <h2 style="margin-top:0.2em;">Where to <span class="gradient-text">find PhD positions</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Portals to search programs, funding &amp; fellowships — set alerts and apply early.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6em;max-width:980px;margin:0.3em auto 0;text-align:left;">
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">EURAXESS Jobs</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">EU database for research jobs, funding &amp; fellowships.</p><a href="https://euraxess.ec.europa.eu/jobs" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">euraxess.ec.europa.eu/jobs ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">PhDportal</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Search PhD programs across European universities.</p><a href="https://www.phdportal.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">phdportal.com ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">University Positions EU</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Doctoral &amp; research jobs across EU institutions.</p><a href="https://universitypositions.eu/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">universitypositions.eu ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Academic Positions</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Global academic jobs — PhD &amp; postdoc.</p><a href="https://academicpositions.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">academicpositions.com ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Nature Careers</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Renowned portal for research &amp; scientific careers.</p><a href="https://www.nature.com/naturecareers" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">nature.com/naturecareers ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Varbi</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Recruitment platform used by many Nordic universities.</p><a href="https://varbi.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">varbi.com ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">FindAPhD</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">PhD recruitment platform.</p><a href="https://www.findaphd.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">findaphd.com ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">PhD Scanner</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Aggregates &amp; filters PhD positions with personalized alerts.</p><a href="https://phdscanner.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">phdscanner.com ↗</a></div>
+        </div>
+      </section>
+
+      <!-- 19d · FUNDED PROFESSOR FINDER (US / CANADA) -->
+      <section>
+        <div class="tag">Find Funded Professors · US &amp; Canada</div>
+        <h2 style="margin-top:0.2em;">Find <span class="gradient-text">funded labs</span> to email</h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.6em;">A funded PI = a funded position. Find who holds active grants, then reach out.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6em;max-width:980px;margin:0.3em auto 0;text-align:left;">
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">NSF Award Search</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Active NSF-funded projects &amp; PIs.</p><a href="https://www.nsf.gov/awardsearch/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">nsf.gov/awardsearch ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">NSERC Portal</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">NSERC-funded researchers in Canada.</p><a href="https://www.nserc-crsng.gc.ca/ase-oro/index_eng.asp" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">nserc-crsng.gc.ca ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">NIH RePORTER</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Database of NIH-funded projects.</p><a href="https://reporter.nih.gov/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">reporter.nih.gov ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Grantom</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Search engine for grants &amp; funded labs.</p><a href="https://grantom.com/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">grantom.com ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">OpenAlex</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Global index of papers &amp; researchers to find active labs.</p><a href="https://openalex.org/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">openalex.org ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">CAGS</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Directory of Canadian graduate programs.</p><a href="https://cags.ca/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">cags.ca ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-warning);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">PubMed — Authors</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Spot PIs via authors of recent relevant papers.</p><a href="https://pubmed.ncbi.nlm.nih.gov/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">pubmed.ncbi.nlm.nih.gov ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-gray-800);padding:0.7em 0.8em;background:var(--db-gray-50);display:flex;align-items:center;"><p style="font-size:0.64em;margin:0;color:var(--db-gray-500);"><strong>Tip:</strong> cross-check a PI's grants <em>and</em> recent papers before emailing.</p></div>
+        </div>
+      </section>
+
+      <!-- 19e · CONTRIBUTE TO OPEN SOURCE -->
+      <section>
+        <div class="tag">Contribute to Open Source</div>
+        <h2 style="margin-top:0.2em;">Build your name in <span class="gradient-text">public</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Contributing to real tools = visible proof of skill. Start small: docs, bug fixes, tutorials.</p>
+        <div class="two-col" style="text-align:left;max-width:900px;margin:0.3em auto 0;align-items:stretch;">
+          <div class="card" style="border-top:4px solid var(--db-primary);display:flex;flex-direction:column;">
+            <h3 style="margin:0 0 0.1em;font-size:1.05em;">scverse</h3>
+            <p style="font-size:0.68em;color:var(--db-gray-500);margin:0 0 0.5em;">Python ecosystem for single-cell omics</p>
+            <p style="font-size:0.74em;margin:0 0 0.6em;">Scanpy, AnnData, scVI &amp; more. Huge, welcoming community — great first issues for newcomers.</p>
+            <a href="https://scverse.org/" style="font-size:0.64em;color:var(--db-primary);font-weight:600;margin-top:auto;">scverse.org ↗</a>
+          </div>
+          <div class="card" style="border-top:4px solid var(--db-secondary);display:flex;flex-direction:column;">
+            <h3 style="margin:0 0 0.1em;font-size:1.05em;">Bioconductor</h3>
+            <p style="font-size:0.68em;color:var(--db-gray-500);margin:0 0 0.5em;">R/Bioconductor packages for genomics</p>
+            <p style="font-size:0.74em;margin:0 0 0.6em;">2,000+ packages for analyzing high-throughput data. Submit a package or improve an existing one.</p>
+            <a href="https://www.bioconductor.org/" style="font-size:0.64em;color:var(--db-primary);font-weight:600;margin-top:auto;">bioconductor.org ↗</a>
+          </div>
+        </div>
+        <p style="font-size:0.62em;text-align:center;margin-top:0.6em;color:var(--db-gray-400);">A merged PR is a public, permanent line on your CV. Recruiters &amp; PIs check GitHub.</p>
+      </section>
+
+      <!-- 19f · CONFERENCES & COMMUNITY -->
+      <section>
+        <div class="tag">Conferences, Hackathons &amp; Community</div>
+        <h2 style="margin-top:0.2em;">Show up where the <span class="gradient-text">field gathers</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.7em;">Conferences and hackathons = visibility, collaborators, and your next opportunity. Many offer student travel fellowships.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6em;max-width:980px;margin:0.3em auto 0;text-align:left;">
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">ISCB</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Int'l Society for Computational Biology — runs ISMB, the flagship conference.</p><a href="https://www.iscb.org/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">iscb.org ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">RECOMB</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Top research conference on computational molecular biology.</p><a href="https://www.recomb.org/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">recomb.org ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">BioHackathon</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Intensive coding events building open bio tools &amp; standards.</p><a href="https://www.biohackathon-europe.org/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">biohackathon-europe.org ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Nextflow Summit</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">nf-core community — workflows, pipelines &amp; hackathons.</p><a href="https://nf-co.re/events" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">nf-co.re/events ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Galaxy Community</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">GCC — accessible analysis, training &amp; community events.</p><a href="https://galaxyproject.org/events/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">galaxyproject.org/events ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">Kaggle</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">ML competitions — many on biology &amp; genomics. Build a public track record.</p><a href="https://www.kaggle.com/competitions" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">kaggle.com/competitions ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-warning);padding:0.7em 0.8em;"><h4 style="margin:0 0 0.15em;font-size:0.8em;">NeurIPS</h4><p style="font-size:0.62em;margin:0 0 0.5em;color:var(--db-gray-500);">Premier ML conference with strong AI-for-biology &amp; ML4H tracks.</p><a href="https://neurips.cc/" style="font-size:0.6em;color:var(--db-primary);font-weight:600;word-break:break-all;">neurips.cc ↗</a></div>
+          <div class="card" style="border-top:3px solid var(--db-gray-800);padding:0.7em 0.8em;background:var(--db-gray-50);display:flex;align-items:center;"><p style="font-size:0.64em;margin:0;color:var(--db-gray-500);"><strong>Tip:</strong> submit a poster — even a small result gets you in the room with the right people.</p></div>
+        </div>
+      </section>
+
+      <!-- 19g · AI TOOLS -->
+      <section>
+        <div class="tag tag-green">AI Tools</div>
+        <h2 style="margin-top:0.2em;margin-bottom:0.1em;">AI copilots for <span class="gradient-text">bioinformatics</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">Used right, AI accelerates code, analysis &amp; learning — you stay the expert behind it.</p>
+        <div class="grid-2" style="max-width:860px;margin:0 auto;text-align:left;align-items:stretch;">
+          <div class="card" style="border-top:3px solid var(--db-primary);padding:1em 1.1em;">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🤖</div>
+            <h4 style="margin:0 0 0.3em;font-size:0.95em;">Claude</h4>
+            <p style="font-size:0.7em;line-height:1.6;color:var(--db-gray-600);margin:0 0 0.5em;">General AI assistant by Anthropic. Write &amp; debug R/Python, explain papers, plan pipelines, and reason over your analysis — step by step.</p>
+            <ul style="margin:0;padding-left:1.1em;font-size:0.64em;line-height:1.6;color:var(--db-gray-500);">
+              <li>Code, debug &amp; refactor analysis scripts</li>
+              <li>Re-explain any concept until it clicks</li>
+              <li>Claude Code — agentic work in your terminal</li>
+            </ul>
+            <a href="https://claude.ai" style="font-size:0.62em;color:var(--db-primary);font-weight:600;">claude.ai ↗</a>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);padding:1em 1.1em;">
+            <div style="font-size:1.4em;margin-bottom:0.2em;">🧬</div>
+            <h4 style="margin:0 0 0.3em;font-size:0.95em;">Biomni</h4>
+            <p style="font-size:0.7em;line-height:1.6;color:var(--db-gray-600);margin:0 0 0.5em;">Open biomedical AI agent (Stanford) that plans &amp; runs research tasks — calling real bio tools &amp; databases to execute end-to-end workflows.</p>
+            <ul style="margin:0;padding-left:1.1em;font-size:0.64em;line-height:1.6;color:var(--db-gray-500);">
+              <li>Autonomous multi-step bioinformatics tasks</li>
+              <li>Integrates 150+ tools, DBs &amp; software</li>
+              <li>Natural-language → executable analysis</li>
+            </ul>
+            <a href="https://biomni.stanford.edu" style="font-size:0.62em;color:var(--db-accent);font-weight:600;">biomni.stanford.edu ↗</a>
+          </div>
+        </div>
+        <p style="font-size:0.6em;text-align:center;margin-top:0.7em;color:var(--db-gray-400);">Always verify AI output — these accelerate the work, they don't replace your judgment.</p>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           SEGMENT 5 — CLOSING (10:55 – 11:00)
+           ══════════════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Segment 05</div>
+        <h2 style="margin-top:0.2em;">Key <span class="gradient-text">takeaways</span></h2>
+        <div class="grid-3" style="margin-top:0.8em;">
+          <div class="card" style="border-top:3px solid var(--db-primary);">
+            <h4>AI is an accelerant</h4>
+            <p>Not a replacement. Its value scales with <strong>your</strong> expertise — be the expert behind it.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <h4>Two tracks, one you</h4>
+            <p>Industry and academia both reward judgment, reproducibility, and real research output.</p>
+          </div>
+          <div class="card" style="border-top:3px solid var(--db-secondary);">
+            <h4>Start building now</h4>
+            <p>Portfolio → mentored research → publication → applications. Momentum compounds.</p>
+          </div>
+        </div>
+        <div class="quote-block" style="margin-top:0.9em;font-size:0.82em;text-align:center;border:none;background:transparent;font-style:normal;">
+          The question isn't whether you can use AI. It's whether you understand enough to be <strong>the expert behind it.</strong>
+        </div>
+      </section>
+
+      <!-- 21 · STAY CONNECTED -->
+      <section>
+        <div class="tag tag-green">Networking Links</div>
+        <h2 style="margin-top:0.2em;margin-bottom:0.1em;">Stay <span class="gradient-text">connected</span></h2>
+        <p style="font-size:0.78em;margin-bottom:0.7em;">One page has it all — open it, then pick what you need:</p>
+        <div style="display:inline-flex;align-items:center;gap:0.55em;background:rgba(32,94,146,0.06);border:1px solid rgba(32,94,146,0.2);border-radius:999px;padding:0.5em 1.2em;margin-bottom:1.1em;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--db-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span style="font-size:0.85em;font-weight:700;color:var(--db-primary);letter-spacing:0.01em;">deepbioltd.com/career-guide</span>
+        </div>
+        <div class="grid-2" style="max-width:820px;margin:0 auto;text-align:left;">
+          <div class="card-bordered" style="border-top:3px solid var(--db-primary);">
+            <h4>🎟️ Register for the next session</h4>
+            <p>Tap <strong>“Join for FREE”</strong> on the page.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-accent);">
+            <h4>📖 Program Handbook</h4>
+            <p>Tap <strong>“Program Handbook”</strong> — guide, resources &amp; FAQs.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-secondary);">
+            <h4>🤝 Become a Community Partner</h4>
+            <p>Use the <strong>“Community Partner”</strong> form.</p>
+          </div>
+          <div class="card-bordered" style="border-top:3px solid var(--db-warning);">
+            <h4>💬 Share your experience</h4>
+            <p>Use the <strong>“Share Your Experience”</strong> form.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21b · ASK ANYTHING (2nd last) -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Open Discussion</div>
+        <h2 style="margin-top:0.25em;font-size:2.1em;">Ask <span class="gradient-text">Anything</span></h2>
+        <p style="font-size:0.82em;margin-bottom:0.7em;">Open discussion &amp; live career consultations. To get us started:</p>
+        <div class="grid-2" style="max-width:840px;margin:0 auto;">
+          <div class="card"><p style="font-size:0.78em;">"Which master's program is right for <strong>my</strong> background?"</p></div>
+          <div class="card"><p style="font-size:0.78em;">"How much coding do I really need to start?"</p></div>
+          <div class="card"><p style="font-size:0.78em;">"I'm from a wet-lab background — how do I switch to dry lab?"</p></div>
+          <div class="card"><p style="font-size:0.78em;">"Is AI a threat to my career — or an opportunity?"</p></div>
+        </div>
+        <p style="font-size:0.7em;margin-top:0.9em;">Drop your questions in the chat — we'll take them live. 🎙️</p>
+      </section>
+
+      <!-- 22 · THANK YOU -->
+      <section data-background-color="#0a1628" class="dark-slide">
+        <div class="tag">Thank You</div>
+        <h2 style="margin-top:0.2em;font-size:2.3em;">See you next <span class="gradient-text">month</span></h2>
+        <div class="sep"></div>
+        <p style="font-size:0.85em;">Last Friday · 100% Free</p>
+        <div class="speaker-info" style="margin-top:0.6em;">
+          <div class="speaker-name" style="color:var(--db-gray-200);">Md. Jubayer Hossain · Founder &amp; CEO, DeepBio Limited</div>
+        </div>
+        <div class="social-row" style="margin-top:0.8em;flex-direction:column;gap:0.35em;">
+          <a href="https://bio.link/hossainlab" style="font-weight:600;color:var(--db-secondary);">bio.link/hossainlab <span style="color:var(--db-gray-400);font-weight:400;">— to connect with Jubayer</span></a>
+          <a href="https://bio.link/deepbioltd" style="font-weight:600;color:var(--db-secondary);">bio.link/deepbioltd <span style="color:var(--db-gray-400);font-weight:400;">— to follow our ecosystem</span></a>
+        </div>
+        <p class="disclaimer">DeepBio Limited &amp; CHIRAL Bangladesh &middot; Dhaka, Bangladesh</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: true,
+      controls: false,
+      progress: true,
+      pdfSeparateFragments: false,
+      pdfMaxPagesPerSlide: 1,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name
+  ="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bioinformatics Mentorship Program — Info Session 2026</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+  <style>
+    :root {
+      --db-primary:   #205E92;
+      --db-secondary: #64B5F6;
+      --db-dark:      #0a1628;
+      --db-accent:    #10b981;
+      --db-warning:   #f59e0b;
+      --db-danger:    #ef4444;
+      --db-white:     #ffffff;
+      --db-gray-50:   #f8fafc;
+      --db-gray-100:  #f1f5f9;
+      --db-gray-200:  #e2e8f0;
+      --db-gray-300:  #cbd5e1;
+      --db-gray-400:  #94a3b8;
+      --db-gray-500:  #64748b;
+      --db-gray-600:  #475569;
+      --db-gray-700:  #334155;
+      --db-gray-800:  #1e293b;
+      --db-gray-900:  #0f172a;
+      --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Inter', sans-serif;
+    }
+
+    .reveal-viewport { background: #ffffff; }
+
+    .reveal {
+      font-family: var(--font-body);
+      font-size: 19px;
+      color: var(--db-gray-700);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--db-gray-900);
+      margin: 0 0 0.3em 0;
+    }
+
+    .reveal h1 { font-size: 2.5em; }
+    .reveal h2 { font-size: 1.65em; }
+    .reveal h3 { font-size: 1.15em; }
+
+    .reveal p {
+      line-height: 1.55;
+      color: var(--db-gray-500);
+      margin-bottom: 0.35em;
+    }
+
+    .reveal strong { color: var(--db-gray-800); font-weight: 700; }
+    .reveal a      { color: var(--db-primary); text-decoration: none; font-weight: 600; }
+
+    /* Slide container */
+    .reveal .slides > section {
+      padding: 1.6em 2.4em;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* ─── Persistent Footer ─── */
+    .db-footer {
+      position: fixed; bottom: 10px; left: 20px;
+      z-index: 100;
+      font-family: var(--font-body); font-size: 10px; font-weight: 500;
+      color: var(--db-gray-400); pointer-events: none;
+    }
+
+    .reveal .slide-number {
+      font-family: var(--font-body); font-size: 10px; font-weight: 600;
+      color: var(--db-gray-400); background: transparent;
+      right: 20px; bottom: 10px;
+    }
+
+    .reveal .progress { height: 3px; color: var(--db-primary); }
+
+    /* ── Tags ── */
+    .tag {
+      display: inline-block; padding: 0.25em 0.9em; border-radius: 999px;
+      font-size: 0.6em; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--db-primary);
+      background: rgba(32,94,146,0.08); border: 1px solid rgba(32,94,146,0.15);
+      margin-bottom: 0.4em;
+    }
+    .tag-green { color: var(--db-accent);   background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.2); }
+    .tag-amber { color: var(--db-warning);  background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+    .tag-red   { color: var(--db-danger);   background: rgba(239,68,68,0.08);  border-color: rgba(239,68,68,0.2); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .sep {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--db-primary), var(--db-secondary));
+      border-radius: 2px; margin: 0.5em auto;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--db-gray-50); border: 1px solid var(--db-gray-200);
+      border-radius: 10px; padding: 0.7em 0.9em; text-align: left;
+    }
+    .card-bordered {
+      background: var(--db-white); border: 1px solid var(--db-gray-200);
+      border-radius: 10px; padding: 0.7em 0.9em; text-align: left;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .card-highlight {
+      border-color: var(--db-primary);
+      box-shadow: 0 2px 10px rgba(32,94,146,0.1);
+    }
+    .card h4 {
+      font-size: 0.8em; margin: 0 0 0.25em 0; color: var(--db-gray-800);
+    }
+    .card p, .card-bordered p {
+      font-size: 0.72em; margin: 0; color: var(--db-gray-500); line-height: 1.5;
+    }
+
+    /* ── Grids ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr;         gap: 0.7em; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr;     gap: 0.6em; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr);   gap: 0.5em; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr;        gap: 1.2em; align-items: start; }
+
+    .grid-3-col { display: grid; grid-template-columns: 1fr 1fr 1fr;  gap: 1.2em; align-items: stretch; }
+    .card-highlight { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
+    .side-list { flex-grow: 1; }
+
+    .grid-roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.4em;
+      margin-top: 0.6em;
+    }
+    .road-card {
+      background: var(--db-gray-50);
+      border-left: 3px solid var(--db-primary);
+      padding: 0.4em 0.6em;
+      text-align: left;
+    }
+    .road-card h4 { font-size: 0.65em; margin: 0; color: var(--db-primary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .road-card h5 { font-size: 0.75em; margin: 0.1em 0; color: var(--db-gray-800); font-weight: 700; }
+    .road-card p { font-size: 0.58em; margin: 0; line-height: 1.3; color: var(--db-gray-500); }
+
+    /* ── Stats ── */
+    .stat { text-align: center; padding: 0.5em; }
+    .stat-value { font-family: var(--font-heading); font-size: 2em; font-weight: 900; color: var(--db-primary); line-height: 1; }
+    .stat-label { font-size: 0.55em; color: var(--db-gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2em; }
+
+    /* Inline stats bar */
+    .stats-bar { display: flex; align-items: center; justify-content: center; gap: 1.4em; margin: 0.5em 0; }
+    .stats-bar .stat-num { font-size: 1.4em; font-weight: 900; color: var(--db-primary); line-height: 1; }
+    .stats-bar .stat-lbl { font-size: 0.48em; color: var(--db-gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.15em; }
+    .stats-bar .stat-sep { width: 1px; height: 2em; background: var(--db-gray-200); }
+
+    /* ── Tables ── */
+    .reveal table { font-size: 0.7em; border-collapse: collapse; width: 100%; }
+    .reveal table th {
+      font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;
+      font-size: 0.68em; letter-spacing: 0.08em; color: var(--db-gray-400);
+      padding: 0.5em 0.7em; border-bottom: 2px solid var(--db-gray-200); text-align: left;
+    }
+    .reveal table td { padding: 0.4em 0.7em; border-bottom: 1px solid var(--db-gray-100); color: var(--db-gray-600); }
+
+    /* ── Lists ── */
+    .reveal ul { list-style: none; padding: 0; margin: 0; }
+    .reveal ul li {
+      padding: 0.22em 0 0.22em 1.4em; position: relative;
+      font-size: 0.82em; color: var(--db-gray-600); line-height: 1.5;
+    }
+    .reveal ul li::before {
+      content: "→"; position: absolute; left: 0;
+      color: var(--db-primary); font-weight: 700;
+    }
+    .reveal .check-list li::before { content: "✓"; color: var(--db-accent); }
+    .reveal .x-list   li::before  { content: "✗"; color: var(--db-danger); }
+    .reveal .no-bullets  li::before { content: none; }
+
+    /* ── Quote ── */
+    .quote-block {
+      border-left: 3px solid var(--db-primary); padding: 0.6em 1em;
+      background: var(--db-gray-50); border-radius: 0 8px 8px 0;
+      font-style: italic; color: var(--db-gray-600); font-size: 0.82em;
+    }
+
+    /* ── CTA Box ── */
+    .cta-box {
+      border: 2px solid var(--db-primary); border-radius: 14px;
+      padding: 1.2em 1.8em; background: rgba(32,94,146,0.03); text-align: center;
+    }
+
+    /* ── Speaker ── */
+    .speaker-info { text-align: center; margin-top: 0.5em; }
+    .speaker-info .speaker-name  { font-size: 0.78em; font-weight: 600; color: var(--db-gray-700); }
+    .speaker-info .speaker-role  { font-size: 0.68em; color: var(--db-gray-400); }
+    .speaker-info .speaker-email { font-size: 0.64em; color: var(--db-primary); font-weight: 600; }
+
+    .disclaimer { font-size: 0.5em; color: var(--db-gray-400); margin-top: 0.8em; }
+
+    /* ── Social row ── */
+    .social-row { display: flex; align-items: center; justify-content: center; gap: 0.5em; margin-top: 0.4em; }
+    .social-row a, .social-row span { color: var(--db-gray-400); font-size: 0.68em; transition: color 0.2s; }
+    .social-row a:hover { color: var(--db-primary); }
+    .social-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--db-gray-300); display: inline-block; }
+
+    /* ── Dark slides ── */
+    .dark-slide h1, .dark-slide h2, .dark-slide h3, .dark-slide h4 { color: var(--db-white); }
+    .dark-slide p, .dark-slide li { color: var(--db-gray-400); }
+    .dark-slide .card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+    .dark-slide .card h4 { color: var(--db-white); }
+    .dark-slide .card p  { color: var(--db-gray-400); }
+    .dark-slide .tag { background: rgba(32,94,146,0.2); border-color: rgba(100,181,246,0.3); color: var(--db-secondary); }
+    .dark-slide .quote-block { background: rgba(255,255,255,0.05); }
+    .dark-slide .step-list li { color: var(--db-gray-300); }
+    .dark-slide .step-list li::before { background: rgba(100,181,246,0.2); color: var(--db-secondary); }
+
+    /* ── Numbered step list ── */
+    .step-list { list-style: none; padding: 0; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      padding: 0.4em 0 0.4em 2.2em; position: relative;
+      font-size: 0.78em; color: var(--db-gray-600);
+      border-bottom: 1px solid var(--db-gray-100);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute; left: 0; top: 0.35em;
+      width: 1.5em; height: 1.5em; border-radius: 50%;
+      background: var(--db-primary); color: white;
+      font-size: 0.72em; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.62em; font-weight: 700; color: var(--db-primary);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35em;
+    }
+
+    /* ── Testimonial cards ── */
+    .testimonial-card {
+      background: var(--db-gray-50);
+      border: 1px solid var(--db-gray-200);
+      border-top: 3px solid var(--db-primary);
+      border-radius: 10px;
+      padding: 0.8em 1em;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+    .t-stars { color: var(--db-warning); font-size: 0.7em; margin-bottom: 0.35em; letter-spacing: 0.05em; }
+    .t-quote { font-size: 0.7em; color: var(--db-gray-600); font-style: italic; line-height: 1.55; margin-bottom: 0.5em; flex-grow: 1; }
+    .t-name  { font-size: 0.68em; font-weight: 700; color: var(--db-gray-800); }
+    .t-org   { font-size: 0.6em; color: var(--db-gray-400); margin-top: 0.1em; }
+
+    /* ── Pricing ── */
+    .price-main { font-size: 2.2em; font-weight: 900; color: var(--db-primary); line-height: 1; margin: 0.2em 0; }
+    .price-old  { font-size: 0.85em; text-decoration: line-through; color: var(--db-gray-400); }
+    .price-period { font-size: 0.42em; color: var(--db-gray-500); font-weight: 500; }
+
+    /* ── Mentor slide ── */
+    .mentor-name { font-size: 1.9em; font-weight: 900; color: var(--db-white); line-height: 1.1; }
+    .mentor-title { font-size: 0.8em; color: var(--db-secondary); font-weight: 600; margin-top: 0.3em; }
+
+    @media print {
+      .reveal-viewport { background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .reveal .slides section { page-break-after: always; page-break-inside: avoid; }
+      .db-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Persistent Footer ─── -->
+  <div class="db-footer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.6;">
+      <path d="M4 4C4 4 7 6 12 12S20 20 20 20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 4C20 4 17 6 12 12S4 20 4 20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M6.5 6.5H4" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.5 6.5H20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M6.5 17.5H4" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.5 17.5H20" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M9 9H7.5" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 9H15" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M9 15H7.5" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 15H15" stroke="#205E92" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══ 01 TITLE ══════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Info Session 2026 · Bioinformatics Mentorship Program</div>
+        <h1 style="margin-top:0.2em;margin-bottom:0.1em;">Launch Your <br><span class="gradient-text">Bioinformatics</span> Career</h1>
+        <div class="sep"></div>
+        <div class="speaker-info">
+          <div class="speaker-name">Md. Jubayer Hossain · Founder &amp; CEO</div>
+          <div class="speaker-role" style="margin-top:0.15em;">DeepBio Limited · Bioinformatics Mentor</div>
+        </div>
+        <div class="social-row" style="margin-top:0.5em;">
+          <a href="https://mdjubayerhossain.com" style="font-weight:600;color:var(--db-primary);">mdjubayerhossain.com</a>
+          <span class="social-dot"></span>
+          <a href="https://github.com/hossainlab" target="_blank" style="display:inline-flex;color:var(--db-gray-400);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <span class="social-dot"></span>
+          <a href="https://www.linkedin.com/in/hossainmj/" target="_blank" style="display:inline-flex;color:var(--db-gray-400);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <span class="social-dot"></span>
+          <a href="https://www.youtube.com/@hossainlab" target="_blank" style="display:inline-flex;color:var(--db-gray-400);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+        <p class="disclaimer">&copy; 2026 Md. Jubayer Hossain</p>
+      </section>
+
+      <!-- ══ 01.5 AGENDA ════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Today's Session</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">What we'll <span class="gradient-text">cover today</span></h2>
+        <p style="font-size:0.78em;margin-bottom:1.1em;color:var(--db-gray-500);">~30 minutes &nbsp;·&nbsp; open Q&amp;A to follow</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9em;max-width:860px;margin:0 auto;">
+
+          <!-- 1 -->
+          <div style="position:relative;display:flex;align-items:center;gap:1em;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--db-primary);"></div>
+            <div style="flex-shrink:0;width:48px;height:48px;border-radius:12px;background:rgba(32,94,146,0.1);display:flex;align-items:center;justify-content:center;color:var(--db-primary);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;margin-bottom:0.2em;">
+                <span style="font-family:var(--font-heading);font-size:0.95em;font-weight:900;color:var(--db-gray-300);line-height:1;">01</span>
+                <span style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);">The Problem &amp; Solution</span>
+              </div>
+              <div style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;">Why learners stall — and how this program fixes it</div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div style="position:relative;display:flex;align-items:center;gap:1em;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--db-accent);"></div>
+            <div style="flex-shrink:0;width:48px;height:48px;border-radius:12px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;color:var(--db-accent);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22a8 8 0 0 1 8-8 8 8 0 0 1 8 8"/><path d="M6 2a8 8 0 0 0 8 8 8 8 0 0 0 8-8"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+            </div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;margin-bottom:0.2em;">
+                <span style="font-family:var(--font-heading);font-size:0.95em;font-weight:900;color:var(--db-gray-300);line-height:1;">02</span>
+                <span style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);">What You'll Learn</span>
+              </div>
+              <div style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;">Curriculum, tools, workflows, and career outcomes</div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div style="position:relative;display:flex;align-items:center;gap:1em;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--db-secondary);"></div>
+            <div style="flex-shrink:0;width:48px;height:48px;border-radius:12px;background:rgba(100,181,246,0.15);display:flex;align-items:center;justify-content:center;color:var(--db-secondary);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;margin-bottom:0.2em;">
+                <span style="font-family:var(--font-heading);font-size:0.95em;font-weight:900;color:var(--db-gray-300);line-height:1;">03</span>
+                <span style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);">Real Mentee Output</span>
+              </div>
+              <div style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;">Published papers and research from Cohort 01 &amp; GSA interns</div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div style="position:relative;display:flex;align-items:center;gap:1em;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--db-warning);"></div>
+            <div style="flex-shrink:0;width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-warning);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </div>
+            <div style="flex-grow:1;">
+              <div style="display:flex;align-items:baseline;gap:0.5em;margin-bottom:0.2em;">
+                <span style="font-family:var(--font-heading);font-size:0.95em;font-weight:900;color:var(--db-gray-300);line-height:1;">04</span>
+                <span style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);">Enroll &amp; Start</span>
+              </div>
+              <div style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;">Who this is for, pricing, and how to secure your seat tonight</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 02 ABOUT THE MENTOR ════════════════════════════════════ -->
+      <section>
+        <div class="tag">About the Mentor</div>
+        
+        <!-- Decorative Background Shape -->
+        <div style="position:absolute; top:-10%; right:-10%; width:300px; height:300px; background:radial-gradient(circle, rgba(32,94,146,0.05) 0%, transparent 70%); z-index:-1; pointer-events:none;"></div>
+
+        <div class="two-col" style="grid-template-columns: 0.65fr 1.35fr; gap: 2.2em; align-items: start; margin-top: 0.8em;">
+          
+          <!-- Left Column: Visuals & Core Stats -->
+          <div style="text-align: center;">
+            <div style="position: relative; width: 220px; height: 220px; margin: 0 auto 1.4em;">
+              <!-- Subtle Ring -->
+              <div style="position: absolute; inset: -8px; border: 2px solid var(--db-gray-100); border-radius: 20px; z-index: 0;"></div>
+              <!-- Photo -->
+              <div style="position: relative; width: 100%; height: 100%; border-radius: 16px; overflow: hidden; border: 4px solid var(--db-white); box-shadow: 0 12px 24px rgba(0,0,0,0.1); z-index: 1;">
+                <img src="jubayer.jpg" alt="Md. Jubayer Hossain" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; max-width: 220px; margin: 0 auto;">
+              <div style="background: var(--db-white); border: 1px solid var(--db-gray-200); border-radius: 12px; padding: 0.6em 0.3em; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="font-family: var(--font-heading); font-size: 1.25em; font-weight: 900; color: var(--db-primary); line-height: 1;">5+</div>
+                <div style="font-size: 0.42em; color: var(--db-gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3em; font-weight: 700;">Years Research</div>
+              </div>
+              <div style="background: var(--db-white); border: 1px solid var(--db-gray-200); border-radius: 12px; padding: 0.6em 0.3em; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="font-family: var(--font-heading); font-size: 1.25em; font-weight: 900; color: var(--db-primary); line-height: 1;">5+</div>
+                <div style="font-size: 0.42em; color: var(--db-gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3em; font-weight: 700;">Years Mentoring</div>
+              </div>
+              <div style="background: var(--db-white); border: 1px solid var(--db-gray-200); border-radius: 12px; padding: 0.6em 0.3em; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="font-family: var(--font-heading); font-size: 1.25em; font-weight: 900; color: var(--db-primary); line-height: 1;">3K+</div>
+                <div style="font-size: 0.42em; color: var(--db-gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3em; font-weight: 700;">Students Trained</div>
+              </div>
+              <div style="background: var(--db-white); border: 1px solid var(--db-gray-200); border-radius: 12px; padding: 0.6em 0.3em; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="font-family: var(--font-heading); font-size: 1.25em; font-weight: 900; color: var(--db-primary); line-height: 1;">20+</div>
+                <div style="font-size: 0.42em; color: var(--db-gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3em; font-weight: 700;">Publications</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Bio, Interests, Education, Experience -->
+          <div style="text-align: left; margin-top: -0.35em;">
+            <div style="margin-bottom: 0.8em;">
+              <h2 style="margin: 0; font-size: 2em; line-height: 1; color: var(--db-gray-900);">Md. Jubayer Hossain</h2>
+              <div style="font-size: 0.9em; font-weight: 700; color: var(--db-primary); margin-top: 0.25em; letter-spacing: 0.01em;">Founder & CEO, DeepBio Ltd</div>
+            </div>
+            
+            <p style="font-size: 0.72em; line-height: 1.6; color: var(--db-gray-600); margin-bottom: 1.2em;">
+              Bioinformatician and computational biologist with 5+ years of experience in active research and teaching. Since 2020, he has trained 3,000+ students in practical skills for real-world biological data analysis.
+            </p>
+            
+            <div class="grid-3" style="gap: 0.8em; align-items: stretch;">
+              
+              <!-- Interests -->
+              <div style="background: var(--db-gray-50); padding: 0.8em; border-radius: 12px; border-top: 3px solid var(--db-primary);">
+                <h4 style="font-size: 0.62em; color: var(--db-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5em; font-weight: 800;">Interests</h4>
+                <ul class="no-bullets" style="font-size: 0.55em; line-height: 1.4; color: var(--db-gray-600);">
+                  <li>Transcriptomics</li>
+                  <li>Single-Cell Analysis</li>
+                  <li>Cancer Genomics</li>
+                  <li>Neurogenomics</li>
+                  <li>AI in Biomedicine</li>
+                </ul>
+              </div>
+
+              <!-- Education -->
+              <div style="background: var(--db-gray-50); padding: 0.8em; border-radius: 12px; border-top: 3px solid var(--db-accent);">
+                <h4 style="font-size: 0.62em; color: var(--db-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5em; font-weight: 800;">Education</h4>
+                <div style="font-size: 0.55em; line-height: 1.4; color: var(--db-gray-600);">
+                  <strong style="color:var(--db-gray-800);">MS, Microbiology</strong><br>Jagannath University<br>
+                  <strong style="color:var(--db-gray-800); display:block; margin-top:0.3em;">BS, Microbiology</strong>Jagannath University
+                </div>
+              </div>
+
+              <!-- Affiliations -->
+              <div style="background: var(--db-gray-50); padding: 0.85em; border-radius: 12px; border-top: 3px solid var(--db-warning);">
+                <h4 style="font-size: 0.62em; color: var(--db-warning); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5em; font-weight: 800;">Affiliations</h4>
+                <ul class="no-bullets" style="font-size: 0.52em; line-height: 1.35; color: var(--db-gray-600);">
+                  <li>Founder & CEO, DeepBio Limited</li>
+                  <li>Founder & Lead Instructor, DeepBio Academy</li>
+                  <li>Founder & Director, CHIRAL Bangladesh</li>
+                  <li>Faculty, cBLAST, University of Dhaka</li>
+                  <li>Visiting Scholar, Daffodil International University</li>
+                  <li>Program Lead, GSA Bioinformatics Internship</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="quote-block" style="margin-top: 1.4em; font-size: 0.72em; line-height: 1.6; text-align: left; border-left: 4px solid var(--db-primary); padding: 0.8em 1.2em; background: rgba(32,94,146,0.03); border-radius: 0 12px 12px 0;">
+              "My role is to accelerate your journey from question to discovery. You bring the curiosity; I bring the roadmap, the tools, and the accountability."
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 02.1 JOURNEY TO BIOINFORMATICS ════════════════════════════ -->
+      <section>
+        <div class="tag">The Journey</div>
+        <h2 style="margin-top:0.1em; margin-bottom: 0.4em;">Journey to <span class="gradient-text">Bioinformatics</span></h2>
+        
+        <!-- Horizontal Timeline -->
+        <div style="position: relative; margin-top: 1.2em; height: 180px;">
+          <!-- Connecting Line -->
+          <div style="position: absolute; top: 35px; left: 5%; right: 5%; height: 2px; background: linear-gradient(90deg, var(--db-primary), var(--db-accent), var(--db-warning), var(--db-secondary)); z-index: 0;"></div>
+          
+          <div class="grid-4" style="position: relative; z-index: 1; gap: 1em;">
+            <!-- 2016 -->
+            <div style="text-align: center;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--db-primary); border: 4px solid var(--db-white); box-shadow: 0 0 0 2px var(--db-gray-100); margin: 0.85em auto 0.6em;"></div>
+              <div style="font-family: var(--font-heading); font-size: 0.9em; font-weight: 800; color: var(--db-primary);">2016</div>
+              <div style="margin-top: 0.4em; padding: 0.6em; background: var(--db-gray-50); border-radius: 8px; border: 1px solid var(--db-gray-200);">
+                <strong style="font-size: 0.58em; text-transform: uppercase; color: var(--db-gray-400); display: block; margin-bottom: 0.3em;">The Start</strong>
+                <p style="font-size: 0.54em; line-height: 1.4; color: var(--db-gray-600); margin: 0;">Lost in Microbiology BS. Found direction in <strong>Python & R</strong> self-study.</p>
+              </div>
+            </div>
+
+            <!-- 2019 -->
+            <div style="text-align: center;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--db-accent); border: 4px solid var(--db-white); box-shadow: 0 0 0 2px var(--db-gray-100); margin: 0.85em auto 0.6em;"></div>
+              <div style="font-family: var(--font-heading); font-size: 0.9em; font-weight: 800; color: var(--db-accent);">2019</div>
+              <div style="margin-top: 0.4em; padding: 0.6em; background: var(--db-gray-50); border-radius: 8px; border: 1px solid var(--db-gray-200);">
+                <strong style="font-size: 0.58em; text-transform: uppercase; color: var(--db-gray-400); display: block; margin-bottom: 0.3em;">The Pivot</strong>
+                <p style="font-size: 0.54em; line-height: 1.4; color: var(--db-gray-600); margin: 0;">Pandemic. Taught R/Python online to juniors. Founded <strong>HDRO</strong>.</p>
+              </div>
+            </div>
+
+            <!-- 2020 -->
+            <div style="text-align: center;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--db-warning); border: 4px solid var(--db-white); box-shadow: 0 0 0 2px var(--db-gray-100); margin: 0.85em auto 0.6em;"></div>
+              <div style="font-family: var(--font-heading); font-size: 0.9em; font-weight: 800; color: var(--db-warning);">2020</div>
+              <div style="margin-top: 0.4em; padding: 0.6em; background: var(--db-gray-50); border-radius: 8px; border: 1px solid var(--db-gray-200);">
+                <strong style="font-size: 0.58em; text-transform: uppercase; color: var(--db-gray-400); display: block; margin-bottom: 0.3em;">Establishment</strong>
+                <p style="font-size: 0.54em; line-height: 1.4; color: var(--db-gray-600); margin: 0;">June 10. HDRO evolved into <strong>CHIRAL Bangladesh</strong>.</p>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div style="text-align: center;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--db-secondary); border: 4px solid var(--db-white); box-shadow: 0 0 0 2px var(--db-gray-100); margin: 0.85em auto 0.6em;"></div>
+              <div style="font-family: var(--font-heading); font-size: 0.9em; font-weight: 800; color: var(--db-secondary);">2024</div>
+              <div style="margin-top: 0.4em; padding: 0.6em; background: var(--db-gray-50); border-radius: 8px; border: 1px solid var(--db-gray-200);">
+                <strong style="font-size: 0.58em; text-transform: uppercase; color: var(--db-gray-400); display: block; margin-bottom: 0.3em;">Scaling</strong>
+                <p style="font-size: 0.54em; line-height: 1.4; color: var(--db-gray-600); margin: 0;">Launched <strong>DeepBio Limited</strong> & <strong>Academy</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ecosystem Section -->
+        <div style="margin-top: 0.8em; padding: 1.2em; background: linear-gradient(135deg, rgba(32,94,146,0.03) 0%, rgba(100,181,246,0.03) 100%); border-radius: 16px; border: 1px solid var(--db-gray-100);">
+          <div style="font-size: 0.65em; font-weight: 800; color: var(--db-primary); text-transform: uppercase; letter-spacing: 0.15em; text-align: center; margin-bottom: 1em;">The Current Ecosystem</div>
+          <div class="grid-3" style="gap: 1.2em;">
+            <div class="card-bordered" style="padding: 0.8em; border-top: 4px solid var(--db-primary); text-align: center;">
+              <div style="font-size: 1.2em; margin-bottom: 0.2em;">🔬</div>
+              <h4 style="font-size: 0.85em; margin: 0; color: var(--db-primary);">Research</h4>
+              <p style="font-size: 0.58em; margin-top: 0.3em; font-weight: 700; color: var(--db-gray-800);">CHIRAL Bangladesh</p>
+            </div>
+            <div class="card-bordered" style="padding: 0.8em; border-top: 4px solid var(--db-secondary); text-align: center;">
+              <div style="font-size: 1.2em; margin-bottom: 0.2em;">💻</div>
+              <h4 style="font-size: 0.85em; margin: 0; color: var(--db-secondary);">Services</h4>
+              <p style="font-size: 0.58em; margin-top: 0.3em; font-weight: 700; color: var(--db-gray-800);">DeepBio Limited</p>
+            </div>
+            <div class="card-bordered" style="padding: 0.8em; border-top: 4px solid var(--db-accent); text-align: center;">
+              <div style="font-size: 1.2em; margin-bottom: 0.2em;">🎓</div>
+              <h4 style="font-size: 0.85em; margin: 0; color: var(--db-accent);">Training</h4>
+              <p style="font-size: 0.58em; margin-top: 0.3em; font-weight: 700; color: var(--db-gray-800);">DeepBio Academy</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ SECTION 01 DIVIDER ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Section 01</div>
+        <h2 style="margin-top:0.25em;">The need. The problem. <span class="gradient-text">The solution.</span></h2>
+        <div class="sep" style="margin:0.55em auto;max-width:60px;"></div>
+        <p style="font-size:0.88em;color:var(--db-gray-500);max-width:520px;margin:0 auto;line-height:1.7;">Why NGS literacy is now essential — and exactly how this program gets you there.</p>
+      </section>
+
+      <!-- ══ WHY THIS MATTERS ═══════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Why This Mentorship Matters</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.15em;">NGS data analysis is <span class="gradient-text">no longer optional</span></h2>
+        <p style="font-size:0.78em;margin-bottom:0.6em;color:var(--db-gray-500);">Whether you're in academia or industry, the ability to analyze your own sequencing data is rapidly becoming a baseline expectation — not a bonus skill.</p>
+        <div class="grid-3" style="align-items:stretch;">
+
+          <!-- 01 / Academia -->
+          <div class="card" style="border-top:3px solid var(--db-primary);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(32,94,146,0.06);line-height:1;letter-spacing:-0.03em;pointer-events:none;user-select:none;">01</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(32,94,146,0.08);border:1px solid rgba(32,94,146,0.15);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--db-primary);"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-primary);">Academia</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">You understand your biology — own your data too</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">RNA-seq has become routine in labs of every size. No external bioinformatician knows your experimental system, your controls, or your biological hypotheses the way you do. Analyzing your own data doesn't just save time — it generates deeper, more accurate insights.</p>
+          </div>
+
+          <!-- 02 / Industry -->
+          <div class="card" style="border-top:3px solid var(--db-accent);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(16,185,129,0.06);line-height:1;letter-spacing:-0.03em;pointer-events:none;user-select:none;">02</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--db-accent);"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-accent);">Industry</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">Wet lab + dry lab = an unfair advantage</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Top pharmaceutical and biotech companies actively seek researchers who can move fluidly between bench and computation. This hybrid profile is rare, commands higher salaries, and opens doors that remain closed to specialists on either side alone.</p>
+          </div>
+
+          <!-- 03 / Career -->
+          <div class="card" style="border-top:3px solid var(--db-warning);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(245,158,11,0.06);line-height:1;letter-spacing:-0.03em;pointer-events:none;user-select:none;">03</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--db-warning);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-warning);">Career</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.45em;color:var(--db-gray-900);line-height:1.3;">The field has moved. Don't get left behind.</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">NGS data is now universal across life sciences. Labs without dedicated bioinformaticians are competing for collaborators, waiting months for results, and missing publication deadlines. Knowing how to handle this data is simply part of being a competitive researcher today.</p>
+          </div>
+
+        </div>
+        <p style="font-size:0.58em;color:var(--db-gray-400);margin-top:0.7em;font-style:italic;">Perspective adapted from <strong style="color:var(--db-gray-500);">Dr. Lei Guo</strong>, Computational Biologist · UT Southwestern Medical Center</p>
+      </section>
+
+      <!-- ══ THE PROBLEM ══════════════════════════════════════════════ -->
+      <section>
+        <div class="tag">The Problem</div>
+        <h2 style="margin-top:0.2em;">Why beginners <span class="gradient-text">get stuck</span></h2>
+        <p style="font-size:0.8em;margin-bottom:0.6em;">The biology isn't the hard part. Here's what actually blocks researchers before they begin.</p>
+        <div class="grid-3" style="margin-top:0.6em;">
+          <div class="card" style="border-top:2px solid var(--db-primary);"><div style="font-size:1.3em;margin-bottom:0.2em;">⌨️</div><h4>Linux &amp; terminal terror</h4><p>Most tools skip the basics. Beginners get stuck before analysis even starts.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-accent);"><div style="font-size:1.3em;margin-bottom:0.2em;">🔧</div><h4>Dependency hell</h4><p>PATH variables, conflicting versions, and opaque config feel like black magic.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-secondary);"><div style="font-size:1.3em;margin-bottom:0.2em;">💻</div><h4>The compute gap</h4><p>Laptops can't handle production data. HPC and cloud access feels out of reach.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-warning);"><div style="font-size:1.3em;margin-bottom:0.2em;">🗂️</div><h4>File format maze</h4><p>FASTQ, BAM, VCF &mdash; knowing what to use and how to convert is genuinely confusing.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-danger);"><div style="font-size:1.3em;margin-bottom:0.2em;">📖</div><h4>Tutorial overload</h4><p>No coherent "start here" path. Scattered resources with no end-to-end pipeline.</p></div>
+          <div class="card" style="border-top:2px solid var(--db-gray-800);"><div style="font-size:1.3em;margin-bottom:0.2em;">🔄</div><h4>Reproducibility crisis</h4><p>Analyses that only work once. Environment isolation is a critical but untaught skill.</p></div>
+        </div>
+      </section>
+
+      <!-- ══ WHY I BUILT THIS ═════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Why I Built This Mentorship</div>
+        <h2 style="margin-top:0.2em;">Years of confusion. <span class="gradient-text">Distilled into 12 structured weeks.</span></h2>
+        <div class="quote-block" style="margin-bottom:0.75em;">
+          "I'm not teaching you to pass a course. I'm handing you the map I had to draw myself."
+          <div style="font-size:0.85em;margin-top:0.3em;font-style:normal;color:var(--db-primary);font-weight:700;">&mdash; Md. Jubayer Hossain</div>
+        </div>
+
+        <div class="grid-3" style="align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid var(--db-danger);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="#ef4444" stroke-width="1.8"/>
+                  <line x1="12" y1="7" x2="12" y2="13" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="12" cy="16.5" r="1.1" fill="#ef4444"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">No map. No mentor.</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Every resource assumed different prerequisites. No clear starting point existed — progress meant accidentally stumbling forward and hoping something stuck.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-warning);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(245,158,11,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="#f59e0b" stroke-width="1.8"/>
+                  <polyline points="12,7 12,12 15,15" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Years lost to trial and error</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Skills that take weeks with the right guidance took years without it. Learning alone isn't just frustrating — it's time and momentum you never recover.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 12 Q7 5 12 8 Q17 11 21 5" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+                  <polyline points="17,3 21,5 19,9" fill="none" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Guidance toward independence</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Built from 5+ years of research and mentoring 3,000+ students — this program gives you a guide and a structured path so you can think, analyse, and publish on your own.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ HOW THIS PROGRAM SOLVES IT ════════════════════════════ -->
+      <section>
+        <div class="tag">Our Solution</div>
+        <h2 style="margin-top:0.2em;">How this program <span class="gradient-text">solves it</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:0.6em;">Built to address every specific bottleneck beginners face — from environment setup to publication.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6em;max-width:940px;margin:0 auto;text-align:left;">
+
+          <div class="card" style="border-top:3px solid #205E92;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">🧬</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Pre-configured Pipelines</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Ready-to-run bulk and scRNA-seq pipelines — start with real data from day one.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#205E92;background:rgba(32,94,146,0.08);border-color:rgba(32,94,146,0.2);">Bulk RNA-seq</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#205E92;background:rgba(32,94,146,0.08);border-color:rgba(32,94,146,0.2);">scRNA-seq</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #64B5F6;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(100,181,246,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">🐧</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Linux from Zero</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Every command taught live — build real terminal fluency, not memorised commands.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#2196F3;background:rgba(100,181,246,0.08);border-color:rgba(100,181,246,0.2);">Bash</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#2196F3;background:rgba(100,181,246,0.08);border-color:rgba(100,181,246,0.2);">Terminal</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #10b981;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">📂</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Real Data Formats</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">FASTQ, BAM, MTX — every format taught live with context for why it exists.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#10b981;background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);">FASTQ</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#10b981;background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);">BAM</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#10b981;background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);">MTX</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #f59e0b;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(245,158,11,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">📊</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Lean R &amp; Python</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Only what bulk and scRNA-seq demands — focused, practical, immediately applicable.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#d97706;background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);">DESeq2</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#d97706;background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);">Seurat</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#d97706;background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);">Scanpy</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #8b5cf6;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(139,92,246,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">💾</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Ready-to-Use Scripts</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Every script is yours to keep — a working codebase you apply to your own data.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#7c3aed;background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.2);">GitHub</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#7c3aed;background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.2);">Reproducible</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #ec4899;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(236,72,153,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">🎓</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Lifetime Access + Lab Membership</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Recordings for life. Top mentees join my lab as Research Assistants with co-authorship opportunities.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#db2777;background:rgba(236,72,153,0.08);border-color:rgba(236,72,153,0.2);">Lifetime</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#db2777;background:rgba(236,72,153,0.08);border-color:rgba(236,72,153,0.2);">Co-authorship</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #0d9488;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(13,148,136,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">🤖</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">AI-Powered Productivity</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Use LLMs responsibly for code generation, debugging, and interpretation — with expert oversight.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#0d9488;background:rgba(13,148,136,0.08);border-color:rgba(13,148,136,0.2);">Claude AI</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#0d9488;background:rgba(13,148,136,0.08);border-color:rgba(13,148,136,0.2);">Gemini CLI</span>
+            </div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #6366f1;padding:0.75em 0.85em;">
+            <div style="display:flex;align-items:center;gap:0.45em;margin-bottom:0.5em;">
+              <div style="width:1.9em;height:1.9em;border-radius:6px;background:rgba(99,102,241,0.08);display:flex;align-items:center;justify-content:center;font-size:0.95em;flex-shrink:0;">✍️</div>
+              <h4 style="margin:0;font-size:0.82em;line-height:1.2;">Bioinformatics Writing</h4>
+            </div>
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-600);margin:0 0 0.5em;">Guided manuscript writing — from visualisation to interpretation — for real publication.</p>
+            <div style="display:flex;gap:0.25em;flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#6366f1;background:rgba(99,102,241,0.08);border-color:rgba(99,102,241,0.2);">Manuscript</span>
+              <span class="tag" style="font-size:0.42em;padding:0.1em 0.45em;margin:0;color:#6366f1;background:rgba(99,102,241,0.08);border-color:rgba(99,102,241,0.2);">Figures</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ SECTION 02 DIVIDER ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Section 02</div>
+        <h2 style="margin-top:0.25em;">What you will <span class="gradient-text">learn &amp; build</span></h2>
+        <div class="sep" style="margin:0.55em auto;max-width:60px;"></div>
+        <p style="font-size:0.88em;color:var(--db-gray-500);max-width:520px;margin:0 auto;line-height:1.7;">The curriculum, the tools, and the real-world contexts where your new skills apply.</p>
+      </section>
+
+      <!-- ══ 03 THE OMICS STACK ══════════════════════════════════════ -->
+      <section>
+        <div class="tag">The Omics Stack</div>
+        <h2 style="margin-top:0.15em; margin-bottom: 0.1em;">Omics &amp; AI for <span class="gradient-text">absolute beginners</span></h2>
+        <p style="font-size:0.75em; color:var(--db-gray-500); margin-bottom:0.8em;">Three tracks — from raw reads to AI-driven discovery.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:0.8em; align-items: stretch; max-width: 960px; margin: 0 auto;">
+          
+          <!-- Track 01: Bulk RNA-seq -->
+          <div class="card" style="border-top: 3px solid #205E92; text-align: left; padding: 0.9em; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:0.7em; margin-bottom:0.9em;">
+              <div style="width:2.4em; height:2.4em; border-radius:10px; background:rgba(32,94,146,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#205E92" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:0.55em; font-weight:700; color:var(--db-primary); text-transform:uppercase; letter-spacing:0.08em;">Track 01</div>
+                <div style="font-size:1.05em; font-weight:800; color:var(--db-gray-900); line-height:1.1;">Bulk RNA-seq</div>
+              </div>
+            </div>
+            
+            <div style="flex-grow:1; display:flex; flex-direction:column; gap:0.4em;">
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-primary); width:1.2em;">01</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Pre-alignment</strong>: Quality control and adapter trimming</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-primary); width:1.2em;">02</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Mapping</strong>: Reference alignment with STAR/HISAT2</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-primary); width:1.2em;">03</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Quantification</strong>: Counts with featureCounts/Salmon</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-primary); width:1.2em;">04</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Inference</strong>: Differential expression via DESeq2/edgeR</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-primary); width:1.2em;">05</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Insight</strong>: Pathway enrichment and biological GSEA</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 02: Single-cell RNA-seq -->
+          <div class="card" style="border-top: 3px solid #64B5F6; text-align: left; padding: 0.9em; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:0.7em; margin-bottom:0.9em;">
+              <div style="width:2.4em; height:2.4em; border-radius:10px; background:rgba(100,181,246,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#64B5F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+                  <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+                  <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:0.55em; font-weight:700; color:var(--db-secondary); text-transform:uppercase; letter-spacing:0.08em;">Track 02</div>
+                <div style="font-size:1.05em; font-weight:800; color:var(--db-gray-900); line-height:1.1;">Single-cell RNA-seq</div>
+              </div>
+            </div>
+            
+            <div style="flex-grow:1; display:flex; flex-direction:column; gap:0.4em;">
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-secondary); width:1.2em;">01</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Upstream</strong>: CellRanger counts and FASTQ processing</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-secondary); width:1.2em;">02</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">QC</strong>: Filtering doublets and empty droplets (Seurat)</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-secondary); width:1.2em;">03</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Dimensions</strong>: Feature selection, PCA, and UMAP</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-secondary); width:1.2em;">04</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Identity</strong>: Cluster identification and cell-type markers</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-secondary); width:1.2em;">05</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Dynamics</strong>: Developmental trajectories and integration</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 03: AI in Bioinformatics -->
+          <div class="card" style="border-top: 3px solid #10b981; text-align: left; padding: 0.9em; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:0.7em; margin-bottom:0.9em;">
+              <div style="width:2.4em; height:2.4em; border-radius:10px; background:rgba(16,185,129,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5a3 3 0 1 0-5.997.142 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+                  <path d="M12 5a3 3 0 1 1 5.997.142 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M9 13a4.5 4.5 0 0 0 3 4 4.5 4.5 0 0 0 3-4"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size:0.55em; font-weight:700; color:var(--db-accent); text-transform:uppercase; letter-spacing:0.08em;">Track 03</div>
+                <div style="font-size:1.05em; font-weight:800; color:var(--db-gray-900); line-height:1.1;">AI in Bioinformatics</div>
+              </div>
+            </div>
+
+            <div style="flex-grow:1; display:flex; flex-direction:column; gap:0.4em;">
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-accent); width:1.2em;">01</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Target ID</strong>: Druggable targets from DE genes &amp; markers</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-accent); width:1.2em;">02</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Structure</strong>: Protein folding &amp; docking with AlphaFold</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-accent); width:1.2em;">03</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Drug Design</strong>: Generative models for candidate molecules</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-accent); width:1.2em;">04</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Genomics AI</strong>: Variant effect &amp; disease prediction</div>
+              </div>
+              <div style="display:flex; gap:0.7em; align-items: flex-start;">
+                <span style="font-size:0.65em; font-weight:800; color:var(--db-accent); width:1.2em;">05</span>
+                <div style="font-size:0.68em; color:var(--db-gray-700);"><strong style="color:var(--db-gray-900);">Foundation Models</strong>: Single-cell &amp; sequence LLMs</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 03.5 TECH STACK ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">The Technical Foundation</div>
+        <h2 style="margin-top:0.2em;">The bioinformatics <span class="gradient-text">tech stack</span></h2>
+        <p style="font-size:0.8em; color:var(--db-gray-500); margin-bottom:0.8em;">Essential tools for both bulk and single-cell RNA-seq analysis.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1em; max-width: 940px; margin: 0 auto; text-align: left;">
+          
+          <!-- Linux -->
+          <div class="card" style="border-top: 3px solid #334155;">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.7em;">
+              <div style="width:2.4em; height:2.4em; border-radius:8px; background:rgba(51,65,85,0.08); display:flex; align-items:center; justify-content:center; font-size:1.1em; padding: 0.4em;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" style="width:100%; height:100%; object-fit:contain;">
+              </div>
+              <h4 style="margin:0; font-size:0.95em;">Linux & CLI</h4>
+            </div>
+            <p style="font-size:0.72em; line-height:1.6; color:var(--db-gray-600);">The backbone of bioinformatics pipelines. Master terminal commands, environment isolation (Conda & pixi), and high-performance computing (HPC).</p>
+            <div style="margin-top:0.8em; display:flex; gap:0.3em; flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0;">Bash</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0;">salmon</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0;">CellRanger</span>
+            </div>
+          </div>
+
+          <!-- R -->
+          <div class="card" style="border-top: 3px solid #276CB8;">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.7em;">
+              <div style="width:2.4em; height:2.4em; border-radius:8px; background:rgba(39,108,184,0.08); display:flex; align-items:center; justify-content:center; font-size:1.1em; padding: 0.4em;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" style="width:100%; height:100%; object-fit:contain;">
+              </div>
+              <h4 style="margin:0; font-size:0.95em;">R Programming</h4>
+            </div>
+            <p style="font-size:0.72em; line-height:1.6; color:var(--db-gray-600);">The standard for statistical genomics. Analyze differential expression (Bulk) and high-dimensional cell clustering (Single-cell).</p>
+            <div style="margin-top:0.8em; display:flex; gap:0.3em; flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#276CB8; background:rgba(39,108,184,0.08);">DESeq2</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#276CB8; background:rgba(39,108,184,0.08);">Seurat</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#276CB8; background:rgba(39,108,184,0.08);">tidyverse</span>
+            </div>
+          </div>
+
+          <!-- Python -->
+          <div class="card" style="border-top: 3px solid #FFD43B;">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.7em;">
+              <div style="width:2.4em; height:2.4em; border-radius:8px; background:rgba(255,212,59,0.08); display:flex; align-items:center; justify-content:center; font-size:1.1em; padding: 0.4em;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" style="width:100%; height:100%; object-fit:contain;">
+              </div>
+              <h4 style="margin:0; font-size:0.95em;">Python</h4>
+            </div>
+            <p style="font-size:0.72em; line-height:1.6; color:var(--db-gray-600);">Power for large-scale data wrangling. Essential for pipeline automation and atlas-scale integration (Single-cell).</p>
+            <div style="margin-top:0.8em; display:flex; gap:0.3em; flex-wrap:wrap;">
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#d4a017; background:rgba(255,212,59,0.1);">Scanpy</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#d4a017; background:rgba(255,212,59,0.1);">scvi-tools</span>
+              <span class="tag" style="font-size:0.45em; padding:0.1em 0.5em; margin:0; color:#d4a017; background:rgba(255,212,59,0.1);">CellHint</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 03.6 LIFETIME RESOURCE BANK ════════════════════════════════ -->
+      <section>
+        <div class="tag tag-green">Yours Forever</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">The lifetime <span class="gradient-text">resource bank</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:0.8em;">A living Google Sheet of curated links — kept updated, yours to keep for life.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.6em;max-width:960px;margin:0 auto;">
+
+          <!-- 1 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-primary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Setup Guide</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Environment setup, step by step</p>
+          </div>
+
+          <!-- 2 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-primary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Foundations</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Biology &amp; NGS foundations</p>
+          </div>
+
+          <!-- 3 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-primary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Tools</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Essential bioinformatics toolkit</p>
+          </div>
+
+          <!-- 4 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-secondary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(100,181,246,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-secondary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Bulk RNA-Seq Data</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Public bulk RNA-seq sources</p>
+          </div>
+
+          <!-- 5 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-secondary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(100,181,246,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-secondary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="18" cy="17" r="1.5"/><circle cx="6" cy="18" r="1.5"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Single-Cell Data</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">scRNA-seq data archives</p>
+          </div>
+
+          <!-- 6 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-secondary);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(100,181,246,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-secondary);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 10V2"/><path d="M8.5 2h7"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Drug Discovery Data</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Cheminformatics databases</p>
+          </div>
+
+          <!-- 7 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-accent);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;color:var(--db-accent);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Papers</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Core foundation literature</p>
+          </div>
+
+          <!-- 8 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-warning);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-warning);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">PhD Finder (Europe)</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">European PhD position portals</p>
+          </div>
+
+          <!-- 9 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-warning);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-warning);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Funded Professor (US-Canada)</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Funded PI &amp; lab finder</p>
+          </div>
+
+          <!-- 10 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:2px solid var(--db-warning);border-radius:10px;padding:0.7em 0.75em;box-shadow:0 1px 5px rgba(15,23,42,0.04);">
+            <div style="width:1.8em;height:1.8em;border-radius:7px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;color:var(--db-warning);margin-bottom:0.4em;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div style="font-size:0.72em;font-weight:800;color:var(--db-gray-900);line-height:1.25;">Academic Docs</div>
+            <p style="font-size:0.56em;color:var(--db-gray-500);line-height:1.4;margin:0.1em 0 0;">Application document guide</p>
+          </div>
+
+        </div>
+
+        <div style="max-width:960px;margin:0.9em auto 0;display:flex;align-items:center;justify-content:center;gap:0.6em;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:0.55em 1em;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--db-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><line x1="10" y1="9" x2="9" y2="9"/></svg>
+          <span style="font-size:0.76em;font-weight:700;color:var(--db-gray-800);">Delivered as a shared Google Sheet — continuously updated, yours for life.</span>
+        </div>
+      </section>
+
+      <!-- ══ 03.7 APPLICATIONS ══════════════════════════════════════ -->
+      <section>
+        <div class="tag">Career & Research Impact</div>
+        <h2 style="margin-top:0.2em;">Where you can apply these <span class="gradient-text">skills</span></h2>
+        <p style="font-size:0.8em; color:var(--db-gray-500); margin-bottom:0.8em;">The Omics stack is the engine behind modern medical breakthroughs.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.1em; max-width: 940px; margin: 0 auto; text-align: left;">
+          
+          <!-- 01 / Precision Oncology -->
+          <div class="card-bordered" style="padding:1.1em; border-left: 4px solid var(--db-danger);">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.5em;">
+              <div style="width:2.2em; height:2.2em; border-radius:6px; background:rgba(239,68,68,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 8v4l3 2"/>
+                </svg>
+              </div>
+              <h4 style="margin:0; font-size:0.92em; color:var(--db-gray-900);">Precision oncology</h4>
+            </div>
+            <p style="font-size:0.7em; line-height:1.55;">Analyze the tumor microenvironment (TME) to identify why certain patients resist immunotherapy and discover novel biomarkers for early cancer detection.</p>
+          </div>
+
+          <!-- 02 / Neurogenomics -->
+          <div class="card-bordered" style="padding:1.1em; border-left: 4px solid var(--db-primary);">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.5em;">
+              <div style="width:2.2em; height:2.2em; border-radius:6px; background:rgba(32,94,146,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#205E92" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.04-2.44V4.5A2.5 2.5 0 0 1 7.5 2h2zM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.04-2.44V4.5A2.5 2.5 0 0 0 16.5 2h-2z"/>
+                </svg>
+              </div>
+              <h4 style="margin:0; font-size:0.92em; color:var(--db-gray-900);">Neurogenomics</h4>
+            </div>
+            <p style="font-size:0.7em; line-height:1.55;">Map cell-type specific changes in Alzheimer’s, Parkinson’s, and Autism. Use single-cell data to understand brain aging and neuronal degeneration.</p>
+          </div>
+
+          <!-- 03 / Drug Discovery -->
+          <div class="card-bordered" style="padding:1.1em; border-left: 4px solid var(--db-accent);">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.5em;">
+              <div style="width:2.2em; height:2.2em; border-radius:6px; background:rgba(16,185,129,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.8 21h14.4M12 21V10M8.5 10c0-1.9 1.6-3.5 3.5-3.5s3.5 1.6 3.5 3.5"/>
+                  <path d="M12 6.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                </svg>
+              </div>
+              <h4 style="margin:0; font-size:0.92em; color:var(--db-gray-900);">Targeted drug discovery</h4>
+            </div>
+            <p style="font-size:0.7em; line-height:1.55;">Screen how thousands of cells respond to candidate drugs. Identify "off-target" effects early in the pipeline to save years of clinical trial failure.</p>
+          </div>
+
+          <!-- 04 / Immunology -->
+          <div class="card-bordered" style="padding:1.1em; border-left: 4px solid var(--db-warning);">
+            <div style="display:flex; align-items:center; gap:0.6em; margin-bottom:0.5em;">
+              <div style="width:2.2em; height:2.2em; border-radius:6px; background:rgba(245,158,11,0.08); display:flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h4 style="margin:0; font-size:0.92em; color:var(--db-gray-900);">Infectious disease</h4>
+            </div>
+            <p style="font-size:0.7em; line-height:1.55;">Decipher the host-pathogen interaction. Analyze immune system exhaustion in chronic infections and optimize vaccine response strategies.</p>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ══ 04.45 BIOINFORMATICS IN THE ERA OF AI (intro) ═══════════════ -->
+      <section>
+        <div class="tag">Let's Address It Head-On</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">Bioinformatics in the <span class="gradient-text">Era of AI</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:1.1em;">The three questions every learner is asking right now.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.9em;max-width:920px;margin:0 auto;">
+
+          <!-- Q1 -->
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(32,94,146,0.14);line-height:1;margin-bottom:0.3em;">Q1</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">Can AI replace bioinformaticians?</div>
+          </div>
+
+          <!-- Q2 -->
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(16,185,129,0.16);line-height:1;margin-bottom:0.3em;">Q2</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">Do I still need to learn bioinformatics?</div>
+          </div>
+
+          <!-- Q3 -->
+          <div style="position:relative;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-secondary);border-radius:14px;padding:1.1em 1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="font-family:var(--font-heading);font-size:1.6em;font-weight:900;color:rgba(100,181,246,0.22);line-height:1;margin-bottom:0.3em;">Q3</div>
+            <div style="font-size:0.92em;font-weight:800;color:var(--db-gray-900);line-height:1.35;">How do I use AI to learn faster?</div>
+          </div>
+
+        </div>
+
+        <div style="display:inline-flex;align-items:center;gap:0.6em;margin-top:1.3em;padding:0.5em 1.1em;border:1px solid var(--db-gray-200);border-radius:999px;background:var(--db-gray-50);">
+          <span style="width:0.5em;height:0.5em;border-radius:50%;background:var(--db-primary);"></span>
+          <span style="font-size:0.7em;font-weight:700;color:var(--db-gray-700);">Perspective</span>
+        </div>
+      </section>
+
+      <!-- ══ 04.46 AI & BIOINFORMATICS — TWO QUESTIONS ═══════════════════ -->
+      <section>
+        <div class="tag">Perspective</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.7em;">AI &amp; Bioinformatics — <span class="gradient-text">Two Questions</span></h2>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1em;max-width:920px;margin:0 auto;align-items:stretch;">
+
+          <!-- Q1: Can AI replace you? -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:14px;padding:1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);display:flex;flex-direction:column;">
+            <div style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);line-height:1.3;margin-bottom:0.5em;">Can AI replace bioinformaticians?</div>
+            <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:0.4em;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:999px;padding:0.25em 0.8em;margin-bottom:0.8em;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span style="font-size:0.7em;font-weight:800;color:var(--db-accent);">No — it amplifies you</span>
+            </div>
+            <div style="font-size:0.66em;color:var(--db-gray-500);margin-bottom:0.5em;">AI handles the busywork, so you focus on the science:</div>
+            <ul class="check-list" style="font-size:0.72em;color:var(--db-gray-700);">
+              <li>Debugging errors</li>
+              <li>Setting up environments</li>
+              <li>Looking up commands &amp; functions</li>
+              <li>Formatting code &amp; writing docs</li>
+              <li>Repetitive, boilerplate code</li>
+            </ul>
+          </div>
+
+          <!-- Q2: Do you still need to learn? -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-danger);border-radius:14px;padding:1.1em 1.2em;box-shadow:0 2px 8px rgba(15,23,42,0.04);display:flex;flex-direction:column;">
+            <div style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);line-height:1.3;margin-bottom:0.5em;">Do I still need to learn bioinformatics?</div>
+            <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:0.4em;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.22);border-radius:999px;padding:0.25em 0.8em;margin-bottom:0.8em;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-danger)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="14"/><circle cx="12" cy="20" r="0.6" fill="var(--db-danger)"/></svg>
+              <span style="font-size:0.7em;font-weight:800;color:var(--db-danger);">Yes — more than ever</span>
+            </div>
+            <div style="font-size:0.66em;color:var(--db-gray-500);margin-bottom:0.5em;">Without the fundamentals, AI fails <strong style="color:var(--db-gray-700);">silently</strong>:</div>
+            <ul class="x-list" style="font-size:0.72em;color:var(--db-gray-700);">
+              <li>Writes pipelines with commands that don't exist</li>
+              <li>Invents function names that were never real</li>
+              <li>Runs a simple test but calls it GSEA — would you catch it?</li>
+              <li>You can't tell it to fix what you don't understand</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div style="max-width:920px;margin:0.9em auto 0;background:linear-gradient(135deg,rgba(32,94,146,0.06),rgba(100,181,246,0.06));border:1px solid rgba(32,94,146,0.15);border-radius:12px;padding:0.7em 1.2em;text-align:center;">
+          <span style="font-size:0.85em;font-weight:800;color:var(--db-gray-900);">The better you understand, the more AI can help.</span>
+        </div>
+      </section>
+
+      <!-- ══ 04.47 USE AI AS YOUR LEARNING PARTNER ═══════════════════════ -->
+      <section>
+        <div class="tag">How to Use AI Well</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.8em;">Use AI as your <span class="gradient-text">learning partner</span></h2>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9em;max-width:920px;margin:0 auto;align-items:stretch;">
+
+          <!-- 1 -->
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">1</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Learn the basics first</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Use this mentorship to build solid foundations in bioinformatics. You can't skip this step.</p>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">2</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Clarify what you missed</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Ask AI to re-explain any concept or step in different words — until it clicks.</p>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div style="display:flex;gap:0.9em;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-primary);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">3</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Unstick yourself fast</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">AI excels at troubleshooting. Paste your error + code and let it help you debug.</p>
+            </div>
+          </div>
+
+          <!-- 4 (capstone) -->
+          <div style="display:flex;gap:0.9em;text-align:left;background:rgba(32,94,146,0.04);border:1px solid var(--db-primary);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 10px rgba(32,94,146,0.1);">
+            <div style="flex-shrink:0;width:1.9em;height:1.9em;border-radius:50%;background:var(--db-accent);color:#fff;font-weight:800;font-size:0.85em;display:flex;align-items:center;justify-content:center;">4</div>
+            <div>
+              <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Accelerate — don't replace</div>
+              <p style="font-size:0.7em;color:var(--db-gray-500);line-height:1.5;margin:0;">Use AI to automate the boring parts. <strong style="color:var(--db-gray-700);">Your expertise decides if the results make sense.</strong></p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 04.48 AI + HPC — NOT THERE YET ══════════════════════════════ -->
+      <section>
+        <div class="tag tag-amber">Reality Check</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">AI + HPC: <span class="gradient-text">Not There Yet</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:0.9em;">Why AI can't run your bioinformatics — at least, not on its own.</p>
+
+        <div style="max-width:940px;margin:0 auto;">
+        <!-- Three reasons -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8em;align-items:stretch;">
+
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;color:var(--db-warning);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="6" rx="1"/><rect x="2" y="15" width="20" height="6" rx="1"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">Massive compute required</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">Real bioinformatics runs on HPC clusters — not a chatbot in a browser tab.</p>
+          </div>
+
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-danger);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-danger);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 0 1 5.12-2.12M15 15a3 3 0 0 1-4.24 0"/><line x1="2" y1="2" x2="22" y2="22"/><path d="M5 12a7 7 0 0 1 1.5-4.3M19 12a7 7 0 0 1-1.2 3.9"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">No real integration</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">AI–HPC tooling is unavailable at most institutions today.</p>
+          </div>
+
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:14px;padding:1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="width:2.4em;height:2.4em;border-radius:10px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);margin-bottom:0.6em;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0 0 8 4 4 0 0 0 8 0 4 4 0 0 0 0-8V6a4 4 0 0 0-4-4z"/><path d="M12 2v20"/></svg>
+            </div>
+            <div style="font-size:0.82em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">It still needs you</div>
+            <p style="font-size:0.68em;color:var(--db-gray-500);line-height:1.55;margin:0;">Even where it exists, an expert must direct and validate every run.</p>
+          </div>
+
+        </div>
+
+        <!-- Bottom line -->
+        <div style="margin-top:0.8em;background:#0a1628;border-radius:14px;padding:1.1em 1.5em;text-align:left;">
+          <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.45em;">
+            <span style="width:0.45em;height:0.45em;border-radius:50%;background:var(--db-secondary);"></span>
+            <span style="font-size:0.6em;font-weight:800;color:var(--db-secondary);text-transform:uppercase;letter-spacing:0.15em;">The Bottom Line</span>
+          </div>
+          <p style="font-size:0.84em;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 0.5em;">AI <strong style="color:var(--db-accent);">rewards</strong> those already well-informed in bioinformatics — and <strong style="color:var(--db-danger);">punishes</strong> those who apply it blindly.</p>
+          <p style="font-size:0.76em;color:rgba(255,255,255,0.6);line-height:1.55;margin:0;">With AI, knowledge is no longer scarce. What's lacking is your <strong style="color:#fff;">experience and judgment</strong>.</p>
+        </div>
+        </div>
+      </section>
+
+      <!-- ══ 04.5 AI PAPER SECTION ═══════════════════════════════════ -->
+
+      <!-- 04.5a — Section divider (study cover) -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:999px;padding:0.35em 0.95em;margin-bottom:0.1em;">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--db-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+          <span style="font-size:0.6em;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--db-accent);">Peer-Reviewed Evidence</span>
+        </div>
+        <h2 style="margin-top:0.2em;margin-bottom:0.2em;">Rethinking Bioinformatics Expertise<br>in the <span class="gradient-text">Era of AI</span></h2>
+        <p style="font-size:0.72em;margin-bottom:0.1em;color:var(--db-gray-500);">Everything in this section is drawn from one peer-reviewed study — not opinion.</p>
+        <div class="sep" style="margin:0.5em auto;max-width:60px;"></div>
+        <div class="quote-block" style="max-width:640px;margin:0 auto;">
+          "AI is a powerful accelerant whose value depends on expert guidance in design, data curation, interpretation, and governance. Bioinformaticians remain essential — their role is shifting from workflow execution toward AI design, complex discovery, and responsible institutional leadership."
+          <div style="font-size:0.85em;margin-top:0.35em;font-style:normal;color:var(--db-primary);font-weight:600;">&mdash; Goh et al., npj Digital Medicine, 2026</div>
+        </div>
+      </section>
+
+      <!-- 04.5b — Core argument -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">The Core Argument</span>
+        </div>
+        <h2 style="margin-top:0.2em;">AI will not replace you. <span class="gradient-text">It will expose those who rely on it blindly.</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">AI accelerates science — but only in the hands of someone who knows when the output is wrong.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2em;max-width:940px;margin:0 auto;text-align:left;">
+
+          <div class="card" style="border-top:3px solid var(--db-accent);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polyline points="20,6 9,17 4,12" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">What AI does genuinely well</h4>
+            </div>
+            <ul style="font-size:0.72em;line-height:1.9;color:var(--db-gray-600);padding-left:1.1em;margin:0;">
+              <li>Draft code for variant annotation, DE analysis, QC pipelines</li>
+              <li>Surface candidate hypotheses from vast literature at speed</li>
+              <li>Automate repetitive formatting, documentation, and scripting</li>
+              <li>Predict protein structures (AlphaFold3) and compress raw data to results</li>
+            </ul>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-danger);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="18" y1="6" x2="6" y2="18" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/>
+                  <line x1="6" y1="6" x2="18" y2="18" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">What AI cannot do without you</h4>
+            </div>
+            <ul style="font-size:0.72em;line-height:1.9;color:var(--db-gray-600);padding-left:1.1em;margin:0;">
+              <li>Judge whether a pipeline suits your experimental design</li>
+              <li>Recognise that a plausible-looking result is biologically wrong</li>
+              <li>Know which QC thresholds fit your cohort and platform</li>
+              <li>Verify that output reflects biology — not a misspecified parameter</li>
+            </ul>
+          </div>
+
+          <div style="grid-column:1/-1;padding:0.6em 1em;background:rgba(32,94,146,0.04);border-left:3px solid rgba(32,94,146,0.2);border-radius:0 6px 6px 0;text-align:left;">
+            <p style="font-size:0.65em;line-height:1.5;color:var(--db-gray-500);margin:0;font-style:italic;">"Without expert oversight, AI democratises the <em style="font-style:normal;font-weight:600;color:var(--db-gray-700);">appearance</em> of science — not science itself."<span style="font-style:normal;color:var(--db-gray-400);margin-left:0.6em;">— Goh et al., <em>npj Digital Medicine</em>, 2026</span></p>
+          </div>
+
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026)</p>
+      </section>
+
+      <!-- 04.5c — Three transitions -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">The Three Transitions</span>
+        </div>
+        <h2 style="margin-top:0.2em;">Your role is <span class="gradient-text">shifting, not disappearing</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">The paper identifies three career-defining moves for bioinformaticians in the AI era.</p>
+
+        <div class="grid-3" style="margin-top:0.55em;align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid var(--db-primary);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(32,94,146,0.07);line-height:1;pointer-events:none;user-select:none;">01</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(32,94,146,0.08);border:1px solid rgba(32,94,146,0.15);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-primary);">Technical</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">AI Consumer → AI Custodian</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Stop using AI to produce outputs. Start being personally responsible for whether those outputs are correct, reproducible, and biologically meaningful. Treat prompts as living methodological assets — version-control them, benchmark them, publish them.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-accent);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(16,185,129,0.07);line-height:1;pointer-events:none;user-select:none;">02</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-accent);">Scientific</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">Pipeline Executor → Discovery Pioneer</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">The critical shift is from "who can run the analysis" to "who can tell whether the analysis is right." Focus on high-complexity applications — multimodal integration, single-cell trajectories, non-coding variant interpretation — where shallow engagement produces wrong answers.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--db-warning);position:relative;overflow:hidden;padding:1em 1.1em;">
+            <div style="position:absolute;top:-0.05em;right:0.4em;font-size:3.8em;font-weight:900;color:rgba(245,158,11,0.07);line-height:1;pointer-events:none;user-select:none;">03</div>
+            <div style="display:inline-flex;align-items:center;gap:0.4em;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:999px;padding:0.2em 0.75em;margin-bottom:0.55em;">
+              <span style="font-size:0.65em;font-weight:700;color:var(--db-warning);">Organisational</span>
+            </div>
+            <h4 style="font-size:0.88em;margin-bottom:0.4em;color:var(--db-gray-900);line-height:1.3;">Contributor → Institutional Architect</h4>
+            <p style="font-size:0.7em;line-height:1.65;color:var(--db-gray-500);">Institutions are turning to bioinformaticians to shape how AI is governed and deployed at scale. The expert who can bridge biological knowledge, computational fluency, and organisational leadership is the one who determines whether AI produces reliable science — or its appearance.</p>
+          </div>
+
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026) · <a href="https://doi.org/10.1038/s41746-026-02777-1" style="color:var(--db-gray-400);">doi:10.1038/s41746-026-02777-1</a></p>
+      </section>
+
+      <!-- 04.5d — What this means for you -->
+      <section>
+        <div style="display:inline-flex;align-items:center;gap:0.5em;margin-bottom:0.4em;">
+          <span style="display:inline-flex;align-items:center;gap:0.35em;font-size:0.5em;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--db-accent);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:999px;padding:0.45em 0.7em;"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>From the Study</span>
+          <span class="tag" style="margin-bottom:0;">What This Means For You</span>
+        </div>
+        <h2 style="margin-top:0.2em;">The test has already begun. <span class="gradient-text">Are you the expert behind the AI?</span></h2>
+        <p style="font-size:0.8em;color:var(--db-gray-500);margin-bottom:0.8em;">Three foundational habits the paper's authors say separate credible AI-assisted science from noise.</p>
+
+        <div class="grid-3" style="margin-top:0.55em;align-items:stretch;">
+
+          <div class="card" style="border-top:3px solid #205E92;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="3" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/>
+                  <rect x="14" y="3" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1" stroke="#205E92" stroke-width="1.8"/>
+                  <path d="M14 17.5h7M17.5 14v7" stroke="#205E92" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Own the biology, not just the code</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">An AI can write a DESeq2 script. It cannot decide if the statistical model fits your experimental design, or whether a result near a known locus reflects linkage disequilibrium rather than an independent signal. That judgement is yours alone.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid #64B5F6;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(100,181,246,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4" stroke="#64B5F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="#64B5F6" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Audit your data before AI touches it</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Model architecture is not the bottleneck — data quality is. A model trained on biased or mislabelled data produces confident, wrong outputs indistinguishable from correct ones. Run a structured data audit: batch effects, class imbalance, annotation inconsistency.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid #10b981;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.4em;height:2.4em;border-radius:8px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 20V10" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M18 20V4" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M6 20v-4" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4 style="margin:0;font-size:0.95em;">Interrogate, don't accept, XAI outputs</h4>
+            </div>
+            <p style="font-size:0.72em;line-height:1.6;color:var(--db-gray-600);">Feature importance scores and attention maps are starting points, not conclusions. Test whether the features a model attends to are biologically coherent. Validate on an external cohort. Report uncertainty alongside every prediction. Explanation without expertise is just a story.</p>
+          </div>
+
+        </div>
+        <p style="font-size:0.6em;color:var(--db-gray-400);margin-top:0.8em;text-align:right;">Goh, Polster, Wong &amp; Cvijovic · <em>npj Digital Medicine</em> 9:398 (2026)</p>
+      </section>
+
+
+      <!-- ══ SECTION 03 DIVIDER ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Section 03</div>
+        <h2 style="margin-top:0.25em;">Is it for you? <span class="gradient-text">What you'll walk away with.</span></h2>
+        <div class="sep" style="margin:0.55em auto;max-width:60px;"></div>
+        <p style="font-size:0.88em;color:var(--db-gray-500);max-width:520px;margin:0 auto;line-height:1.7;">Who this program is built for — and the career outcomes you'll leave with.</p>
+      </section>
+
+      <!-- ══ COHORT 01 OUTPUT ═══════════════════════════════════════ -->
+      <section>
+
+        <!-- Header -->
+        <div style="text-align:center;margin-bottom:0.5em;">
+          <div class="tag" style="margin-bottom:0.3em;">BMP Cohort 01 · Research Output</div>
+          <h2 style="margin:0;font-size:1.3em;">This is what our mentees <span class="gradient-text">produced together.</span></h2>
+        </div>
+
+        <!-- Paper banner -->
+        <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-left:4px solid var(--db-primary);border-radius:12px;padding:0.6em 1em;margin-bottom:0.8em;display:flex;align-items:center;justify-content:space-between;gap:1em;box-shadow:0 2px 10px rgba(32,94,146,0.07);">
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.2em;">
+              <span style="font-size:0.46em;font-weight:700;color:var(--db-warning);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);border-radius:999px;padding:0.1em 0.6em;text-transform:uppercase;letter-spacing:0.08em;">Awaiting Submission</span>
+              <span style="font-size:0.46em;color:var(--db-gray-400);">Bulk RNA-seq · Meta-Analysis · Glioblastoma</span>
+            </div>
+            <p style="font-size:0.62em;font-weight:700;color:var(--db-gray-900);margin:0;line-height:1.35;">Multi-Cohort Transcriptomic Meta-Analysis of Glioblastoma Reveals a Convergent Immune-Myeloid Hub Network Associated with Adverse Prognosis and Druggable Targets</p>
+          </div>
+          <div style="display:flex;gap:0.5em;flex-shrink:0;">
+            <div style="text-align:center;background:rgba(32,94,146,0.05);border:1px solid rgba(32,94,146,0.15);border-radius:10px;padding:0.4em 0.7em;">
+              <div style="font-size:1.1em;font-weight:900;color:var(--db-primary);line-height:1;">7</div>
+              <div style="font-size:0.42em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.06em;">Cohorts</div>
+            </div>
+            <div style="text-align:center;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:10px;padding:0.4em 0.7em;">
+              <div style="font-size:1.1em;font-weight:900;color:var(--db-danger);line-height:1;">52</div>
+              <div style="font-size:0.42em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.06em;">Hub Genes</div>
+            </div>
+            <div style="text-align:center;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);border-radius:10px;padding:0.4em 0.7em;">
+              <div style="font-size:1.1em;font-weight:900;color:var(--db-accent);line-height:1;">0.690</div>
+              <div style="font-size:0.42em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.06em;">C-index</div>
+            </div>
+            <div style="text-align:center;background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.15);border-radius:10px;padding:0.4em 0.7em;">
+              <div style="font-size:1.1em;font-weight:900;color:var(--db-warning);line-height:1;">680</div>
+              <div style="font-size:0.42em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.06em;">Samples</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 co-authors — single row, larger photos -->
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.9em;">
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-primary);box-shadow:0 4px 16px rgba(32,94,146,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Enam%20Ahmed.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Enam Ahmed</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">Inha University</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-accent);box-shadow:0 4px 16px rgba(16,185,129,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Jonaitul%20Islam.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Jonaitul Islam</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">Jahangirnagar University</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-warning);box-shadow:0 4px 16px rgba(245,158,11,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Mahim%20Hassan%20Chowdhury_bmp.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Mahim Hassan Chowdhury</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">BRAC University</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-primary);box-shadow:0 4px 16px rgba(32,94,146,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Md.%20Liakot%20Ali.png" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Md. Liakot Ali</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">University of Chittagong</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-accent);box-shadow:0 4px 16px rgba(16,185,129,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Md%20Mobasser%20Hosain%20.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Md Mobasser Hosain</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">Univ. of Development Alternative</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-warning);box-shadow:0 4px 16px rgba(245,158,11,0.15);">
+              <img src="BMP_C01_Mentees_Photo/Ridika_Haque_Shafin.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Ridika Haque Shafin</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">University of Dhaka</div>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 0.4em;border:3px solid var(--db-primary);box-shadow:0 4px 16px rgba(32,94,146,0.15);">
+              <img src="BMP_C01_Mentees_Photo/SupriyaDewanjee.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+            </div>
+            <div style="font-size:0.55em;font-weight:700;color:var(--db-gray-800);line-height:1.3;">Supriya Dewanjee</div>
+            <div style="font-size:0.46em;color:var(--db-gray-400);line-height:1.3;margin-top:0.15em;">Asian University for Women</div>
+          </div>
+
+        </div>
+
+        <!-- Tool strip -->
+        <div style="margin-top:0.8em;display:flex;align-items:center;justify-content:center;gap:0.4em;flex-wrap:wrap;">
+          <span style="font-size:0.46em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.1em;margin-right:0.3em;">Tools used →</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">R · DESeq2</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">GSEA</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">LASSO-Cox</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">ssGSEA</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">PPI Network</span>
+          <span style="font-size:0.46em;background:rgba(32,94,146,0.08);color:var(--db-primary);border-radius:4px;padding:0.1em 0.5em;font-weight:700;">Random Forest</span>
+          <span style="font-size:0.46em;color:var(--db-gray-400);font-style:italic;margin-left:0.3em;">All taught in BMP</span>
+        </div>
+
+      </section>
+
+      <!-- ══ INTERN 01: FAYEZ AHMAD ══════════════════════════════════ -->
+      <section>
+        <div style="display:grid;grid-template-columns:210px 1fr;gap:1.6em;align-items:start;">
+
+          <!-- Left card -->
+          <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;box-shadow:0 4px 20px rgba(32,94,146,0.08);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,var(--db-primary),var(--db-secondary));padding:0.7em 0;text-align:center;">
+              <span style="font-size:0.5em;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.12em;">GSA Intern · Esophageal</span>
+            </div>
+            <div style="padding:1em 0.8em;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 0.7em;border:3px solid var(--db-gray-100);box-shadow:0 4px 14px rgba(32,94,146,0.15);">
+                <img src="Interns_Photos/Fayez Ahmad.jpg" alt="Fayez Ahmad" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+              </div>
+              <div style="font-size:0.88em;font-weight:800;color:var(--db-gray-900);line-height:1.3;">Fayez Ahmad</div>
+              <div style="font-size:0.52em;color:var(--db-primary);font-weight:600;margin-top:0.2em;">Bioinformatics Intern</div>
+              <div style="font-size:0.48em;color:var(--db-gray-400);margin-top:0.1em;line-height:1.4;">Notre Dame College, Dhaka</div>
+              <div style="margin-top:auto;padding-top:0.8em;width:100%;">
+                <div style="background:linear-gradient(135deg,#8B0000,#A00000);border-radius:8px;padding:0.45em 0.6em;box-shadow:0 3px 10px rgba(139,0,0,0.25);text-align:center;">
+                  <div style="font-size:0.45em;font-weight:800;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;">🎓 Admitted · 2026</div>
+                  <div style="font-size:0.75em;font-weight:900;color:#fff;margin-top:0.1em;">MIT</div>
+                  <div style="font-size:0.42em;color:rgba(255,255,255,0.6);">Massachusetts Inst. of Technology</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right content -->
+          <div style="display:flex;flex-direction:column;gap:0.6em;justify-content:flex-start;">
+            <div>
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3em;">Research Project</div>
+              <h3 style="font-size:0.95em;font-weight:800;color:var(--db-gray-900);line-height:1.4;margin:0;">Identification of Prognostic Biomarkers in Esophageal Carcinoma through Integrated Bioinformatics Analysis</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5em;">
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Cohorts</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">16</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">GEO RNA-seq</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">DEGs</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">2,082</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">Consensus genes</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">C-index</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">0.764</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">37-gene LASSO-Cox</div>
+              </div>
+            </div>
+            <div style="background:rgba(32,94,146,0.03);border:1px solid rgba(32,94,146,0.1);border-radius:10px;padding:0.6em 0.8em;">
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3em;">Key Findings</div>
+              <ul style="margin:0;padding-left:1em;">
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Hub genes: <strong>CDK1, BUB1, CDC20, CCNB1, FN1</strong></li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Histotype-independent drivers across ESCC &amp; EAC</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">E2F, G2M &amp; MYC pathway depletion vs. normal mucosa</li>
+                <li style="font-size:0.65em;">RF classifier AUC validated on TCGA ESCA</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">R / DESeq2</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">Random-Effects Meta</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">GSEA</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">LASSO-Cox</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">STRINGdb PPI</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">Random Forest</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ INTERN 02: SHAKIL AHAMED ══════════════════════════════════ -->
+      <section>
+        <div style="display:grid;grid-template-columns:210px 1fr;gap:1.6em;align-items:start;">
+          <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;box-shadow:0 4px 20px rgba(32,94,146,0.08);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,var(--db-primary),var(--db-secondary));padding:0.7em 0;text-align:center;">
+              <span style="font-size:0.5em;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.12em;">GSA Intern · Colorectal</span>
+            </div>
+            <div style="padding:1em 0.8em;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 0.7em;border:3px solid var(--db-gray-100);box-shadow:0 4px 14px rgba(32,94,146,0.15);">
+                <img src="Interns_Photos/Shakil Ahamed.jpeg" alt="Md. Shakil Ahamed" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+              </div>
+              <div style="font-size:0.88em;font-weight:800;color:var(--db-gray-900);line-height:1.3;">Md. Shakil Ahamed</div>
+              <div style="font-size:0.52em;color:var(--db-primary);font-weight:600;margin-top:0.2em;">Bioinformatics Intern</div>
+              <div style="font-size:0.48em;color:var(--db-gray-400);margin-top:0.1em;line-height:1.4;">Mawlana Bhashani Science &amp; Technology University</div>
+              <div style="margin-top:auto;padding-top:0.8em;width:100%;">
+                <div style="background:linear-gradient(135deg,#003087,#0057A8);border-radius:8px;padding:0.45em 0.6em;box-shadow:0 3px 10px rgba(0,48,135,0.25);text-align:center;">
+                  <div style="font-size:0.45em;font-weight:800;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;">🎓 Admitted · 2026</div>
+                  <div style="font-size:0.75em;font-weight:900;color:#fff;margin-top:0.1em;">Univ. of Padua</div>
+                  <div style="font-size:0.42em;color:rgba(255,255,255,0.6);">Italy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.6em;justify-content:flex-start;">
+            <div>
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3em;">Research Project</div>
+              <h3 style="font-size:0.95em;font-weight:800;color:var(--db-gray-900);line-height:1.4;margin:0;">Bioinformatics Analysis of Transcriptomic Data Reveals Molecular Signatures Driving Colorectal Cancer</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5em;">
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Cohorts</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">13</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">1,124 samples</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">DEGs</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">2,170</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">TCGA r = 0.929</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">RF AUC</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">1.000</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">C-index 0.753</div>
+              </div>
+            </div>
+            <div style="background:rgba(32,94,146,0.03);border:1px solid rgba(32,94,146,0.1);border-radius:10px;padding:0.6em 0.8em;">
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3em;">Key Findings</div>
+              <ul style="margin:0;padding-left:1em;">
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Proliferation Paradox: E2F targets (NES = −2.84), G2M (NES = −2.51) depleted</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">52-gene LASSO-Cox risk model, C-index 0.753</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Random Forest classifier — perfect 10-fold CV AUC = 1.000</li>
+                <li style="font-size:0.65em;">Resolves CRC reproducibility crisis across 2,170 genes</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">R / DESeq2</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">Random-Effects Meta</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">GSEA</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">LASSO-Cox</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">Random Forest</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">TCGA Validation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ INTERN 03: SABBIR KHAN ════════════════════════════════════ -->
+      <section>
+        <div style="display:grid;grid-template-columns:210px 1fr;gap:1.6em;align-items:start;">
+          <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;box-shadow:0 4px 20px rgba(32,94,146,0.08);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,var(--db-primary),var(--db-secondary));padding:0.7em 0;text-align:center;">
+              <span style="font-size:0.5em;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.12em;">GSA Intern · Kidney RCC</span>
+            </div>
+            <div style="padding:1em 0.8em;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 0.7em;border:3px solid var(--db-gray-100);box-shadow:0 4px 14px rgba(32,94,146,0.15);">
+                <img src="Interns_Photos/Sabbir Khan.png" alt="Sabbir Khan" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+              </div>
+              <div style="font-size:0.88em;font-weight:800;color:var(--db-gray-900);line-height:1.3;">Sabbir Khan</div>
+              <div style="font-size:0.52em;color:var(--db-primary);font-weight:600;margin-top:0.2em;">Bioinformatics Intern</div>
+              <div style="font-size:0.48em;color:var(--db-gray-400);margin-top:0.1em;line-height:1.4;">Gazipur Agricultural University</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.6em;justify-content:flex-start;">
+            <div>
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3em;">Research Project</div>
+              <h3 style="font-size:0.95em;font-weight:800;color:var(--db-gray-900);line-height:1.4;margin:0;">Multi-Omics Meta-Analysis Identifies a Mitotic Signature as a Prognostic and Therapeutic Target in KIRC</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5em;">
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Cohorts</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">13</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">KIRC / KIRP</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">DEGs</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">2,766</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">Consensus genes</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">Validation</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">TCGA</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">KIRC + KIRP</div>
+              </div>
+            </div>
+            <div style="background:rgba(32,94,146,0.03);border:1px solid rgba(32,94,146,0.1);border-radius:10px;padding:0.6em 0.8em;">
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3em;">Key Findings</div>
+              <ul style="margin:0;padding-left:1em;">
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Mitotic signature as convergent prognostic &amp; therapeutic target</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">PPI hub gene network via STRINGdb</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">GSEA / ORA: Hallmark, KEGG, GO, Reactome</li>
+                <li style="font-size:0.65em;">LASSO-Cox + Random Forest prognostic models</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">R / DESeq2</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">REML Meta-Analysis</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">GSEA / ORA</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">LASSO-Cox</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">STRINGdb PPI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ INTERN 04: RAHNUMA TABASSUM ══════════════════════════════ -->
+      <section>
+        <div style="display:grid;grid-template-columns:210px 1fr;gap:1.6em;align-items:start;">
+          <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;box-shadow:0 4px 20px rgba(32,94,146,0.08);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,var(--db-primary),var(--db-secondary));padding:0.7em 0;text-align:center;">
+              <span style="font-size:0.5em;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.12em;">GSA Intern · Liver HCC</span>
+            </div>
+            <div style="padding:1em 0.8em;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 0.7em;border:3px solid var(--db-gray-100);box-shadow:0 4px 14px rgba(32,94,146,0.15);">
+                <img src="Interns_Photos/Rahnuma Tabassum.jpg" alt="Rahnuma Tabassum" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+              </div>
+              <div style="font-size:0.88em;font-weight:800;color:var(--db-gray-900);line-height:1.3;">Rahnuma Tabassum</div>
+              <div style="font-size:0.52em;color:var(--db-primary);font-weight:600;margin-top:0.2em;">Bioinformatics Intern</div>
+              <div style="font-size:0.48em;color:var(--db-gray-400);margin-top:0.1em;line-height:1.4;">Jagannath University</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.6em;justify-content:flex-start;">
+            <div>
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3em;">Research Project</div>
+              <h3 style="font-size:0.95em;font-weight:800;color:var(--db-gray-900);line-height:1.4;margin:0;">Integrated Transcriptomic Meta-Analysis Identifies Pathway Crosstalk and Therapeutic Targets in Hepatocellular Carcinoma</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5em;">
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Cohorts</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">7</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">GEO + TCGA LIHC</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">Signature</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">30</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">Invariant DEGs</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">Method</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">ssGSEA</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">+ Drug targets</div>
+              </div>
+            </div>
+            <div style="background:rgba(32,94,146,0.03);border:1px solid rgba(32,94,146,0.1);border-radius:10px;padding:0.6em 0.8em;">
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3em;">Key Findings</div>
+              <ul style="margin:0;padding-left:1em;">
+                <li style="font-size:0.65em;margin-bottom:0.15em;">30 study-invariant DEGs — high-specificity conservative signature</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Metabolic reprogramming: fatty acid, bile acid, xenobiotic pathways</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">E2F &amp; MYC suppression (NES −2.17, −2.16) — paradoxical pattern</li>
+                <li style="font-size:0.65em;">Drug targets via DGIdb; immune infiltration via ssGSEA</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">R / DESeq2</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">REML Meta-Analysis</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">ssGSEA</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">DGIdb Drug Targets</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">PPI Network</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ INTERN 05: LAMISA MANHA ADITEE ═══════════════════════════ -->
+      <section>
+        <div style="display:grid;grid-template-columns:210px 1fr;gap:1.6em;align-items:start;">
+          <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-radius:14px;box-shadow:0 4px 20px rgba(32,94,146,0.08);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,var(--db-primary),var(--db-secondary));padding:0.7em 0;text-align:center;">
+              <span style="font-size:0.5em;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.12em;">GSA Intern · Pancreatic</span>
+            </div>
+            <div style="padding:1em 0.8em;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 0.7em;border:3px solid var(--db-gray-100);box-shadow:0 4px 14px rgba(32,94,146,0.15);">
+                <img src="Interns_Photos/lamisa%20manha.jpg" alt="Lamisa Manha Aditee" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+              </div>
+              <div style="font-size:0.88em;font-weight:800;color:var(--db-gray-900);line-height:1.3;">Lamisa Manha Aditee</div>
+              <div style="font-size:0.52em;color:var(--db-primary);font-weight:600;margin-top:0.2em;">Bioinformatics Intern</div>
+              <div style="font-size:0.48em;color:var(--db-gray-400);margin-top:0.1em;line-height:1.4;">BRAC University</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.6em;justify-content:flex-start;">
+            <div>
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3em;">Research Project</div>
+              <h3 style="font-size:0.95em;font-weight:800;color:var(--db-gray-900);line-height:1.4;margin:0;">Network-Driven Bioinformatics Approach Uncovers Prognostic Signatures and Therapeutic Targets in Pancreatic Ductal Adenocarcinoma</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5em;">
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Cohorts</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">7</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">TCGA PAAD</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">DEGs</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">418</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">Stromal-robust</div>
+              </div>
+              <div style="background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:8px;padding:0.5em 0.6em;">
+                <div style="font-size:0.46em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">C-index</div>
+                <div style="font-size:1.1em;font-weight:900;color:var(--db-gray-900);line-height:1.1;">0.666</div>
+                <div style="font-size:0.48em;color:var(--db-gray-500);">11-gene LASSO-Cox</div>
+              </div>
+            </div>
+            <div style="background:rgba(32,94,146,0.03);border:1px solid rgba(32,94,146,0.1);border-radius:10px;padding:0.6em 0.8em;">
+              <div style="font-size:0.5em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3em;">Key Findings</div>
+              <ul style="margin:0;padding-left:1em;">
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Hub genes: <strong>FN1, COL1A1, COL1A2, COL3A1, MMP9</strong> — desmoplastic stroma</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">EMT (NES = +2.48), IFN-γ (NES = +2.13), allograft rejection enriched</li>
+                <li style="font-size:0.65em;margin-bottom:0.15em;">Top prognosis genes: OASL (HR = 1.346), OAS3, TGFBI</li>
+                <li style="font-size:0.65em;">Signature resilient to stromal contamination (up to 90% stroma)</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.3em;flex-wrap:wrap;">
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">R / DESeq2</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">REML Meta-Analysis</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">GSEA</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">LASSO-Cox</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">STRINGdb PPI</span>
+              <span style="font-size:0.46em;background:rgba(32,94,146,0.07);color:var(--db-primary);border-radius:4px;padding:0.15em 0.5em;font-weight:700;">Random Forest</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 04 IS THIS FOR YOU ════════════════════════════════════ -->
+      <section>
+        <div class="tag">Candidate Fit</div>
+        <h2 style="margin-top:0.2em;">Is this program <span class="gradient-text">for you?</span></h2>
+        <p style="font-size:0.8em;margin-bottom:0.7em;">This program is deliberately selective. We accept people, not applications.</p>
+        <div class="grid-2" style="margin-top:0.6em;align-items:stretch;gap:1.2em;">
+          <div style="background:var(--db-white);border:1px solid rgba(16,185,129,0.25);border-top:4px solid var(--db-accent);border-radius:12px;padding:1.1em 1.2em;box-shadow:0 2px 12px rgba(16,185,129,0.07);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.2em;height:2.2em;border-radius:8px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;font-size:1em;flex-shrink:0;">✅</div>
+              <h4 style="margin:0;font-size:0.9em;color:var(--db-accent);">You're the right fit if…</h4>
+            </div>
+            <ul class="check-list">
+              <li>Targeting MS/PhD in international labs (USA, Europe, or similar)</li>
+              <li>Ready to commit 10+ hours/week to independent work</li>
+              <li>Building a portfolio for a research career in academia or industry</li>
+              <li>Serious about becoming a computational researcher, not a hobbyist</li>
+              <li>Want to join a serious lab after the 12-week program (RA path)</li>
+            </ul>
+          </div>
+          <div style="background:var(--db-white);border:1px solid rgba(239,68,68,0.25);border-top:4px solid var(--db-danger);border-radius:12px;padding:1.1em 1.2em;box-shadow:0 2px 12px rgba(239,68,68,0.07);">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.7em;">
+              <div style="width:2.2em;height:2.2em;border-radius:8px;background:rgba(239,68,68,0.1);display:flex;align-items:center;justify-content:center;font-size:1em;flex-shrink:0;">🚫</div>
+              <h4 style="margin:0;font-size:0.9em;color:var(--db-danger);">Not for you if…</h4>
+            </div>
+            <ul class="x-list">
+              <li>Casual learner or exploring bioinformatics as a hobby</li>
+              <li>Expecting guaranteed or rapid publications</li>
+              <li>Prefer passive video learning without submitting assignments</li>
+              <li>Cannot consistently dedicate 12 full weeks</li>
+              <li>Looking for shortcuts, certificates alone, or guaranteed outcomes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══ 07 CAREER OUTCOMES ════════════════════════════════════ -->
+      <section>
+        <div class="tag">Outcomes &amp; Career Impact</div>
+        <h2 style="margin-top:0.2em;">Where this <span class="gradient-text">leads you</span></h2>
+        <p style="font-size:0.8em;margin-bottom:0.6em;">BMP moves you from a learner to a high-impact computational researcher.</p>
+        <div class="grid-3-col" style="margin-top:0.6em;">
+          <div class="card card-highlight" style="border-color:var(--db-warning);">
+            <div style="font-size:1.5em;margin-bottom:0.2em;">🤝</div>
+            <h3 style="font-size:1em;color:var(--db-warning);">Research assistantship</h3>
+            <p style="font-size:0.75em;font-weight:600;margin-bottom:0.6em;color:var(--db-gray-800);">Join the Lab (Cancer / Neuro)</p>
+            <ul class="side-list">
+              <li><strong>Direct Work</strong> &mdash; Join our lab as an RA after successful completion.</li>
+              <li><strong>Publication</strong> &mdash; Opportunity to publish high-impact papers with the mentor.</li>
+              <li><strong>Pathway</strong> &mdash; Gateway for those targeting research excellence abroad.</li>
+            </ul>
+          </div>
+          <div class="card card-highlight">
+            <div style="font-size:1.5em;margin-bottom:0.2em;">🎓</div>
+            <h3 style="font-size:1em;color:var(--db-primary);">Academic readiness</h3>
+            <p style="font-size:0.75em;font-weight:600;margin-bottom:0.6em;color:var(--db-gray-800);">Targeting MS / PhD Abroad</p>
+            <ul class="side-list">
+              <li><strong>Portfolio</strong> &mdash; Production-grade GitHub repo of your analysis work.</li>
+              <li><strong>Publication</strong> &mdash; Strategic prep for independent research and authorship.</li>
+              <li><strong>Skillset</strong> &mdash; HPC, Nextflow, Single-cell &mdash; prerequisites for top labs.</li>
+            </ul>
+          </div>
+          <div class="card card-highlight" style="border-color:var(--db-accent);">
+            <div style="font-size:1.5em;margin-bottom:0.2em;">🏢</div>
+            <h3 style="font-size:1em;color:var(--db-accent);">Industry mastery</h3>
+            <p style="font-size:0.75em;font-weight:600;margin-bottom:0.6em;color:var(--db-gray-800);">Bioinformatician Roles</p>
+            <ul class="side-list">
+              <li><strong>NGS Analyst</strong> &mdash; Run RNA-seq &amp; variant pipelines for biotech / pharma R&amp;D.</li>
+              <li><strong>Clinical Genomics</strong> &mdash; Interpret variants for diagnostics &amp; precision medicine.</li>
+              <li><strong>Target Discovery</strong> &mdash; Surface drug targets &amp; biomarkers from omics data.</li>
+            </ul>
+          </div>
+        </div>
+        <div style="display:flex;gap:1.5em;justify-content:center;margin-top:0.7em;font-size:0.65em;color:var(--db-gray-400);text-transform:uppercase;letter-spacing:0.08em;">
+          <span>5+ Research Tracks</span>
+          <span style="color:var(--db-gray-300);">·</span>
+          <span>100% Research Output</span>
+          <span style="color:var(--db-gray-300);">·</span>
+          <span>20+ Universities Represented</span>
+        </div>
+      </section>
+
+      <!-- ══ 09.5 PUBLICATION ROADMAP ════════════════════════════════════ -->
+      <section>
+        <div class="tag tag-green">From Mentee to Published Author</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">Your <span class="gradient-text">publication roadmap</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:1em;">The best mentees don't just finish — they join the lab and publish.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.7em;max-width:960px;margin:0 auto;align-items:stretch;">
+
+          <!-- 1 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:14px;padding:1em 1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5em;">
+              <span style="width:1.9em;height:1.9em;border-radius:50%;background:rgba(32,94,146,0.1);color:var(--db-primary);font-weight:800;font-size:0.8em;display:flex;align-items:center;justify-content:center;">1</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div style="font-size:0.8em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">Complete the mentorship</div>
+            <p style="font-size:0.65em;color:var(--db-gray-500);line-height:1.5;margin:0;">Finish the 12-week program with a real, working research skillset.</p>
+          </div>
+
+          <!-- 2 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-secondary);border-radius:14px;padding:1em 1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5em;">
+              <span style="width:1.9em;height:1.9em;border-radius:50%;background:rgba(100,181,246,0.15);color:var(--db-secondary);font-weight:800;font-size:0.8em;display:flex;align-items:center;justify-content:center;">2</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div style="font-size:0.8em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">Recruited to the lab</div>
+            <p style="font-size:0.65em;color:var(--db-gray-500);line-height:1.5;margin:0;">Top performers are invited to join as Research Assistants.</p>
+          </div>
+
+          <!-- 3 -->
+          <div style="text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:14px;padding:1em 1em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5em;">
+              <span style="width:1.9em;height:1.9em;border-radius:50%;background:rgba(245,158,11,0.12);color:var(--db-warning);font-weight:800;font-size:0.8em;display:flex;align-items:center;justify-content:center;">3</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6a3 3 0 0 1 6 0v5"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg>
+            </div>
+            <div style="font-size:0.8em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.25em;line-height:1.3;">Assigned a project</div>
+            <p style="font-size:0.65em;color:var(--db-gray-500);line-height:1.5;margin:0;">Take ownership of a real research project in cancer or neuro genomics.</p>
+          </div>
+
+          <!-- 4 (payoff) -->
+          <div style="text-align:left;background:linear-gradient(150deg,var(--db-primary),#14406b);border-radius:14px;padding:1em 1em 1.1em;box-shadow:0 6px 20px rgba(32,94,146,0.28);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5em;">
+              <span style="width:1.9em;height:1.9em;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;font-weight:800;font-size:0.8em;display:flex;align-items:center;justify-content:center;">4</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22m7-7.34V17c0 .55.47.98.97 1.21C15.15 18.75 16 20.24 16 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+            </div>
+            <div style="font-size:0.8em;font-weight:800;color:#fff;margin-bottom:0.25em;line-height:1.3;">Publish in Q1 journals</div>
+            <p style="font-size:0.65em;color:rgba(255,255,255,0.82);line-height:1.5;margin:0;">Co-author Q1 papers as a named lab member — <strong style="color:#fff;">target: 2 per year</strong>.</p>
+          </div>
+
+        </div>
+
+        <div style="max-width:960px;margin:0.9em auto 0;display:flex;align-items:center;justify-content:center;gap:0.6em;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:0.6em 1em;">
+          <span style="font-size:1em;">🎯</span>
+          <span style="font-size:0.78em;font-weight:700;color:var(--db-gray-800);">From learner to named co-author — a real, published track record by the people who mentor you.</span>
+        </div>
+      </section>
+
+      <!-- ══ 10 PRICING & DETAILS ════════════════════════════════════ -->
+      <section>
+        <div class="tag tag-amber">Investment &amp; Cohort Details</div>
+        <h2 style="margin-top:0.15em;margin-bottom:0.1em;">Program <span class="gradient-text">details</span></h2>
+        <p style="font-size:0.78em;color:var(--db-gray-500);margin-bottom:0.7em;">Pay month-to-month — no lump sum. Less than a private tutor, for a global career.</p>
+
+        <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:1.1em;align-items:stretch;max-width:940px;margin:0 auto;">
+
+          <!-- What you get -->
+          <div style="background:var(--db-white);border:1px solid rgba(32,94,146,0.18);border-top:4px solid var(--db-primary);border-radius:14px;padding:1em 1.2em;box-shadow:0 2px 12px rgba(32,94,146,0.07);text-align:left;">
+            <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.6em;">
+              <div style="width:2.2em;height:2.2em;border-radius:8px;background:rgba(32,94,146,0.08);display:flex;align-items:center;justify-content:center;color:var(--db-primary);flex-shrink:0;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h4 style="margin:0;font-size:0.92em;color:var(--db-primary);">Everything you get</h4>
+            </div>
+            <ul class="check-list" style="margin:0;">
+              <li><strong>24 live mentor sessions</strong> — 8 hrs/month across 12 weeks</li>
+              <li><strong>Hands-on guided research</strong> on real sequencing data</li>
+              <li><strong>Your own working codebase</strong> — yours to keep forever</li>
+              <li><strong>Direct path to RA roles</strong> — publications, grants, TA positions</li>
+              <li><strong>1:1 accountability</strong> — weekly progress, not passive videos</li>
+            </ul>
+            <div style="margin-top:0.7em;padding-top:0.6em;border-top:1px dashed var(--db-gray-200);font-size:0.62em;color:var(--db-gray-500);line-height:1.6;">
+              <strong style="color:var(--db-gray-700);">Worth comparing:</strong> one semester costs 3–5×&nbsp;this · a conference ticket costs the same and teaches nothing · going solo costs 1–2 years.
+            </div>
+          </div>
+
+          <!-- Pricing -->
+          <div style="position:relative;background:var(--db-white);border:2px solid var(--db-warning);border-radius:14px;padding:1.1em 1.2em 1.2em;box-shadow:0 6px 22px rgba(245,158,11,0.14);display:flex;flex-direction:column;align-items:center;text-align:center;">
+            <span style="position:absolute;top:-0.85em;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--db-warning);color:#fff;font-size:0.56em;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:0.4em 0.9em;border-radius:999px;box-shadow:0 4px 10px rgba(245,158,11,0.3);">⚡ 50% Discount— ends June 30</span>
+
+            <div class="price-old" style="margin-top:0.6em;">10,200 BDT / month</div>
+            <div class="price-main" style="margin:0.05em 0 0.1em;">5,100 <span class="price-period">BDT / month</span></div>
+            <span style="display:inline-block;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--db-accent);font-size:0.6em;font-weight:800;border-radius:999px;padding:0.25em 0.8em;margin-bottom:0.6em;">You save 5,100 BDT every month</span>
+
+            <a href="https://tinyurl.com/bmp-c02-enrollment-agreement" target="_blank" style="display:block;width:100%;max-width:280px;background:var(--db-primary);color:#fff;font-size:0.82em;font-weight:800;text-align:center;padding:0.7em 1em;border-radius:10px;box-shadow:0 4px 14px rgba(32,94,146,0.25);margin-bottom:0.6em;">Secure your seat →</a>
+
+            <div style="font-size:0.62em;color:var(--db-gray-500);text-align:left;line-height:1.85;width:100%;max-width:280px;">
+              <div>✅ <strong>Payment monthly (5,100 x 3 monts = 15,300 BDT)</strong></div>
+              <div>📅 Discount locked for the <strong>full cohort</strong> if you join by June 25</div>
+              <div>💳 Payment due by the <strong>5th</strong> of each month</div>
+              <div>⚠️ Non-refundable once a month begins · fee non-negotiable</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 11 HOW TO APPLY ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Application Process</div>
+        <h2 style="margin-top:0.2em;">Apply in <span class="gradient-text">5 minutes.</span> Start in weeks.</h2>
+        <p style="font-size:0.8em;margin-bottom:0.7em;">Two steps to secure your seat — sign the enrollment agreement, then submit your first monthly payment.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8em;max-width:980px;margin:0 auto;">
+
+          <!-- Enrollment Agreement form -->
+          <a href="https://tinyurl.com/bmp-c02-enrollment-agreement" target="_blank" style="display:block;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-primary);border-radius:12px;padding:0.9em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.35em;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+              <span style="font-size:0.58em;font-weight:700;color:var(--db-primary);text-transform:uppercase;letter-spacing:0.08em;">Step 1 · Required</span>
+            </div>
+            <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Enrollment Agreement</div>
+            <p style="font-size:0.62em;color:var(--db-gray-500);line-height:1.5;margin:0 0 0.5em;">Acknowledge all six policy areas; typed name = e-signature.</p>
+            <span style="font-size:0.62em;color:var(--db-primary);font-weight:700;">tinyurl.com/bmp-c02-enrollment-agreement →</span>
+          </a>
+
+          <!-- Monthly Fee Payment form -->
+          <a href="https://tinyurl.com/bmp-c02-payment" target="_blank" style="display:block;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-accent);border-radius:12px;padding:0.9em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.35em;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              <span style="font-size:0.58em;font-weight:700;color:var(--db-accent);text-transform:uppercase;letter-spacing:0.08em;">Step 2 · Monthly</span>
+            </div>
+            <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Monthly Fee Payment</div>
+            <p style="font-size:0.62em;color:var(--db-gray-500);line-height:1.5;margin:0 0 0.5em;">Submit proof of payment by the 5th to keep enrollment active.</p>
+            <span style="font-size:0.62em;color:var(--db-accent);font-weight:700;">tinyurl.com/bmp-c02-payment →</span>
+          </a>
+
+          <!-- Cohort Schedule -->
+          <a href="https://tinyurl.com/bmp-co2-schedule" target="_blank" style="display:block;text-align:left;background:var(--db-white);border:1px solid var(--db-gray-200);border-top:3px solid var(--db-warning);border-radius:12px;padding:0.9em 1.1em;box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+            <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.35em;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--db-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span style="font-size:0.58em;font-weight:700;color:var(--db-warning);text-transform:uppercase;letter-spacing:0.08em;">Reference · Schedule</span>
+            </div>
+            <div style="font-size:0.86em;font-weight:800;color:var(--db-gray-900);margin-bottom:0.2em;">Cohort Schedule</div>
+            <p style="font-size:0.62em;color:var(--db-gray-500);line-height:1.5;margin:0 0 0.5em;">Session timeline, milestones, and deadlines for Cohort 02.</p>
+            <span style="font-size:0.62em;color:var(--db-warning);font-weight:700;">tinyurl.com/bmp-co2-schedule →</span>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ══ 12 Q&A / CLOSE ════════════════════════════════════════ -->
+      <section>
+        <div class="tag">Open Floor</div>
+        <h1 style="margin-top:0.2em;font-size:2.6em;">Questions?</h1>
+        <div class="sep"></div>
+        <p style="font-size:0.82em;color:var(--db-gray-500);margin:0.3em 0 0.9em;max-width:500px;margin-left:auto;margin-right:auto;">Ask anything about the program, curriculum, or fit. If you're ready — open your browser now while we talk.</p>
+        <div class="cta-box" style="max-width:560px;margin:0 auto;">
+          <p style="font-size:0.78em;font-weight:600;margin:0 0 0.2em;color:var(--db-gray-600);">Apply tonight &mdash; takes 5 minutes &mdash; pay first month to start</p>
+          <a href="https://mdjubayerhossain.com/bmp" style="font-size:1.15em;color:var(--db-primary);font-weight:800;">mdjubayerhossain.com/bmp</a>
+          <p style="font-size:0.65em;color:var(--db-gray-400);margin:0.5em 0 0;">Next cohort starts 2 weeks after payment window closes &nbsp;·&nbsp; Discount valid through June 25, 2026</p>
+        </div>
+        <div class="social-row" style="margin-top:0.8em;">
+          <a href="https://github.com/hossainlab" target="_blank" style="display:inline-flex;color:var(--db-gray-500);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <span class="social-dot"></span>
+          <a href="https://www.linkedin.com/in/hossainmj/" target="_blank" style="display:inline-flex;color:var(--db-gray-500);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <span class="social-dot"></span>
+          <a href="https://www.youtube.com/@hossainlab" target="_blank" style="display:inline-flex;color:var(--db-gray-500);"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+        <p class="disclaimer">&copy; 2026 Md. Jubayer Hossain &middot; Bioinformatics Mentorship Program</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1200,
+      height: 680,
+      margin: 0.06,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: true,
+      controls: false,
+      progress: true,
+      pdfSeparateFragments: false,
+      pdfMaxPagesPerSlide: 1,
+    });
+  </script>
+</body>
+</html>
