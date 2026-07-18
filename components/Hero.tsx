@@ -7,19 +7,11 @@ import Image from 'next/image'
 export const Hero: React.FC = () => {
   return (
     <header className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark">
-      {/* Background Layer */}
+      {/* Background Layer — CSS only, no network image (former decorative
+          overlay was near-invisible at opacity-10 but cost a 2000px fetch). */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-brand-dark">
-          <Image 
-            src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=60&w=2000" 
-            alt="Hero Background"
-            fill
-            className="object-cover opacity-10 mix-blend-overlay"
-            priority
-          />
-        </div>
-        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-brand-secondary/15 blur-[150px] rounded-full transition-all duration-[10s]"></div>
+        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[100px] rounded-full"></div>
+        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-brand-secondary/15 blur-[100px] rounded-full"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark"></div>
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       </div>
@@ -73,12 +65,13 @@ export const Hero: React.FC = () => {
 
         <div className="relative hidden lg:block">
            <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-2xl border border-white/5 animate-float flex items-center justify-center bg-slate-900">
-              <Image 
-                src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&q=80&w=1200" 
-                className="absolute inset-0 w-full h-full object-cover opacity-60" 
-                alt="Molecular Research Visualization" 
+              <Image
+                src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&q=70&w=1000"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                alt="Molecular Research Visualization"
                 fill
-                priority
+                sizes="(min-width: 1024px) 40vw, 0px"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
               
