@@ -5,10 +5,10 @@ import Image from 'next/image'
 const partners = [
   { name: 'GNOBB', logo: '/partner_logos/GNOBB.png', scale: 'scale-110' },
   { name: 'ASI School of Life', logo: '/partner_logos/ASISchoolofLife.png', scale: 'scale-125' },
-  { name: 'CHIRAL Bangladesh', logo: '/partner_logos/chiral_logo.jpg', scale: 'scale-100', hasBg: true },
   { name: 'SPSB', logo: '/partner_logos/SPSB.png', scale: 'scale-110' },
   { name: 'GSA Bioinformatics Internship', logo: '/partner_logos/GSABioinformaticsInternship.png', scale: 'scale-125' },
   { name: 'cBLAST', logo: '/partner_logos/cBLAST.jpg', scale: 'scale-90', hasBg: true },
+  { name: 'One Health Lab', logo: '/partner_logos/onehealthlab.jpg', scale: 'scale-100', hasBg: true },
 ]
 
 export const Partners: React.FC = () => {
