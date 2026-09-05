@@ -24,10 +24,8 @@ import {
   Sparkles,
 } from 'lucide-react'
 
-type PricingTier = {
+type ServiceOption = {
   name: string
-  price: string
-  unit?: string
 }
 
 type Service = {
@@ -37,7 +35,7 @@ type Service = {
   title: string
   description: string
   icon: React.ElementType
-  pricing: PricingTier[]
+  options: ServiceOption[]
   details?: {
     overview: string
     features: string[]
@@ -51,12 +49,12 @@ const services: Service[] = [
     category: 'Genomics',
     categoryColor: 'bg-brand-primary/10 text-brand-primary',
     title: 'NGS Data Analysis',
-    description: 'Comprehensive sequencing analysis pipelines. Premium pricing depends on sample size, volume, and analysis complexity.',
+    description: 'Comprehensive sequencing analysis pipelines. Scope depends on sample size, volume, and analysis complexity.',
     icon: Dna,
-    pricing: [
-      { name: 'Basic', price: '$50', unit: '/ sample' },
-      { name: 'Standard', price: '$100', unit: '/ sample' },
-      { name: 'Premium', price: 'Custom' },
+    options: [
+      { name: 'Basic' },
+      { name: 'Standard' },
+      { name: 'Premium' },
     ],
     details: {
       overview: 'End-to-end NGS data analysis from raw reads to biological insights. We support WGS, WES, RNA-Seq, ChIP-Seq, and more.',
@@ -71,10 +69,10 @@ const services: Service[] = [
     title: 'Transcriptomics Analysis',
     description: 'Explore gene expression dynamics and regulatory networks with high-resolution transcriptomic analysis services.',
     icon: Microscope,
-    pricing: [
-      { name: 'Bulk RNA-Seq', price: '$75', unit: '/ sample' },
-      { name: 'Pathway Analysis', price: '$50', unit: '/ dataset' },
-      { name: 'Full Pipeline', price: '$150', unit: '/ project' },
+    options: [
+      { name: 'Bulk RNA-Seq' },
+      { name: 'Pathway Analysis' },
+      { name: 'Full Pipeline' },
     ],
     details: {
       overview: 'Comprehensive transcriptomic analysis to understand gene expression patterns and uncover regulatory mechanisms.',
@@ -89,10 +87,10 @@ const services: Service[] = [
     title: 'Single-Cell Analysis',
     description: 'Dissect tissue heterogeneity and cellular dynamics with cutting-edge single-cell sequencing analysis.',
     icon: TestTube,
-    pricing: [
-      { name: 'Basic Clustering', price: '$100', unit: '/ sample' },
-      { name: 'Full Analysis', price: '$200', unit: '/ sample' },
-      { name: 'Multi-sample', price: 'Custom' },
+    options: [
+      { name: 'Basic Clustering' },
+      { name: 'Full Analysis' },
+      { name: 'Multi-sample' },
     ],
     details: {
       overview: 'Analyze gene expression at single-cell resolution with cell type identification and trajectory analysis.',
@@ -107,10 +105,10 @@ const services: Service[] = [
     title: 'Metagenomics',
     description: 'Uncover the diversity and function of complex microbial ecosystems with comprehensive metagenomic analysis.',
     icon: Bug,
-    pricing: [
-      { name: '16S Analysis', price: '$40', unit: '/ sample' },
-      { name: 'Shotgun', price: '$80', unit: '/ sample' },
-      { name: 'Functional', price: '$120', unit: '/ sample' },
+    options: [
+      { name: '16S Analysis' },
+      { name: 'Shotgun' },
+      { name: 'Functional' },
     ],
     details: {
       overview: 'Analyze microbial communities directly from environmental samples to reveal taxonomic composition.',
@@ -125,11 +123,11 @@ const services: Service[] = [
     title: 'Molecular Dynamics Simulation',
     description: 'High-performance simulation of biomolecular systems to study physical movements and interactions over time.',
     icon: Cpu,
-    pricing: [
-      { name: '10 ns Simulation', price: '$10' },
-      { name: '50 ns Simulation', price: '$15' },
-      { name: '100 ns Simulation', price: '$20' },
-      { name: 'Custom Duration', price: 'Contact' },
+    options: [
+      { name: '10 ns Simulation' },
+      { name: '50 ns Simulation' },
+      { name: '100 ns Simulation' },
+      { name: 'Custom Duration' },
     ],
     details: {
       overview: 'Molecular dynamics simulations provide insights into the dynamic behavior of biomolecules.',
@@ -144,10 +142,10 @@ const services: Service[] = [
     title: 'Molecular Docking & Virtual Screening',
     description: 'Predict preferred orientation of ligands to receptors and screen libraries for potential drug candidates.',
     icon: FlaskConical,
-    pricing: [
-      { name: 'Standard Docking', price: '$10', unit: '/ complex' },
-      { name: 'Virtual Screening', price: '$50', unit: '/ 100 compounds' },
-      { name: 'Protein-Protein', price: '$10', unit: '/ complex' },
+    options: [
+      { name: 'Standard Docking' },
+      { name: 'Virtual Screening' },
+      { name: 'Protein-Protein' },
     ],
     details: {
       overview: 'Leverage computational chemistry to predict how small molecules interact with protein targets.',
@@ -162,10 +160,10 @@ const services: Service[] = [
     title: 'Proteomics Analysis',
     description: 'Analyze proteins, their structures, and interactions with comprehensive proteomics solutions.',
     icon: Atom,
-    pricing: [
-      { name: 'Protein ID', price: '$60', unit: '/ sample' },
-      { name: 'Quantification', price: '$100', unit: '/ sample' },
-      { name: 'PTM Analysis', price: '$150', unit: '/ sample' },
+    options: [
+      { name: 'Protein ID' },
+      { name: 'Quantification' },
+      { name: 'PTM Analysis' },
     ],
     details: {
       overview: 'Go beyond the genome to understand the proteome with identification, quantification, and characterization.',
@@ -180,10 +178,10 @@ const services: Service[] = [
     title: 'Epitope Prediction & Vaccine Design',
     description: 'In silico identification of immunogenic epitopes and design of multi-epitope vaccine candidates.',
     icon: Syringe,
-    pricing: [
-      { name: 'Epitope Screening', price: '$10', unit: '/ antigen' },
-      { name: 'Vaccine Construct', price: '$20', unit: '/ design' },
-      { name: 'Immune Docking', price: '$10', unit: '/ complex' },
+    options: [
+      { name: 'Epitope Screening' },
+      { name: 'Vaccine Construct' },
+      { name: 'Immune Docking' },
     ],
     details: {
       overview: 'Computational immunology services for identifying T-cell and B-cell epitopes and designing vaccines.',
@@ -198,10 +196,10 @@ const services: Service[] = [
     title: 'Machine Learning for Biology',
     description: 'Harness AI to discover patterns, predict outcomes, and classify biological data with custom models.',
     icon: BrainCircuit,
-    pricing: [
-      { name: 'Model Training', price: '$100', unit: '/ model' },
-      { name: 'Deep Learning', price: '$200', unit: '/ model' },
-      { name: 'Custom Pipeline', price: 'Custom' },
+    options: [
+      { name: 'Model Training' },
+      { name: 'Deep Learning' },
+      { name: 'Custom Pipeline' },
     ],
     details: {
       overview: 'Apply state-of-the-art machine learning algorithms to biological datasets for predictive modeling.',
@@ -216,10 +214,10 @@ const services: Service[] = [
     title: 'AI-Assisted Bioinformatics Workflow',
     description: 'Integration of AI tools for smart ranking, filtering, summarization and automated report generation.',
     icon: Sparkles,
-    pricing: [
-      { name: 'AI Integration', price: '$40', unit: '/ tool' },
-      { name: 'Smart Analysis', price: '$60', unit: '/ project' },
-      { name: 'Auto-Reporting', price: '$80', unit: '/ report' },
+    options: [
+      { name: 'AI Integration' },
+      { name: 'Smart Analysis' },
+      { name: 'Auto-Reporting' },
     ],
     details: {
       overview: 'Leverage AI-powered tools to accelerate your bioinformatics workflows with intelligent automation.',
@@ -234,10 +232,10 @@ const services: Service[] = [
     title: 'Custom Bioinformatics Scripting',
     description: 'Tailored scripts and pipelines using Python, R, or Bash for specific research needs.',
     icon: Code2,
-    pricing: [
-      { name: 'Basic Scripting', price: '$20', unit: '/ script' },
-      { name: 'Custom Plotting', price: '$15', unit: '/ figure' },
-      { name: 'Consultation', price: '$25', unit: '/ hour' },
+    options: [
+      { name: 'Basic Scripting' },
+      { name: 'Custom Plotting' },
+      { name: 'Consultation' },
     ],
     details: {
       overview: 'Bespoke bioinformatics solutions for unique research challenges with custom tools and pipelines.',
@@ -252,10 +250,10 @@ const services: Service[] = [
     title: 'Bioinformatics Automation Pipeline',
     description: 'End-to-end automation of bioinformatics tasks including BLAST, docking workflows, and batch processing.',
     icon: Layers,
-    pricing: [
-      { name: 'Automated Workflow', price: '$30', unit: '/ workflow' },
-      { name: 'Batch Processing', price: '$45', unit: '/ pipeline' },
-      { name: 'Full Package', price: '$60', unit: '/ project' },
+    options: [
+      { name: 'Automated Workflow' },
+      { name: 'Batch Processing' },
+      { name: 'Full Package' },
     ],
     details: {
       overview: 'Automate repetitive bioinformatics tasks with robust, scalable pipelines.',
@@ -270,10 +268,10 @@ const services: Service[] = [
     title: 'Data Visualization & Reporting',
     description: 'Transform complex data into clear, compelling, and publication-ready visual narratives.',
     icon: BarChart3,
-    pricing: [
-      { name: 'Custom Figures', price: '$15', unit: '/ figure' },
-      { name: 'Dashboard', price: '$100', unit: '/ dashboard' },
-      { name: 'Full Report', price: '$75', unit: '/ report' },
+    options: [
+      { name: 'Custom Figures' },
+      { name: 'Dashboard' },
+      { name: 'Full Report' },
     ],
     details: {
       overview: 'Professional visualization services to communicate your findings effectively.',
@@ -288,10 +286,10 @@ const services: Service[] = [
     title: 'Remote Linux Execution',
     description: 'We run your heavy bioinformatics jobs on our high-performance systems with full error handling and logs.',
     icon: Server,
-    pricing: [
-      { name: 'Student / Small Job', price: '$15', unit: '/ run' },
-      { name: 'Standard Job', price: '$30', unit: '/ run' },
-      { name: 'Heavy Duty', price: '$50', unit: '/ run' },
+    options: [
+      { name: 'Student / Small Job' },
+      { name: 'Standard Job' },
+      { name: 'Heavy Duty' },
     ],
     details: {
       overview: 'Offload computationally intensive bioinformatics tasks to our high-performance infrastructure.',
@@ -306,10 +304,10 @@ const services: Service[] = [
     title: 'Large Dataset Processing',
     description: 'Efficient handling of massive datasets including FASTA processing, large BLAST databases, and batch jobs.',
     icon: Database,
-    pricing: [
-      { name: 'Batch Formatting', price: '$25', unit: '/ dataset' },
-      { name: 'Big Data BLAST', price: '$50', unit: '/ run' },
-      { name: 'Complex Filtering', price: '$75', unit: '/ project' },
+    options: [
+      { name: 'Batch Formatting' },
+      { name: 'Big Data BLAST' },
+      { name: 'Complex Filtering' },
     ],
     details: {
       overview: 'Handle massive biological datasets with efficient processing pipelines.',
@@ -324,10 +322,10 @@ const services: Service[] = [
     title: 'Training & Academic Support',
     description: 'Hands-on guidance and academic support for bioinformatics projects, tools, and workflows.',
     icon: GraduationCap,
-    pricing: [
-      { name: 'Troubleshooting', price: '$10', unit: '/ session' },
-      { name: 'Topic Walkthrough', price: '$15', unit: '/ session' },
-      { name: '1-on-1 Mentorship', price: '$25', unit: '/ session' },
+    options: [
+      { name: 'Troubleshooting' },
+      { name: 'Topic Walkthrough' },
+      { name: '1-on-1 Mentorship' },
     ],
     details: {
       overview: 'Personalized training and mentorship for students and researchers learning bioinformatics.',
@@ -388,15 +386,11 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
           </div>
 
           <div className="mb-8">
-            <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Pricing Options</h4>
+            <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Service Options</h4>
             <div className="grid grid-cols-3 gap-3">
-              {service.pricing.map((tier, idx) => (
+              {service.options.map((option, idx) => (
                 <div key={idx} className="p-4 bg-slate-50 rounded-xl text-center">
-                  <div className="text-sm font-medium text-slate-600 mb-1">{tier.name}</div>
-                  <div className="text-xl font-bold text-slate-900">
-                    {tier.price}
-                    {tier.unit && <span className="text-sm font-normal text-slate-500"> {tier.unit}</span>}
-                  </div>
+                  <div className="text-sm font-medium text-slate-700">{option.name}</div>
                 </div>
               ))}
             </div>
@@ -408,7 +402,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
               className="flex-1 py-4 bg-brand-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-brand-dark transition-colors"
             >
               <Mail className="w-5 h-5" />
-              Request Quote
+              Request a Quote
             </a>
             <button
               onClick={onClose}
@@ -451,15 +445,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onLearnMore }) => {
         Learn More & View Details <ArrowRight className="w-4 h-4" />
       </button>
 
-      <div className="space-y-2 mb-6">
-        {service.pricing.slice(0, 3).map((tier, idx) => (
-          <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-            <span className="text-sm text-slate-600">{tier.name}</span>
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-900">{tier.price}</span>
-              {tier.unit && <span className="text-xs text-slate-500">{tier.unit}</span>}
-            </div>
-          </div>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {service.options.slice(0, 3).map((option, idx) => (
+          <span key={idx} className="px-3 py-1.5 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium">
+            {option.name}
+          </span>
         ))}
       </div>
 
@@ -467,7 +457,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onLearnMore }) => {
         href={`mailto:services@deepbioltd.com?subject=Inquiry: ${service.title}`}
         className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-semibold text-center hover:bg-brand-primary hover:text-white transition-all"
       >
-        General Inquiry
+        Request a Quote
       </a>
     </div>
   )
@@ -493,11 +483,11 @@ export const ServicesPage: React.FC = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
-            Our Services <span className="brand-text-gradient">&amp; Pricing</span>
+            Our <span className="brand-text-gradient">Services</span>
           </h1>
 
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
-            Premium bioinformatics services tailored to your research needs at competitive rates. From NGS analysis to AI-powered workflows.
+            Premium bioinformatics services tailored to your research needs. From NGS analysis to AI-powered workflows — request a quote for any service.
           </p>
         </div>
       </section>
@@ -593,7 +583,7 @@ export const ServicesPage: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-brand-primary text-white rounded-2xl font-bold hover:bg-brand-dark transition-all shadow-xl"
             >
               <Mail className="w-5 h-5" />
-              Contact for Custom Quote
+              Contact for a Custom Quote
             </a>
             <a
               href="/about"
