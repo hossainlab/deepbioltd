@@ -57,11 +57,16 @@ export const Navbar: React.FC = () => {
     }
   }, [])
 
+  // Temporarily hidden from the navbar pending menu reorganization.
+  const SHOW_RESEARCH_MENU: boolean = false
+  const SHOW_LABS_MENU: boolean = false
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Academy', path: 'https://deepbioacademy.com/', external: true },
+    { name: 'Research Wing', path: 'https://chiralbd.github.io/', external: true },
   ];
 
   const researchSubmenu = [
@@ -129,6 +134,7 @@ export const Navbar: React.FC = () => {
           )}
 
           {/* Research Menu - Modern Hover Dropdown */}
+          {SHOW_RESEARCH_MENU && (
           <div
             className="relative"
             onMouseEnter={() => setResearchMenuOpen(true)}
@@ -167,8 +173,10 @@ export const Navbar: React.FC = () => {
               </div>
             )}
           </div>
+          )}
 
           {/* Labs Menu - Modern Hover Dropdown */}
+          {SHOW_LABS_MENU && (
           <div
             className="relative"
             onMouseEnter={() => setLabsMenuOpen(true)}
@@ -207,6 +215,7 @@ export const Navbar: React.FC = () => {
               </div>
             )}
           </div>
+          )}
 
           {/* Resources Menu - Modern Hover Dropdown */}
           <div
@@ -305,6 +314,7 @@ export const Navbar: React.FC = () => {
           )}
 
           {/* Research Submenu - Mobile */}
+          {SHOW_RESEARCH_MENU && (
           <div className="space-y-4">
             <div className={`text-xl font-bold ${isResearchPage ? 'text-brand-primary' : 'text-slate-800'}`}>
               Research
@@ -322,8 +332,10 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Labs Submenu - Mobile */}
+          {SHOW_LABS_MENU && (
           <div className="space-y-4">
             <div className={`text-xl font-bold ${isLabsPage ? 'text-brand-primary' : 'text-slate-800'}`}>
               Labs
@@ -341,6 +353,7 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Resources Submenu - Mobile */}
           <div className="space-y-4">
