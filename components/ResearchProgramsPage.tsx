@@ -18,7 +18,6 @@ import {
   Calendar,
   TrendingUp
 } from 'lucide-react';
-import { researchMetrics } from '../config/researchMetrics';
 
 const researchPrograms = [
   {

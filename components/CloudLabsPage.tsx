@@ -447,8 +447,11 @@ export const CloudLabsPage: React.FC = () => {
               <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Shield className="w-8 h-8 text-brand-primary" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Compliance</h3>
-              <p className="text-slate-600">HIPAA, GDPR, and SOC 2 compliant infrastructure for sensitive research data</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Data handling</h3>
+              {/* Was: "HIPAA, GDPR, and SOC 2 compliant infrastructure". SOC 2 is an audited
+                  attestation and HIPAA binds US covered entities; neither is substantiated.
+                  Do not restore without a report or certificate on file. */}
+              <p className="text-slate-600">Encrypted in transit and at rest, with access controls and audit logging for sensitive research data</p>
             </div>
 
             <div className="text-center p-8 bg-slate-50 rounded-3xl border border-slate-200">

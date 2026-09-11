@@ -213,20 +213,20 @@ export const GenerativeGenomicsLabPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA with Publications */}
+      {/* CTA */}
       <section className="py-24 bg-brand-dark text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Collaborate With Us</h2>
           <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-            Interested in leveraging generative AI for your biological research? Explore our publications and let's connect.
+            Interested in leveraging generative AI for your biological research? Read one of our worked reports and let's connect.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/publications"
+              href="/case-studies"
               className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-lg hover:-translate-y-1"
             >
               <BookOpen className="w-5 h-5" />
-              View Publications
+              Read a report
             </a>
             <a
               href="mailto:info@deepbioltd.com?subject=Generative Genomics Lab Application"

@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { EB_Garamond, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import ScrollHandler from '@/components/ScrollHandler'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
-const inter = Inter({
+// EB Garamond does everything: headings, body, nav, buttons. Real italics are
+// loaded because display lines mix roman and italic within one sentence.
+const garamond = EB_Garamond({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-serif',
   display: 'swap',
+  style: ['normal', 'italic'],
 })
 
-const outfit = Outfit({
+// Mono is reserved for data and tabular figures — never interface chrome.
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -59,7 +63,7 @@ export const metadata: Metadata = {
   },
 
   other: {
-    'theme-color': '#205E92',
+    'theme-color': '#FAF8F2',
   },
 }
 
@@ -69,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${garamond.variable} ${mono.variable}`}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -100,8 +104,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased overflow-x-hidden`}>
-        <div className="relative min-h-screen selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+      <body className="font-serif bg-marble text-ink antialiased overflow-x-hidden">
+        <div className="relative min-h-screen overflow-x-hidden">
           <SmoothScroll />
           <ScrollHandler />
           <Navbar />

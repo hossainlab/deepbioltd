@@ -7,7 +7,7 @@ const steps = [
     icon: Database,
     title: "Phase I: Data Ingestion & Sovereignty",
     subtitle: "Ethical & High-Fidelity Data Acquisition",
-    description: "Our pipeline begins with strict adherence to HIPAA and bio-ethical standards. We ingest raw genomic, proteomic, and clinical data from our decentralized partner network, ensuring data integrity through blockchain-validated checksums.",
+    description: "Every project begins with ethics-approved data handling, agreed in writing before any transfer. We ingest raw genomic, proteomic and clinical data from partner groups, verifying integrity with checksums at each hand-off.",
     details: ["Multi-omics Integration", "Anonymization Protocols", "Real-time Syncing"]
   },
   {
@@ -29,7 +29,7 @@ const steps = [
     title: "Phase IV: Clinical Validation",
     subtitle: "From Silicon to Clinical Proof",
     description: "Every computational insight undergoes rigorous cross-validation with existing biological benchmarks. We collaborate with international labs to ensure that our AI predictions translate accurately to real-world biological outcomes.",
-    details: ["Bench-test Correlation", "Peer-review Verification", "FDA/CE Compliance Path"]
+    details: ["Bench-test Correlation", "Peer-review Verification", "Reproducible Reporting"]
   }
 ];
 

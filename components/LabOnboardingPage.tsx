@@ -38,8 +38,9 @@ export const LabOnboardingPage: React.FC = () => {
               <Github className="w-5 h-5" />
               View on GitHub
             </a>
+            {/* TODO(deepbio): point this at a real application form if one exists. */}
             <a
-              href="#"
+              href="mailto:info@deepbioltd.com?subject=Lab%20onboarding%20application"
               className="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1"
             >
               <FileText className="w-5 h-5" />

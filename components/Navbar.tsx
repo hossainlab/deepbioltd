@@ -72,7 +72,6 @@ export const Navbar: React.FC = () => {
   const researchSubmenu = [
     { name: 'Overview', path: '/research' },
     { name: 'Research Programs', path: '/research-programs' },
-    { name: 'Publications', path: '/publications' },
   ];
 
   const labsSubmenu = [
@@ -83,23 +82,29 @@ export const Navbar: React.FC = () => {
     { name: 'Lab Onboarding', path: '/lab-onboarding' },
   ];
 
+  // 'DeepBio Ambassadors' and 'Our Ambassadors' read as duplicates. They are
+  // different pages — one recruits, one lists the current cohort — so the fix
+  // is naming them for what they do, not merging the routes.
   const resourcesSubmenu = [
-    { name: 'Company Brochure', path: '/brochure' },
+    { name: 'Team', path: '/team' },
+    { name: 'Contact', path: '/contact' },
     { name: 'Case Studies', path: '/case-studies' },
+    { name: 'Company Brochure', path: '/brochure' },
     { name: 'Career Guide', path: '/career-guide' },
-    { name: 'DeepBio Ambassadors', path: '/ambassadors' },
-    { name: 'Our Ambassadors', path: '/our-ambassadors' },
+    { name: 'Become an Ambassador', path: '/ambassadors' },
+    { name: 'Meet the Ambassadors', path: '/our-ambassadors' },
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
   ];
 
-  const isResearchPage = ['/research', '/research-programs', '/publications'].includes(pathname)
+  const isResearchPage = ['/research', '/research-programs'].includes(pathname)
   const isLabsPage = ['/labs/biohpc', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
-  const isResourcesPage = ['/brochure', '/case-studies', '/career-guide', '/ambassadors', '/our-ambassadors'].includes(pathname)
-  const isLight = !scrolled && pathname === '/' && isLargeScreen
+  const isResourcesPage = ['/brochure', '/case-studies', '/career-guide', '/ambassadors', '/our-ambassadors', '/team', '/contact'].includes(pathname)
+  // The hero is set on paper, so the bar never sits over a dark field.
+  const isLight = false
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-plate mx-auto px-6 md:px-10 flex items-center justify-between">
         <Link href="/" className="transition-transform hover:scale-105 active:scale-95 duration-300" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Logo isLight={isLight} />
         </Link>
@@ -114,7 +119,7 @@ export const Navbar: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                  ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                  ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
                 `}
               >
                 {item.name}
@@ -124,7 +129,7 @@ export const Navbar: React.FC = () => {
                 key={item.name}
                 href={item.path}
                 className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                  ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                  ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
                   ${pathname === item.path ? 'text-brand-primary after:w-full' : ''}
                 `}
               >
@@ -142,7 +147,7 @@ export const Navbar: React.FC = () => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
                 ${isResearchPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -152,7 +157,7 @@ export const Navbar: React.FC = () => {
             {/* Modern Dropdown Menu */}
             {researchMenuOpen && (
               <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden mt-2">
+                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
                   {researchSubmenu.map((item, index) => (
                     <Link
                       key={item.path}
@@ -160,10 +165,10 @@ export const Navbar: React.FC = () => {
                       onClick={() => setResearchMenuOpen(false)}
                       className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
                         ${pathname === item.path
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
+                          ? 'bg-paper-sunk text-brand-primary'
+                          : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
                         }
-                        ${index !== researchSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                        ${index !== researchSubmenu.length - 1 ? 'border-b border-rule' : ''}
                       `}
                     >
                       {item.name}
@@ -184,7 +189,7 @@ export const Navbar: React.FC = () => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
                 ${isLabsPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -194,7 +199,7 @@ export const Navbar: React.FC = () => {
             {/* Modern Dropdown Menu */}
             {labsMenuOpen && (
               <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden mt-2">
+                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
                   {labsSubmenu.map((item, index) => (
                     <Link
                       key={item.path}
@@ -202,10 +207,10 @@ export const Navbar: React.FC = () => {
                       onClick={() => setLabsMenuOpen(false)}
                       className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
                         ${pathname === item.path
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
+                          ? 'bg-paper-sunk text-brand-primary'
+                          : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
                         }
-                        ${index !== labsSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                        ${index !== labsSubmenu.length - 1 ? 'border-b border-rule' : ''}
                       `}
                     >
                       {item.name}
@@ -225,7 +230,7 @@ export const Navbar: React.FC = () => {
           >
             <button
               className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-slate-600' : 'text-slate-900 md:text-white/80'}
+                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
                 ${isResourcesPage ? 'text-brand-primary after:w-full' : ''}
               `}
             >
@@ -235,7 +240,7 @@ export const Navbar: React.FC = () => {
             {/* Modern Dropdown Menu */}
             {resourcesMenuOpen && (
               <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden mt-2">
+                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
                   {resourcesSubmenu.map((item, index) => (
                     item.external ? (
                       <a
@@ -244,8 +249,8 @@ export const Navbar: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setResourcesMenuOpen(false)}
-                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all text-slate-700 hover:bg-slate-50 hover:text-brand-primary
-                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all text-ink-mid hover:bg-paper-sunk hover:text-ink
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}
                         `}
                       >
                         {item.name}
@@ -257,10 +262,10 @@ export const Navbar: React.FC = () => {
                         onClick={() => setResourcesMenuOpen(false)}
                         className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
                           ${pathname === item.path
-                            ? 'bg-brand-primary/10 text-brand-primary'
-                            : 'text-slate-700 hover:bg-slate-50 hover:text-brand-primary'
+                            ? 'bg-paper-sunk text-brand-primary'
+                            : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
                           }
-                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-slate-100' : ''}
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}
                         `}
                       >
                         {item.name}
@@ -274,14 +279,14 @@ export const Navbar: React.FC = () => {
 
           <a
             href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
-            className="ml-4 px-6 py-2.5 bg-brand-primary text-white rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-brand-primary/25 inline-block"
+            className="ml-4 bg-brand-primary px-6 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-[#1a4b75] inline-block"
           >
             Partner With Us
           </a>
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`lg:hidden p-2 rounded-lg ${(scrolled || pathname !== '/') ? 'text-slate-900' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
+        <button className={`lg:hidden p-2 rounded-lg text-ink`} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
@@ -297,7 +302,7 @@ export const Navbar: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="text-xl font-bold transition-colors text-slate-800 hover:text-brand-primary"
+                className="text-xl font-bold transition-colors text-ink hover:text-brand-primary"
               >
                 {item.name}
               </a>
@@ -306,7 +311,7 @@ export const Navbar: React.FC = () => {
                 key={item.name}
                 href={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-800 hover:text-brand-primary'}`}
+                className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink hover:text-brand-primary'}`}
               >
                 {item.name}
               </Link>
@@ -316,16 +321,16 @@ export const Navbar: React.FC = () => {
           {/* Research Submenu - Mobile */}
           {SHOW_RESEARCH_MENU && (
           <div className="space-y-4">
-            <div className={`text-xl font-bold ${isResearchPage ? 'text-brand-primary' : 'text-slate-800'}`}>
+            <div className={`text-xl font-bold ${isResearchPage ? 'text-brand-primary' : 'text-ink'}`}>
               Research
             </div>
-            <div className="pl-6 space-y-3 border-l-2 border-slate-200">
+            <div className="pl-6 space-y-3 border-l-2 border-rule">
               {researchSubmenu.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
                 >
                   {item.name}
                 </Link>
@@ -337,16 +342,16 @@ export const Navbar: React.FC = () => {
           {/* Labs Submenu - Mobile */}
           {SHOW_LABS_MENU && (
           <div className="space-y-4">
-            <div className={`text-xl font-bold ${isLabsPage ? 'text-brand-primary' : 'text-slate-800'}`}>
+            <div className={`text-xl font-bold ${isLabsPage ? 'text-brand-primary' : 'text-ink'}`}>
               Labs
             </div>
-            <div className="pl-6 space-y-3 border-l-2 border-slate-200">
+            <div className="pl-6 space-y-3 border-l-2 border-rule">
               {labsSubmenu.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
                 >
                   {item.name}
                 </Link>
@@ -357,10 +362,10 @@ export const Navbar: React.FC = () => {
 
           {/* Resources Submenu - Mobile */}
           <div className="space-y-4">
-            <div className={`text-xl font-bold ${isResourcesPage ? 'text-brand-primary' : 'text-slate-800'}`}>
+            <div className={`text-xl font-bold ${isResourcesPage ? 'text-brand-primary' : 'text-ink'}`}>
               More
             </div>
-            <div className="pl-6 space-y-3 border-l-2 border-slate-200">
+            <div className="pl-6 space-y-3 border-l-2 border-rule">
               {resourcesSubmenu.map((item) => (
                 item.external ? (
                   <a
@@ -369,7 +374,7 @@ export const Navbar: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="block text-left text-lg font-semibold transition-colors text-slate-600 hover:text-brand-primary"
+                    className="block text-left text-lg font-semibold transition-colors text-ink-mid hover:text-brand-primary"
                   >
                     {item.name}
                   </a>
@@ -378,7 +383,7 @@ export const Navbar: React.FC = () => {
                     key={item.path}
                     href={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-slate-600 hover:text-brand-primary'}`}
+                    className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
                   >
                     {item.name}
                   </Link>

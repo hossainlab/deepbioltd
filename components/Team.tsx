@@ -1,68 +1,52 @@
 import React from 'react';
-
-const teamMembers = [
-  {
-    name: "Md. Jubayer Hossain",
-    role: "CEO & Founder",
-    image: "/images/team/jubayer.png"
-  },
-  {
-    name: "Muhibullah Shahjahan",
-    role: "Bioinformatics Analyst",
-    image: "/images/team/muhib.png"
-  },
-  {
-    name: "Muntasim Fuad",
-    role: "Bioinformatics Analyst",
-    image: "/images/team/fuad.png"
-  },
-  {
-    name: "Pritom Kundu",
-    role: "CADD Scientist I",
-    image: "/images/team/pritom.png"
-  },
-  {
-    name: "Musab Shahriar",
-    role: "CADD Scientist I",
-    image: "/images/team/musab.png"
-  },
-  {
-    name: "Nishat Mim",
-    role: "Program Coordinator",
-    image: "/images/management/nishat.png"
-  },
-  {
-    name: "Tajrian Rahman",
-    role: "Finance Manager",
-    image: "/images/management/tajrian.png"
-  },
-  {
-    name: "Najnin Suktara",
-    role: "Academic Operations Manager",
-    image: "/images/management/suktara.png"
-  }
-];
-
 import Image from 'next/image';
+import { Linkedin } from 'lucide-react';
+import { teamMembers, type TeamMember } from '@/lib/team/data';
 
-export const Team: React.FC = () => {
+interface TeamProps {
+  /** Defaults to the full roster. Pass a filtered list for section-scoped grids. */
+  members?: TeamMember[];
+  columns?: 3 | 4;
+}
+
+/**
+ * Wrapper-agnostic like the rest of the section components — the parent owns
+ * <section>, id, background and vertical padding. (It used to bake in py-20,
+ * which double-padded it inside AboutPage's py-32 section.)
+ */
+export const Team: React.FC<TeamProps> = ({ members = teamMembers, columns = 4 }) => {
+  const colClass = columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4';
+
   return (
-    <div className="max-w-7xl mx-auto px-6 py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-        {teamMembers.map((member, i) => (
-          <div key={i} className="bg-white border border-gray-200 group cursor-pointer">
-            <div className="w-full aspect-[5/6] overflow-hidden relative" style={{ backgroundColor: '#8B8B8B' }}>
+    <div className="max-w-plate mx-auto px-6 md:px-10 mt-10">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${colClass} gap-x-8 gap-y-12`}>
+        {members.map((member) => (
+          <div key={member.name} className="group">
+            <div className="relative w-full aspect-[5/6] overflow-hidden bg-paper-sunk">
               <Image
                 src={member.image}
                 alt={member.name}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                className="object-cover"
               />
             </div>
-            <div className="p-5 bg-white">
-              <h3 className="text-base font-bold text-black mb-1">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.role}</p>
+            <div className="pt-5">
+              <h3 className="font-serif text-lg text-ink mb-1">{member.name}</h3>
+              <p className="text-sm text-ink-mid">{member.role}</p>
+
+              {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${member.name} on LinkedIn`}
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-secondary transition-colors"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                  LinkedIn
+                </a>
+              )}
             </div>
           </div>
         ))}
