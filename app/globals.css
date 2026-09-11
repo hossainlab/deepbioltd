@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -17,49 +16,189 @@ body {
   font-kerning: normal;
 }
 
-/* Custom Utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(32, 94, 146, 0.1);
-  /* Promote to its own layer once; do NOT use will-change here —
-     a persistent will-change keeps a GPU layer alive forever. */
-  transform: translateZ(0);
+@layer base {
+  /* EB Garamond carries headings, body, nav and buttons alike. Set once here
+     rather than adding a class to every heading. Logo.tsx force-styles its
+     wordmark inline, so the brand mark is untouched by this. */
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.serif');
+    font-weight: 400;
+    letter-spacing: -0.012em;
+  }
+
+  h1, h2 {
+    font-optical-sizing: auto;
+  }
+
+  /* Garamond's old-style figures suit running text; tables and data opt out
+     with `.tabular` or `font-mono`. */
+  body {
+    font-size: 1.0625rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.gild');
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: theme('colors.linen');
+    color: theme('colors.ink');
+  }
 }
 
-.brand-gradient {
-  background: linear-gradient(135deg, #205E92 0%, #4184C4 100%);
+@layer components {
+  /* Section eyebrow: tracked small caps set in the serif, lining figures. */
+  .eyebrow {
+    font-family: theme('fontFamily.serif');
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-variant-numeric: lining-nums;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    color: theme('colors.ink-faint');
+  }
+
+  /* The same eyebrow with the short rule above it, centred over a heading. */
+  .eyebrow-rule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+  }
+
+  .eyebrow-rule::before {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: theme('colors.gild');
+  }
+
+  /* Hairlines fade into the ground instead of drawing on it. Pair with a
+     border-width utility: `border-t rule-hair`. */
+  .rule-hair {
+    border-color: color-mix(in oklab, theme('colors.ink') 14%, transparent);
+  }
+
+  .rule-hair-dark {
+    border-color: color-mix(in oklab, theme('colors.marble') 16%, transparent);
+  }
+
+  /* Prose statement: two or three large sentences, centred, no furniture. */
+  .statement {
+    max-width: theme('maxWidth.statement');
+    margin-inline: auto;
+    text-align: center;
+    font-size: theme('fontSize.deck.0');
+    line-height: 1.35;
+  }
+
+  /* CTAs are the only rounded elements besides the nav capsule. */
+  .pill,
+  .pill-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    border-radius: 9999px;
+    padding: 0.8rem 1.6rem;
+    font-family: theme('fontFamily.serif');
+    font-size: 1.0625rem;
+    line-height: 1;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  }
+
+  .pill {
+    background: theme('colors.ink');
+    color: theme('colors.marble');
+  }
+
+  .pill:hover {
+    background: theme('colors.laurel');
+  }
+
+  .pill-outline {
+    border: 1px solid color-mix(in oklab, theme('colors.ink') 30%, transparent);
+    color: theme('colors.ink');
+  }
+
+  .pill-outline:hover {
+    border-color: theme('colors.ink');
+  }
+
+  .tabular {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /*
+   * Figure plate. Kept on /case-studies and /services only (scope §6):
+   * a hairline, the image at its natural size, and a serif legend.
+   */
+  .plate {
+    border-top: 1px solid color-mix(in oklab, theme('colors.ink') 14%, transparent);
+    padding-top: 1.25rem;
+  }
+
+  .plate-dark {
+    border-top: 1px solid color-mix(in oklab, theme('colors.marble') 16%, transparent);
+    padding-top: 1.25rem;
+  }
+
+  .plate figcaption,
+  .plate-dark figcaption {
+    font-family: theme('fontFamily.serif');
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin-top: 1rem;
+  }
+
+  /* Figure number, run into the legend the way a journal sets it. */
+  .fig-no {
+    font-variant-numeric: lining-nums tabular-nums;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
 }
 
-.brand-text-gradient {
-  background: linear-gradient(135deg, #205E92 0%, #4184C4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .animate-float {
-    animation: none;
-  }
 }
 
-/* Optimize rendering */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Image optimization */
 img {
   height: auto;
   max-width: 100%;
+}
+
+/*
+ * Retired utilities. Un-migrated pages still set white text on top of these,
+ * so deleting them outright would blank those sections. They are neutral
+ * shims until Phase 5 removes the last reference, then they go.
+ */
+.glass {
+  background: color-mix(in oklab, theme('colors.marble') 92%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid color-mix(in oklab, theme('colors.ink') 12%, transparent);
+  transform: translateZ(0);
+}
+
+.brand-gradient {
+  background: theme('colors.laurel');
+}
+
+/* Used on both light and hard-coded dark heroes, so it cannot pick a colour:
+   it inherits one and marks emphasis with italic instead. */
+.brand-text-gradient {
+  font-style: italic;
+  -webkit-text-fill-color: currentColor;
 }

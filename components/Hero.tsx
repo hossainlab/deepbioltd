@@ -1,118 +1,106 @@
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, Activity, Brain, MousePointer2, Sparkles } from 'lucide-react'
+import { services, servicesWithExamples } from '@/lib/services/data'
 
-import Image from 'next/image'
-
+/**
+ * Two-column editorial opening: the claim on the left, the evidence for it on
+ * the right, on one screen.
+ *
+ * Earlier versions put a raw DESeq2 volcano plot here. It was real output,
+ * which is why it seemed like the honest choice — but a matplotlib export is a
+ * working artifact, not a designed one: it carries its own bold sans title
+ * fighting the page serif, sits on a white ground that reads as a box, and
+ * renders 8pt gene labels at display scale.
+ *
+ * Removing it left the right half empty. The fix was not a new asset but
+ * moving content that was already on the page: the downloadable-report index
+ * used to sit full-width below the fold, where it read as an afterthought.
+ * Beside the headline it does two jobs — it fills the measure, and it puts a
+ * checkable claim next to an unprovable one.
+ */
 export const Hero: React.FC = () => {
-  return (
-    <header className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark">
-      {/* Background Layer — CSS only, no network image (former decorative
-          overlay was near-invisible at opacity-10 but cost a 2000px fetch). */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[100px] rounded-full"></div>
-        <div className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-brand-secondary/15 blur-[100px] rounded-full"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-      </div>
+  const examples = servicesWithExamples;
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center pt-20">
-        <div className="space-y-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-secondary text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-md animate-in fade-in slide-in-from-left-4 duration-1000">
-            <Sparkles className="w-3 h-3 animate-pulse" />
-            Leading Life Science Research Hub in Bangladesh
-          </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight">
-            Data-Driven <br />
-            <span className="brand-text-gradient">Life Science.</span>
+  return (
+    <header className="bg-paper pt-36 pb-20 md:pt-44 md:pb-24">
+      <div className="max-w-plate mx-auto grid gap-16 px-6 md:px-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-20">
+        {/* Claim */}
+        <div>
+          <h1 className="font-serif text-[2.75rem] leading-[1.08] tracking-[-0.02em] sm:text-6xl lg:text-[4rem] text-ink text-balance">
+            Your sequencer produces terabytes. Nobody reads them.
           </h1>
-          <p className="text-xl text-slate-400 max-w-xl leading-relaxed">
-            DeepBio Limited is a Bangladesh-based research startup turning life science data into impactful solutions.
+
+          <p className="mt-10 max-w-measure font-serif text-xl leading-[1.6] text-ink-mid">
+            We turn genomic, transcriptomic and structural data into findings you
+            can put in front of a reviewer &mdash; with the pipelines, the figures
+            and the paper trail behind them.
           </p>
-          <div className="flex flex-col sm:flex-row gap-5 pt-4">
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
-              href="/research"
-              className="px-10 py-5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group"
+              href="/contact"
+              className="bg-brand-primary px-7 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-[#1a4b75]"
             >
-              Explore Our Research
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Start a project
             </Link>
-            <a
-              href="https://deepbioacademy.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-5 border border-white/20 hover:bg-white/5 text-white rounded-2xl font-bold transition-all backdrop-blur-sm hover:border-white/40"
+            <Link
+              href="/services"
+              className="border-b border-rule-strong pb-0.5 text-sm font-semibold text-ink transition-colors hover:border-ink"
             >
-              Training Programs
-            </a>
+              See all {services.length} analyses
+            </Link>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 pt-16 border-t border-white/10">
-            <div className="group cursor-default">
-              <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">250+</div>
-              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Genomes Analyzed</div>
-            </div>
-            <div className="group cursor-default">
-              <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">2+</div>
-              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Partners</div>
-            </div>
-            <div className="group cursor-default">
-              <div className="text-4xl font-bold text-white mb-2 transition-colors group-hover:text-brand-secondary">99%</div>
-              <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Model Precision</div>
-            </div>
-          </div>
+
+          {/* Also does structural work: the evidence column runs taller than
+              the claim, and this closes most of the gap at the foot of it. */}
+          <p className="mt-12 border-t border-rule pt-6 text-sm leading-relaxed text-ink-mid">
+            Not sure which analysis you need? Describe the data and the question
+            to{' '}
+            <a
+              href="mailto:info@deepbioltd.com"
+              className="border-b border-rule-strong text-ink transition-colors hover:border-ink"
+            >
+              info@deepbioltd.com
+            </a>{' '}
+            and we will tell you &mdash; or tell you it is not something we
+            should take on.
+          </p>
         </div>
 
-        <div className="relative hidden lg:block">
-           <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-2xl border border-white/5 animate-float flex items-center justify-center bg-slate-900">
-              <Image
-                src="https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&q=70&w=1000"
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
-                alt="Molecular Research Visualization"
-                fill
-                sizes="(min-width: 1024px) 40vw, 0px"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
-              
-              <div className="relative z-10 w-full px-12 space-y-6">
-                <div className="p-6 glass rounded-3xl border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] transform -translate-x-12 translate-y-6 hover:-translate-y-2 transition-all duration-500 backdrop-blur-xl">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center shadow-lg">
-                      <Brain className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-slate-800 font-bold text-sm">DeepBio Neural-v3</div>
-                      <div className="text-brand-primary text-[10px] font-bold uppercase tracking-widest">Processing Data</div>
-                    </div>
-                  </div>
-                  <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-brand-primary w-[84%] animate-pulse"></div>
-                  </div>
-                </div>
+        {/* Evidence */}
+        <div className="lg:pt-3">
+          <p className="border-b border-rule pb-4 text-sm text-ink-mid">
+            {examples.length} of our {services.length} analyses ship a full report
+            you can read before commissioning anything
+          </p>
 
-                <div className="p-6 glass rounded-3xl border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] transform translate-x-12 -translate-y-6 hover:translate-y-[-10px] transition-all duration-500 backdrop-blur-xl">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 bg-brand-secondary rounded-xl flex items-center justify-center shadow-lg">
-                      <Activity className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-slate-800 font-bold text-sm">Genomic Insights</div>
-                      <div className="text-brand-primary text-[10px] font-bold uppercase tracking-widest">Real-time Stream</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-1 items-end h-10">
-                     {[4, 8, 3, 9, 5, 10, 4, 8, 6, 9].map((h, i) => (
-                       <div key={i} className="flex-1 bg-brand-secondary/60 rounded-t" style={{height: `${h*10}%`}}></div>
-                     ))}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] backdrop-blur-md px-4 py-2 rounded-full border border-white/10 bg-white/5">
-                <MousePointer2 className="w-3 h-3" /> Discover Innovation
-              </div>
-           </div>
+          <ul>
+            {examples.map((service) => (
+              <li key={service.id} className="border-b border-rule/70">
+                <a
+                  href={service.example!.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-baseline justify-between gap-6 py-4"
+                >
+                  <span>
+                    <span className="block font-serif text-[1.0625rem] leading-[1.45] text-ink decoration-rule-strong underline-offset-4 group-hover:underline">
+                      {service.example!.title}
+                    </span>
+                    <span className="mt-1 block text-sm text-ink-faint">
+                      {service.title}
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden
+                    className="shrink-0 text-xs text-ink-faint transition-colors group-hover:text-ink"
+                  >
+                    PDF
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </header>

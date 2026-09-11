@@ -19,8 +19,9 @@ const features = [
   },
   {
     icon: Shield,
-    title: 'HIPAA Compliant',
-    description: 'End-to-end encryption with international data protection standards.',
+    // Was 'HIPAA Compliant' — an unsubstantiated regulatory claim.
+    title: 'Encrypted End to End',
+    description: 'Data encrypted in transit and at rest, with access limited to the assigned analysts.',
   },
 ]
 

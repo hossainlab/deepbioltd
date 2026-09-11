@@ -1,14 +1,12 @@
 import React from 'react'
-import Image from 'next/image'
-import { ArrowRight, GraduationCap, Activity, Users, Code, Compass, Server } from 'lucide-react'
+import { SectionHeading } from './home/SectionHeading'
+import { GraduationCap, Activity, Users, Code, Compass, Server } from 'lucide-react'
 
 const initiatives = [
   {
     badge: 'Online Learning Platform',
     badgeIcon: GraduationCap,
     title: 'DeepBio Academy',
-    titleGradient: 'Academy',
-    titlePrefix: 'DeepBio',
     description: 'Expert-led online training in bioinformatics, computational biology, and AI in life sciences — built to democratise cutting-edge biological education.',
     stats: [
       { value: '6+', label: 'Courses' },
@@ -23,8 +21,6 @@ const initiatives = [
     badge: 'Research Internship',
     badgeIcon: Code,
     title: 'GSA Bioinformatics Internship',
-    titleGradient: 'Bioinformatics Internship',
-    titlePrefix: 'GSA',
     description: 'A collaborative initiative jointly organized by GNOBB, ASI School of Life, and SPSB — committed to nurturing the next generation of bioinformatics researchers through accessible, high-quality, and impact-driven training.',
     stats: [
       { value: '6-Month', label: 'Duration' },
@@ -39,12 +35,11 @@ const initiatives = [
     badge: 'Career Resource',
     badgeIcon: Compass,
     title: 'DeepBio Career Guide',
-    titleGradient: 'Career Guide',
-    titlePrefix: 'DeepBio',
     description: 'A comprehensive resource bridging the gap between academia and industry with curated paths, skill-gap analysis, and mentorship.',
     stats: [
       { value: '50+', label: 'Specialized Roles' },
-      { value: '95%', label: 'Satisfaction' },
+      // TODO(deepbio): restore a satisfaction figure only with a survey and n= behind it.
+      { value: 'Mentored', label: 'Placement Support' },
       { value: 'Industry', label: 'Focused' },
     ],
     cta: { label: 'Explore Careers', href: 'https://careerguide.deepbioltd.com/' },
@@ -55,8 +50,6 @@ const initiatives = [
     badge: 'HPC Infrastructure',
     badgeIcon: Server,
     title: 'BioHPC Lab',
-    titleGradient: 'Lab',
-    titlePrefix: 'BioHPC',
     description: 'High-performance computing platform providing scalable infrastructure and GPU-accelerated nodes for large-scale biological data analysis.',
     stats: [
       { value: 'GPU', label: 'Accelerated' },
@@ -70,12 +63,11 @@ const initiatives = [
   {
     badge: 'AI-Powered Tool',
     badgeIcon: Activity,
-    title: 'DeepAMR',
-    titleGradient: 'AMR',
-    titlePrefix: 'Deep',
+    title: 'Deep AMR',
     description: 'AI-powered antimicrobial resistance prediction from genomic data — helping clinicians make faster, evidence-based treatment decisions.',
     stats: [
-      { value: '95%+', label: 'Accuracy' },
+      // TODO(deepbio): quote accuracy with the task, dataset and held-out n, or leave qualitative.
+      { value: 'Validated', label: 'Resistance Calls' },
       { value: '12+', label: 'Organisms' },
       { value: '<15 min', label: 'Results' },
     ],
@@ -86,9 +78,7 @@ const initiatives = [
   {
     badge: 'Mentorship Program',
     badgeIcon: Users,
-    title: 'BMP',
-    titleGradient: 'Mentorship Program',
-    titlePrefix: 'Bioinformatics',
+    title: 'Bioinformatics Mentorship Program',
     description: 'A structured mentorship program connecting aspiring bioinformaticians with experienced researchers to accelerate their growth.',
     stats: [
       { value: '1:1', label: 'Mentoring' },
@@ -103,67 +93,37 @@ const initiatives = [
 
 export const FeaturedInitiatives: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-5">
-          Featured Initiatives
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
-          Our Initiatives
-        </h2>
-        <p className="text-lg text-slate-500 mt-4 max-w-2xl mx-auto">
-          DeepBio’s core ecosystem of platforms, programs, and tools designed to drive global impact across research, clinical diagnostics, and professional development.
-        </p>
-      </div>
+    <div className="max-w-plate mx-auto px-6 md:px-10">
+      <SectionHeading
+        title="We don't only take on projects. We build the infrastructure."
+        deck="Training, high-performance computing, mentorship and open tools — the platforms we run alongside client work, most of them free to use."
+      />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {initiatives.map((item, i) => (
-          <div 
-            key={i} 
-            className="group relative overflow-hidden rounded-3xl bg-brand-dark flex flex-col transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-brand-primary/30 shadow-2xl hover:shadow-brand-primary/10"
+      <div className="mt-16 grid gap-x-16 md:grid-cols-2">
+        {initiatives.map((item) => (
+          <article
+            key={item.title}
+            className="grid gap-3 border-t border-rule py-7 md:grid-cols-[1fr_auto] md:items-baseline md:gap-8"
           >
-            {/* Glow */}
-            <div className={`absolute ${item.glowPos} w-64 h-64 ${item.glow} blur-[100px] rounded-full pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-700`} />
-
-            <div className="relative z-10 p-8 flex flex-col flex-1">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest mb-6 w-fit transition-colors group-hover:bg-brand-primary/20 group-hover:border-brand-primary/30">
-                <item.badgeIcon className="w-3 h-3" />
-                {item.badge}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight group-hover:text-brand-secondary transition-colors">
-                {item.titlePrefix}<span className="brand-text-gradient"> {item.titleGradient}</span>
+            <div className="max-w-measure">
+              <h3 className="font-serif text-xl leading-snug text-ink">
+                {item.title}
               </h3>
-
-              {/* Description */}
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1 group-hover:text-slate-300 transition-colors">
+              <p className="mt-1 text-sm text-ink-faint">{item.badge}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-mid">
                 {item.description}
               </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-2 mb-6">
-                {item.stats.map((stat, j) => (
-                  <div key={j} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/20">
-                    <div className="text-white font-bold text-sm">{stat.value}</div>
-                    <div className="text-slate-500 text-[10px] uppercase tracking-wider mt-0.5">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <a
-                href={item.cta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3.5 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-xl font-bold text-sm transition-all group-hover:shadow-lg group-hover:shadow-brand-primary/30"
-              >
-                {item.cta.label}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
             </div>
-          </div>
+
+            <a
+              href={item.cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 self-start border-b border-rule-strong text-sm font-semibold text-ink transition-colors hover:border-ink md:mt-1"
+            >
+              {item.cta.label}
+            </a>
+          </article>
         ))}
       </div>
     </div>

@@ -25,7 +25,7 @@ import {
   Terminal,
   Layers
 } from 'lucide-react';
-import { researchMetrics } from '../config/researchMetrics';
+import { servicesWithExamples } from '@/lib/services/data';
 
 const researchGroups = [
   {
@@ -161,10 +161,10 @@ export const ResearchPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Link
-                href="/publications"
+                href="/case-studies"
                 className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
               >
-                View Publications
+                Read a report
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
@@ -182,17 +182,14 @@ export const ResearchPage: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-slate-800 font-extrabold text-lg">Research Output</div>
-                      <div className="text-indigo-600 text-[11px] font-bold uppercase tracking-[0.2em]">Citations: {researchMetrics.citations} | H-Index: {researchMetrics.hIndex}</div>
                     </div>
                   </div>
                   <div className="flex gap-4">
                     <div className="flex-1 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                      <div className="text-xl font-black text-slate-800">{researchMetrics.journals}</div>
-                      <div className="text-[8px] font-bold text-slate-400 uppercase">Journals</div>
-                    </div>
-                    <div className="flex-1 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                      <div className="text-xl font-black text-slate-800">{researchMetrics.patents}</div>
-                      <div className="text-[8px] font-bold text-slate-400 uppercase">Patents</div>
+                      <div className="text-xl font-black text-slate-800">
+                        {servicesWithExamples.length}
+                      </div>
+                      <div className="text-[8px] font-bold text-slate-400 uppercase">Worked reports</div>
                     </div>
                   </div>
                 </div>

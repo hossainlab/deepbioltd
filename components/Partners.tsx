@@ -1,54 +1,58 @@
 import React from 'react'
-
 import Image from 'next/image'
 
+/**
+ * Partner colophon.
+ *
+ * The source logos were all opaque — every one shipped with a baked-in
+ * background, ranging from pure white to rgb(229,234,236) — so on a paper
+ * ground they read as six mismatched boxes. Greyscaling and fading them only
+ * made the pale ones vanish. The fix is upstream: /partner_logos/clean/*
+ * are border-flood-keyed to transparency and trimmed to their bounding box
+ * (see the generation note in this file's history), so what is left is the
+ * mark itself.
+ *
+ * Sizing equalises optical mass rather than height. A wordmark 2.7x wider than
+ * it is tall would dominate a row if every logo shared one height, so caps are
+ * assigned by shape: wide marks get less height, tall marks get more.
+ */
+// Heights are inline, not Tailwind classes: a class name assembled from a
+// data field is not statically visible to the JIT scanner, so `max-h-12` here
+// generated no CSS and every logo fell back to its natural size.
+//
+// Values balance optical mass against legibility. Pure area-matching would set
+// the two-line wordmarks around 29px, too small to read, so text-bearing marks
+// hold more height than their area share.
 const partners = [
-  { name: 'GNOBB', logo: '/partner_logos/GNOBB.png', scale: 'scale-110' },
-  { name: 'ASI School of Life', logo: '/partner_logos/ASISchoolofLife.png', scale: 'scale-125' },
-  { name: 'SPSB', logo: '/partner_logos/SPSB.png', scale: 'scale-110' },
-  { name: 'GSA Bioinformatics Internship', logo: '/partner_logos/GSABioinformaticsInternship.png', scale: 'scale-125' },
-  { name: 'cBLAST', logo: '/partner_logos/cBLAST.jpg', scale: 'scale-90', hasBg: true },
-  { name: 'One Health Lab', logo: '/partner_logos/onehealthlab.jpg', scale: 'scale-100', hasBg: true },
+  { name: 'GNOBB', logo: '/partner_logos/clean/GNOBB.png', h: 68 },
+  { name: 'ASI School of Life', logo: '/partner_logos/clean/ASISchoolofLife.png', h: 54 },
+  { name: 'SPSB', logo: '/partner_logos/clean/SPSB.png', h: 64 },
+  { name: 'GSA Bioinformatics Internship', logo: '/partner_logos/clean/GSABioinformaticsInternship.png', h: 56 },
+  { name: 'cBLAST', logo: '/partner_logos/clean/cBLAST.png', h: 38 },
+  { name: 'One Health Lab', logo: '/partner_logos/clean/onehealthlab.png', h: 64 },
 ]
 
 export const Partners: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        <div className="flex-shrink-0 text-center lg:text-left space-y-2">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[9px] font-bold uppercase tracking-[0.2em]">
-            Strategic Network
-          </div>
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight leading-tight">
-            Strategic Research <br className="hidden lg:block" /> 
-            <span className="text-brand-primary">Partners</span>
-          </h2>
-        </div>
-        
-        <div className="flex-1 w-full">
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 items-center justify-items-center">
-            {partners.map((partner) => (
-              <div 
-                key={partner.name} 
-                className="group relative w-full h-24 flex items-center justify-center rounded-[1.5rem] bg-white border border-slate-50 transition-all duration-500 hover:shadow-[0_15px_35px_rgba(32,94,146,0.08)] hover:border-brand-primary/10 hover:-translate-y-1 overflow-hidden"
-              >
-                {/* Subtle Hover Background */}
-                <div className="absolute inset-0 bg-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className={`relative z-10 w-full h-full flex items-center justify-center p-4 ${partner.scale} transition-transform duration-500 group-hover:scale-[1.15]`}>
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={200}
-                    height={80}
-                    sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 16vw"
-                    className={`max-h-full max-w-full object-contain ${partner.hasBg ? 'mix-blend-multiply' : ''}`}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="max-w-plate mx-auto px-6 md:px-10">
+      <div className="flex flex-col gap-8 border-t border-rule pt-6 lg:flex-row lg:items-center lg:gap-16">
+        <p className="shrink-0 text-sm text-ink-faint">Collaborating with</p>
+
+        <ul className="grid flex-1 grid-cols-3 items-center gap-x-10 gap-y-8 md:grid-cols-6">
+          {partners.map((partner) => (
+            <li key={partner.name} className="flex h-20 items-center justify-center">
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                width={280}
+                height={140}
+                sizes="(max-width: 768px) 33vw, 16vw"
+                style={{ maxHeight: partner.h }}
+                className="h-auto w-auto max-w-full object-contain opacity-95 transition-opacity duration-300 hover:opacity-100"
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

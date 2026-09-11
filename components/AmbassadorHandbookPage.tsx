@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { BookOpen, Users, Target, Sparkles, CheckCircle, Calendar, MessageSquare, Award, FileText, Star, AlertTriangle, Phone, BarChart3, Video, PenLine, Image, Megaphone, Shield, ChevronDown, HelpCircle } from 'lucide-react';
+import { Accordion } from '@/components/ui/Accordion';
 
 const phases = [
   {
@@ -117,29 +118,6 @@ const faqs = [
   },
 ];
 
-const FaqList: React.FC = () => {
-  const [open, setOpen] = useState<number | null>(null);
-  return (
-    <div className="space-y-3">
-      {faqs.map((faq, i) => (
-        <div key={i} className="rounded-2xl border border-slate-200 overflow-hidden">
-          <button
-            className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
-            onClick={() => setOpen(open === i ? null : i)}
-          >
-            <span className="font-semibold text-slate-800 text-sm leading-snug">{faq.q}</span>
-            <ChevronDown className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`} />
-          </button>
-          {open === i && (
-            <div className="px-6 pb-5 bg-white border-t border-slate-100">
-              <p className="text-slate-600 text-sm leading-relaxed pt-4">{faq.a}</p>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 export const AmbassadorHandbookPage: React.FC = () => {
   const tocItems = [
@@ -1079,7 +1057,7 @@ export const AmbassadorHandbookPage: React.FC = () => {
             <p className="text-slate-600 leading-relaxed mb-8">
               Answers to the questions we hear most often. If yours isn't here, reach out via the contact section below.
             </p>
-            <FaqList />
+            <Accordion items={faqs} />
           </section>
 
           {/* 13 Support & Contact */}
