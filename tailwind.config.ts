@@ -1,117 +1,101 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * The palette is derived from one fixed point: the logo blue, #205E92.
- *
- * Everything cool and blue-shifted, because the logo is and the logo is not
- * changing. `abyss` and `deep` are that same hue driven down in lightness
- * rather than a neutral near-black, so the navy bands and the mark read as one
- * family. `helix` is the only warm value in the system and it is not
- * decoration: it is the orange the DESeq2 volcano already uses for
- * up-regulated genes, so it appears where that means something and nowhere
- * else.
- *
- * Measured on the grounds they sit on: slate/chalk 4.6:1, beam/abyss 7.4:1,
- * brand/white 7.0:1 (so white-on-brand buttons pass too).
+ * DeepBio Design System — Inspired by Boltz (boltz.com)
+ * 
+ * Ultra-clean, clear, minimalist biotechnology aesthetic:
+ * - Clean porcelain, chalk, and crisp white grounds
+ * - Deep slate & ink typography with maximum legibility
+ * - Refined monoline borders & subtle sage/stone accents
+ * - Monoline pill badges and spring-transition buttons
  */
-const blue = {
-  abyss: '#071A2C',
-  deep: '#0E3355',
-  brand: '#205E92',
-  beam: '#5AB0E8',
-  helix: '#E08A2C',
-  chalk: '#F4F7FA',
-  paper: '#FFFFFF',
-  ink: '#0B1B2A',
-  slate: '#56697E',
-  rule: '#DCE3EA',
-  'rule-strong': '#B9C5D1',
-}
-
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        ...blue,
+        // Base Grounds
+        surface: {
+          DEFAULT: '#FFFFFF',
+          secondary: '#F8F9FA',
+          tertiary: '#F1F3F5',
+          pale: '#F4F7F6', // Boltz-inspired sage-pale
+        },
+        paper: '#FFFFFF',
+        chalk: '#F8FAFC',
+        'chalk-warm': '#F9F8F6',
+        
+        // Deep compute & dark sections
+        abyss: '#07121E',
+        'abyss-card': '#0B1C2D',
+        deep: '#0E2A44',
 
-        // On the navy grounds. Named for the ground they belong to so a
-        // `text-on-deep` reads as a promise about contrast, not a guess.
-        'on-deep': '#E8F0F7',
-        'on-deep-mid': '#9FB4C7',
-        'on-deep-faint': '#6E8399',
-        'deep-rule': 'rgba(232, 240, 247, 0.14)',
-
-        // `bg-brand` and `bg-brand-primary` both resolve, so the 23 legacy
-        // routes that predate this palette keep compiling while they wait
-        // their turn.
+        // Brand & Accents
         brand: {
-          DEFAULT: blue.brand,
-          primary: blue.brand,
-          secondary: blue.beam,
-          dark: blue.abyss,
+          DEFAULT: '#1E4E79',
+          primary: '#1E4E79',
+          dark: '#07121E',
+          light: '#EBF3FA',
         },
-        primary: blue.brand,
-        signal: blue.helix,
+        beam: '#0284C7',
+        'beam-light': '#E0F2FE',
+        helix: '#D97706',
+        'helix-light': '#FEF3C7',
+        emerald: '#059669',
+        'emerald-light': '#ECFDF5',
 
-        // Warm tokens from the previous direction, repointed at the blue
-        // system. Nothing references these by intent any more; they exist so
-        // an un-migrated page shifts with the rest of the site instead of
-        // staying beige on its own.
-        marble: blue.paper,
-        parchment: blue.chalk,
-        linen: '#E7EDF3',
-        mist: blue.rule,
-        laurel: blue.abyss,
-        moss: blue.deep,
-        sage: blue.beam,
-        gild: blue.brand,
-        'gild-soft': blue.beam,
-        'paper-sunk': blue.chalk,
-        'ink-soft': '#1B3247',
-        'ink-mid': blue.slate,
-        'ink-muted': blue.slate,
-        'ink-faint': '#728598',
+        // Typography Colors
+        ink: '#0A1118',
+        'ink-secondary': '#475569',
+        slate: '#64748B',
+        'slate-light': '#94A3B8',
 
-        // Figure colours. These belong inside a plot and nowhere else.
-        figure: {
-          blue: blue.brand,
-          'blue-light': blue.beam,
-          navy: blue.abyss,
-          orange: blue.helix,
-        },
+        // Borders & Rules
+        rule: '#E2E8F0',
+        'rule-warm': '#E8E6E1',
+        'rule-strong': '#CBD5E1',
+        'deep-rule': 'rgba(255, 255, 255, 0.12)',
+
+        // Dark text tokens
+        'on-deep': '#F8FAFC',
+        'on-deep-mid': '#94A3B8',
+        'on-deep-faint': '#64748B',
       },
       fontFamily: {
-        // Archivo is loaded with its width axis, which is what lets display
-        // lines run expanded while body stays normal without a second family.
-        // `serif` is aliased to it deliberately: legacy markup is full of
-        // `font-serif`, and there is no serif in this system.
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        display: ['clamp(2.25rem, 3.8vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.028em' }],
-        section: ['clamp(1.75rem, 2.6vw, 2.35rem)', { lineHeight: '1.12', letterSpacing: '-0.022em' }],
-        deck: ['clamp(1rem, 1.1vw, 1.125rem)', { lineHeight: '1.65' }],
+        'heading-xl': ['clamp(2.5rem, 4.2vw, 4.25rem)', { lineHeight: '1.04', letterSpacing: '-0.035em', fontWeight: '700' }],
+        'heading-lg': ['clamp(2rem, 3.2vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.028em', fontWeight: '700' }],
+        'heading-md': ['clamp(1.5rem, 2.2vw, 2rem)', { lineHeight: '1.18', letterSpacing: '-0.022em', fontWeight: '600' }],
+        display: ['clamp(2.25rem, 3.8vw, 3.75rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        section: ['clamp(1.75rem, 2.6vw, 2.35rem)', { lineHeight: '1.14', letterSpacing: '-0.022em' }],
+        deck: ['clamp(1.05rem, 1.2vw, 1.25rem)', { lineHeight: '1.6' }],
       },
       maxWidth: {
-        measure: '64ch',
-        prose: '44rem',
-        statement: '48rem',
-        plate: '75rem',
-        wide: '90rem',
-      },
-      boxShadow: {
-        // One shadow: the nav once it has left the hero and needs to sit on
-        // top of content rather than beside it.
-        bar: '0 1px 0 rgba(11, 27, 42, 0.08), 0 8px 24px -16px rgba(11, 27, 42, 0.30)',
+        container: '78rem',
+        plate: '76rem',
+        measure: '65ch',
+        hero: '54ch',
       },
       borderRadius: {
-        DEFAULT: '2px',
+        full: '9999px',
+        DEFAULT: '6px',
+        md: '8px',
+        lg: '12px',
+        xl: '16px',
+        '2xl': '24px',
+      },
+      boxShadow: {
+        subtle: '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02)',
+        card: '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+        nav: '0 1px 0 rgba(0, 0, 0, 0.06)',
       },
     },
   },
