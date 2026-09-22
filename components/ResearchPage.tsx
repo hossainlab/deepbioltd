@@ -1,330 +1,306 @@
+'use client'
 
 import React from 'react'
 import Link from 'next/link'
 import {
   Microscope,
-  Beaker,
   Brain,
   FlaskConical,
   ArrowRight,
-  User,
-  Search,
   Dna,
   ShieldAlert,
   Sprout,
-  Zap,
   Sparkles,
-  Target,
-  BookOpen,
-  Activity,
-  Globe2,
   Database,
   Binary,
   Cpu,
-  RefreshCw,
   Terminal,
-  Layers
-} from 'lucide-react';
-import { servicesWithExamples } from '@/lib/services/data';
+  Layers,
+  Activity,
+  CheckCircle2,
+  FileText,
+  ExternalLink,
+} from 'lucide-react'
+import { servicesWithExamples } from '@/lib/services/data'
 
 const researchGroups = [
   {
-    id: "big-bio",
-    name: "Big Bioinformatics Lab",
-    subtitle: "High-Throughput Genomics",
-    description: "We orchestrate large-scale genomic data processing and distributed computing to decode complex biological signals. Our lab specializes in architecting the technical infrastructure required for massive-scale South Asian population studies.",
+    id: 'big-bio',
+    name: 'Big Bioinformatics Lab',
+    subtitle: 'Population-Scale High-Throughput Genomics',
+    description:
+      'Architecting scalable, distributed cloud infrastructure for large-scale South Asian population studies. Specializing in ancestry-aware variant calling, multi-cohort LD matrix modeling, and high-depth whole genome processing.',
     icon: Binary,
-    tags: ["Big Data", "Distributed Computing", "Genome Architecture"],
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/5",
-    affiliation: "CHIRAL Bangladesh"
+    tags: ['Big Data Genomics', 'Distributed Nextflow', 'South Asian Haplotypes'],
+    color: 'text-beam',
+    bg: 'bg-sky-950/40 border-sky-500/20',
+    affiliation: 'CHIRAL Bangladesh Consortium',
   },
   {
-    id: "gen-gen",
-    name: "The Generative Genomics Lab",
-    subtitle: "Synthetic Biology & AI",
-    description: "Predict the results of future or even impossible gene expression experiments with our generative AI models. We leverage 'pysynthbio', our proprietary Python interface for the Synthesize Bio API, to generate hyper-realistic bulk and single-cell transcriptomic data.",
+    id: 'gen-gen',
+    name: 'The Generative Genomics Lab',
+    subtitle: 'Synthetic Biology & Biological Foundation Models',
+    description:
+      'Predicting the outcomes of in silico gene expression experiments with generative AI architectures. Utilizing pysynthbio (our Python framework for transcriptomic synthesis) to model single-cell perturbation trajectories and gene regulatory networks.',
     icon: Sparkles,
-    tags: ["Generative AI", "pysynthbio API", "Single-Cell Simulation"],
-    color: "text-teal-600",
-    bg: "bg-teal-50",
-    featured: "Powered by pysynthbio"
+    tags: ['Generative AI', 'pysynthbio Framework', 'Single-Cell Perturbations'],
+    color: 'text-amber-400',
+    bg: 'bg-amber-950/40 border-amber-500/20',
+    featured: 'Powered by pysynthbio',
   },
   {
-    id: "insilico",
-    name: "Insilico Medicine",
-    subtitle: "Computational Drug-Discovery",
-    description: "Redefining pharmacology through in-silico modeling. We utilize physics-based simulations and deep learning to identify novel drug-target interactions, accelerating lead optimization from years to weeks.",
+    id: 'insilico',
+    name: 'Insilico Medicine & Structural AI',
+    subtitle: 'De Novo Protein Design & In Silico Therapeutics',
+    description:
+      'Redefining therapeutic discovery using diffusion models (RFdiffusion), structure prediction (AlphaFold/ESM-3), and physics-based molecular docking. Accelerating lead optimization from years to weeks for neglected tropical diseases and regional oncology targets.',
     icon: FlaskConical,
-    tags: ["Drug Discovery", "Molecular Docking", "In-Silico Screening"],
-    color: "text-indigo-600",
-    bg: "bg-indigo-50"
-  }
-];
-
-const researchPrograms = [
-  {
-    id: 1,
-    title: "Genomic Surveillance of Pathogens",
-    lead: "Dr. Tanveer Rahman",
-    status: "Ongoing",
-    focus: "AMR & Infectious Disease",
-    description: "Developing automated pipelines for the real-time monitoring of antibiotic-resistant strains in urban clinical settings.",
-    icon: Microscope,
-    color: "bg-brand-primary/10 text-brand-primary"
+    tags: ['RFdiffusion', 'AlphaFold Modeling', 'PCSK9 / Target Binders'],
+    color: 'text-purple-400',
+    bg: 'bg-purple-950/40 border-purple-500/20',
   },
   {
-    id: 2,
-    title: "AI Frameworks for Rare Disease Diagnostics",
-    lead: "Dr. Samina Hossain",
-    status: "In Review",
-    focus: "Machine Learning",
-    description: "Utilizing deep learning architectures to identify pathogenic variants in non-coding regions for South Asian cohorts.",
-    icon: Brain,
-    color: "bg-brand-secondary/10 text-brand-secondary"
-  },
-  {
-    id: 3,
-    title: "Molecular Dynamics in Protein Folding",
-    lead: "Dr. Rubayet Islam",
-    status: "Early Stage",
-    focus: "Computational Biology",
-    description: "Simulating the interaction of novel small molecules with viral spike proteins using high-throughput computing.",
-    icon: Beaker,
-    color: "bg-slate-100 text-slate-600"
-  }
-];
-
-const researchFocusAreas = [
-  {
-    title: "Cancer Genomics",
-    description: "Unlocking the genetic drivers of oncogenesis through multi-layered somatic mutation analysis and tumor microenvironment modeling.",
-    icon: Dna,
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/10"
-  },
-  {
-    title: "Neurogenomics",
-    description: "Exploring the genomic architecture of neurological disorders using single-cell transcriptomics and complex neural network mapping.",
-    icon: Brain,
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/10"
-  },
-  {
-    title: "Infectious Diseases",
-    description: "Pioneering bioinformatics for rapid pathogen identification and real-time genomic surveillance of emerging infectious threats.",
+    id: 'deep-amr',
+    name: 'Pathogen Genomics & AMR Surveillance',
+    subtitle: 'Real-Time Epidemiological Warning System',
+    description:
+      'Developing AI sequence-to-phenotype classifiers and automated pipelines for real-time monitoring of multidrug-resistant pathogens (Klebsiella, Vibrio, Salmonella) across clinical hospital ICUs and municipal wastewater in Bangladesh.',
     icon: ShieldAlert,
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/10"
+    tags: ['AMR Genomic AI', 'Wastewater Metagenomics', 'WHO GLASS Compliant'],
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-950/40 border-emerald-500/20',
+  },
+]
+
+const strategicPillars = [
+  {
+    title: 'Pathogen Genomics & AMR',
+    description:
+      'Predicting resistance phenotypes directly from raw NGS reads to guide hospital stewardship in urban Bangladesh.',
+    icon: ShieldAlert,
+    tag: 'Public Health',
   },
   {
-    title: "Drug Discovery",
-    description: "Accelerating the therapeutic pipeline through high-fidelity molecular docking simulations and AI-driven lead optimization.",
-    icon: FlaskConical,
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/10"
+    title: 'South Asian Population Genetics',
+    description:
+      'Developing ancestry-calibrated Polygenic Risk Scores (PRS) for cardiometabolic disorders in underrepresented cohorts.',
+    icon: Dna,
+    tag: 'Precision Medicine',
   },
   {
-    title: "AgriBioinformatics",
-    description: "Applying computational genomics to enhance crop resilience and food security through precise trait mapping and soil microbiome analysis.",
+    title: 'Delta Agricultural Resilience',
+    description:
+      'Generative modeling of crop stress responses to engineer salinity- and submergence-tolerant rice cultivars for coastal Bengal.',
     icon: Sprout,
-    color: "text-brand-primary",
-    bg: "bg-brand-primary/10"
-  }
-];
+    tag: 'Climate & Food Security',
+  },
+  {
+    title: 'Rare Pediatric Diagnostics',
+    description:
+      'Deep learning frameworks prioritizing non-coding pathogenic disruptions in consanguineous rare disease families.',
+    icon: Brain,
+    tag: 'Clinical AI',
+  },
+  {
+    title: 'De Novo Binder Design',
+    description:
+      'Computational structural design of high-affinity protein binders against clinical targets including PCSK9 and viral antigens.',
+    icon: FlaskConical,
+    tag: 'Therapeutics',
+  },
+]
 
 export const ResearchPage: React.FC = () => {
   return (
-    <div className="pt-0 min-h-screen bg-white">
-      {/* High-Impact Research Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark pt-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154235602-3c32e98749e7?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
-          <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-brand-primary/20 blur-[150px] rounded-full animate-pulse"></div>
-          <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-indigo-500/10 blur-[150px] rounded-full"></div>
-          
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        </div>
+    <div className="min-h-screen bg-paper">
+      {/* Header Section */}
+      <section className="on-deep relative overflow-hidden bg-abyss pt-36 pb-20 md:pt-44 md:pb-28 border-b border-deep-rule">
+        <div className="absolute inset-0 bio-grid-pattern opacity-30 pointer-events-none" />
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand/20 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-20 items-center py-24">
-          <div className="space-y-12">
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-secondary text-[10px] font-bold uppercase tracking-[0.3em] backdrop-blur-md">
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              Scientific Discovery Hub
-            </div>
-            <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.95] tracking-tight">
-              Frontier <br />
-              <span className="brand-text-gradient">Discovery.</span>
-            </h1>
-            <p className="text-2xl text-slate-300 max-w-xl leading-relaxed font-light">
-              DeepBio bridges the gap between raw biological data and clinical breakthroughs through rigorous computational research and AI innovation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 pt-4">
-              <Link
-                href="/case-studies"
-                className="px-12 py-6 bg-brand-primary hover:bg-[#1a4b75] text-white rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-[0_20px_40px_rgba(32,94,146,0.3)] hover:-translate-y-1 group text-lg"
-              >
-                Read a report
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </div>
+        <div className="max-w-plate mx-auto px-6 md:px-10 relative z-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-slate-900 border border-slate-700 px-3.5 py-1.5 text-xs font-mono text-beam mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>Scientific Discovery &bull; Dhaka Research Laboratories</span>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square rounded-[4rem] overflow-hidden group shadow-2xl border border-white/5 animate-float flex items-center justify-center bg-slate-900/40 backdrop-blur-md">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-transparent"></div>
-              
-              <div className="relative z-10 w-full px-16 space-y-10">
-                <div className="p-8 glass rounded-[2.5rem] border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.7)] transform -translate-x-12 translate-y-8 hover:-translate-y-2 transition-all duration-700">
-                  <div className="flex items-center gap-5 mb-6">
-                    <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                      <BookOpen className="w-8 h-8 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-slate-800 font-extrabold text-lg">Research Output</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-1 p-3 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                      <div className="text-xl font-black text-slate-800">
-                        {servicesWithExamples.length}
+          <h1 className="text-display text-white max-w-[20ch]">
+            Applied Foundational AI for Life Sciences Research.
+          </h1>
+
+          <p className="mt-6 max-w-[62ch] text-deck text-on-deep-mid font-light leading-relaxed">
+            DeepBio bridges biological data and clinical breakthroughs. Grounded in the evidence frameworks of{' '}
+            <strong className="text-white">The Life Sciences AI Handbook</strong>, our research wings operate at the intersection of foundation models, high-performance cloud compute, and critical regional health priorities.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link href="/case-studies" className="btn-light">
+              <span>Read Worked Reports</span>
+              <ArrowRight className="w-4 h-4 ml-2 inline-block" />
+            </Link>
+            <Link href="/contact" className="btn-outline-light">
+              Propose a Research Collaboration
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Research Groups Matrix */}
+      <section className="py-20 md:py-28 bg-chalk">
+        <div className="max-w-plate mx-auto px-6 md:px-10">
+          <div className="max-w-2xl pb-12 border-b border-rule">
+            <span className="data text-brand font-bold text-xs uppercase tracking-wider">
+              Specialized Divisions
+            </span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold text-ink">
+              Our Research Groups &amp; Laboratories
+            </h2>
+            <p className="mt-3 text-slate text-sm leading-relaxed">
+              Autonomous, cross-functional research groups dedicated to foundational biological modeling, cloud bio-compute, and translational clinical science.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            {researchGroups.map((group) => {
+              const Icon = group.icon
+              return (
+                <div
+                  key={group.id}
+                  className="rounded-2xl bg-paper border border-rule p-8 hover:border-brand/40 hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div className="space-y-5">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-xl bg-chalk border border-rule flex items-center justify-center text-brand">
+                        <Icon className="w-6 h-6" />
                       </div>
-                      <div className="text-[8px] font-bold text-slate-400 uppercase">Worked reports</div>
+                      {group.featured && (
+                        <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded bg-amber-50 text-amber-700 border border-amber-200">
+                          {group.featured}
+                        </span>
+                      )}
                     </div>
-                  </div>
-                </div>
 
-                <div className="p-8 glass rounded-[2.5rem] border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.7)] transform translate-x-12 -translate-y-8 hover:translate-y-[-12px] transition-all duration-700">
-                  <div className="flex items-center gap-5 mb-6">
-                    <div className="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-2xl">
-                      <Database className="w-8 h-8 text-white" />
-                    </div>
                     <div>
-                      <div className="text-slate-800 font-extrabold text-lg">Active Nodes</div>
-                      <div className="text-emerald-600 text-[11px] font-bold uppercase tracking-[0.2em]">Genomic Cloud Live</div>
+                      <span className="data text-xs text-brand font-semibold uppercase">{group.subtitle}</span>
+                      <h3 className="text-xl font-bold text-ink mt-1">{group.name}</h3>
+                    </div>
+
+                    <p className="text-sm text-slate leading-relaxed">
+                      {group.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {group.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] font-mono bg-chalk border border-rule px-2.5 py-1 rounded text-slate-700"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  <div className="flex gap-2 items-center text-slate-600">
-                    <Activity className="w-5 h-5 text-emerald-500 animate-pulse" />
-                    <span className="text-xs font-bold uppercase tracking-widest">Processing Node 09-Z</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Specialized Research Labs Section - Modern & Clean */}
-      <section className="py-32 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <header className="mb-20 text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/5 text-brand-primary text-xs font-bold uppercase tracking-wider">
-              <Layers className="w-4 h-4" />
-              Innovation Clusters
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight">Our Research Groups</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light">
-              Specialized labs pushing the boundaries of computational biology and AI-driven discovery
-            </p>
-          </header>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {researchGroups.map((group, index) => (
-              <div
-                key={group.id}
-                className="group relative bg-white rounded-3xl border border-slate-200 hover:border-brand-primary/30 hover:shadow-xl transition-all duration-500 overflow-hidden"
-              >
-                {/* Clean gradient accent */}
-                <div className={`absolute inset-0 ${group.bg} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-
-                {/* Content */}
-                <div className="relative p-8 space-y-6">
-                  {/* Icon */}
-                  <div className={`inline-flex w-16 h-16 rounded-2xl ${group.bg} ${group.color} items-center justify-center`}>
-                    <group.icon className="w-8 h-8" />
-                  </div>
-
-                  {/* Title Section */}
-                  <div className="space-y-2">
-                    <div className={`text-xs font-bold uppercase tracking-wide ${group.color}`}>
-                      {group.subtitle}
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 leading-tight">
-                      {group.name}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-slate-600 text-base leading-relaxed">
-                    {group.description}
-                  </p>
-
-                  {/* Tags - Minimal Design */}
-                  <div className="flex flex-wrap gap-2">
-                    {group.tags.map(tag => (
-                      <span key={tag} className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Featured Badge */}
-                  {group.featured && (
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-primary/10 text-brand-primary rounded-xl">
-                      <Terminal className="w-4 h-4" />
-                      <span className="text-xs font-semibold">{group.featured}</span>
-                    </div>
-                  )}
-
-                  {/* Affiliation Badge */}
-                  {group.affiliation && (
-                    <div className="text-xs text-slate-500">
-                      <span className="font-semibold">Part of:</span> Center for Health Innovation, Research, Action, and Learning - Bangladesh ({group.affiliation})
-                    </div>
-                  )}
-
-                  {/* Clean Footer */}
-                  <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-xs text-slate-400 font-medium flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      Active
+                  <div className="mt-8 pt-4 border-t border-rule flex items-center justify-between text-xs">
+                    <span className="text-slate-500 font-mono flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      Active Research Hub
                     </span>
-                    <button className="text-brand-primary hover:text-brand-secondary transition-colors">
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
+                    <Link
+                      href="/contact"
+                      className="text-brand font-semibold hover:underline flex items-center gap-1"
+                    >
+                      <span>Collaborate</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Strategic Research Focus Section */}
-      <section className="py-32 bg-slate-50/50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-24 space-y-6">
-            <h2 className="text-brand-primary font-bold uppercase tracking-[0.4em] text-xs">Strategic Pillars</h2>
-            <p className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tighter">Our Research Focus</p>
-            <div className="w-20 h-1.5 brand-gradient mx-auto rounded-full"></div>
+      {/* Strategic Research Pillars */}
+      <section className="py-20 md:py-28 bg-paper border-t border-rule">
+        <div className="max-w-plate mx-auto px-6 md:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="data text-brand font-bold text-xs uppercase tracking-wider">
+              Strategic Scientific Pillars
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink">
+              Focus Areas Grounded in Real-World Need
+            </h2>
+            <p className="text-slate text-sm">
+              Applying machine learning, single-cell perturbations, and protein language models to solve acute regional and global biological challenges.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {researchFocusAreas.map((focus, i) => (
-              <div key={i} className="group p-8 rounded-[3rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-3">
-                <div className={`w-16 h-16 rounded-2xl ${focus.bg} ${focus.color} flex items-center justify-center mb-8 transform group-hover:rotate-6 transition-transform`}>
-                  <focus.icon className="w-8 h-8" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {strategicPillars.map((pillar, idx) => {
+              const Icon = pillar.icon
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-xl bg-chalk border border-rule hover:border-brand/30 transition-all flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-lg bg-white border border-rule flex items-center justify-center text-brand">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                        {pillar.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold text-ink">{pillar.title}</h3>
+                    <p className="text-xs text-slate leading-relaxed">{pillar.description}</p>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-rule/60 flex items-center justify-between">
+                    <Link
+                      href="/case-studies"
+                      className="text-xs font-semibold text-brand hover:underline flex items-center gap-1"
+                    >
+                      <span>View related report</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-brand-primary transition-colors">{focus.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed font-medium line-clamp-4">
-                  {focus.description}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </div>
+        </div>
+      </section>
+
+      {/* Handbook Framework Anchor Banner */}
+      <section className="on-deep bg-abyss py-16 border-t border-deep-rule">
+        <div className="max-w-plate mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-xl">
+            <div className="flex items-center gap-2 text-beam text-xs font-mono">
+              <FileText className="w-4 h-4" />
+              <span>EVIDENCE &amp; DECISION FRAMEWORKS</span>
+            </div>
+            <h3 className="text-2xl font-bold text-white">
+              Built in Accordance with The Life Sciences AI Handbook
+            </h3>
+            <p className="text-sm text-on-deep-mid font-light leading-relaxed">
+              Our modeling benchmarks, out-of-distribution validation, and clinical translation protocols adhere strictly to peer-reviewed standards in computational biology and autonomous laboratories.
+            </p>
+          </div>
+
+          <a
+            href="https://lifesciencesaihandbook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-light whitespace-nowrap flex items-center gap-2"
+          >
+            <span>Explore Handbook Standards</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}

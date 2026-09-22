@@ -1,117 +1,119 @@
-
-import React from 'react';
-import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Github, Youtube, Mail, Phone } from 'lucide-react';
-import { Logo } from './Logo';
+import React from 'react'
+import Link from 'next/link'
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Facebook,
+  Youtube,
+  Mail,
+} from 'lucide-react'
+import { Logo } from './Logo'
 
 export const Footer: React.FC = () => {
+  const socials = [
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/company/deepbioltd/',
+      label: 'LinkedIn',
+    },
+    {
+      icon: Twitter,
+      href: 'https://twitter.com/deepbioltd',
+      label: 'X (Twitter)',
+    },
+    {
+      icon: Github,
+      href: 'https://github.com/deepbioltd',
+      label: 'GitHub',
+    },
+    {
+      icon: Facebook,
+      href: 'https://www.facebook.com/deepbioltd',
+      label: 'Facebook',
+    },
+    {
+      icon: Youtube,
+      href: 'https://www.youtube.com/@deepbioltd',
+      label: 'YouTube',
+    },
+  ]
+
+  const footerLinks = [
+    { label: 'Work', href: '/#what-we-do' },
+    { label: 'Models', href: '/#models' },
+    { label: 'Research', href: '/#research' },
+    { label: 'Team', href: '/#team' },
+  ]
+
   return (
-    <footer className="on-deep bg-abyss py-20 text-on-deep">
-      <div className="max-w-plate mx-auto px-6 md:px-10 grid md:grid-cols-4 gap-12">
-        <div className="space-y-6">
-          <Logo isLight />
-          <p className="max-w-measure text-sm leading-relaxed text-on-deep-mid">
-            Innovating at the intersection of AI, bioinformatics, and public health informatics to advance global health.
-          </p>
-          <div className="flex gap-3">
-            {[
-              { icon: Facebook, href: "https://www.facebook.com/deepbioltd", label: "Facebook" },
-              { icon: Linkedin, href: "https://www.linkedin.com/company/deepbioltd/", label: "LinkedIn" },
-              { icon: Twitter, href: "https://twitter.com/deepbioltd", label: "X (Twitter)" },
-              { icon: Github, href: "https://github.com/deepbioltd", label: "GitHub" },
-              { icon: Youtube, href: "https://www.youtube.com/@deepbioltd", label: "YouTube" },
-            ].map((social, i) => (
-              <a
-                key={i}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="flex h-9 w-9 items-center justify-center border border-deep-rule text-on-deep-mid transition-colors hover:border-beam hover:text-beam"
-              >
-                <social.icon className="w-4 h-4" />
-              </a>
-            ))}
+    <footer className="bg-white border-t border-rule text-ink pt-14 pb-12">
+      <div className="max-w-plate mx-auto px-6 md:px-10">
+        {/* Main Row: Left (Brand & Mission) vs Right (Work, Models, Research, Team) */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10 pb-12 border-b border-rule">
+          {/* Left Column: Brand & Mission */}
+          <div className="max-w-md space-y-4">
+            <Logo isLight={false} />
+            <p className="text-xs leading-relaxed text-ink-secondary font-light">
+              DeepBio Limited is an applied computational biology and biomolecular intelligence research hub based in Dhaka, Bangladesh. Grounded in open, reproducible science.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-2 pt-1">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-rule text-slate hover:border-[#205E92] hover:text-white hover:bg-[#205E92] transition-all shadow-xs"
+                >
+                  <social.icon className="w-3.5 h-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: Only Work, Models, Research, Team */}
+          <div className="flex flex-col gap-3 min-w-[140px]">
+            <h4 className="font-mono text-ink font-bold uppercase tracking-wider text-xs">
+              Navigation
+            </h4>
+            <ul className="flex flex-col gap-2.5">
+              {footerLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium text-slate hover:text-[#205E92] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <h4 className="data text-on-deep-faint">Services</h4>
-          <ul className="space-y-3 text-sm">
-            {[
-              { label: 'All Services', href: '/services' },
-              { label: 'Case Studies', href: '/case-studies' },
-              { label: 'Methodology', href: '/methodology' },
-              { label: 'Research Programs', href: '/research-programs' },
-            ].map(link => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-on-deep-mid transition-colors hover:text-beam">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-4">
-          <h4 className="data text-on-deep-faint">Company</h4>
-          <ul className="space-y-3 text-sm">
-            {[
-              { label: 'About', href: '/about' },
-              { label: 'Research', href: '/research' },
-              { label: 'Team', href: '/team' },
-            ].map(link => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-on-deep-mid transition-colors hover:text-beam">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-4">
-          <h4 className="data text-on-deep-faint">Contact</h4>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              <a href="mailto:info@deepbioltd.com" className="text-on-deep-mid transition-colors hover:text-beam">
-                info@deepbioltd.com
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <a href="tel:+8801843381652" className="text-on-deep-mid transition-colors hover:text-beam">
-                +8801843381652
-              </a>
-            </li>
-            <li className="text-on-deep-mid">
-              Dhaka, Bangladesh
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="max-w-plate mx-auto px-6 md:px-10 mt-16 pt-8 border-t border-deep-rule">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-on-deep-faint">
-            © {new Date().getFullYear()} DeepBio Limited. All Rights Reserved.
-            {/* TODO(deepbio): add company registration number and registered
-                office address here — international B2B buyers look for both. */}
+        {/* Bottom Legal & Contact Strip */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate font-light">
+          <p>
+            &copy; {new Date().getFullYear()} DeepBio Limited. Grounded in open, reproducible science.
           </p>
-          <nav aria-label="Legal" className="flex items-center gap-6 text-sm">
-            <Link href="/privacy" className="text-on-deep-mid transition-colors hover:text-beam">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-on-deep-mid transition-colors hover:text-beam">
-              Terms
-            </Link>
-            <Link href="/contact" className="text-on-deep-mid transition-colors hover:text-beam">
-              Contact
-            </Link>
-          </nav>
+
+          <div className="flex items-center gap-5">
+            <a
+              href="mailto:info@deepbioltd.com?subject=DeepBio%20Inquiry"
+              className="text-slate hover:text-[#205E92] transition-colors inline-flex items-center gap-1.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#205E92]" />
+              <span>info@deepbioltd.com</span>
+            </a>
+            <span className="text-slate-300">&bull;</span>
+            <span>Dhaka, Bangladesh</span>
+          </div>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}

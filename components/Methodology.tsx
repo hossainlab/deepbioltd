@@ -1,133 +1,177 @@
+'use client'
 
-import React from 'react';
-import { Layers, Database, Cpu, Terminal, CheckCircle2, FlaskConical, Share2, Shield } from 'lucide-react';
+import React from 'react'
+import Link from 'next/link'
+import {
+  Layers,
+  Database,
+  Cpu,
+  Terminal,
+  CheckCircle2,
+  FlaskConical,
+  ArrowRight,
+  ShieldCheck,
+  FileCheck,
+  ExternalLink,
+} from 'lucide-react'
 
 const steps = [
   {
     icon: Database,
-    title: "Phase I: Data Ingestion & Sovereignty",
-    subtitle: "Ethical & High-Fidelity Data Acquisition",
-    description: "Every project begins with ethics-approved data handling, agreed in writing before any transfer. We ingest raw genomic, proteomic and clinical data from partner groups, verifying integrity with checksums at each hand-off.",
-    details: ["Multi-omics Integration", "Anonymization Protocols", "Real-time Syncing"]
+    phase: 'Phase I',
+    title: 'Data Ingestion & Sovereignty',
+    subtitle: 'Ethical Custody & High-Fidelity Preprocessing',
+    description:
+      'Every collaboration begins with strict ethics-approved data governance agreements. We ingest raw FASTQ, count matrices, atomic coordinate PDBs, and clinical metadata with SHA-256 cryptographic checksums verified at each transfer stage.',
+    details: [
+      'Encrypted client data silos',
+      'Quality control & adapter trimming',
+      'Batch-effect correction protocols',
+    ],
   },
   {
     icon: Cpu,
-    title: "Phase II: Distributed Computation",
-    subtitle: "High-Throughput Processing Clusters",
-    description: "Utilizing our Virtual HQ infrastructure, we deploy scalable cloud-native compute clusters. This phase focuses on sequence alignment, variant calling, and molecular dynamics simulations at global-scale speeds.",
-    details: ["GPU-Accelerated Workflows", "Dynamic Load Balancing", "Low-latency API Nodes"]
+    phase: 'Phase II',
+    title: 'Distributed BioHPC Compute',
+    subtitle: 'Containerized & GPU-Accelerated Pipelines',
+    description:
+      'Deploying scalable cloud compute clusters running containerized Nextflow and Snakemake workflows. Sequence alignments, variant calling, and high-throughput molecular dynamics run on dedicated GPU nodes with deterministic versioning.',
+    details: [
+      'NVIDIA H100/A100 GPU acceleration',
+      'Nextflow Tower workflow orchestration',
+      'Deterministic container locking (Docker/Singularity)',
+    ],
   },
   {
     icon: Terminal,
-    title: "Phase III: Neural Architecture & Modeling",
-    subtitle: "Deep Learning & AI Insights",
-    description: "The core intelligence phase where we apply proprietary deep learning models. We specialize in predicting pathogenicity in non-coding genomic regions and simulating protein-ligand interactions for drug discovery.",
-    details: ["Transformer-based Models", "Pathogenicity Scoring", "Structural Biology AI"]
+    phase: 'Phase III',
+    title: 'Biological Foundation Modeling',
+    subtitle: 'Generative AI & Sequence-to-Structure Inference',
+    description:
+      'The core AI phase applying deep generative transformers, diffusion models, and structural neural networks. We predict pathogenic variant impact, reconstruct single-cell regulatory circuits, and design de novo protein binders.',
+    details: [
+      'RFdiffusion & AlphaFold structural models',
+      'pysynthbio single-cell synthesis',
+      'Ancestry-calibrated Bayesian networks',
+    ],
   },
   {
     icon: FlaskConical,
-    title: "Phase IV: Clinical Validation",
-    subtitle: "From Silicon to Clinical Proof",
-    description: "Every computational insight undergoes rigorous cross-validation with existing biological benchmarks. We collaborate with international labs to ensure that our AI predictions translate accurately to real-world biological outcomes.",
-    details: ["Bench-test Correlation", "Peer-review Verification", "Reproducible Reporting"]
-  }
-];
+    phase: 'Phase IV',
+    title: 'Bench & Clinical Cross-Validation',
+    subtitle: 'Holdout Testing & Publication-Grade Deliverables',
+    description:
+      'Every AI prediction undergoes rigorous out-of-distribution validation, phylogenetic cross-validation, and correlation against empirical biological benchmarks before compilation into a comprehensive scientific report.',
+    details: [
+      'Held-out cohort validation',
+      'Publication-ready vector figures',
+      'Complete reproducible code & data packages',
+    ],
+  },
+]
 
 export const Methodology: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 bg-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Technical Header */}
-        <div className="max-w-3xl mb-24 space-y-8">
-          <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/5 rounded-full border border-primary/10">
-            <Layers className="w-4 h-4 text-primary" />
-            <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Scientific Methodology</span>
+    <div className="min-h-screen bg-paper">
+      {/* Header Section */}
+      <section className="on-deep relative overflow-hidden bg-abyss pt-36 pb-20 md:pt-44 md:pb-28 border-b border-deep-rule">
+        <div className="absolute inset-0 bio-grid-pattern opacity-30 pointer-events-none" />
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand/20 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="max-w-plate mx-auto px-6 md:px-10 relative z-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-slate-900 border border-slate-700 px-3.5 py-1.5 text-xs font-mono text-beam mb-6">
+            <Layers className="w-3.5 h-3.5 text-amber-400" />
+            <span>Scientific Pipeline Architecture</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1]">
-            Our <span className="brand-text-gradient underline decoration-primary/20 underline-offset-8">Research Pipeline</span> Architecture.
+
+          <h1 className="text-display text-white max-w-[18ch]">
+            Rigorous 4-Phase Computational Life Science Pipeline.
           </h1>
-          <p className="text-xl text-slate-500 font-light leading-relaxed">
-            DeepBio's methodology is built on a foundation of computational rigor and biological truth. We've engineered a four-phase pipeline that transforms raw biological noise into clinical clarity.
+
+          <p className="mt-6 max-w-[58ch] text-deck text-on-deep-mid font-light leading-relaxed">
+            DeepBio’s methodology bridges biological truth and computational rigor. We transform noisy high-dimensional sequencing data into verifiable clinical findings through deterministic, reproducible workflows.
           </p>
-        </div>
 
-        {/* Step-by-Step Breakdown */}
-        <div className="space-y-24">
-          {steps.map((step, index) => (
-            <div key={index} className={`flex flex-col lg:flex-row gap-16 items-start ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-              <div className="lg:w-1/2 space-y-8">
-                <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 rounded-[2rem] bg-slate-900 flex items-center justify-center text-white shadow-2xl relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <step.icon className="w-10 h-10 relative z-10" />
-                  </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link href="/contact" className="btn-light">
+              <span>Scope a Project</span>
+              <ArrowRight className="w-4 h-4 ml-2 inline-block" />
+            </Link>
+            <Link href="/case-studies" className="btn-outline-light">
+              View Worked Reports
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Step-by-Step Breakdown */}
+      <section className="py-20 md:py-28 bg-paper">
+        <div className="max-w-plate mx-auto px-6 md:px-10">
+          <div className="space-y-16">
+            {steps.map((step, index) => {
+              const Icon = step.icon
+              return (
+                <div
+                  key={index}
+                  className="grid lg:grid-cols-[14rem_1fr_18rem] gap-8 p-8 rounded-2xl bg-chalk border border-rule hover:border-brand/40 transition-all duration-200"
+                >
+                  {/* Left Phase Label */}
                   <div>
-                    <h2 className="text-3xl font-bold text-slate-900">{step.title}</h2>
-                    <p className="text-primary font-bold text-sm tracking-widest uppercase mt-1">{step.subtitle}</p>
+                    <span className="data text-brand font-bold text-xs uppercase tracking-wider block mb-1">
+                      {step.phase}
+                    </span>
+                    <div className="w-12 h-12 rounded-xl bg-white border border-rule flex items-center justify-center text-brand mb-3">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-500">Pipeline Stage 0{index + 1}/04</span>
+                  </div>
+
+                  {/* Middle Description */}
+                  <div className="space-y-3">
+                    <span className="data text-slate-500 text-xs uppercase font-semibold">{step.subtitle}</span>
+                    <h2 className="text-2xl font-bold text-ink">{step.title}</h2>
+                    <p className="text-sm text-slate leading-relaxed font-light">{step.description}</p>
+                  </div>
+
+                  {/* Right Details Checklist */}
+                  <div className="p-4 rounded-xl bg-white border border-rule space-y-2.5 self-center">
+                    <span className="data text-slate-400 uppercase text-[10px] block mb-2 font-semibold">Key Deliverables</span>
+                    {step.details.map((detail, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                
-                <p className="text-lg text-slate-600 leading-relaxed font-light">
-                  {step.description}
-                </p>
+              )
+            })}
+          </div>
+        </div>
+      </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {step.details.map((detail, dIdx) => (
-                    <div key={dIdx} className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-primary/30 transition-all">
-                      <CheckCircle2 className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                      <span className="text-sm font-bold text-slate-700">{detail}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Technical Visual Representation */}
-              <div className="lg:w-1/2 w-full h-[400px] bg-slate-50 rounded-[3rem] border border-slate-100 relative overflow-hidden flex items-center justify-center p-12 group shadow-inner">
-                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <step.icon className="w-64 h-64 text-primary" />
-                 </div>
-                 <div className="relative z-10 w-full max-w-sm p-8 glass rounded-[2.5rem] border-white shadow-2xl space-y-6">
-                    <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                       <div className="h-full bg-primary w-[75%] animate-pulse"></div>
-                    </div>
-                    <div className="space-y-4">
-                       {[1, 2, 3].map(i => (
-                         <div key={i} className="flex items-center gap-4">
-                            <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
-                               <div className="w-2 h-2 rounded-full bg-primary animate-ping"></div>
-                            </div>
-                            <div className="h-4 bg-slate-100 rounded-lg flex-1"></div>
-                         </div>
-                       ))}
-                    </div>
-                 </div>
-              </div>
+      {/* Standards & Evidence Framework Banner */}
+      <section className="on-deep bg-abyss py-16 border-t border-deep-rule">
+        <div className="max-w-plate mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-xl">
+            <div className="flex items-center gap-2 text-beam text-xs font-mono">
+              <ShieldCheck className="w-4 h-4" />
+              <span>UNCOMPROMISING SCIENTIFIC INTEGRITY</span>
             </div>
-          ))}
-        </div>
+            <h3 className="text-2xl font-bold text-white">
+              Compliant with International Peer-Review Standards
+            </h3>
+            <p className="text-sm text-on-deep-mid font-light leading-relaxed">
+              Our computational methodologies adhere strictly to the benchmarking and reproducibility guidelines outlined in The Life Sciences AI Handbook.
+            </p>
+          </div>
 
-        {/* Global Standards Footer */}
-        <div className="mt-32 p-16 bg-slate-900 rounded-[4rem] text-white relative overflow-hidden group">
-           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] rounded-full translate-x-32 -translate-y-32"></div>
-           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-              <div className="max-w-xl space-y-4">
-                 <div className="flex items-center gap-3 text-primary">
-                    <Shield className="w-6 h-6" />
-                    <span className="text-sm font-bold uppercase tracking-[0.2em]">Quality Assurance</span>
-                 </div>
-                 <h2 className="text-4xl font-bold">Uncompromising Integrity.</h2>
-                 <p className="text-slate-400 font-light leading-relaxed">
-                   Our methodology is reviewed annually by international advisory boards to ensure our computational pipelines meet the rigorous demands of modern clinical science.
-                 </p>
-              </div>
-              <div className="flex gap-4">
-                 <button className="px-10 py-5 bg-primary text-white rounded-2xl font-bold hover:bg-opacity-90 shadow-2xl shadow-primary/20 transition-all flex items-center gap-3">
-                    Partner With Our Lab <Share2 className="w-5 h-5" />
-                 </button>
-              </div>
-           </div>
+          <Link href="/contact" className="btn-light whitespace-nowrap flex items-center gap-2">
+            <span>Partner With Our Lab</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </div>
+      </section>
     </div>
-  );
-};
+  )
+}

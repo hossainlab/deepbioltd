@@ -9,9 +9,8 @@
 }
 
 html {
-  /* The bar is fixed, so an in-page anchor would otherwise land its heading
-     underneath it. */
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -20,56 +19,148 @@ body {
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1;
   font-kerning: normal;
+  background-color: #FFFFFF;
+  color: #0A1118;
 }
 
 @layer base {
-  /* Archivo carries the whole interface. Display sizes run expanded and tight;
-     body sits at normal width. One family, two postures — which is why the
-     wordmark in Logo.tsx, set in the platform grotesque and deliberately left
-     alone, sits inside this system instead of fighting it. */
   h1, h2, h3, h4 {
     font-family: theme('fontFamily.sans');
-    font-weight: 620;
-    letter-spacing: -0.022em;
-  }
-
-  h1, h2 {
-    font-variation-settings: 'wdth' 112;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.025em;
+    color: #0A1118;
   }
 
   body {
     font-size: 1rem;
     line-height: 1.6;
-  }
-
-  :focus-visible {
-    outline: 2px solid theme('colors.brand.DEFAULT');
-    outline-offset: 3px;
-  }
-
-  /* On navy the brand blue disappears into the ground, so the ring switches
-     to the value that is legible there. */
-  .on-deep :focus-visible,
-  .on-deep:focus-visible {
-    outline-color: theme('colors.beam');
+    color: #0A1118;
   }
 
   ::selection {
-    background: theme('colors.brand.DEFAULT');
-    color: #fff;
+    background: #1E4E79;
+    color: #FFFFFF;
   }
 }
 
 @layer components {
-  /*
-   * The rung. Four ticks over a baseline — the rungs between the two strands
-   * of the logo mark, pulled out and used as the page's section marker.
-   *
-   * It replaces the tracked-out uppercase eyebrow that used to sit above every
-   * heading. The eyebrow restated the nav label; this marks where a section
-   * starts and carries the brand while doing it.
-   */
+  /* Boltz-Style Pill Badge */
+  .pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 1.75rem;
+    padding: 0 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid theme('colors.rule-strong');
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    color: theme('colors.ink');
+    background: transparent;
+  }
+
+  /* Boltz-Style Pill Buttons */
+  .btn-boltz-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    border-radius: 9999px;
+    background-color: theme('colors.ink');
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
+  }
+
+  .btn-boltz-primary:hover {
+    background-color: theme('colors.brand.DEFAULT');
+  }
+
+  .btn-boltz-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: theme('colors.ink');
+    border: 1px solid theme('colors.rule-strong');
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: all 180ms ease;
+  }
+
+  .btn-boltz-secondary:hover {
+    background-color: theme('colors.chalk');
+    border-color: theme('colors.ink');
+  }
+
+  .btn,
+  .btn-light,
+  .btn-ghost,
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn {
+    background: theme('colors.ink');
+    color: #FFFFFF;
+    border: 1px solid transparent;
+  }
+
+  .btn:hover {
+    background: theme('colors.brand.DEFAULT');
+  }
+
+  .btn-light {
+    background: #FFFFFF;
+    color: theme('colors.ink');
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-light:hover {
+    background: #F1F5F9;
+  }
+
+  .btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    background: transparent;
+  }
+
+  .btn-outline-light:hover {
+    border-color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .btn-ghost {
+    border: 1px solid theme('colors.rule-strong');
+    color: theme('colors.ink');
+    background: transparent;
+  }
+
+  .btn-ghost:hover {
+    background: theme('colors.chalk');
+    border-color: theme('colors.ink');
+  }
+
+  /* Monoline Section Rungs */
   .rung {
     height: 11px;
     background:
@@ -84,122 +175,12 @@ body {
       repeating-linear-gradient(to right, theme('colors.beam') 0 1.5px, transparent 1.5px 15px) 0 0 / 61px 11px no-repeat;
   }
 
-  /* Buttons. Square-ish at 2px: the mark is drawn with round caps, so a pill
-     would double the roundness and a hard 0 would contradict it. */
-  .btn,
-  .btn-ghost,
-  .btn-outline-light,
-  .btn-light {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2px;
-    padding: 0.85rem 1.5rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.005em;
-    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
-  }
-
-  .btn {
-    background: theme('colors.brand.DEFAULT');
-    color: #fff;
-  }
-
-  .btn:hover {
-    background: #1A4E7A;
-  }
-
-  .btn-ghost {
-    border: 1px solid theme('colors.rule-strong');
-    color: theme('colors.ink');
-  }
-
-  .btn-ghost:hover {
-    border-color: theme('colors.brand.DEFAULT');
-    color: theme('colors.brand.DEFAULT');
-  }
-
-  /* On navy the filled button inverts rather than restating the blue, which
-     at that size would sit almost on top of the ground. */
-  .btn-light {
-    background: theme('colors.paper');
-    color: theme('colors.abyss');
-  }
-
-  .btn-light:hover {
-    background: theme('colors.beam');
-  }
-
-  .btn-outline-light {
-    /* Heavier than the hairline rules around it: this one has to read as an
-       edge you can click, not as a divider. */
-    border: 1px solid rgba(232, 240, 247, 0.34);
-    color: theme('colors.on-deep');
-  }
-
-  .btn-outline-light:hover {
-    border-color: theme('colors.beam');
-    color: theme('colors.beam');
-  }
-
-  /* Text link that has to read as a link without a button around it. */
-  .link-rule {
-    border-bottom: 1px solid theme('colors.rule-strong');
-    padding-bottom: 1px;
-    font-weight: 600;
-    color: theme('colors.ink');
-    transition: border-color 140ms ease, color 140ms ease;
-  }
-
-  .link-rule:hover {
-    border-color: theme('colors.brand.DEFAULT');
-    color: theme('colors.brand.DEFAULT');
-  }
-
-  .link-rule-deep {
-    border-bottom: 1px solid theme('colors.deep-rule');
-    padding-bottom: 1px;
-    font-weight: 600;
-    color: theme('colors.on-deep');
-    transition: border-color 140ms ease, color 140ms ease;
-  }
-
-  .link-rule-deep:hover {
-    border-color: theme('colors.beam');
-    color: theme('colors.beam');
-  }
-
-  /* Numbers, units, axis labels, file types. Never running prose. */
+  /* Telemetry, Data & Numbers */
   .data {
     font-family: theme('fontFamily.mono');
     font-variant-numeric: lining-nums tabular-nums;
     font-size: 0.75rem;
     letter-spacing: 0.02em;
-  }
-
-  .tabular {
-    font-variant-numeric: lining-nums tabular-nums;
-  }
-
-  /* Figure plate: a hairline, the image, a legend. Used on /case-studies and
-     /services, where a buyer has already arrived and wants the evidence. */
-  .plate {
-    border-top: 1px solid theme('colors.rule');
-    padding-top: 1.25rem;
-  }
-
-  .plate-dark {
-    border-top: 1px solid theme('colors.deep-rule');
-    padding-top: 1.25rem;
-  }
-
-  .plate figcaption,
-  .plate-dark figcaption {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-top: 1rem;
   }
 
   .fig-no {
@@ -209,92 +190,17 @@ body {
     letter-spacing: 0.02em;
     color: theme('colors.brand.DEFAULT');
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .bio-grid-pattern {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   }
-}
 
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-/*
- * Shims for routes that have not been rebuilt yet. Un-migrated pages set white
- * text on top of these, so deleting them outright would blank those sections.
- * They resolve to something quiet in the blue system and go when the last
- * reference does.
- */
-.glass {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid theme('colors.rule');
-  transform: translateZ(0);
-}
-
-.brand-gradient {
-  background: theme('colors.abyss');
-}
-
-.brand-text-gradient {
-  color: theme('colors.brand.DEFAULT');
-  -webkit-text-fill-color: theme('colors.brand.DEFAULT');
-}
-
-/* Legacy eyebrow / pill / statement classes, kept compiling but stripped back
-   to the current system rather than reproducing the old warm one. */
-.eyebrow {
-  font-family: theme('fontFamily.mono');
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  color: theme('colors.slate');
-}
-
-.pill,
-.pill-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  border-radius: 2px;
-  padding: 0.85rem 1.5rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.pill {
-  background: theme('colors.brand.DEFAULT');
-  color: #fff;
-}
-
-.pill-outline {
-  border: 1px solid theme('colors.rule-strong');
-  color: theme('colors.ink');
-}
-
-.statement {
-  max-width: theme('maxWidth.statement');
-  font-size: theme('fontSize.deck.0');
-  line-height: 1.6;
-}
-
-.rule-hair {
-  border-color: theme('colors.rule');
-}
-
-.rule-hair-dark {
-  border-color: theme('colors.deep-rule');
+  .bio-card-dark {
+    background: linear-gradient(180deg, rgba(14, 42, 68, 0.5) 0%, rgba(7, 18, 30, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+  }
 }

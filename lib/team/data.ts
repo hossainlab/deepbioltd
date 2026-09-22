@@ -36,9 +36,9 @@ export const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/muhibullah-shahjahan/',
   },
   {
-    name: 'Muntasim Fuad',
-    role: 'Bioinformatics Analyst',
-    image: '/images/team/fuad.png',
+    name: 'Sheikh Naem Islam Abhi',
+    role: 'CADD Scientist',
+    image: '/images/team/abhi.jpg',
     group: 'science',
   },
   {
