@@ -14,9 +14,9 @@ interface AccordionProps {
 }
 
 /**
- * Hairline-ruled disclosure list. No card, no chevron icon — a thin plus/minus
- * rule set in the interface face, which is quieter and reads as typographic
- * rather than as UI kit furniture.
+ * Hairline-ruled disclosure list. No card, no chevron icon — a plus/minus set in
+ * the brand blue, which is quieter than an icon set and keeps the accent doing
+ * one consistent job across the page: marking the thing you can act on.
  *
  * Extracted from the identical implementations that had been copied into
  * AmbassadorHandbookPage and CareerGuideHandbookPage.
@@ -39,12 +39,12 @@ export const Accordion: React.FC<AccordionProps> = ({ items, defaultOpen }) => {
               className="group flex w-full items-baseline justify-between gap-8 py-5 text-left"
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              <span className="font-serif text-lg leading-snug text-ink">
+              <span className="text-lg font-semibold leading-snug text-ink">
                 {item.q}
               </span>
               <span
                 aria-hidden
-                className="shrink-0 text-lg leading-none text-ink-faint transition-colors group-hover:text-ink"
+                className="shrink-0 text-lg leading-none text-brand transition-colors group-hover:text-ink"
               >
                 {isOpen ? '–' : '+'}
               </span>
@@ -52,7 +52,7 @@ export const Accordion: React.FC<AccordionProps> = ({ items, defaultOpen }) => {
 
             {isOpen && (
               <div id={panelId} className="pb-6 pr-8">
-                <p className="max-w-measure text-[0.9375rem] leading-relaxed text-ink-mid">
+                <p className="max-w-measure text-[0.9375rem] leading-relaxed text-slate">
                   {item.a}
                 </p>
               </div>

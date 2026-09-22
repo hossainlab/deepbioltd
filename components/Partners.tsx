@@ -36,7 +36,7 @@ export const Partners: React.FC = () => {
   return (
     <div className="max-w-plate mx-auto px-6 md:px-10">
       <div className="flex flex-col gap-8 border-t border-rule pt-6 lg:flex-row lg:items-center lg:gap-16">
-        <p className="shrink-0 text-sm text-ink-faint">Collaborating with</p>
+        <p className="data shrink-0 text-slate">Collaborating with</p>
 
         <ul className="grid flex-1 grid-cols-3 items-center gap-x-10 gap-y-8 md:grid-cols-6">
           {partners.map((partner) => (
@@ -48,7 +48,7 @@ export const Partners: React.FC = () => {
                 height={140}
                 sizes="(max-width: 768px) 33vw, 16vw"
                 style={{ maxHeight: partner.h }}
-                className="h-auto w-auto max-w-full object-contain opacity-95 transition-opacity duration-300 hover:opacity-100"
+                className="h-auto w-auto max-w-full object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
               />
             </li>
           ))}

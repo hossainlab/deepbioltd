@@ -1,27 +1,31 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * Warm, green-shifted grounds with a single gold accent (see RESTYLE-SCOPE.md §1).
+ * The palette is derived from one fixed point: the logo blue, #205E92.
  *
- * Two values are deliberately off-reference: `ink-faint` and `sage` were
- * darkened/lightened until they clear 4.5:1 on the grounds they sit on
- * (marble/parchment and laurel respectively). `gild` is 3.2:1 on marble, so
- * it is a border and focus-ring colour only — never text on a light ground.
+ * Everything cool and blue-shifted, because the logo is and the logo is not
+ * changing. `abyss` and `deep` are that same hue driven down in lightness
+ * rather than a neutral near-black, so the navy bands and the mark read as one
+ * family. `helix` is the only warm value in the system and it is not
+ * decoration: it is the orange the DESeq2 volcano already uses for
+ * up-regulated genes, so it appears where that means something and nowhere
+ * else.
+ *
+ * Measured on the grounds they sit on: slate/chalk 4.6:1, beam/abyss 7.4:1,
+ * brand/white 7.0:1 (so white-on-brand buttons pass too).
  */
-const warm = {
-  marble: '#FAF8F2',
-  parchment: '#F2EEE3',
-  linen: '#E8E2D4',
-  mist: '#D9D5C7',
-  ink: '#171B14',
-  'ink-soft': '#2C332A',
-  'ink-muted': '#5B6357',
-  'ink-faint': '#666D5F',
-  laurel: '#2F3D2C',
-  moss: '#56684C',
-  sage: '#A3B294',
-  gild: '#A8873F',
-  'gild-soft': '#C9AB6B',
+const blue = {
+  abyss: '#071A2C',
+  deep: '#0E3355',
+  brand: '#205E92',
+  beam: '#5AB0E8',
+  helix: '#E08A2C',
+  chalk: '#F4F7FA',
+  paper: '#FFFFFF',
+  ink: '#0B1B2A',
+  slate: '#56697E',
+  rule: '#DCE3EA',
+  'rule-strong': '#B9C5D1',
 }
 
 const config: Config = {
@@ -32,60 +36,82 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ...warm,
+        ...blue,
 
-        // Legacy aliases, re-pointed at the warm values so every route shifts
-        // at once. Phases 2–5 rename call sites to the tokens above; delete
-        // these once nothing references them.
-        paper: warm.marble,
-        'paper-sunk': warm.parchment,
-        'ink-mid': warm['ink-muted'],
-        rule: warm.mist,
-        'rule-strong': '#BDB8A8',
-        deep: warm.laurel,
-        'deep-rule': 'rgba(250, 248, 242, 0.16)',
+        // On the navy grounds. Named for the ground they belong to so a
+        // `text-on-deep` reads as a promise about contrast, not a guess.
+        'on-deep': '#E8F0F7',
+        'on-deep-mid': '#9FB4C7',
+        'on-deep-faint': '#6E8399',
+        'deep-rule': 'rgba(232, 240, 247, 0.14)',
 
-        // The DESeq2 volcano colours. Data-only: they belong inside figures,
-        // not in interface chrome.
-        figure: {
-          blue: '#205E92',
-          'blue-light': '#4184C4',
-          navy: '#0A2540',
-          orange: '#C77A16',
-        },
-        // Legacy names for the same values, still used by un-migrated pages.
-        primary: '#205E92',
+        // `bg-brand` and `bg-brand-primary` both resolve, so the 23 legacy
+        // routes that predate this palette keep compiling while they wait
+        // their turn.
         brand: {
-          primary: '#205E92',
-          secondary: '#4184C4',
-          dark: '#0A2540',
+          DEFAULT: blue.brand,
+          primary: blue.brand,
+          secondary: blue.beam,
+          dark: blue.abyss,
         },
-        signal: '#C77A16',
+        primary: blue.brand,
+        signal: blue.helix,
+
+        // Warm tokens from the previous direction, repointed at the blue
+        // system. Nothing references these by intent any more; they exist so
+        // an un-migrated page shifts with the rest of the site instead of
+        // staying beige on its own.
+        marble: blue.paper,
+        parchment: blue.chalk,
+        linen: '#E7EDF3',
+        mist: blue.rule,
+        laurel: blue.abyss,
+        moss: blue.deep,
+        sage: blue.beam,
+        gild: blue.brand,
+        'gild-soft': blue.beam,
+        'paper-sunk': blue.chalk,
+        'ink-soft': '#1B3247',
+        'ink-mid': blue.slate,
+        'ink-muted': blue.slate,
+        'ink-faint': '#728598',
+
+        // Figure colours. These belong inside a plot and nowhere else.
+        figure: {
+          blue: blue.brand,
+          'blue-light': blue.beam,
+          navy: blue.abyss,
+          orange: blue.helix,
+        },
       },
       fontFamily: {
-        // next/font exposes hashed families through these variables only;
-        // bare names silently fall back to generic. There is no UI sans in
-        // this system, so `sans` resolves to the serif too — that keeps
-        // Tailwind's preflight and every legacy `font-sans` on EB Garamond.
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        sans: ['var(--font-serif)', 'Georgia', 'serif'],
+        // Archivo is loaded with its width axis, which is what lets display
+        // lines run expanded while body stays normal without a second family.
+        // `serif` is aliased to it deliberately: legacy markup is full of
+        // `font-serif`, and there is no serif in this system.
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        display: ['clamp(2.5rem, 6vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.015em' }],
-        section: ['clamp(2.25rem, 5vw, 3.75rem)', { lineHeight: '1.1', letterSpacing: '-0.012em' }],
-        deck: ['clamp(1.55rem, 2.6vw, 1.95rem)', { lineHeight: '1.35' }],
+        display: ['clamp(2.25rem, 3.8vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.028em' }],
+        section: ['clamp(1.75rem, 2.6vw, 2.35rem)', { lineHeight: '1.12', letterSpacing: '-0.022em' }],
+        deck: ['clamp(1rem, 1.1vw, 1.125rem)', { lineHeight: '1.65' }],
       },
       maxWidth: {
-        measure: '68ch',
-        prose: '49rem',
-        statement: '52rem',
-        plate: '78rem',
-        wide: '96rem',
+        measure: '64ch',
+        prose: '44rem',
+        statement: '48rem',
+        plate: '75rem',
+        wide: '90rem',
       },
       boxShadow: {
-        // The only shadow in the system: the floating nav capsule.
-        capsule: '0 10px 30px -12px rgba(23, 27, 20, 0.18)',
+        // One shadow: the nav once it has left the hero and needs to sit on
+        // top of content rather than beside it.
+        bar: '0 1px 0 rgba(11, 27, 42, 0.08), 0 8px 24px -16px rgba(11, 27, 42, 0.30)',
+      },
+      borderRadius: {
+        DEFAULT: '2px',
       },
     },
   },

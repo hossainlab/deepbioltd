@@ -1,23 +1,26 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, JetBrains_Mono } from 'next/font/google'
+import { Archivo, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import ScrollHandler from '@/components/ScrollHandler'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
-// EB Garamond does everything: headings, body, nav, buttons. Real italics are
-// loaded because display lines mix roman and italic within one sentence.
-const garamond = EB_Garamond({
+// One family for the whole interface, loaded with its width axis so display
+// lines can run expanded while body stays normal. Archivo is a grotesque, which
+// is the reason it is here: the wordmark in Logo.tsx is set in the platform
+// grotesque and is not being changed, so the page type has to meet it there.
+const archivo = Archivo({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-sans',
   display: 'swap',
-  style: ['normal', 'italic'],
+  axes: ['wdth'],
 })
 
-// Mono is reserved for data and tabular figures — never interface chrome.
-const mono = JetBrains_Mono({
+// Mono is reserved for numbers, units and axis labels — never interface chrome.
+const mono = IBM_Plex_Mono({
   subsets: ['latin'],
+  weight: ['400', '500', '600'],
   variable: '--font-mono',
   display: 'swap',
 })
@@ -63,7 +66,7 @@ export const metadata: Metadata = {
   },
 
   other: {
-    'theme-color': '#FAF8F2',
+    'theme-color': '#071A2C',
   },
 }
 
@@ -73,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${garamond.variable} ${mono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${mono.variable}`}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -104,7 +107,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-serif bg-marble text-ink antialiased overflow-x-hidden">
+      <body className="font-sans bg-paper text-ink antialiased overflow-x-hidden">
         <div className="relative min-h-screen overflow-x-hidden">
           <SmoothScroll />
           <ScrollHandler />

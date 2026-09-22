@@ -5,7 +5,9 @@ import { leadership } from '@/lib/team/data';
 import { SectionHeading } from './SectionHeading';
 
 /**
- * Portraits set as plates. Name, role at DeepBio, and a way to reach them.
+ * Names and faces. For a group selling analysis from Dhaka to reviewers abroad,
+ * this is the section that does the most work per pixel, so it gets real
+ * portraits at size rather than avatars in a row.
  */
 export const Leadership: React.FC = () => {
   return (
@@ -15,10 +17,10 @@ export const Leadership: React.FC = () => {
         deck="Research led from Dhaka. You deal with the people who run the analysis, not an account manager."
       />
 
-      <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-10">
+      <div className="mt-14 grid gap-10 md:grid-cols-3">
         {leadership.map((member) => (
-          <div key={member.name} className="border-t border-rule pt-6">
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper-sunk">
+          <div key={member.name}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden border border-rule bg-chalk">
               <Image
                 src={member.image}
                 alt={member.name}
@@ -28,15 +30,15 @@ export const Leadership: React.FC = () => {
               />
             </div>
 
-            <h3 className="mt-6 font-serif text-xl text-ink">{member.name}</h3>
-            <p className="mt-1 text-sm text-ink-mid">{member.role}</p>
+            <h3 className="mt-5 text-lg font-semibold text-ink">{member.name}</h3>
+            <p className="data mt-1.5 text-slate">{member.role}</p>
 
             {member.linkedin && (
               <a
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block border-b border-rule-strong text-sm text-ink-mid transition-colors hover:border-ink hover:text-ink"
+                className="link-rule mt-4 inline-block text-[0.9375rem]"
               >
                 LinkedIn
               </a>
@@ -45,11 +47,8 @@ export const Leadership: React.FC = () => {
         ))}
       </div>
 
-      <p className="mt-12 text-[0.9375rem]">
-        <Link
-          href="/team"
-          className="border-b border-rule-strong text-ink transition-colors hover:border-ink"
-        >
+      <p className="mt-10 text-[0.9375rem]">
+        <Link href="/team" className="link-rule">
           The full team
         </Link>
       </p>

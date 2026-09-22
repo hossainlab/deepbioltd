@@ -4,8 +4,7 @@ import React from 'react'
  * A running band, not five cards.
  *
  * Icons went out with the card shells: a generic person-glyph above the word
- * "Researchers" restates the word in a worse medium. This reads as a masthead
- * line — who the work is for, at a glance, in one band.
+ * "Researchers" restates the word in a worse medium.
  */
 const audienceList = [
   {
@@ -33,14 +32,16 @@ const audienceList = [
 export const WhoWeServe: React.FC = () => {
   return (
     <div className="max-w-plate mx-auto px-6 md:px-10">
-      <dl className="grid gap-x-10 border-t border-rule sm:grid-cols-2 lg:grid-cols-5">
+      <p className="data text-slate">Who the work is for</p>
+
+      <dl className="mt-6 grid gap-x-10 border-t border-rule sm:grid-cols-2 lg:grid-cols-5">
         {audienceList.map((audience) => (
           <div
             key={audience.title}
             className="border-b border-rule py-6 lg:border-b-0"
           >
-            <dt className="font-serif text-lg text-ink">{audience.title}</dt>
-            <dd className="mt-1.5 text-sm leading-relaxed text-ink-mid">
+            <dt className="text-base font-semibold text-ink">{audience.title}</dt>
+            <dd className="mt-1.5 text-sm leading-relaxed text-slate">
               {audience.description}
             </dd>
           </div>

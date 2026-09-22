@@ -1,15 +1,18 @@
 import React from 'react';
-import Image from 'next/image';
 import { processSteps } from '@/lib/home/process';
 import { SectionHeading } from './SectionHeading';
 
 /**
- * The one place on the page that carries numbers, because this is the one
- * place the content is genuinely a sequence. Numbering the capability list or
- * the section headers would be ornament wearing the costume of structure.
+ * The one place on the page that carries numbers, because this is the one place
+ * the content is genuinely a sequence.
  *
- * Set on the dark ground so the run of paper sections has a break in it, and
- * so the workflow schematic reads as a plate rather than another white box.
+ * The schematic that used to sit beside this list is gone. It baked in its own
+ * bold-sans title under the heading, ran its own 1–5 numbering beside this 1–4
+ * list, and rendered its sublabels near 7pt at the size it was placed. It was
+ * the list again, in a worse medium.
+ *
+ * What replaced it is the rung: four ticks, four steps, the interval marks the
+ * logo already draws. Structure instead of a picture of structure.
  */
 export const HowWeWork: React.FC = () => {
   return (
@@ -20,48 +23,26 @@ export const HowWeWork: React.FC = () => {
         tone="dark"
       />
 
-      <div className="mt-16 grid items-center gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
-        <ol>
-          {processSteps.map((step) => (
-            <li
-              key={step.n}
-              className="grid grid-cols-[2.5rem_1fr] gap-5 border-t border-deep-rule py-7"
-            >
-              <span
-                aria-hidden
-                className="font-serif text-xl tabular-nums text-paper/35"
-              >
-                {step.n}
-              </span>
-              <div>
-                <h3 className="font-serif text-xl text-paper">{step.title}</h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-paper/60">
-                  {step.line}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      <ol className="mt-14 grid gap-px border-t border-deep-rule md:grid-cols-2 lg:grid-cols-4">
+        {processSteps.map((step) => (
+          <li
+            key={step.n}
+            className="border-b border-deep-rule pb-8 pt-7 md:border-b-0 md:pr-8"
+          >
+            <div className="flex items-center gap-4">
+              <span className="data text-beam">{step.n}</span>
+              <span className="h-px flex-1 bg-deep-rule" aria-hidden />
+            </div>
 
-        <figure className="plate-dark">
-          <div className="bg-paper p-5 md:p-7">
-            <Image
-              src="/case_studies/img/figures_workflow_abstract.png"
-              alt="Schematic of the cardiometabolic polygenic risk score workflow, running from the 1000 Genomes reference cohort through PGS Catalog weights, variant matching and scoring to per-trait outputs and a written report."
-              width={1977}
-              height={1040}
-              sizes="(min-width: 1024px) 620px, 100vw"
-              className="w-full h-auto"
-            />
-          </div>
-          <figcaption className="text-paper/55 max-w-measure">
-            <span className="fig-no text-paper/80">Fig. 1</span>{' '}
-            Workflow from our cardiometabolic polygenic risk study. Every project
-            takes this shape: reference data in, scoring, then a report you can
-            hand to a reviewer.
-          </figcaption>
-        </figure>
-      </div>
+            <h3 className="mt-5 text-lg font-semibold text-on-deep">
+              {step.title}
+            </h3>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-on-deep-mid">
+              {step.line}
+            </p>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 };

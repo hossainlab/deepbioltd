@@ -8,14 +8,12 @@ interface SectionHeadingProps {
 }
 
 /**
- * A rule, a heading, a standfirst. That is the whole device.
+ * The rung, the heading, the standfirst.
  *
- * The previous version stacked a tracked-out uppercase eyebrow above every
- * heading and coloured the second clause with a gradient. Both are decoration
- * that appears regardless of content — the eyebrow restated the nav label and
- * the gradient did the same trick six times on one page. The rule is doing
- * real work here: it marks where one section ends and the next begins, which
- * is what lets the page drop card borders everywhere else.
+ * The rung is the logo's own device — the interval ticks between the two
+ * strands — doing structural work: it marks where a section begins, which is
+ * what lets the rest of the page drop card borders entirely. It replaced a
+ * tracked-out uppercase eyebrow that restated the nav label six times a page.
  */
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
   title,
@@ -25,10 +23,12 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   const isDark = tone === 'dark';
 
   return (
-    <div className={`border-t pt-8 ${isDark ? 'border-deep-rule' : 'border-rule'}`}>
+    <div>
+      <div className={isDark ? 'rung-dark max-w-[18rem]' : 'rung max-w-[18rem]'} aria-hidden />
+
       <h2
-        className={`font-serif text-3xl md:text-[2.75rem] leading-[1.12] tracking-[-0.015em] max-w-3xl ${
-          isDark ? 'text-paper' : 'text-ink'
+        className={`mt-8 text-section max-w-[22ch] ${
+          isDark ? 'text-on-deep' : 'text-ink'
         }`}
       >
         {title}
@@ -36,8 +36,8 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 
       {deck && (
         <p
-          className={`mt-6 font-serif text-lg md:text-xl leading-[1.6] max-w-measure ${
-            isDark ? 'text-paper/70' : 'text-ink-mid'
+          className={`mt-5 max-w-measure text-deck ${
+            isDark ? 'text-on-deep-mid' : 'text-slate'
           }`}
         >
           {deck}

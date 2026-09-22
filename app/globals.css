@@ -8,6 +8,12 @@
   box-sizing: border-box;
 }
 
+html {
+  /* The bar is fixed, so an in-page anchor would otherwise land its heading
+     underneath it. */
+  scroll-padding-top: 6rem;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,145 +23,191 @@ body {
 }
 
 @layer base {
-  /* EB Garamond carries headings, body, nav and buttons alike. Set once here
-     rather than adding a class to every heading. Logo.tsx force-styles its
-     wordmark inline, so the brand mark is untouched by this. */
+  /* Archivo carries the whole interface. Display sizes run expanded and tight;
+     body sits at normal width. One family, two postures — which is why the
+     wordmark in Logo.tsx, set in the platform grotesque and deliberately left
+     alone, sits inside this system instead of fighting it. */
   h1, h2, h3, h4 {
-    font-family: theme('fontFamily.serif');
-    font-weight: 400;
-    letter-spacing: -0.012em;
+    font-family: theme('fontFamily.sans');
+    font-weight: 620;
+    letter-spacing: -0.022em;
   }
 
   h1, h2 {
-    font-optical-sizing: auto;
+    font-variation-settings: 'wdth' 112;
+    letter-spacing: -0.03em;
   }
 
-  /* Garamond's old-style figures suit running text; tables and data opt out
-     with `.tabular` or `font-mono`. */
   body {
-    font-size: 1.0625rem;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.gild');
+    outline: 2px solid theme('colors.brand.DEFAULT');
     outline-offset: 3px;
   }
 
+  /* On navy the brand blue disappears into the ground, so the ring switches
+     to the value that is legible there. */
+  .on-deep :focus-visible,
+  .on-deep:focus-visible {
+    outline-color: theme('colors.beam');
+  }
+
   ::selection {
-    background: theme('colors.linen');
-    color: theme('colors.ink');
+    background: theme('colors.brand.DEFAULT');
+    color: #fff;
   }
 }
 
 @layer components {
-  /* Section eyebrow: tracked small caps set in the serif, lining figures. */
-  .eyebrow {
-    font-family: theme('fontFamily.serif');
-    text-transform: uppercase;
-    letter-spacing: 0.34em;
-    font-variant-numeric: lining-nums;
-    font-size: 0.7rem;
-    line-height: 1.2;
-    color: theme('colors.ink-faint');
+  /*
+   * The rung. Four ticks over a baseline — the rungs between the two strands
+   * of the logo mark, pulled out and used as the page's section marker.
+   *
+   * It replaces the tracked-out uppercase eyebrow that used to sit above every
+   * heading. The eyebrow restated the nav label; this marks where a section
+   * starts and carries the brand while doing it.
+   */
+  .rung {
+    height: 11px;
+    background:
+      linear-gradient(theme('colors.brand.DEFAULT'), theme('colors.brand.DEFAULT')) 0 100% / 100% 1.5px no-repeat,
+      repeating-linear-gradient(to right, theme('colors.brand.DEFAULT') 0 1.5px, transparent 1.5px 15px) 0 0 / 61px 11px no-repeat;
   }
 
-  /* The same eyebrow with the short rule above it, centred over a heading. */
-  .eyebrow-rule {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.1rem;
+  .rung-dark {
+    height: 11px;
+    background:
+      linear-gradient(theme('colors.deep-rule'), theme('colors.deep-rule')) 0 100% / 100% 1.5px no-repeat,
+      repeating-linear-gradient(to right, theme('colors.beam') 0 1.5px, transparent 1.5px 15px) 0 0 / 61px 11px no-repeat;
   }
 
-  .eyebrow-rule::before {
-    content: "";
-    width: 2.5rem;
-    height: 1px;
-    background: theme('colors.gild');
-  }
-
-  /* Hairlines fade into the ground instead of drawing on it. Pair with a
-     border-width utility: `border-t rule-hair`. */
-  .rule-hair {
-    border-color: color-mix(in oklab, theme('colors.ink') 14%, transparent);
-  }
-
-  .rule-hair-dark {
-    border-color: color-mix(in oklab, theme('colors.marble') 16%, transparent);
-  }
-
-  /* Prose statement: two or three large sentences, centred, no furniture. */
-  .statement {
-    max-width: theme('maxWidth.statement');
-    margin-inline: auto;
-    text-align: center;
-    font-size: theme('fontSize.deck.0');
-    line-height: 1.35;
-  }
-
-  /* CTAs are the only rounded elements besides the nav capsule. */
-  .pill,
-  .pill-outline {
+  /* Buttons. Square-ish at 2px: the mark is drawn with round caps, so a pill
+     would double the roundness and a hard 0 would contradict it. */
+  .btn,
+  .btn-ghost,
+  .btn-outline-light,
+  .btn-light {
     display: inline-flex;
     align-items: center;
-    gap: 0.6em;
-    border-radius: 9999px;
-    padding: 0.8rem 1.6rem;
-    font-family: theme('fontFamily.serif');
-    font-size: 1.0625rem;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
     line-height: 1;
-    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    letter-spacing: -0.005em;
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
   }
 
-  .pill {
-    background: theme('colors.ink');
-    color: theme('colors.marble');
+  .btn {
+    background: theme('colors.brand.DEFAULT');
+    color: #fff;
   }
 
-  .pill:hover {
-    background: theme('colors.laurel');
+  .btn:hover {
+    background: #1A4E7A;
   }
 
-  .pill-outline {
-    border: 1px solid color-mix(in oklab, theme('colors.ink') 30%, transparent);
+  .btn-ghost {
+    border: 1px solid theme('colors.rule-strong');
     color: theme('colors.ink');
   }
 
-  .pill-outline:hover {
-    border-color: theme('colors.ink');
+  .btn-ghost:hover {
+    border-color: theme('colors.brand.DEFAULT');
+    color: theme('colors.brand.DEFAULT');
+  }
+
+  /* On navy the filled button inverts rather than restating the blue, which
+     at that size would sit almost on top of the ground. */
+  .btn-light {
+    background: theme('colors.paper');
+    color: theme('colors.abyss');
+  }
+
+  .btn-light:hover {
+    background: theme('colors.beam');
+  }
+
+  .btn-outline-light {
+    /* Heavier than the hairline rules around it: this one has to read as an
+       edge you can click, not as a divider. */
+    border: 1px solid rgba(232, 240, 247, 0.34);
+    color: theme('colors.on-deep');
+  }
+
+  .btn-outline-light:hover {
+    border-color: theme('colors.beam');
+    color: theme('colors.beam');
+  }
+
+  /* Text link that has to read as a link without a button around it. */
+  .link-rule {
+    border-bottom: 1px solid theme('colors.rule-strong');
+    padding-bottom: 1px;
+    font-weight: 600;
+    color: theme('colors.ink');
+    transition: border-color 140ms ease, color 140ms ease;
+  }
+
+  .link-rule:hover {
+    border-color: theme('colors.brand.DEFAULT');
+    color: theme('colors.brand.DEFAULT');
+  }
+
+  .link-rule-deep {
+    border-bottom: 1px solid theme('colors.deep-rule');
+    padding-bottom: 1px;
+    font-weight: 600;
+    color: theme('colors.on-deep');
+    transition: border-color 140ms ease, color 140ms ease;
+  }
+
+  .link-rule-deep:hover {
+    border-color: theme('colors.beam');
+    color: theme('colors.beam');
+  }
+
+  /* Numbers, units, axis labels, file types. Never running prose. */
+  .data {
+    font-family: theme('fontFamily.mono');
+    font-variant-numeric: lining-nums tabular-nums;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
   }
 
   .tabular {
     font-variant-numeric: lining-nums tabular-nums;
   }
 
-  /*
-   * Figure plate. Kept on /case-studies and /services only (scope §6):
-   * a hairline, the image at its natural size, and a serif legend.
-   */
+  /* Figure plate: a hairline, the image, a legend. Used on /case-studies and
+     /services, where a buyer has already arrived and wants the evidence. */
   .plate {
-    border-top: 1px solid color-mix(in oklab, theme('colors.ink') 14%, transparent);
+    border-top: 1px solid theme('colors.rule');
     padding-top: 1.25rem;
   }
 
   .plate-dark {
-    border-top: 1px solid color-mix(in oklab, theme('colors.marble') 16%, transparent);
+    border-top: 1px solid theme('colors.deep-rule');
     padding-top: 1.25rem;
   }
 
   .plate figcaption,
   .plate-dark figcaption {
-    font-family: theme('fontFamily.serif');
-    font-size: 0.9375rem;
-    line-height: 1.55;
+    font-size: 0.875rem;
+    line-height: 1.6;
     margin-top: 1rem;
   }
 
-  /* Figure number, run into the legend the way a journal sets it. */
   .fig-no {
+    font-family: theme('fontFamily.mono');
     font-variant-numeric: lining-nums tabular-nums;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: theme('colors.brand.DEFAULT');
   }
 }
 
@@ -180,25 +232,69 @@ img {
 }
 
 /*
- * Retired utilities. Un-migrated pages still set white text on top of these,
- * so deleting them outright would blank those sections. They are neutral
- * shims until Phase 5 removes the last reference, then they go.
+ * Shims for routes that have not been rebuilt yet. Un-migrated pages set white
+ * text on top of these, so deleting them outright would blank those sections.
+ * They resolve to something quiet in the blue system and go when the last
+ * reference does.
  */
 .glass {
-  background: color-mix(in oklab, theme('colors.marble') 92%, transparent);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid color-mix(in oklab, theme('colors.ink') 12%, transparent);
+  border-bottom: 1px solid theme('colors.rule');
   transform: translateZ(0);
 }
 
 .brand-gradient {
-  background: theme('colors.laurel');
+  background: theme('colors.abyss');
 }
 
-/* Used on both light and hard-coded dark heroes, so it cannot pick a colour:
-   it inherits one and marks emphasis with italic instead. */
 .brand-text-gradient {
-  font-style: italic;
-  -webkit-text-fill-color: currentColor;
+  color: theme('colors.brand.DEFAULT');
+  -webkit-text-fill-color: theme('colors.brand.DEFAULT');
+}
+
+/* Legacy eyebrow / pill / statement classes, kept compiling but stripped back
+   to the current system rather than reproducing the old warm one. */
+.eyebrow {
+  font-family: theme('fontFamily.mono');
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: theme('colors.slate');
+}
+
+.pill,
+.pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  border-radius: 2px;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.pill {
+  background: theme('colors.brand.DEFAULT');
+  color: #fff;
+}
+
+.pill-outline {
+  border: 1px solid theme('colors.rule-strong');
+  color: theme('colors.ink');
+}
+
+.statement {
+  max-width: theme('maxWidth.statement');
+  font-size: theme('fontSize.deck.0');
+  line-height: 1.6;
+}
+
+.rule-hair {
+  border-color: theme('colors.rule');
+}
+
+.rule-hair-dark {
+  border-color: theme('colors.deep-rule');
 }

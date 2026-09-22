@@ -2,10 +2,23 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'DeepBio Limited - Data-Driven Life Science Research'
+export const alt = 'DeepBio Limited - computational biology from Dhaka'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+/**
+ * The share card is the site's hero band at card size: flat navy, the logo
+ * mark, the rung, the claim.
+ *
+ * What went: a three-stop gradient, two blurred colour blobs, a tracked-out
+ * uppercase pill with a ✦ in it, and a stats row reading "250+ Genomes
+ * Analyzed / 18+ Services / 6 Research Programs". The first four were
+ * decoration the rest of the site no longer carries. The stats were worse than
+ * decoration — the catalogue holds twenty services, so the card was shipping a
+ * stale number to every link preview, and nothing in the repository supports
+ * the genome count. The two figures here are the ones the site itself can show
+ * you: the catalogue length, and how many of those ship a published report.
+ */
 export default function OGImage() {
   return new ImageResponse(
     (
@@ -15,130 +28,90 @@ export default function OGImage() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '80px',
-          background: 'linear-gradient(135deg, #0A2540 0%, #0f3460 50%, #205E92 100%)',
+          justifyContent: 'space-between',
+          padding: '72px 80px',
+          background: '#071A2C',
           fontFamily: 'system-ui, sans-serif',
-          position: 'relative',
-          overflow: 'hidden',
         }}
       >
-        {/* Decorative circles */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-100px',
-            right: '-100px',
-            width: '500px',
-            height: '500px',
-            borderRadius: '50%',
-            background: 'rgba(32, 94, 146, 0.3)',
-            filter: 'blur(80px)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-80px',
-            left: '-80px',
-            width: '400px',
-            height: '400px',
-            borderRadius: '50%',
-            background: 'rgba(65, 132, 196, 0.2)',
-            filter: 'blur(80px)',
-          }}
-        />
+        {/* Mark and wordmark, drawn to match components/Logo.tsx */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4C4 4 7 6 12 12S20 20 20 20" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M20 4C20 4 17 6 12 12S4 20 4 20" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M6.5 6.5H4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M17.5 6.5H20" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M6.5 17.5H4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M17.5 17.5H20" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M9 9H7.5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M16.5 9H15" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M9 15H7.5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            <path d="M16.5 15H15" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          <div style={{ fontSize: '34px', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em' }}>
+            DeepBio
+          </div>
+        </div>
 
-        {/* Tag */}
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '18px' }}>
+          {/* The rung, built from divs because ImageResponse has no support for
+              layered background-image shorthand. */}
+          <div style={{ display: 'flex', flexDirection: 'column', width: '360px', marginBottom: '38px' }}>
+            <div style={{ display: 'flex', gap: '17px', marginBottom: '9px' }}>
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} style={{ width: '2px', height: '10px', background: '#5AB0E8' }} />
+              ))}
+            </div>
+            <div style={{ width: '360px', height: '2px', background: 'rgba(232, 240, 247, 0.18)' }} />
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              fontSize: '60px',
+              fontWeight: 700,
+              color: '#E8F0F7',
+              lineHeight: 1.06,
+              letterSpacing: '-0.03em',
+              maxWidth: '900px',
+            }}
+          >
+            Your sequencer produces terabytes. Nobody reads them.
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              marginTop: '24px',
+              fontSize: '23px',
+              color: '#9FB4C7',
+              lineHeight: 1.5,
+              maxWidth: '760px',
+            }}
+          >
+            Computational biology from Dhaka. Genomic, transcriptomic and
+            structural analysis, with the pipelines and the paper trail behind it.
+          </div>
+        </div>
+
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '8px 20px',
-            borderRadius: '999px',
-            background: 'rgba(32, 94, 146, 0.3)',
-            border: '1px solid rgba(65, 132, 196, 0.3)',
-            color: '#4184C4',
-            fontSize: '14px',
-            fontWeight: 700,
-            textTransform: 'uppercase' as const,
-            letterSpacing: '0.15em',
-            marginBottom: '32px',
-            width: 'fit-content',
+            justifyContent: 'space-between',
+            borderTop: '1px solid rgba(232, 240, 247, 0.14)',
+            paddingTop: '22px',
+            fontSize: '19px',
+            color: '#6E8399',
           }}
         >
-          ✦ Leading Life Science Research Hub
-        </div>
-
-        {/* Title */}
-        <div
-          style={{
-            fontSize: '72px',
-            fontWeight: 800,
-            color: '#ffffff',
-            lineHeight: 1,
-            letterSpacing: '-0.03em',
-            marginBottom: '24px',
-            display: 'flex',
-          }}
-        >
-          Data-Driven Life Science.
-        </div>
-
-        {/* Description */}
-        <div
-          style={{
-            fontSize: '24px',
-            color: 'rgba(148, 163, 184, 1)',
-            lineHeight: 1.5,
-            maxWidth: '700px',
-            marginBottom: '48px',
-          }}
-        >
-          Bioinformatics, AI & Genomics research hub based in Bangladesh. Turning life science data into impactful solutions.
-        </div>
-
-        {/* Stats row */}
-        <div style={{ display: 'flex', gap: '40px' }}>
-          {[
-            { value: '250+', label: 'Genomes Analyzed' },
-            { value: '18+', label: 'Services' },
-            { value: '6', label: 'Research Programs' },
-          ].map((stat) => (
-            <div key={stat.label} style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '36px', fontWeight: 800, color: '#ffffff' }}>{stat.value}</div>
-              <div
-                style={{
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: 'rgba(100, 116, 139, 1)',
-                  textTransform: 'uppercase' as const,
-                  letterSpacing: '0.1em',
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Domain */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '40px',
-            right: '80px',
-            fontSize: '20px',
-            fontWeight: 700,
-            color: 'rgba(65, 132, 196, 0.6)',
-            letterSpacing: '0.05em',
-          }}
-        >
-          deepbioltd.com
+          <div style={{ display: 'flex' }}>
+            20 analyses &nbsp;/&nbsp; 6 with a published report
+          </div>
+          <div style={{ display: 'flex', color: '#5AB0E8' }}>deepbioltd.com</div>
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   )
 }
