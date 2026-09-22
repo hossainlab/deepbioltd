@@ -6,10 +6,18 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { Logo } from './Logo'
 
+/**
+ * Two states, one bar.
+ *
+ * Over the homepage hero the ground is navy, so the bar is transparent and the
+ * mark runs in its light form. Everywhere else — and on the homepage once you
+ * have scrolled past the hero — it is a white bar with a hairline and the mark
+ * in brand blue. That is the whole behaviour; there is no capsule, no blur
+ * stack and no shadow until the bar is actually sitting on top of content.
+ */
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [researchMenuOpen, setResearchMenuOpen] = useState(false)
   const [labsMenuOpen, setLabsMenuOpen] = useState(false)
   const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
@@ -17,44 +25,27 @@ export const Navbar: React.FC = () => {
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
   }, [isOpen])
 
   useEffect(() => {
-    // Set initial screen size
-    setIsLargeScreen(window.innerWidth >= 1024)
-
-    // Throttle scroll event for better performance
     let ticking = false
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 50)
+          setScrolled(window.scrollY > 60)
           ticking = false
         })
         ticking = true
       }
     }
 
-    // Handle window resize
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024)
-    }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleResize, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
-    }
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   // Temporarily hidden from the navbar pending menu reorganization.
@@ -67,12 +58,12 @@ export const Navbar: React.FC = () => {
     { name: 'Services', path: '/services' },
     { name: 'Academy', path: 'https://deepbioacademy.com/', external: true },
     { name: 'Research Wing', path: 'https://chiralbd.github.io/', external: true },
-  ];
+  ]
 
   const researchSubmenu = [
     { name: 'Overview', path: '/research' },
     { name: 'Research Programs', path: '/research-programs' },
-  ];
+  ]
 
   const labsSubmenu = [
     { name: 'BioHPC Lab', path: '/labs/biohpc' },
@@ -80,7 +71,7 @@ export const Navbar: React.FC = () => {
     { name: 'Generative Genomics Lab', path: '/labs/generative-genomics' },
     { name: 'Insilico Medicine', path: '/labs/insilico-medicine' },
     { name: 'Lab Onboarding', path: '/lab-onboarding' },
-  ];
+  ]
 
   // 'DeepBio Ambassadors' and 'Our Ambassadors' read as duplicates. They are
   // different pages — one recruits, one lists the current cohort — so the fix
@@ -94,23 +85,44 @@ export const Navbar: React.FC = () => {
     { name: 'Become an Ambassador', path: '/ambassadors' },
     { name: 'Meet the Ambassadors', path: '/our-ambassadors' },
     { name: 'Slack Community', path: 'https://join.slack.com/t/deepbiocommunity/shared_invite', external: true },
-  ];
+  ]
 
   const isResearchPage = ['/research', '/research-programs'].includes(pathname)
-  const isLabsPage = ['/labs/biohpc', '/labs/bigbio', '/labs/generative-genomics', '/labs/insilico-medicine', '/lab-onboarding'].includes(pathname)
+  const isLabsPage = labsSubmenu.some((l) => l.path === pathname)
   const isResourcesPage = ['/brochure', '/case-studies', '/career-guide', '/ambassadors', '/our-ambassadors', '/team', '/contact'].includes(pathname)
-  // The hero is set on paper, so the bar never sits over a dark field.
-  const isLight = false
+
+  // Only the homepage opens on the navy hero.
+  const overHero = pathname === '/' && !scrolled
+
+  const barClass = overHero
+    ? 'bg-transparent py-6'
+    : 'bg-paper border-b border-rule shadow-bar py-3'
+
+  const itemClass = (active: boolean) =>
+    [
+      'text-sm font-semibold transition-colors',
+      overHero
+        ? active
+          ? 'text-beam'
+          : 'text-on-deep-mid hover:text-on-deep'
+        : active
+          ? 'text-brand'
+          : 'text-slate hover:text-brand',
+    ].join(' ')
+
+  const dropdownPanel = 'bg-paper border border-rule shadow-bar overflow-hidden mt-2'
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || pathname !== '/' ? 'glass py-3 shadow-sm' : 'bg-transparent py-6'}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${overHero ? 'on-deep ' : ''}${barClass}`}
+    >
       <div className="max-w-plate mx-auto px-6 md:px-10 flex items-center justify-between">
-        <Link href="/" className="transition-transform hover:scale-105 active:scale-95 duration-300" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <Logo isLight={isLight} />
+        <Link href="/" aria-label="DeepBio, home">
+          <Logo isLight={overHero} />
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-6">
+        {/* Desktop */}
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((item) =>
             item.external ? (
               <a
@@ -118,9 +130,7 @@ export const Navbar: React.FC = () => {
                 href={item.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                  ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
-                `}
+                className={itemClass(false)}
               >
                 {item.name}
               </a>
@@ -128,120 +138,82 @@ export const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                  ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
-                  ${pathname === item.path ? 'text-brand-primary after:w-full' : ''}
-                `}
+                className={itemClass(pathname === item.path)}
               >
                 {item.name}
               </Link>
-            )
+            ),
           )}
 
-          {/* Research Menu - Modern Hover Dropdown */}
           {SHOW_RESEARCH_MENU && (
-          <div
-            className="relative"
-            onMouseEnter={() => setResearchMenuOpen(true)}
-            onMouseLeave={() => setResearchMenuOpen(false)}
-          >
-            <button
-              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
-                ${isResearchPage ? 'text-brand-primary after:w-full' : ''}
-              `}
+            <div
+              className="relative"
+              onMouseEnter={() => setResearchMenuOpen(true)}
+              onMouseLeave={() => setResearchMenuOpen(false)}
             >
-              Research
-            </button>
+              <button className={itemClass(isResearchPage)}>Research</button>
 
-            {/* Modern Dropdown Menu */}
-            {researchMenuOpen && (
-              <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
-                  {researchSubmenu.map((item, index) => (
-                    <Link
-                      key={item.path}
-                      href={item.path}
-                      onClick={() => setResearchMenuOpen(false)}
-                      className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                        ${pathname === item.path
-                          ? 'bg-paper-sunk text-brand-primary'
-                          : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
-                        }
-                        ${index !== researchSubmenu.length - 1 ? 'border-b border-rule' : ''}
-                      `}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+              {researchMenuOpen && (
+                <div className="absolute top-full left-0 pt-4 w-64">
+                  <div className={dropdownPanel}>
+                    {researchSubmenu.map((item, index) => (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        onClick={() => setResearchMenuOpen(false)}
+                        className={`block w-full px-5 py-3.5 text-sm font-semibold transition-colors
+                          ${pathname === item.path ? 'bg-chalk text-brand' : 'text-slate hover:bg-chalk hover:text-ink'}
+                          ${index !== researchSubmenu.length - 1 ? 'border-b border-rule' : ''}`}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
           )}
 
-          {/* Labs Menu - Modern Hover Dropdown */}
           {SHOW_LABS_MENU && (
-          <div
-            className="relative"
-            onMouseEnter={() => setLabsMenuOpen(true)}
-            onMouseLeave={() => setLabsMenuOpen(false)}
-          >
-            <button
-              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
-                ${isLabsPage ? 'text-brand-primary after:w-full' : ''}
-              `}
+            <div
+              className="relative"
+              onMouseEnter={() => setLabsMenuOpen(true)}
+              onMouseLeave={() => setLabsMenuOpen(false)}
             >
-              Labs
-            </button>
+              <button className={itemClass(isLabsPage)}>Labs</button>
 
-            {/* Modern Dropdown Menu */}
-            {labsMenuOpen && (
-              <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
-                  {labsSubmenu.map((item, index) => (
-                    <Link
-                      key={item.path}
-                      href={item.path}
-                      onClick={() => setLabsMenuOpen(false)}
-                      className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                        ${pathname === item.path
-                          ? 'bg-paper-sunk text-brand-primary'
-                          : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
-                        }
-                        ${index !== labsSubmenu.length - 1 ? 'border-b border-rule' : ''}
-                      `}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+              {labsMenuOpen && (
+                <div className="absolute top-full left-0 pt-4 w-64">
+                  <div className={dropdownPanel}>
+                    {labsSubmenu.map((item, index) => (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        onClick={() => setLabsMenuOpen(false)}
+                        className={`block w-full px-5 py-3.5 text-sm font-semibold transition-colors
+                          ${pathname === item.path ? 'bg-chalk text-brand' : 'text-slate hover:bg-chalk hover:text-ink'}
+                          ${index !== labsSubmenu.length - 1 ? 'border-b border-rule' : ''}`}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
           )}
 
-          {/* Resources Menu - Modern Hover Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setResourcesMenuOpen(true)}
             onMouseLeave={() => setResourcesMenuOpen(false)}
           >
-            <button
-              className={`text-sm font-semibold transition-all hover:text-brand-primary relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-primary after:transition-all hover:after:w-full
-                ${(scrolled || pathname !== '/') ? 'text-ink-mid' : 'text-ink-mid'}
-                ${isResourcesPage ? 'text-brand-primary after:w-full' : ''}
-              `}
-            >
-              More
-            </button>
+            <button className={itemClass(isResourcesPage)}>More</button>
 
-            {/* Modern Dropdown Menu */}
             {resourcesMenuOpen && (
-              <div className="absolute top-full left-0 pt-4 w-64 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="bg-paper border border-rule shadow-[0_12px_32px_rgba(35,33,29,0.10)] overflow-hidden mt-2">
-                  {resourcesSubmenu.map((item, index) => (
+              <div className="absolute top-full right-0 pt-4 w-64">
+                <div className={dropdownPanel}>
+                  {resourcesSubmenu.map((item, index) =>
                     item.external ? (
                       <a
                         key={item.path}
@@ -249,9 +221,8 @@ export const Navbar: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setResourcesMenuOpen(false)}
-                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all text-ink-mid hover:bg-paper-sunk hover:text-ink
-                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}
-                        `}
+                        className={`block w-full px-5 py-3.5 text-sm font-semibold text-slate transition-colors hover:bg-chalk hover:text-ink
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}`}
                       >
                         {item.name}
                       </a>
@@ -260,18 +231,14 @@ export const Navbar: React.FC = () => {
                         key={item.path}
                         href={item.path}
                         onClick={() => setResourcesMenuOpen(false)}
-                        className={`block w-full text-left px-6 py-4 text-sm font-semibold transition-all
-                          ${pathname === item.path
-                            ? 'bg-paper-sunk text-brand-primary'
-                            : 'text-ink-mid hover:bg-paper-sunk hover:text-ink'
-                          }
-                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}
-                        `}
+                        className={`block w-full px-5 py-3.5 text-sm font-semibold transition-colors
+                          ${pathname === item.path ? 'bg-chalk text-brand' : 'text-slate hover:bg-chalk hover:text-ink'}
+                          ${index !== resourcesSubmenu.length - 1 ? 'border-b border-rule' : ''}`}
                       >
                         {item.name}
                       </Link>
-                    )
-                  ))}
+                    ),
+                  )}
                 </div>
               </div>
             )}
@@ -279,127 +246,126 @@ export const Navbar: React.FC = () => {
 
           <a
             href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
-            className="ml-4 bg-brand-primary px-6 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-[#1a4b75] inline-block"
+            className={`ml-2 px-5 py-2.5 text-sm ${overHero ? 'btn-light' : 'btn'}`}
           >
-            Partner With Us
+            Partner with us
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className={`lg:hidden p-2 rounded-lg text-ink`} onClick={() => setIsOpen(!isOpen)}>
+        {/* Mobile toggle */}
+        <button
+          className={`lg:hidden p-2 ${overHero ? 'text-on-deep' : 'text-ink'}`}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-slate-100 p-8 flex flex-col gap-6 animate-in slide-in-from-top-2">
-          {navLinks.map((item) =>
-            item.external ? (
-              <a
-                key={item.name}
-                href={item.path}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="text-xl font-bold transition-colors text-ink hover:text-brand-primary"
-              >
-                {item.name}
-              </a>
-            ) : (
-              <Link
-                key={item.name}
-                href={item.path}
-                onClick={() => setIsOpen(false)}
-                className={`text-xl font-bold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink hover:text-brand-primary'}`}
-              >
-                {item.name}
-              </Link>
-            )
-          )}
-
-          {/* Research Submenu - Mobile */}
-          {SHOW_RESEARCH_MENU && (
-          <div className="space-y-4">
-            <div className={`text-xl font-bold ${isResearchPage ? 'text-brand-primary' : 'text-ink'}`}>
-              Research
-            </div>
-            <div className="pl-6 space-y-3 border-l-2 border-rule">
-              {researchSubmenu.map((item) => (
+        <div className="lg:hidden absolute top-full left-0 right-0 max-h-[80vh] overflow-y-auto border-t border-rule bg-paper p-6 shadow-bar">
+          <div className="flex flex-col gap-5">
+            {navLinks.map((item) =>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-semibold text-ink"
+                >
+                  {item.name}
+                </a>
+              ) : (
                 <Link
-                  key={item.path}
+                  key={item.name}
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
+                  className={`text-lg font-semibold ${pathname === item.path ? 'text-brand' : 'text-ink'}`}
                 >
                   {item.name}
                 </Link>
-              ))}
-            </div>
-          </div>
-          )}
+              ),
+            )}
 
-          {/* Labs Submenu - Mobile */}
-          {SHOW_LABS_MENU && (
-          <div className="space-y-4">
-            <div className={`text-xl font-bold ${isLabsPage ? 'text-brand-primary' : 'text-ink'}`}>
-              Labs
-            </div>
-            <div className="pl-6 space-y-3 border-l-2 border-rule">
-              {labsSubmenu.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          )}
+            {SHOW_RESEARCH_MENU && (
+              <div>
+                <p className="data text-slate">Research</p>
+                <div className="mt-3 flex flex-col gap-3 border-l border-rule pl-5">
+                  {researchSubmenu.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-semibold ${pathname === item.path ? 'text-brand' : 'text-slate'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* Resources Submenu - Mobile */}
-          <div className="space-y-4">
-            <div className={`text-xl font-bold ${isResourcesPage ? 'text-brand-primary' : 'text-ink'}`}>
-              More
-            </div>
-            <div className="pl-6 space-y-3 border-l-2 border-rule">
-              {resourcesSubmenu.map((item) => (
-                item.external ? (
-                  <a
-                    key={item.path}
-                    href={item.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                    className="block text-left text-lg font-semibold transition-colors text-ink-mid hover:text-brand-primary"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-left text-lg font-semibold transition-colors ${pathname === item.path ? 'text-brand-primary' : 'text-ink-mid hover:text-brand-primary'}`}
-                  >
-                    {item.name}
-                  </Link>
-                )
-              ))}
-            </div>
-          </div>
+            {SHOW_LABS_MENU && (
+              <div>
+                <p className="data text-slate">Labs</p>
+                <div className="mt-3 flex flex-col gap-3 border-l border-rule pl-5">
+                  {labsSubmenu.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-semibold ${pathname === item.path ? 'text-brand' : 'text-slate'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          <a
-            href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
-            className="w-full py-4 bg-brand-primary text-white rounded-xl text-lg font-bold shadow-xl text-center block"
-          >
-            Partner With Us
-          </a>
+            <div>
+              <p className="data text-slate">More</p>
+              <div className="mt-3 flex flex-col gap-3 border-l border-rule pl-5">
+                {resourcesSubmenu.map((item) =>
+                  item.external ? (
+                    <a
+                      key={item.path}
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className="text-base font-semibold text-slate"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-base font-semibold ${pathname === item.path ? 'text-brand' : 'text-slate'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  ),
+                )}
+              </div>
+            </div>
+
+            <a
+              href="mailto:info@deepbioltd.com?subject=Partnership Inquiry"
+              onClick={() => setIsOpen(false)}
+              className="btn mt-1 w-full"
+            >
+              Partner with us
+            </a>
+          </div>
         </div>
       )}
     </nav>
-  );
-};
+  )
+}

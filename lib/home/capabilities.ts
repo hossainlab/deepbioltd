@@ -23,6 +23,10 @@ const FLAGSHIP_IDS = [
 export interface Capability {
   label: string;
   line: string;
+  /** What you send us. */
+  input: string;
+  /** What comes back. */
+  output: string;
 }
 
 export const capabilities: Capability[] = FLAGSHIP_IDS.map((id) => {
@@ -30,5 +34,10 @@ export const capabilities: Capability[] = FLAGSHIP_IDS.map((id) => {
   if (!service) {
     throw new Error(`Unknown flagship service id: ${id}`);
   }
-  return { label: service.title, line: service.description };
+  return {
+    label: service.title,
+    line: service.description,
+    input: service.input,
+    output: service.output,
+  };
 });

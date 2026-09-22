@@ -1,108 +1,85 @@
 import React from 'react'
 import Link from 'next/link'
 import { services, servicesWithExamples } from '@/lib/services/data'
+import { ContactMark } from '@/components/brand/ContactMark'
 
 /**
- * Two-column editorial opening: the claim on the left, the evidence for it on
- * the right, on one screen.
+ * The opening is a navy band because that is where the mark lives: the logo is
+ * a blue monoline drawing, and on a white ground at nav size it is a small blue
+ * smudge. Given a dark field it reads, and the rest of the page can stay light.
  *
- * Earlier versions put a raw DESeq2 volcano plot here. It was real output,
- * which is why it seemed like the honest choice — but a matplotlib export is a
- * working artifact, not a designed one: it carries its own bold sans title
- * fighting the page serif, sits on a white ground that reads as a box, and
- * renders 8pt gene labels at display scale.
+ * One bold element, the contact diagram. Everything beside it is type and a
+ * hairline.
  *
- * Removing it left the right half empty. The fix was not a new asset but
- * moving content that was already on the page: the downloadable-report index
- * used to sit full-width below the fold, where it read as an afterthought.
- * Beside the headline it does two jobs — it fills the measure, and it puts a
- * checkable claim next to an unprovable one.
+ * The line this opening used to carry — "Your sequencer produces terabytes.
+ * Nobody reads them." — sold an analysis service: send files, get figures. It
+ * was a good line for that business and it is the wrong one for this company,
+ * which is not competing on turnaround against every other bioinformatics shop.
+ * The claim now is the gap the company exists to close, and the deck resolves
+ * it. The evidence under both is unchanged and still derived from the
+ * catalogue, because a claim this size needs the counts to be real.
  */
-export const Hero: React.FC = () => {
-  const examples = servicesWithExamples;
 
-  return (
-    <header className="bg-paper pt-36 pb-20 md:pt-44 md:pb-24">
-      <div className="max-w-plate mx-auto grid gap-16 px-6 md:px-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-20">
-        {/* Claim */}
-        <div>
-          <h1 className="font-serif text-[2.75rem] leading-[1.08] tracking-[-0.02em] sm:text-6xl lg:text-[4rem] text-ink text-balance">
-            Your sequencer produces terabytes. Nobody reads them.
-          </h1>
+/** The worked example that carries the structural work, not the statistics. */
+const heroExample =
+  servicesWithExamples.find((s) => s.id === 'binder-design') ?? servicesWithExamples[0]
 
-          <p className="mt-10 max-w-measure font-serif text-xl leading-[1.6] text-ink-mid">
-            We turn genomic, transcriptomic and structural data into findings you
-            can put in front of a reviewer &mdash; with the pipelines, the figures
-            and the paper trail behind them.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Link
-              href="/contact"
-              className="bg-brand-primary px-7 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-[#1a4b75]"
-            >
-              Start a project
-            </Link>
-            <Link
-              href="/services"
-              className="border-b border-rule-strong pb-0.5 text-sm font-semibold text-ink transition-colors hover:border-ink"
-            >
-              See all {services.length} analyses
-            </Link>
-          </div>
-
-          {/* Also does structural work: the evidence column runs taller than
-              the claim, and this closes most of the gap at the foot of it. */}
-          <p className="mt-12 border-t border-rule pt-6 text-sm leading-relaxed text-ink-mid">
-            Not sure which analysis you need? Describe the data and the question
-            to{' '}
-            <a
-              href="mailto:info@deepbioltd.com"
-              className="border-b border-rule-strong text-ink transition-colors hover:border-ink"
-            >
-              info@deepbioltd.com
-            </a>{' '}
-            and we will tell you &mdash; or tell you it is not something we
-            should take on.
-          </p>
+export const Hero: React.FC = () => (
+  <header className="on-deep relative overflow-hidden bg-abyss pt-28 pb-14 md:pt-32 md:pb-20">
+    <div className="max-w-plate mx-auto grid items-center gap-14 px-6 md:px-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
+      <div>
+        {/* The company's category line, marked by the rung. This is the one
+            page where a descriptor above the headline earns its place: it is
+            what DeepBio is, not a restatement of the nav label below it. */}
+        <div className="flex items-center gap-5">
+          <span className="rung-dark w-[61px] shrink-0" aria-hidden />
+          <p className="data text-on-deep-mid">Foundational AI for Life Sciences</p>
         </div>
 
-        {/* Evidence */}
-        <div className="lg:pt-3">
-          <p className="border-b border-rule pb-4 text-sm text-ink-mid">
-            {examples.length} of our {services.length} analyses ship a full report
-            you can read before commissioning anything
-          </p>
+        <h1 className="mt-7 max-w-[19ch] text-display text-on-deep">
+          The models that read biology are open to everyone. Almost no lab here
+          is using them.
+        </h1>
 
-          <ul>
-            {examples.map((service) => (
-              <li key={service.id} className="border-b border-rule/70">
-                <a
-                  href={service.example!.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-baseline justify-between gap-6 py-4"
-                >
-                  <span>
-                    <span className="block font-serif text-[1.0625rem] leading-[1.45] text-ink decoration-rule-strong underline-offset-4 group-hover:underline">
-                      {service.example!.title}
-                    </span>
-                    <span className="mt-1 block text-sm text-ink-faint">
-                      {service.title}
-                    </span>
-                  </span>
-                  <span
-                    aria-hidden
-                    className="shrink-0 text-xs text-ink-faint transition-colors group-hover:text-ink"
-                  >
-                    PDF
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+        <p className="mt-6 max-w-[54ch] text-deck text-on-deep-mid">
+          DeepBio runs protein-structure, sequence and single-cell foundation
+          models on South Asian data &mdash; and hands back the structures, the
+          ranked candidates and the paper trail behind them.
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <Link href="/contact" className="btn-light">
+            Start a project
+          </Link>
+          <Link href="/services" className="btn-outline-light">
+            See all {services.length} analyses
+          </Link>
         </div>
+
+        <p className="data mt-9 max-w-[62ch] border-t border-deep-rule pt-5 leading-relaxed text-on-deep-faint">
+          {services.length} analyses in the catalogue &nbsp;/&nbsp;{' '}
+          {servicesWithExamples.length} ship a full report you can read before
+          commissioning anything
+        </p>
       </div>
-    </header>
-  );
-};
+
+      {/* The diagram is drawn rather than measured, so the caption sends anyone
+          who wants the real numbers to the report the shape stands for. */}
+      <figure className="lg:pl-4">
+        <ContactMark className="w-full h-auto" />
+        <figcaption className="data mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-deep-rule pt-4 text-on-deep-faint">
+          <span className="text-beam">Structure-based design</span>
+          <span>{heroExample.example!.title}</span>
+          <a
+            href={heroExample.example!.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-rule-deep ml-auto font-normal"
+          >
+            Read the report
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+)

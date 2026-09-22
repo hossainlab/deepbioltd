@@ -15,19 +15,23 @@ import { CtaBlock } from '@/components/home/CtaBlock'
 const HomeFaq = dynamic(() => import('@/components/home/HomeFaq').then(m => m.HomeFaq))
 
 /**
- * The page is set as a document, not a deck.
+ * Three grounds, used for rhythm rather than decoration.
  *
- * Sections are separated by hairline rules and whitespace rather than by
- * alternating background bands — the ground stays paper almost throughout, so
- * the two dark passages (the process, and the closing ask) actually register.
- * Figures are numbered continuously, Fig. 1 through Fig. 5.
+ * Navy opens and closes the page and carries the process band in the middle,
+ * because navy is where the mark lives. White holds the reading sections.
+ * Chalk marks the two quiet strips — the collaborator row and the audience
+ * band — that are context rather than argument.
+ *
+ * Order is the order a sceptical PI reads in: the claim, who already works with
+ * us, what we run, who it is for, how an engagement goes, what the output
+ * actually looks like, who does it, the objections, the ask.
  */
 export default function HomePage() {
   return (
     <>
       <Hero />
 
-      <section id="collaborators" className="bg-paper pb-16 md:pb-20">
+      <section id="collaborators" className="border-b border-rule bg-chalk py-12">
         <Partners />
       </section>
 
@@ -35,11 +39,11 @@ export default function HomePage() {
         <Capabilities />
       </section>
 
-      <section id="who-we-serve" className="bg-paper pb-20 md:pb-28">
+      <section id="who-we-serve" className="border-y border-rule bg-chalk py-14">
         <WhoWeServe />
       </section>
 
-      <section id="how-we-work" className="bg-deep py-24 md:py-32">
+      <section id="how-we-work" className="on-deep bg-abyss py-20 md:py-28">
         <HowWeWork />
       </section>
 
@@ -47,17 +51,15 @@ export default function HomePage() {
         <SelectedWork />
       </section>
 
-      <section id="team" className="bg-paper pb-20 md:pb-28">
+      <section id="team" className="border-t border-rule bg-paper py-20 md:py-28">
         <Leadership />
       </section>
 
-
-
-      <section id="faq" className="bg-paper pb-20 md:pb-28">
+      <section id="faq" className="border-t border-rule bg-chalk py-20 md:py-28">
         <HomeFaq />
       </section>
 
-      <section id="contact" className="bg-deep py-20 md:py-24">
+      <section id="contact" className="on-deep border-b border-deep-rule bg-abyss py-20 md:py-24">
         <CtaBlock />
       </section>
     </>

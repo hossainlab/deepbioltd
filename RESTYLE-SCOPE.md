@@ -1,121 +1,114 @@
-# Osseus-direction restyle — scope
+# Design system — blue, derived from the logo
 
-Status: **Phase 1 (foundation) done 2026-09-11.** Phases 2–6 pending.
+Status: **foundation + homepage done 2026-09-18.** Interior routes pending.
 
-Phase 1 deviations from §1: `ink-faint` darkened to `#666D5F` (reference
-`#8b9184` measured 3.05:1 on marble) and `sage` lightened to `#A3B294`
-(reference `#8b9c7c` measured 3.92:1 on laurel). Old `ink-soft` (faint role)
-renamed to `ink-faint` at its 14 call sites; other old token names remain as
-warm aliases until their phases migrate them. `.brand-text-gradient` became
-inherited colour + italic (a fixed colour failed on legacy hard-coded navy
-heroes); `.brand-gradient` became solid laurel (all 10 uses are text-free
-divider bars).
-Reference: https://www.osseus.ai/ · Decision: full-site (option C), generated imagery.
+Supersedes the warm "Osseus-direction" scope that previously lived in this
+file. That direction put a marble/laurel/gold palette and EB Garamond against a
+logo that is a blue monoline mark with a bold grotesque wordmark, and the two
+never reconciled — the logo was the only blue thing and the only sans thing on
+every page. The instruction that settled it: **the logo does not change.**
+Everything else moves to meet it.
 
 ---
 
-## 0. The question that started this
+## 1. The idea
 
-**"Why the figure in 'A scope in writing, before any work starts'? It does not look good."**
+The logo mark is two strands diverging from a crossing point with rungs between
+them. A volcano plot — the most-run output in the service catalogue — is two
+wings diverging from a centre with threshold rules across them. They are the
+same shape.
 
-Correct. `components/home/HowWeWork.tsx:44-70` renders
-`/case_studies/img/figures_workflow_abstract.png`. Six defects:
+So the mark's geometry does two jobs:
 
-1. **Two titles.** The PNG bakes in its own bold-sans title *"Cardiometabolic
-   Polygenic Risk Score Workflow"*, sitting directly under the serif `<h2>`.
-2. **Two numbered sequences.** The `<ol>` beside it runs 1–4. The image runs its
-   own blue circles 1–5. The figure restates the list in worse type.
-3. **Arrow tangle.** Box 5 fans three crossing diagonals to the output row,
-   leaving a dead white band through the middle of the image.
-4. **Glowing box.** A `bg-paper` wrapper on the `bg-deep` band — the exact
-   failure `Hero.tsx:10-18` already documents and rejects.
-5. **Illegible.** 1977px native, rendered at 620px. Sublabels land near 7pt.
-6. **Stock chrome.** Rounded blue rectangles and arrowheads read as a template.
+- **The hero image** is a volcano plot drawn at display scale in the page's own
+  colour and type (`components/brand/VolcanoMark.tsx`), not a matplotlib export
+  dropped onto the page.
+- **The section marker** is the rung: four ticks over a baseline (`.rung`,
+  `.rung-dark`). It replaced a tracked-out uppercase eyebrow that restated the
+  nav label above every heading.
 
-**Resolution: the figure is deleted, not redrawn.** Osseus carries zero
-diagrams and zero charts on marketing pages, and that restraint *is* the
-aesthetic being adopted.
+Everything else is type and hairlines. One bold element per page.
 
 ---
 
-## 1. What Osseus actually is (decoded from its own CSS, not impressions)
+## 2. Tokens
 
-Stack: Next.js. Stylesheet: `/_next/static/immutable/chunks/2ixcem76e09dh.css`.
-
-### Palette — warm, green-shifted, gold accent
+### Colour — `tailwind.config.ts`
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `marble` | `#faf8f2` | page ground |
-| `parchment` | `#f2eee3` | alternate band |
-| `linen` | `#e8e2d4` | soft fill |
-| `mist` | `#d9d5c7` | rules |
-| `ink` | `#171b14` | body / display type |
-| `ink-soft` | `#2c332a` | secondary |
-| `ink-muted` | `#5b6357` | deck copy |
-| `ink-faint` | `#8b9184` | eyebrows, meta |
-| `laurel` | `#2f3d2c` | dark ground |
-| `moss` | `#56684c` | dark ground alt |
-| `sage` | `#8b9c7c` | on-dark secondary |
-| `gild` | `#a8873f` | single accent (borders, focus ring) |
-| `gild-soft` | `#c9ab6b` | accent on dark |
+| `abyss` | `#071A2C` | navy ground: hero, process band, closing ask, footer |
+| `deep` | `#0E3355` | navy step |
+| `brand` | `#205E92` | **the logo blue.** Buttons, links, active nav, `in`/`out` labels |
+| `beam` | `#5AB0E8` | data blue on navy; focus ring on dark |
+| `helix` | `#E08A2C` | the volcano's up-regulated orange. Semantic only — never chrome |
+| `chalk` | `#F4F7FA` | light alternate ground |
+| `paper` | `#FFFFFF` | page ground |
+| `ink` | `#0B1B2A` | text on light |
+| `slate` | `#56697E` | secondary text on light |
+| `rule` / `rule-strong` | `#DCE3EA` / `#B9C5D1` | hairlines |
+| `on-deep` / `-mid` / `-faint` | `#E8F0F7` / `#9FB4C7` / `#6E8399` | text on navy |
 
-No blue anywhere. Focus ring is `2px solid gild`, `offset 3px`.
+Measured: `slate` on `chalk` 4.6:1 · `beam` on `abyss` 7.4:1 · `brand` on white
+7.0:1, so white-on-`brand` buttons pass too.
 
-### Type — serif does everything
+Every warm token (`marble`, `laurel`, `gild`, `sage`, …) still resolves, pointed
+at the blue values, so un-migrated routes shifted with the rest of the site
+instead of staying beige on their own. They go when the last reference does.
 
-- **EB Garamond** on 42 rules — headings *and* body *and* nav *and* buttons.
-- **JetBrains Mono** on 12 rules — data, tabular figures only.
-- No UI sans. Inter has no role in this system.
-- Display scale is fluid throughout:
-  `clamp(2.5rem, 6vw, 5rem)` hero · `clamp(2.25rem, 5vw, 3.75rem)` section
-  · `clamp(1.55rem, 2.6vw, 1.95rem)` deck.
-- Hero mixes roman and *italic* across two lines of one sentence.
+### Type — `app/layout.tsx`
 
-### The eyebrow (strongest single signature)
-
-```css
-font-family: var(--font-serif);
-text-transform: uppercase;
-letter-spacing: .34em;
-font-variant-numeric: lining-nums;
-font-size: .7rem;
-line-height: 1.2;
-```
-
-Preceded by a short horizontal rule, centered above every section heading.
+- **Archivo**, loaded with its `wdth` axis. Display lines run expanded
+  (`wdth 112`) and tight; body sits at normal width. One family for the whole
+  interface. It is a grotesque, which is the point — the wordmark is set in the
+  platform grotesque and is not being changed, so the page type meets it there.
+- **IBM Plex Mono** for numbers, units, axis labels and file types. Never prose,
+  never interface chrome.
+- `font-serif` is aliased to Archivo. There is no serif in this system; the
+  alias exists because legacy markup is full of `font-serif`.
 
 ### Geometry
 
-- Rules are **`color-mix(in oklab, ink N%, transparent)`** at 8/10/12/14/15/20/
-  25/30/35% — never a flat hex. Hairlines fade instead of drawing.
-- Radii: buttons and the nav capsule are **fully round pills**. Cards use
-  `0.75–1.5rem`.
-- Exactly **one** `box-shadow` in the whole stylesheet (the floating nav).
-- Containers: `96rem` / `78rem` / `73rem` / `64rem` / `56rem` / `52rem` / `49rem`.
-  Prose statements sit at `49–56rem`, centered.
-
-### Layout devices
-
-1. Full-bleed painterly hero image, masked to fade into `marble` at the fold.
-2. Nav transparent over the hero, collapsing to a floating rounded-full capsule
-   on scroll.
-3. Centered statement sections — 2–3 large serif sentences at `52rem`, no
-   cards, no columns, no icons.
-4. Full-bleed dark image bands between paper sections for rhythm.
-5. Pill CTAs: filled ink + arrow (primary), hairline outline (secondary).
+- Container `75rem` (`max-w-plate`), gutters 24/40.
+- Radius 2px on buttons; square everywhere else. The mark is drawn with round
+  caps, so a pill would double the roundness and a hard 0 would contradict it.
+- One shadow (`shadow-bar`), on the nav once it has left the hero.
+- Left-aligned throughout. No centred statement blocks.
 
 ---
 
-## 2. Where DeepBio stands today
+## 3. Done
 
-Current system (from `restructure deepbio`, 5f5ffc4): left-aligned journal
-editorial. Cool near-black `#23211D` on `#FDFCF8`, blue `#205E92` accent derived
-from the DESeq2 volcano output, Newsreader headings, Inter body, square corners,
-numbered figure plates, hairline rules at flat hex.
+`tailwind.config.ts` · `app/globals.css` · `app/layout.tsx` ·
+`app/opengraph-image.tsx` · `app/page.tsx` · `Navbar` · `Footer` · `Hero` ·
+`brand/VolcanoMark` · `home/SectionHeading` · `home/Capabilities` ·
+`home/HowWeWork` · `home/SelectedWork` · `home/Leadership` · `home/HomeFaq` ·
+`home/CtaBlock` · `WhoWeServe` · `Partners` · `ui/Accordion` ·
+`lib/home/capabilities.ts`
 
-Legacy surface still un-migrated — 23 components, 461 hits of
-`brand-gradient` / `glass` / `rounded-2xl` / `shadow-xl` / `bg-gradient`:
+Decisions worth keeping:
+
+- **Capabilities is a specification table**, not a card grid. What to send and
+  what comes back already exists on every service; six identical rounded cards
+  each holding one sentence said less in more room.
+- **The workflow schematic is gone from the homepage.** It baked in its own
+  bold-sans title under the heading, ran its own 1–5 numbering beside a 1–4
+  list, and rendered sublabels near 7pt at the width it was placed. The PCSK9
+  structure took its slot in Selected Work — a result rather than a picture of a
+  process, and legible at plate size.
+- **Partner marks are held at grey**, colour on hover. Six house styles in six
+  colour ranges otherwise compete with the one accent the page has.
+- **The OG card lost a stats row** reading "250+ Genomes Analyzed / 18+
+  Services". The catalogue holds twenty, so that card was shipping a stale
+  number to every link preview, and nothing in the repository supports the
+  genome count.
+
+---
+
+## 4. Pending
+
+Interior routes still carry the old card/gradient/glass markup. They now render
+in the blue palette through the aliases, but their *structure* is untouched:
 
 ```
 ThesisProgramPage 80   AmbassadorHandbook 51   LabOnboarding 39   BioHPCLab 36
@@ -123,145 +116,27 @@ Brochure 35            CloudLabs 34            ResearchPrograms 24  CareerGuide 
 Research 16            About 16                Insilico 15          GenGenomics 15
 BigBio 15              ResearchAsstRecruit 14  Ambassadors 13       Training 8
 OurAmbassadors 6       DeepBioAcademy 6        Methodology 5        DeepAMR 5
-Navbar 3               VisionMission 2         LegalLayout 1
+VisionMission 2        LegalLayout 1
 ```
 
-Scale: 26 routes, 39 components, ~10.7k LOC.
+Suggested order: `/services` and `/case-studies` first (the two pages a buyer
+reaches after the homepage, and the two that keep their figures), then
+`/about` · `/team` · `/contact` · `/methodology`, then the long handbook pages.
 
-### Conflicts to resolve (four real ones)
+Also outstanding:
 
-| # | DeepBio now | Osseus | Ruling |
-| --- | --- | --- | --- |
-| 1 | Figure plates are the proof device | no figures at all | **Keep figures on `/case-studies` and `/services` only.** See §6. |
-| 2 | Square corners, "no radius" | full-round pills | Adopt pills for CTAs and nav. Content stays square. |
-| 3 | Blue `#205E92` brand | gold `gild` | Blue demoted to a data-only colour inside figures. Gold becomes UI accent. |
-| 4 | Inter body sans | serif everywhere | Serif body; Inter survives only for figure captions and tabular data. |
-
----
-
-## 3. Imagery
-
-Osseus uses Claude-Lorrain-style classical Mediterranean landscape painting —
-marble colonnade, valley, dawn light. **Copying marble porticos would read as a
-clone and has nothing to do with a Bangladeshi genomics company.**
-
-DeepBio's analogue, same painterly register, own subject:
-
-- Bengal delta river systems from height at dawn — braided channels that read as
-  branching lineage.
-- Sundarbans mangrove canopy in mist.
-- Terracotta temple relief (Bengal terracotta), warm ochre — the architectural
-  note that `gild` already wants.
-- Monsoon light through cloud over floodplain.
-
-4–6 generated pieces, `.webp`, 2560px wide plus a 1280 and a portrait crop each,
-matching Osseus's own `hero-valley-pano` / `-1280` / `-portrait` set. Painterly
-and atmospheric, never photoreal stock, never AI-lab-render clichés. Every one
-is decorative and carries `alt=""`.
-
-**Flagged:** generated art is not a photo of DeepBio's real facilities. It
-supports the site as atmosphere only, and nothing may imply it depicts actual
-labs, staff, or equipment.
-
----
-
-## 4. Work plan
-
-### Phase 1 — foundation (2 files, blocks everything else)
-
-- `tailwind.config.ts`: replace the colour block with the 13 tokens in §1.
-  Keep `primary` / `brand.*` / `signal` as `figure.*` so figure assets and
-  legacy pages keep compiling. Add fluid `fontSize` steps, `maxWidth` at
-  `statement: 52rem` and `wide: 96rem`.
-- `app/globals.css`: swap Newsreader→EB Garamond and Inter→JetBrains Mono via
-  `next/font`; add `.eyebrow`, `.rule-hair` (oklab `color-mix`), `.pill`,
-  `.pill-outline`, `.statement`; convert `.plate` / `.plate-dark` to the warm
-  rules; gold focus ring; retire `.glass`, `.brand-gradient`,
-  `.brand-text-gradient`.
-- `app/layout.tsx`: font wiring.
-
-### Phase 2 — chrome (2 files, every route sees it)
-
-- `Navbar.tsx` (405 LOC): transparent over hero → floating rounded-full capsule
-  on scroll, serif items, pill CTA. Nav copy unchanged.
-- `Footer.tsx` (117 LOC): warm ground, serif, hairline column rules.
-
-### Phase 3 — homepage (9 files)
-
-- `Hero.tsx` — full-bleed image, centered roman+italic headline, pill CTAs. The
-  PDF evidence list moves below the fold as a `statement`-width index.
-- `HowWeWork.tsx` — **delete Fig. 1**, reflow the 4 steps to a centered
-  sequence on `laurel`.
-- `SelectedWork.tsx` — renumber Fig. 2–4 → 1–3, warm plate rules.
-- `Capabilities` · `WhoWeServe` · `Leadership` · `HomeFaq` · `CtaBlock` ·
-  `SectionHeading` — eyebrow device, centered statements, warm tokens.
-- `app/page.tsx` — insert one full-bleed dark image band for rhythm; update the
-  figure-numbering comment at line 23.
-
-### Phase 4 — mid-weight routes (10 files)
-
-`AboutPage` · `ServicesPage` · `CaseStudiesPage` · `TeamPage` · `ResearchPage` ·
-`Methodology` · `Contact` · `Partners` · `legal/LegalLayout` · `Training`.
-
-### Phase 5 — heavy legacy (13 files, the bulk)
-
-`ThesisProgramPage` (873) · `AmbassadorHandbookPage` (1129) ·
-`BioHPCLabPage` (1204) · `BrochurePage` (837) · `LabOnboardingPage` (535) ·
-`CloudLabsPage` (505) · `CareerGuideHandbookPage` (487) ·
-`ResearchProgramsPage` (389) · `ResearchAssistantRecruitmentPage` (268) ·
-`AmbassadorsPage` (268) · `OurAmbassadorsPage` (239) · the three 242-LOC lab
-pages · `DeepAMRShowcase` · `DeepBioAcademyShowcase` · `VisionMission` ·
-`FeaturedInitiatives`.
-
-Gradient/glass/shadow/radius stripped, warm tokens in, serif body.
-
-### Phase 6 — verification
-
-Every one of the 26 routes rendered at 1440 and 390, screenshotted, checked
-against this document. `next build` clean. Contrast checked: `ink-muted` on
-`marble` and `sage` on `laurel` both need measuring — if either misses 4.5:1 it
-gets darkened, and the reference is not followed off a cliff.
+- `public/favicon.svg` is already the logo blue and needs no change; the PNG
+  favicons referenced in `app/layout.tsx` were not audited.
+- Mobile rendering has not been screenshot-verified — the browser resize tool
+  in this session would not take. Breakpoints stack at `md`/`lg` and nothing
+  overflows at desktop width, but 390px wants a real pass.
+- Leadership portraits are inconsistently framed (one full-body, two
+  head-and-shoulders). A 4:5 crop holds them together; reshooting to a common
+  crop would hold them better.
 
 ---
 
 ## 5. Out of scope
 
-Copy rewriting · IA or nav restructuring · new routes · the audience-split
-positioning Osseus uses (`for research labs` / `for hospitals`) · performance
-work beyond not regressing · CMS · analytics · `.playwright-mcp/` cleanup and
-the other uncommitted deletions already sitting in `git status`.
-
----
-
-## 6. What this costs — stated plainly
-
-Osseus can be image-only because it sells datasets and access; its proof lives
-on a leaderboard and a research blog. DeepBio sells *analysis*, and the figure
-plates are the only checkable claim on the site. A literal full-site read of
-"follow Osseus" would delete that proof.
-
-So, unless overruled: figures are removed from the homepage and every marketing
-page, and **retained on `/case-studies` and `/services`** — restyled to warm
-rules and serif legends, but kept. Those are the pages a buyer reaches after
-they are already interested, which is exactly where Osseus puts its own
-evidence.
-
----
-
-## 7. Risk
-
-- Phase 5 is ~6.7k LOC of legacy markup. Highest chance of visual regression;
-  screenshot every route before and after.
-- Serif body copy at small sizes is weaker than Inter for dense handbook pages
-  (`AmbassadorHandbookPage`, `BrochurePage`). Mono or a serif at raised size
-  may be needed there; will flag when reached rather than guess now.
-- Generated imagery may take iterations to avoid a stock or AI-render look.
-- Blue→gold touches OG images, the favicon, and `app/opengraph-image.tsx`,
-  which this scope does not currently cover. Say the word and it is added.
-
----
-
-## 8. Approval
-
-Say **go** and Phase 1 starts. Say which phases to cut and the plan is trimmed
-before anything is written.
+Copy rewriting · IA or nav restructuring · new routes · performance work beyond
+not regressing · CMS · analytics.
