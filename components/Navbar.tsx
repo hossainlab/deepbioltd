@@ -153,10 +153,11 @@ export const Navbar: React.FC = () => {
 
   // Sequential order strictly matching homepage flow: What We Do -> Foundation Models -> Team -> Active Research
   const navLinks: NavItem[] = [
-    { name: 'Work', path: '/#what-we-do' },
-    { name: 'Models', path: '/#models' },
-    { name: 'Research', path: '/#research' },
-    { name: 'Team', path: '/#team' }
+    { name: 'Home', path: '/' },
+    { name: 'Research', path: '/research' },
+    { name: 'Services', path: '/services' },
+    { name: 'Training', path: 'https://deepbioacademy.com/', external: true },
+    { name: 'Join Us', path: '/join-us' }
   ]
 
   const isItemActive = (item: NavItem) => {

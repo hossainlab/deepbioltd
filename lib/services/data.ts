@@ -1,5 +1,5 @@
 /**
- * Canonical service catalogue.
+ * Canonical service catalog.
  *
  * Twenty distinct analyses. Six of them ship a worked example — a real
  * DeepBio output with a downloadable report — and those are the ones that do
@@ -37,7 +37,7 @@ export interface Service {
   id: string;
   title: string;
   category: ServiceCategory;
-  /** What the analysis does, in terms a PI or a BD lead would recognise. */
+  /** What the analysis does, in terms a PI or a BD lead would recognize. */
   description: string;
   /** What you send us. */
   input: string;
@@ -53,7 +53,7 @@ export const services: Service[] = [
     title: 'DESeq2 RNA-seq analysis',
     category: 'Transcriptomics',
     description:
-      'Differential expression across conditions with negative-binomial modelling, shrunken fold-change estimates and multiple-testing correction.',
+      'Differential expression across conditions with negative-binomial modeling, shrunken fold-change estimates and multiple-testing correction.',
     input: 'Count matrix or raw FASTQ, plus a sample sheet',
     output: 'Ranked result tables, volcano and MA plots, enrichment summary',
     example: {
@@ -87,7 +87,7 @@ export const services: Service[] = [
     title: 'Spatial transcriptomics analysis',
     category: 'Transcriptomics',
     description:
-      'Mapping expression back onto tissue architecture — spatial domains, niche composition and neighbourhood enrichment.',
+      'Mapping expression back onto tissue architecture — spatial domains, niche composition and neighborhood enrichment.',
     input: 'Visium, Xenium or comparable spatial output',
     output: 'Domain segmentation, deconvolved cell proportions, spatial plots',
   },
@@ -138,7 +138,7 @@ export const services: Service[] = [
       title: 'Cardiometabolic polygenic risk across ancestry groups',
       figure: '/case_studies/img/figures_workflow_abstract.png',
       figureAlt:
-        'Workflow schematic running from a reference cohort through catalogue weights, variant matching and scoring to per-trait outputs.',
+        'Workflow schematic running from a reference cohort through catalog weights, variant matching and scoring to per-trait outputs.',
       pdf: '/case_studies/pdf/Cardiometabolic Polygenic Risk Assessment.pdf',
     },
   },
@@ -153,7 +153,7 @@ export const services: Service[] = [
   },
   {
     id: 'mendelian-randomization',
-    title: 'Mendelian randomisation',
+    title: 'Mendelian randomization',
     category: 'Human genetics',
     description:
       'Using genetic instruments to test whether an exposure plausibly causes an outcome, with sensitivity analyses for pleiotropy.',
@@ -167,7 +167,7 @@ export const services: Service[] = [
     description:
       'Annotating called variants with consequence, population frequency, clinical significance and predicted impact.',
     input: 'VCF from your calling pipeline',
-    output: 'Annotated VCF and a filtered, prioritised candidate table',
+    output: 'Annotated VCF and a filtered, prioritized candidate table',
   },
 
   // ─── Structural & molecular design ────────────────────────────────────────
@@ -176,7 +176,7 @@ export const services: Service[] = [
     title: 'Binder design',
     category: 'Structural & molecular design',
     description:
-      'Computational design of protein binders against a chosen target, with iterative optimisation of the candidate set.',
+      'Computational design of protein binders against a chosen target, with iterative optimization of the candidate set.',
     input: 'Target structure or sequence, and the epitope you care about',
     output: 'Ranked designed sequences, predicted complexes, selection rationale',
     example: {
@@ -210,11 +210,11 @@ export const services: Service[] = [
     title: 'Primer design',
     category: 'Structural & molecular design',
     description:
-      'Primer sets optimised for specificity and efficiency, with in-silico checks against off-target amplification.',
+      'Primer sets optimized for specificity and efficiency, with in-silico checks against off-target amplification.',
     input: 'Target region or sequence set',
     output: 'Ranked primer pairs with thermodynamics and specificity report',
     example: {
-      title: 'Optimised PCR primer design for a genomic assay',
+      title: 'Optimized PCR primer design for a genomic assay',
       figure: '/case_studies/img/primer_design.png',
       figureAlt: 'Primer design schematic showing target region and candidate primer placement.',
       pdf: '/case_studies/pdf/Primer Design.pdf',
@@ -227,7 +227,7 @@ export const services: Service[] = [
     title: 'Survival analysis',
     category: 'Clinical & translational',
     description:
-      'Time-to-event modelling with Kaplan–Meier estimation, log-rank testing and Cox regression against covariates.',
+      'Time-to-event modeling with Kaplan–Meier estimation, log-rank testing and Cox regression against covariates.',
     input: 'Clinical table with follow-up time, event status and covariates',
     output: 'Stratified survival curves, hazard ratios, risk-group assignment',
     example: {
@@ -252,7 +252,7 @@ export const services: Service[] = [
     title: 'Clinical trial landscaping',
     category: 'Clinical & translational',
     description:
-      'Systematic review of the registered trial landscape for an indication or target, with the competitive picture summarised.',
+      'Systematic review of the registered trial landscape for an indication or target, with the competitive picture summarized.',
     input: 'Indication, target or mechanism of interest',
     output: 'Structured trial table, phase and sponsor breakdown, written summary',
   },
@@ -263,7 +263,7 @@ export const services: Service[] = [
     title: 'Proteomics differential expression',
     category: 'Proteomics & microbiome',
     description:
-      'Differential abundance across conditions with normalisation, principled missing-value handling and enrichment.',
+      'Differential abundance across conditions with normalization, principled missing-value handling and enrichment.',
     input: 'Protein or peptide intensity matrix with a sample sheet',
     output: 'Ranked protein tables, QC and abundance plots, pathway enrichment',
   },

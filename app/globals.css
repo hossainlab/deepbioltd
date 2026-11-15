@@ -204,3 +204,30 @@ body {
     backdrop-filter: blur(12px);
   }
 }
+
+/* ── Minimal homepage theme (app/page.tsx, HomeShell) ───────────────── */
+.home-shell {
+  --home-bg: #FAF9F6;
+  --home-ink: #0A1118;
+  --home-muted: #64748B;
+  --home-accent: #1E4E79;
+  --home-rule: #0A1118;
+  --home-rule-soft: #E2E8F0;
+  background-color: var(--home-bg);
+  color: var(--home-ink);
+  transition: background-color 250ms ease, color 250ms ease;
+}
+.home-shell[data-theme="dark"] {
+  --home-bg: #07121E;
+  --home-ink: #E6EDF4;
+  --home-muted: #94A3B8;
+  --home-accent: #8DBBE3;
+  --home-rule: #E6EDF4;
+  --home-rule-soft: #1E3349;
+}
+.home-shell h2 { color: var(--home-ink); }
+.home-shell .logo-tile { transition: transform 200ms ease; }
+.home-shell .logo-tile:hover { transform: translateY(-1px); }
+/* Logos keep their real colours; in dark mode they sit on a light tile so they stay legible. */
+.home-shell[data-theme="dark"] .logo-tile { background: #FFFFFF; border-radius: 8px; }
+

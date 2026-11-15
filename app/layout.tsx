@@ -3,6 +3,7 @@ import { Archivo, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { HideOnHome } from '@/components/HideOnHome'
 import ScrollHandler from '@/components/ScrollHandler'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
@@ -111,9 +112,9 @@ export default function RootLayout({
         <div className="relative min-h-screen overflow-x-hidden">
           <SmoothScroll />
           <ScrollHandler />
-          <Navbar />
+          <HideOnHome><Navbar /></HideOnHome>
           <main>{children}</main>
-          <Footer />
+          <HideOnHome><Footer /></HideOnHome>
         </div>
       </body>
     </html>

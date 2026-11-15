@@ -50,7 +50,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Musab Shahriar',
-    role: 'CADD Scientist I',
+    role: 'CADD Scientist',
     image: '/images/team/musab.png',
     group: 'science',
     linkedin: 'https://www.linkedin.com/in/mshahariar/',
