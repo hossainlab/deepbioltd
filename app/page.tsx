@@ -27,7 +27,7 @@ const collaborators = [
 
 // Names left off the homepage roll. Filtered here rather than deleted from
 // lib/team/data.ts, which /team and the leadership list (picked by index) still use.
-const HIDDEN_FROM_HOME = new Set(['Pritom Kundu'])
+const HIDDEN_FROM_HOME = new Set(['Pritom Kundu', 'Tajrian Rahman'])
 
 // Some source photos are loose, full-length crops; zoom them so faces read at 76px.
 // Each value sets the crop anchor (object-position) and zoom around the face.
@@ -35,7 +35,6 @@ const PORTRAIT_ZOOM: Record<string, string> = {
   'Md. Jubayer Hossain': 'scale-[1.3] origin-[47%_40%]',
   'Muhibullah Shahjahan': 'scale-[1.4] origin-[45%_26%]',
   'Nishat Mim': '!object-[48%_43%] scale-[2.2] origin-[48%_45%]',
-  'Tajrian Rahman': '!object-[50%_42%] scale-[1.6] origin-[50%_44%]',
   'Najnin Suktara': '!object-[47%_51%] scale-[2.7] origin-[47%_52%]',
 }
 
@@ -88,7 +87,7 @@ export default function HomePage() {
                 </>
               )
               return (
-                <li key={m.name} className="w-1/4 px-1 sm:w-[calc(100%/7)]">
+                <li key={m.name} className="w-1/3 px-1 sm:w-[calc(100%/6)]">
                   {m.linkedin ? (
                     <a
                       href={m.linkedin}
