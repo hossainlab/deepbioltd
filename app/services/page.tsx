@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import { Shell } from '@/components/minimal/Shell'
 import { Masthead } from '@/components/minimal/Masthead'
 import { Colophon } from '@/components/minimal/Colophon'
-import { services, serviceCategories } from '@/lib/services/data'
+import { PubEntry, SmartLink, Thumb, pubLink } from '@/components/minimal/PubEntry'
+import { ServiceGlyph } from '@/components/minimal/serviceGlyphs'
+import { services, serviceCategories, servicesWithExamples, type Service } from '@/lib/services/data'
 
 export const metadata: Metadata = {
   title: 'Services | DeepBio',
@@ -11,6 +13,49 @@ export const metadata: Metadata = {
 
 /** Previous version: backups/homepage-2026-11-15/services/page.tsx (components/ServicesPage.tsx). */
 
+/** One service as a publication-style row; services with a worked example link to it. */
+function ServiceEntry({ s }: { s: Service }) {
+  const caseHref = s.example ? `/case-studies#${s.id}` : undefined
+  return (
+    <PubEntry
+      id={s.id}
+      thumb={
+        s.example ? (
+          <Thumb href={caseHref} src={s.example.figure} alt={s.example.figureAlt} fit="contain" />
+        ) : (
+          <Thumb glyph={<ServiceGlyph id={s.id} category={s.category} />} />
+        )
+      }
+    >
+      {caseHref ? (
+        <SmartLink href={caseHref} className={`font-bold ${pubLink}`}>
+          {s.title}
+        </SmartLink>
+      ) : (
+        <p className="font-bold text-[color:var(--home-accent)]">{s.title}</p>
+      )}
+      <p>
+        <span className="text-[color:var(--home-muted)]">You send:</span> {s.input}
+      </p>
+      <p>
+        <span className="text-[color:var(--home-muted)]">You get:</span> {s.output}
+      </p>
+      {s.example && (
+        <p>
+          <SmartLink href={caseHref!} className={pubLink}>
+            case study
+          </SmartLink>
+          {' / '}
+          <SmartLink href={s.example.pdf} className={pubLink}>
+            report (PDF)
+          </SmartLink>
+        </p>
+      )}
+      <p className="mt-2.5">{s.description}</p>
+    </PubEntry>
+  )
+}
+
 export default function ServicesIndex() {
   return (
     <Shell>
@@ -18,10 +63,15 @@ export default function ServicesIndex() {
         <Masthead />
 
         <main className="mx-auto w-full max-w-[36rem] px-4 sm:px-0">
-          <div className="pb-6 pt-8 text-center">
-            <h1 className="text-[1.05rem] text-[color:var(--home-accent)]">Services</h1>
-            <p className="mt-2 text-[13px] text-[color:var(--home-muted)]">
-              Analyses we run for labs, hospitals and companies. Six include a worked example you can read first.
+          <div className="pb-4 pt-8">
+            <h1 className="text-center text-[1.05rem] text-[color:var(--home-accent)]">Services</h1>
+            <p className="mt-3 text-[13.5px] leading-[1.55]">
+              Analyses we run for labs, hospitals and companies. {servicesWithExamples.length} of them
+              include a worked example you can read first; all are collected under{' '}
+              <SmartLink href="/case-studies" className={pubLink}>
+                case studies
+              </SmartLink>
+              .
             </p>
           </div>
 
@@ -30,41 +80,19 @@ export default function ServicesIndex() {
             if (!items.length) return null
             return (
               <section key={cat} aria-labelledby={`cat-${cat}`} className="pt-6">
-                <h2
-                  id={`cat-${cat}`}
-                  className="border-b border-[color:var(--home-rule)] pb-2 text-center text-base font-bold"
-                >
+                <h2 id={`cat-${cat}`} className="text-[1.15rem] font-normal">
                   {cat}
                 </h2>
                 <ul>
                   {items.map((s) => (
-                    <li key={s.id} className="border-b border-[color:var(--home-rule-soft)] py-5 last:border-b-0">
-                      <h3 className="text-[1.05rem] font-medium leading-snug tracking-[-0.01em]">{s.title}</h3>
-                      <p className="mt-2 text-[13.5px] leading-[1.55]">{s.description}</p>
-                      <dl className="mt-2 grid grid-cols-[4.5rem_1fr] gap-x-2 gap-y-0.5 text-[12.5px] leading-5 text-[color:var(--home-muted)]">
-                        <dt>You send</dt>
-                        <dd>{s.input}</dd>
-                        <dt>You get</dt>
-                        <dd>{s.output}</dd>
-                      </dl>
-                      {s.example && (
-                        <a
-                          href={s.example.pdf}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 inline-block text-[13px] font-medium text-[color:var(--home-accent)] hover:opacity-70"
-                        >
-                          Worked example: {s.example.title} (PDF) →
-                        </a>
-                      )}
-                    </li>
+                    <ServiceEntry key={s.id} s={s} />
                   ))}
                 </ul>
               </section>
             )
           })}
 
-          <p className="mt-10 border-t border-[color:var(--home-rule)] pt-6 text-center text-[14px] leading-[1.6]">
+          <p className="mt-10 text-center text-[13.5px] leading-[1.6]">
             Need something not listed, or a custom model? Write to{' '}
             <a
               href="mailto:info@deepbioltd.com?subject=Service%20enquiry"

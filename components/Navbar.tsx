@@ -157,6 +157,7 @@ export const Navbar: React.FC = () => {
     { name: 'Research', path: '/research' },
     { name: 'Services', path: '/services' },
     { name: 'Training', path: 'https://deepbioacademy.com/', external: true },
+    { name: 'Resources', path: '/resources' },
     { name: 'Join Us', path: '/join-us' }
   ]
 

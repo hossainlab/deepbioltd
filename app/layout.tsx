@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Archivo, IBM_Plex_Mono } from 'next/font/google'
+import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -7,15 +7,12 @@ import { HideOnHome } from '@/components/HideOnHome'
 import ScrollHandler from '@/components/ScrollHandler'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
-// One family for the whole interface, loaded with its width axis so display
-// lines can run expanded while body stays normal. Archivo is a grotesque, which
-// is the reason it is here: the wordmark in Logo.tsx is set in the platform
-// grotesque and is not being changed, so the page type has to meet it there.
-const archivo = Archivo({
+// One family for the whole interface. Inter is a neutral, highly legible
+// grotesque built for screens, so long reading lists stay clean at small sizes.
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-  axes: ['wdth'],
 })
 
 // Mono is reserved for numbers, units and axis labels — never interface chrome.
@@ -77,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${mono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
