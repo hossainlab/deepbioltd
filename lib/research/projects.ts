@@ -34,15 +34,15 @@ export interface ResearchProject {
 
 export const projects: ResearchProject[] = [
   {
-    slug: 'protirodh',
+    slug: 'restoring-carbapenems',
     area: 'Antimicrobial Resistance',
-    title: 'PROTIRODH: rescuing carbapenems against the Bangladeshi resistome',
+    title: 'Restoring carbapenems against metallo-beta-lactamase resistance',
     subtitle:
       'Designing a metallo-beta-lactamase inhibitor that restores an existing, inexpensive antibiotic, against the enzyme variants circulating in Bangladeshi hospitals rather than reference laboratory alleles.',
     problem:
       'Carbapenem resistance in Klebsiella pneumoniae, Acinetobacter baumannii and Pseudomonas aeruginosa in Bangladesh is driven predominantly by metallo-beta-lactamases, principally NDM-type enzymes, often co-carried with colistin-resistance determinants. Every one of the seven approved beta-lactamase inhibitors targets serine enzymes: across the 21 combinations of an approved inhibitor and an Ambler class B enzyme, none shows reported inhibitory activity. Colistin, the fallback when carbapenems fail, is already compromised in the same isolates.',
     approach:
-      'Rather than replacing the antibiotic, PROTIRODH designs a partner molecule that blocks the enzyme destroying it. The methodological contribution is minimax pan-variant optimisation: candidates are selected on worst-case predicted affinity across a twelve-variant sentinel panel built from sequenced local isolates, not on potency against a single reference enzyme. No single model is trusted. Boltz-2 ranks within a chemical series, a three-model consensus tier governs pose geometry, physics rescoring corrects the zinc centre, and free-energy perturbation confirms finalists. Enzyme kinetics and MIC measurement on clinical isolates remain the sole arbiter.',
+      'Rather than replacing the antibiotic, we design a partner molecule that blocks the enzyme destroying it. The methodological contribution is minimax pan-variant optimisation: candidates are selected on worst-case predicted affinity across a twelve-variant sentinel panel built from sequenced local isolates, not on potency against a single reference enzyme. No single model is trusted. Boltz-2 ranks within a chemical series, a three-model consensus tier governs pose geometry, physics rescoring corrects the zinc centre, and free-energy perturbation confirms finalists. Enzyme kinetics and MIC measurement on clinical isolates remain the sole arbiter.',
     models: ['Boltz-2', 'Chai-1', 'OpenFold3', 'Chemprop', 'REINVENT 4'],
     focus: [
       'Sentinel variant panel from 400 sequenced carbapenem-non-susceptible clinical isolates',
@@ -53,7 +53,7 @@ export const projects: ResearchProject[] = [
     figures: [
       {
         section: 'problem',
-        src: '/research/protirodh/burden_evidence.png',
+        src: '/research/restoring-carbapenems/burden_evidence.png',
         width: 2239,
         height: 2130,
         alt: 'Three panels: deaths attributable to resistance by pathogen-drug combination, national susceptibility by organism and agent, and resistance determinants in Bangladeshi Acinetobacter baumannii isolates.',
@@ -63,7 +63,7 @@ export const projects: ResearchProject[] = [
       },
       {
         section: 'problem',
-        src: '/research/protirodh/inhibitor_coverage.png',
+        src: '/research/restoring-carbapenems/inhibitor_coverage.png',
         width: 2521,
         height: 1328,
         alt: 'Matrix of nine beta-lactamase inhibitors against eight representative enzymes by Ambler class, with the approved-inhibitor by class B region outlined and empty.',
@@ -73,7 +73,7 @@ export const projects: ResearchProject[] = [
       },
       {
         section: 'approach',
-        src: '/research/protirodh/minimax_concept.png',
+        src: '/research/restoring-carbapenems/minimax_concept.png',
         width: 1993,
         height: 981,
         alt: 'Two panels contrasting a potency-selected compound, which falls below the activity threshold across the variant panel, with a minimax-selected compound that stays above it.',
@@ -83,7 +83,7 @@ export const projects: ResearchProject[] = [
       },
       {
         section: 'focus',
-        src: '/research/protirodh/protirodh_workflow.png',
+        src: '/research/restoring-carbapenems/workflow.png',
         width: 2426,
         height: 2019,
         alt: 'Two panels: compounds surviving each screening gate on a log scale from two million to three, and a work-package schedule across 48 months with milestone markers.',

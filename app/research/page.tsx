@@ -48,7 +48,7 @@ function ProjectGlyph({ slug }: { slug: string }) {
         </g>
       )
     }
-    case 'protirodh':
+    case 'restoring-carbapenems':
       // A beta-lactam ring guarded by an inhibitor docking at the zinc centre.
       return (
         <g {...stroke}>
