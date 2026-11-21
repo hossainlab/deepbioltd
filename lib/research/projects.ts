@@ -29,6 +29,10 @@ export interface ResearchProject {
   approach: string
   models: string[]
   focus: string[]
+  /** Figure used as the index thumbnail; falls back to a line drawing. */
+  thumb?: string
+  /** 'contain' keeps a whole chart visible; 'cover' crops a dense one. */
+  thumbFit?: 'cover' | 'contain'
   figures?: ProjectFigure[]
 }
 
@@ -44,6 +48,8 @@ export const projects: ResearchProject[] = [
     approach:
       'Rather than replacing the antibiotic, we design a partner molecule that blocks the enzyme destroying it. The methodological contribution is minimax pan-variant optimisation: candidates are selected on worst-case predicted affinity across a twelve-variant sentinel panel built from sequenced local isolates, not on potency against a single reference enzyme. No single model is trusted. Boltz-2 ranks within a chemical series, a three-model consensus tier governs pose geometry, physics rescoring corrects the zinc centre, and free-energy perturbation confirms finalists. Enzyme kinetics and MIC measurement on clinical isolates remain the sole arbiter.',
     models: ['Boltz-2', 'Chai-1', 'OpenFold3', 'Chemprop', 'REINVENT 4'],
+    thumb: '/research/restoring-carbapenems/inhibitor_coverage.png',
+    thumbFit: 'contain',
     focus: [
       'Sentinel variant panel from 400 sequenced carbapenem-non-susceptible clinical isolates',
       'First benchmark of co-folding affinity prediction on serine and metallo-beta-lactamases',

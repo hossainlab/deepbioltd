@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Shell } from '@/components/minimal/Shell'
 import { Masthead } from '@/components/minimal/Masthead'
 import { Colophon } from '@/components/minimal/Colophon'
-import { PubEntry, pubLink } from '@/components/minimal/PubEntry'
+import { PubEntry, Thumb, pubLink } from '@/components/minimal/PubEntry'
 import { projects } from '@/lib/research/projects'
 
 export const metadata: Metadata = {
@@ -114,16 +114,13 @@ function Entry({ p }: { p: (typeof projects)[number] }) {
   return (
     <PubEntry
       thumb={
-        <Link
+        <Thumb
           href={href}
-          tabIndex={-1}
-          aria-hidden="true"
-          className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[3px] bg-white text-[#205E92] ring-1 ring-[color:var(--home-rule-soft)]"
-        >
-          <svg viewBox="0 0 80 60" className="w-[78%]">
-            <ProjectGlyph slug={p.slug} />
-          </svg>
-        </Link>
+          src={p.thumb}
+          alt={`Figure from the ${p.title} program`}
+          fit={p.thumbFit}
+          glyph={<ProjectGlyph slug={p.slug} />}
+        />
       }
     >
         <Link href={href} className={`font-bold ${link}`}>
