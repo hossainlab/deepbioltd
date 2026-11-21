@@ -49,15 +49,20 @@ function ProjectGlyph({ slug }: { slug: string }) {
       )
     }
     case 'restoring-carbapenems':
-      // A beta-lactam ring guarded by an inhibitor docking at the zinc centre.
+      // "generic-bacterium" by Pauline Franz, from bioicons.com, released
+      // under CC0. Recolored to the page accent and scaled from its native
+      // 66.88 x 51.83 box into the 80 x 60 one the thumbnails use.
       return (
-        <g {...stroke}>
-          <path d="M20 22h16v16H20z" />
-          <path d="M36 26h12a7 7 0 0 1 0 14H36" />
-          <circle cx="54" cy="22" r="4" />
-          <path d="M54 26v6" opacity={0.6} />
-          <path d="M58 44l7-4 7 4v8l-7 4-7-4z" />
-          <path d="M58 48l-9-2" opacity={0.6} />
+        <g transform="translate(1.55 0.2) scale(1.15)">
+          <g fill="none" stroke="currentColor" strokeMiterlimit={10} strokeWidth={1.5}>
+            <path d="M26.94,30.86a8.63,8.63,0,0,1,2.09-12L52.59,2.31a8.6,8.6,0,1,1,9.9,14.06L38.92,33A8.62,8.62,0,0,1,26.94,30.86Z" />
+            <path d="M41.74,24.51c-.33,6.79-11.06,6.92-10.9-.45C31.06,17.49,41.48,16.67,41.74,24.51Z" />
+            <path d="M38.1,19.17c4.63,1.49,4.85,8.3.32,10.11" />
+          </g>
+          <g fill="currentColor">
+            <path d="M28,31.09a8.12,8.12,0,0,0-6.73,1,49.17,49.17,0,0,0-5.22,4.46,11.81,11.81,0,0,1-2.95,2c-1.41.6-2.68.19-4.16.11A11.49,11.49,0,0,0,.19,41.78c-.58.55.3,1.44.88.88a10.69,10.69,0,0,1,9-2.71,5.72,5.72,0,0,0,3.4-.28A11.56,11.56,0,0,0,16.21,38c3.5-2.74,6.42-7.12,11.46-5.72A.63.63,0,0,0,28,31.09Z" />
+            <path d="M25.7,29.58c-.39,5.26-5.8,6.39-9.55,8.73a10.72,10.72,0,0,0-2.44,2,5.22,5.22,0,0,0-.92,1.27,14.12,14.12,0,0,0-.46,2.07,10.23,10.23,0,0,1-5.58,7c-.72.35-.09,1.42.63,1.08a10.86,10.86,0,0,0,5-4.78,14.72,14.72,0,0,0,1.19-3.27A8,8,0,0,1,14,41.94,5,5,0,0,1,15,40.81c2.63-2.64,6.6-3.32,9.39-5.78A7.79,7.79,0,0,0,27,29.58c.06-.8-1.19-.8-1.25,0Z" />
+          </g>
         </g>
       )
     case 'amr-drug-repurposing':
