@@ -19,6 +19,24 @@ export interface ResearchProject {
 
 export const projects: ResearchProject[] = [
   {
+    slug: 'protirodh',
+    area: 'Antimicrobial Resistance',
+    title: 'PROTIRODH: rescuing carbapenems against the Bangladeshi resistome',
+    subtitle:
+      'Designing a metallo-beta-lactamase inhibitor that restores an existing, inexpensive antibiotic, against the enzyme variants circulating in Bangladeshi hospitals rather than reference laboratory alleles.',
+    problem:
+      'Carbapenem resistance in Klebsiella pneumoniae, Acinetobacter baumannii and Pseudomonas aeruginosa in Bangladesh is driven predominantly by metallo-beta-lactamases, principally NDM-type enzymes, often co-carried with colistin-resistance determinants. Every one of the seven approved beta-lactamase inhibitors targets serine enzymes: across the 21 combinations of an approved inhibitor and an Ambler class B enzyme, none shows reported inhibitory activity. Colistin, the fallback when carbapenems fail, is already compromised in the same isolates.',
+    approach:
+      'Rather than replacing the antibiotic, PROTIRODH designs a partner molecule that blocks the enzyme destroying it. The methodological contribution is minimax pan-variant optimisation: candidates are selected on worst-case predicted affinity across a twelve-variant sentinel panel built from sequenced local isolates, not on potency against a single reference enzyme. No single model is trusted. Boltz-2 ranks within a chemical series, a three-model consensus tier governs pose geometry, physics rescoring corrects the zinc centre, and free-energy perturbation confirms finalists. Enzyme kinetics and MIC measurement on clinical isolates remain the sole arbiter.',
+    models: ['Boltz-2', 'Chai-1', 'OpenFold3', 'Chemprop', 'REINVENT 4'],
+    focus: [
+      'Sentinel variant panel from 400 sequenced carbapenem-non-susceptible clinical isolates',
+      'First benchmark of co-folding affinity prediction on serine and metallo-beta-lactamases',
+      'Prospective test of minimax selection against a matched single-variant control arm',
+      'Open release of models, weights, benchmarks and negative results, with national handover to IEDCR',
+    ],
+  },
+  {
     slug: 'raredx-modality',
     area: 'Rare Disease Target Triage',
     title: 'RareDx-Modality: druggability assessment across seven modalities',

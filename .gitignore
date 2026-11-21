@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Playwright MCP artifacts
 .playwright-mcp/
+
+# Grant proposals and working documents (not for the public site)
+projects/

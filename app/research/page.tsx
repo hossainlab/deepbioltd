@@ -48,6 +48,18 @@ function ProjectGlyph({ slug }: { slug: string }) {
         </g>
       )
     }
+    case 'protirodh':
+      // A beta-lactam ring guarded by an inhibitor docking at the zinc centre.
+      return (
+        <g {...stroke}>
+          <path d="M20 22h16v16H20z" />
+          <path d="M36 26h12a7 7 0 0 1 0 14H36" />
+          <circle cx="54" cy="22" r="4" />
+          <path d="M54 26v6" opacity={0.6} />
+          <path d="M58 44l7-4 7 4v8l-7 4-7-4z" />
+          <path d="M58 48l-9-2" opacity={0.6} />
+        </g>
+      )
     case 'amr-drug-repurposing':
       // Rod-shaped bacterium with flagella, and a compound docking in.
       return (
