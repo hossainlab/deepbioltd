@@ -28,7 +28,6 @@ const sections = [
   { id: 'approach', label: 'Our approach' },
   { id: 'models', label: 'Models' },
   { id: 'focus', label: 'Current focus' },
-  { id: 'collaborate', label: 'Collaborate' },
 ]
 
 /**
@@ -139,18 +138,6 @@ export default async function ResearchArticle({ params }: { params: Promise<Para
                 {figuresIn('focus').map((f) => (
                   <Figure key={f.src} figure={f} />
                 ))}
-              </section>
-
-              <section id="collaborate" className="scroll-mt-8">
-                <h2 className="mb-3 text-[1.4rem] font-semibold tracking-[-0.015em]">Collaborate</h2>
-                <p>
-                  We work with hospitals, universities and industry partners on this program. To discuss data,
-                  compute or co-development, write to{' '}
-                  <a href="mailto:info@deepbioltd.com" className="text-[color:var(--home-accent)] underline underline-offset-4">
-                    info@deepbioltd.com
-                  </a>
-                  .
-                </p>
               </section>
             </div>
 
