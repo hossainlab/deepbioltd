@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Shell } from '@/components/minimal/Shell'
 import { Masthead } from '@/components/minimal/Masthead'
 import { Colophon } from '@/components/minimal/Colophon'
-import { projects } from '@/lib/research/projects'
+import { projects, type ProjectFigure } from '@/lib/research/projects'
 
 type Params = { slug: string }
 
@@ -30,6 +31,31 @@ const sections = [
   { id: 'collaborate', label: 'Collaborate' },
 ]
 
+/**
+ * A program figure with its caption. The plot sits on white in both themes,
+ * since the source PNGs are drawn for a light background.
+ */
+function Figure({ figure }: { figure: ProjectFigure }) {
+  return (
+    <figure className="mt-7">
+      <div className="rounded-[3px] bg-white p-3 ring-1 ring-[color:var(--home-rule-soft)]">
+        <Image
+          src={figure.src}
+          alt={figure.alt}
+          width={figure.width}
+          height={figure.height}
+          sizes="(max-width: 50rem) 100vw, 48rem"
+          className="h-auto w-full"
+        />
+      </div>
+      <figcaption className="mt-2.5 text-[13px] leading-[1.55] text-[color:var(--home-muted)]">
+        <span className="font-semibold text-[color:var(--home-ink)]">{figure.label}</span>{' '}
+        {figure.caption}
+      </figcaption>
+    </figure>
+  )
+}
+
 export default async function ResearchArticle({ params }: { params: Promise<Params> }) {
   const { slug } = await params
   const p = projects.find((x) => x.slug === slug)
@@ -38,6 +64,8 @@ export default async function ResearchArticle({ params }: { params: Promise<Para
   const words = [p.subtitle, p.problem, p.approach, ...p.models, ...p.focus].join(' ').split(/\s+/).length
   const minutes = Math.max(1, Math.round(words / 220))
   const others = projects.filter((x) => x.slug !== p.slug)
+  const figuresIn = (section: ProjectFigure['section']) =>
+    (p.figures ?? []).filter((f) => f.section === section)
 
   return (
     <Shell>
@@ -79,11 +107,17 @@ export default async function ResearchArticle({ params }: { params: Promise<Para
               <section id="problem" className="scroll-mt-8">
                 <h2 className="mb-3 text-[1.4rem] font-semibold tracking-[-0.015em]">The problem</h2>
                 <p>{p.problem}</p>
+                {figuresIn('problem').map((f) => (
+                  <Figure key={f.src} figure={f} />
+                ))}
               </section>
 
               <section id="approach" className="scroll-mt-8">
                 <h2 className="mb-3 text-[1.4rem] font-semibold tracking-[-0.015em]">Our approach</h2>
                 <p>{p.approach}</p>
+                {figuresIn('approach').map((f) => (
+                  <Figure key={f.src} figure={f} />
+                ))}
               </section>
 
               <section id="models" className="scroll-mt-8">
@@ -102,6 +136,9 @@ export default async function ResearchArticle({ params }: { params: Promise<Para
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
+                {figuresIn('focus').map((f) => (
+                  <Figure key={f.src} figure={f} />
+                ))}
               </section>
 
               <section id="collaborate" className="scroll-mt-8">

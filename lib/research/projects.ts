@@ -4,6 +4,20 @@
  * (components/home/ActiveResearchSpotlight.tsx).
  */
 
+/** A figure placed under one of the article's sections. */
+export interface ProjectFigure {
+  /** Which article section it sits under. */
+  section: 'problem' | 'approach' | 'focus'
+  src: string
+  /** Intrinsic pixel size, so the browser reserves the right space. */
+  width: number
+  height: number
+  alt: string
+  /** Bold lead-in, e.g. "Figure 1". */
+  label: string
+  caption: string
+}
+
 export interface ResearchProject {
   slug: string
   /** Program area, shown as the byline under the title. */
@@ -15,6 +29,7 @@ export interface ResearchProject {
   approach: string
   models: string[]
   focus: string[]
+  figures?: ProjectFigure[]
 }
 
 export const projects: ResearchProject[] = [
@@ -34,6 +49,48 @@ export const projects: ResearchProject[] = [
       'First benchmark of co-folding affinity prediction on serine and metallo-beta-lactamases',
       'Prospective test of minimax selection against a matched single-variant control arm',
       'Open release of models, weights, benchmarks and negative results, with national handover to IEDCR',
+    ],
+    figures: [
+      {
+        section: 'problem',
+        src: '/research/protirodh/burden_evidence.png',
+        width: 2239,
+        height: 2130,
+        alt: 'Three panels: deaths attributable to resistance by pathogen-drug combination, national susceptibility by organism and agent, and resistance determinants in Bangladeshi Acinetobacter baumannii isolates.',
+        label: 'Figure 1',
+        caption:
+          'The burden is beta-lactamase-mediated, susceptibility in Bangladesh is already lost, and the locally dominant mechanism is the one for which no inhibitor exists. (a) Deaths attributable to resistance in 2019 for the seven pathogen-drug combinations each exceeding 50,000 attributable deaths; the MRSA bar is truncated at the axis limit. (b) Isolate susceptibility from national sentinel surveillance, 19,263 samples from nine sentinel sites, March 2017 to March 2020. (c) Resistance determinants in carbapenem-non-susceptible A. baumannii from a tertiary-care study (n = 26), by Ambler class. Sources: Murray et al. 2022; Habib et al. 2021; Dey et al. 2026.',
+      },
+      {
+        section: 'problem',
+        src: '/research/protirodh/inhibitor_coverage.png',
+        width: 2521,
+        height: 1328,
+        alt: 'Matrix of nine beta-lactamase inhibitors against eight representative enzymes by Ambler class, with the approved-inhibitor by class B region outlined and empty.',
+        label: 'Figure 2',
+        caption:
+          'No approved beta-lactamase inhibitor covers Ambler class B. Rows are the seven approved inhibitors and the two boronates in clinical development; columns are Ambler classes with representative enzymes. The outlined region is the intersection of approved inhibitors with class B enzymes, which is empty, and defines the target space of this program. A qualitative synthesis of reported in-vitro inhibition, not clinical breakpoints.',
+      },
+      {
+        section: 'approach',
+        src: '/research/protirodh/minimax_concept.png',
+        width: 1993,
+        height: 981,
+        alt: 'Two panels contrasting a potency-selected compound, which falls below the activity threshold across the variant panel, with a minimax-selected compound that stays above it.',
+        label: 'Figure 3',
+        caption:
+          'Minimax selection trades reference-variant potency for cross-variant robustness. (a) Predicted potency across the ordered sentinel panel for a compound selected on the reference variant alone and one selected on worst-case performance across the panel. (b) The resulting trade-off in worst-case and mean predicted potency. An illustrative schematic of the selection objective; the axes carry no measured data, and milestone M4 is its prospective test.',
+      },
+      {
+        section: 'focus',
+        src: '/research/protirodh/protirodh_workflow.png',
+        width: 2426,
+        height: 2019,
+        alt: 'Two panels: compounds surviving each screening gate on a log scale from two million to three, and a work-package schedule across 48 months with milestone markers.',
+        label: 'Figure 4',
+        caption:
+          'Screening cascade and program timeline. (a) Compounds surviving each gate on a logarithmic scale, with the engine annotated per stage; the expensive methods run only where earlier gates have removed the bulk of the library. (b) Work-package schedule with go/no-go milestones.',
+      },
     ],
   },
   {
