@@ -24,9 +24,9 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://deepbioltd.com'),
-  title: 'DeepBio Limited - Leading Bioinformatics and AI Research in Bangladesh',
-  description: 'DeepBio Limited is a premier bioinformatics and AI startup based in Bangladesh, specializing in genomic surveillance, clinical diagnostics, and computational biology research.',
-  keywords: ['Bioinformatics Bangladesh', 'AI Healthcare', 'Genomics Research', 'DeepBio Limited', 'Clinical AI', 'South Asia Life Science'],
+  title: 'DeepBio | Biological Foundation Models for Scientific Discovery',
+  description: 'DeepBio is an applied research lab at the intersection of computational biology, machine learning, and life sciences.',
+  keywords: ['Biological Foundation Models', 'AI for Biology', 'Computational Biology', 'Machine Learning', 'Scientific Discovery', 'DeepBio Limited'],
   authors: [{ name: 'DeepBio Limited' }],
   creator: 'DeepBio Limited',
   publisher: 'DeepBio Limited',
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://deepbioltd.com',
     siteName: 'DeepBio Limited',
-    title: 'DeepBio Limited | Leading Bioinformatics & AI Research in Bangladesh',
-    description: 'Transform life science data into impactful solutions. Premier bioinformatics and AI research hub specializing in genomic surveillance, clinical diagnostics, and computational biology in Bangladesh.',
+    title: 'DeepBio | Biological Foundation Models for Scientific Discovery',
+    description: 'DeepBio is an applied research lab at the intersection of computational biology, machine learning, and life sciences.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'DeepBio Limited - Data-Driven Life Science Research',
+        alt: 'DeepBio - Biological Foundation Models for Scientific Discovery',
       },
     ],
   },
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@deepbioltd',
     creator: '@deepbioltd',
-    title: 'DeepBio Limited | Leading Bioinformatics & AI Research in Bangladesh',
-    description: 'Transform life science data into impactful solutions. Premier bioinformatics and AI research hub specializing in genomic surveillance, clinical diagnostics, and computational biology.',
+    title: 'DeepBio | Biological Foundation Models for Scientific Discovery',
+    description: 'DeepBio is an applied research lab at the intersection of computational biology, machine learning, and life sciences.',
     images: ['/opengraph-image'],
   },
 
@@ -90,7 +90,7 @@ export default function RootLayout({
               "name": "DeepBio Limited",
               "url": "https://deepbioltd.com",
               "logo": "https://deepbioltd.com/logo.png",
-              "description": "Leading bioinformatics and AI research hub based in Dhaka, Bangladesh.",
+              "description": "Applied research lab developing and evaluating biological foundation models for scientific discovery.",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Dhaka",

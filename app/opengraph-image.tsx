@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'DeepBio Limited - computational biology from Dhaka'
+export const alt = 'DeepBio - Biological Foundation Models for Scientific Discovery'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -76,7 +76,7 @@ export default function OGImage() {
               maxWidth: '900px',
             }}
           >
-            Your sequencer produces terabytes. Nobody reads them.
+            Biological Foundation Models for Scientific Discovery.
           </div>
 
           <div
@@ -89,8 +89,8 @@ export default function OGImage() {
               maxWidth: '760px',
             }}
           >
-            Computational biology from Dhaka. Genomic, transcriptomic and
-            structural analysis, with the pipelines and the paper trail behind it.
+            An applied research lab at the intersection of computational biology,
+            machine learning, and life sciences.
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export default function OGImage() {
           }}
         >
           <div style={{ display: 'flex' }}>
-            20 analyses &nbsp;/&nbsp; 6 with a published report
+            Applied research lab
           </div>
           <div style={{ display: 'flex', color: '#5AB0E8' }}>deepbioltd.com</div>
         </div>

@@ -49,14 +49,12 @@ export default function HomePage() {
 
         {/* Statement */}
         <section className="text-sm leading-5">
-          <p className="mb-2 mt-8">DeepBio is an AI biology company.</p>
+          <p className="mb-2 mt-8 font-bold">Biological Foundation Models for Scientific Discovery.</p>
           <p className="mb-8">
-            We build and evaluate biological foundation models, run our own genomic and
-            computational pipelines, and translate what we find into research and clinical
-            outcomes. Our first focus is the health challenges of Bangladesh: antimicrobial
-            resistance, infectious disease surveillance, and drug discovery for the diseases
-            that burden the country most. Our team of computational biologists, ML researchers,
-            and drug discovery scientists is based in Dhaka, Bangladesh.
+            DeepBio is an applied research lab at the intersection of computational biology,
+            machine learning, and life sciences. We investigate, adapt, and develop foundation
+            models to better represent complex biological systems, generalize across diverse
+            datasets, and enable meaningful scientific discovery.
           </p>
         </section>
 
