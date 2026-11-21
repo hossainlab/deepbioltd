@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
     },
     {
       icon: Github,
-      href: 'https://github.com/deepbioltd',
+      href: 'https://github.com/deepbio-lab',
       label: 'GitHub',
     },
     {
