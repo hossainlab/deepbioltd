@@ -5,7 +5,6 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { HideOnHome } from '@/components/HideOnHome'
 import ScrollHandler from '@/components/ScrollHandler'
-import { SmoothScroll } from '@/components/SmoothScroll'
 
 // One family for the whole interface. Inter is a neutral, highly legible
 // grotesque built for screens, so long reading lists stay clean at small sizes.
@@ -107,7 +106,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-paper text-ink antialiased overflow-x-clip">
         <div className="relative min-h-screen overflow-x-clip">
-          <SmoothScroll />
           <ScrollHandler />
           <HideOnHome><Navbar /></HideOnHome>
           <main>{children}</main>
