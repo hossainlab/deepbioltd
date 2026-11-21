@@ -47,7 +47,7 @@ export default async function ResearchArticle({ params }: { params: Promise<Para
         <div className="relative mx-auto w-full max-w-[76rem] px-4 sm:px-6">
           {/* Contents rail, desktop only */}
           <aside className="absolute left-6 top-0 hidden w-[10.5rem] xl:block">
-            <nav aria-label="Contents" className="sticky top-8 border-r border-[color:var(--home-rule-soft)] pr-4 pt-2">
+            <nav aria-label="Contents" className="sticky top-24 border-r border-[color:var(--home-rule-soft)] pr-4 pt-2">
               <Link href="/research" className="text-[13px] text-[color:var(--home-muted)] hover:text-[color:var(--home-accent)]">
                 ← Back to Research
               </Link>

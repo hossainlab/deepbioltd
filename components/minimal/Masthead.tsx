@@ -34,6 +34,7 @@ export function Masthead() {
     href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/')
 
   return (
+    <>
     <header className="mx-auto w-full max-w-[36rem] px-4 pt-12 text-center sm:px-0">
       <Link
         href="/"
@@ -43,9 +44,15 @@ export function Masthead() {
         <Mark className="h-9 w-9 sm:h-12 sm:w-12" />
         <span className="text-[2.6rem] font-bold leading-none tracking-tight sm:text-[3.6rem]">DeepBio</span>
       </Link>
+    </header>
 
-      <nav aria-label="Primary" className="mt-6">
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base">
+    {/* Nav stays pinned to the top while the wordmark scrolls away. */}
+    <nav
+      aria-label="Primary"
+      className="sticky top-0 z-40 mt-6 bg-[color:var(--home-bg)]"
+    >
+      <div className="mx-auto w-full max-w-[36rem] px-14 sm:px-0">
+        <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 py-3 text-sm sm:gap-x-6 sm:text-base">
           {minimalNav.map((item) => {
             if (item.external) {
               return (
@@ -79,9 +86,9 @@ export function Masthead() {
             )
           })}
         </ul>
-      </nav>
-
-      <hr className="mt-6 border-0 border-t border-[color:var(--home-rule)]" />
-    </header>
+        <hr className="border-0 border-t border-[color:var(--home-rule)]" />
+      </div>
+    </nav>
+    </>
   )
 }

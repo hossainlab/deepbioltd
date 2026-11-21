@@ -105,8 +105,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans bg-paper text-ink antialiased overflow-x-hidden">
-        <div className="relative min-h-screen overflow-x-hidden">
+      <body className="font-sans bg-paper text-ink antialiased overflow-x-clip">
+        <div className="relative min-h-screen overflow-x-clip">
           <SmoothScroll />
           <ScrollHandler />
           <HideOnHome><Navbar /></HideOnHome>
