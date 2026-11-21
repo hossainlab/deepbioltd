@@ -48,7 +48,7 @@ export const projects: ResearchProject[] = [
       'Sentinel variant panel from 400 sequenced carbapenem-non-susceptible clinical isolates',
       'First benchmark of co-folding affinity prediction on serine and metallo-beta-lactamases',
       'Prospective test of minimax selection against a matched single-variant control arm',
-      'Open release of models, weights, benchmarks and negative results, with national handover to IEDCR',
+      'Open release of models, weights, benchmarks and negative results, with handover to national surveillance partners',
     ],
     figures: [
       {
