@@ -38,6 +38,24 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/training', destination: 'https://deepbioacademy.com/', permanent: false },
+      // Retired pages from the pre-2026-11 site, archived in backups/old-pages-2026-11-22.
+      // Permanent (308) so search engines drop the old URLs.
+      { source: '/about', destination: '/', permanent: true },
+      { source: '/team', destination: '/', permanent: true },
+      { source: '/contact', destination: '/', permanent: true },
+      { source: '/research-programs', destination: '/research', permanent: true },
+      { source: '/labs', destination: '/research', permanent: true },
+      { source: '/labs/:path*', destination: '/research', permanent: true },
+      { source: '/methodology', destination: '/services', permanent: true },
+      { source: '/brochure', destination: '/services', permanent: true },
+      { source: '/research-assistant-recruitment', destination: '/join-us', permanent: true },
+      { source: '/lab-onboarding', destination: '/join-us', permanent: true },
+      { source: '/ambassadors', destination: '/join-us', permanent: true },
+      { source: '/our-ambassadors', destination: '/join-us', permanent: true },
+      { source: '/ambassador-handbook', destination: '/join-us', permanent: true },
+      { source: '/career-guide', destination: 'https://deepbioacademy.com/', permanent: true },
+      { source: '/career-guide/:path*', destination: 'https://deepbioacademy.com/', permanent: true },
+      { source: '/thesis-support', destination: 'https://deepbioacademy.com/', permanent: true },
     ]
   },
   async rewrites() {
