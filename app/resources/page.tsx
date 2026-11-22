@@ -5,6 +5,7 @@ import { Masthead } from '@/components/minimal/Masthead'
 import { Colophon } from '@/components/minimal/Colophon'
 import { PubEntry, pubLink } from '@/components/minimal/PubEntry'
 import { modelCategories, type ModelSource } from '@/lib/resources/models'
+import { toolkits, type Toolkit } from '@/lib/resources/toolkits'
 
 export const metadata: Metadata = {
   title: 'Resources | DeepBio',
@@ -59,6 +60,18 @@ function Glyph({ category }: { category: string }) {
           <circle cx="40" cy="76" r="3" />
         </g>
       )
+    case 'skills':
+      // An agent hub with three skills docked into it.
+      return (
+        <g {...common}>
+          <rect x="30" y="36" width="20" height="20" rx="3" />
+          <circle cx="40" cy="46" r="3" fill="currentColor" stroke="none" />
+          <rect x="7" y="12" width="19" height="13" rx="2" />
+          <rect x="54" y="12" width="19" height="13" rx="2" />
+          <rect x="31" y="70" width="19" height="13" rx="2" />
+          <path d="M31 41L17 25M49 41l14-16M40 56v14" opacity={0.55} />
+        </g>
+      )
     default:
       return (
         <g {...common}>
@@ -70,9 +83,22 @@ function Glyph({ category }: { category: string }) {
   }
 }
 
+const frame =
+  'relative block aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-white ring-1 ring-[color:var(--home-rule-soft)]'
+
+/** Drawn icon with a short label, used wherever an entry has no figure. */
+function GlyphThumb({ label, category }: { label: string; category: string }) {
+  return (
+    <div className={`${frame} flex flex-col items-center justify-center gap-1 text-[#205E92]`} aria-hidden="true">
+      <svg viewBox="0 0 80 90" className="h-[58%] w-auto">
+        <Glyph category={category} />
+      </svg>
+      <span className="px-2 text-center text-[11px] font-semibold text-[#205E92]">{label}</span>
+    </div>
+  )
+}
+
 function Thumb({ m, category }: { m: ModelSource; category: string }) {
-  const frame =
-    'relative block aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-white ring-1 ring-[color:var(--home-rule-soft)]'
   if (m.thumb) {
     return (
       <a href={m.codeUrl} target="_blank" rel="noopener noreferrer" className={frame} tabIndex={-1}>
@@ -80,16 +106,7 @@ function Thumb({ m, category }: { m: ModelSource; category: string }) {
       </a>
     )
   }
-  return (
-    <div className={`${frame} flex flex-col items-center justify-center gap-1 text-[#205E92]`} aria-hidden="true">
-      <svg viewBox="0 0 80 90" className="h-[58%] w-auto">
-        <Glyph category={category} />
-      </svg>
-      <span className="px-2 text-center text-[11px] font-semibold text-[#205E92]">
-        {m.name.match(/\(([^)]+)\)/)?.[1] ?? m.name}
-      </span>
-    </div>
-  )
+  return <GlyphThumb label={m.name.match(/\(([^)]+)\)/)?.[1] ?? m.name} category={category} />
 }
 
 /**
@@ -135,6 +152,68 @@ function Entry({ m, category }: { m: ModelSource; category: string }) {
   )
 }
 
+/**
+ * One agent skill library or research assistant. Same publication layout as a
+ * model, except the bold line falls back to the project name when there is no
+ * paper, and the links line carries the repository.
+ */
+function ToolkitEntry({ t }: { t: Toolkit }) {
+  return (
+    <PubEntry thumb={<GlyphThumb label={t.name} category="skills" />}>
+      <a
+        href={t.paper?.url ?? t.codeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`font-bold ${link}`}
+      >
+        {t.paper?.title ?? t.name}
+      </a>
+      <p>
+        {t.paper ? (
+          <>
+            <strong>{t.name}</strong>
+            <span className="text-[color:var(--home-muted)]"> · {t.developer}</span>
+          </>
+        ) : (
+          // Without a paper the bold line above is already the name, so only the developer is new.
+          <span className="text-[color:var(--home-muted)]">{t.developer}</span>
+        )}
+      </p>
+      {t.paper && (
+        <>
+          <p>{t.paper.authors}</p>
+          <p>
+            <em>{t.paper.venue}</em>, {t.paper.year}
+          </p>
+        </>
+      )}
+      <p>
+        <a href={t.codeUrl} target="_blank" rel="noopener noreferrer" className={link}>
+          code
+        </a>
+        {t.paper && (
+          <>
+            {' / '}
+            <a href={t.paper.url} target="_blank" rel="noopener noreferrer" className={link}>
+              paper
+            </a>
+          </>
+        )}
+        {t.docsUrl && (
+          <>
+            {' / '}
+            <a href={t.docsUrl} target="_blank" rel="noopener noreferrer" className={link}>
+              {t.docsLabel ?? 'docs'}
+            </a>
+          </>
+        )}
+        {t.license && <span className="text-[color:var(--home-muted)]"> · {t.license}</span>}
+      </p>
+      <p className="mt-2.5">{t.summary}</p>
+    </PubEntry>
+  )
+}
+
 export default function ResourcesIndex() {
   return (
     <Shell>
@@ -146,7 +225,8 @@ export default function ResourcesIndex() {
             <h1 className="text-center text-[1.05rem] text-[color:var(--home-accent)]">Resources</h1>
             <p className="mt-3 text-[13.5px] leading-[1.55]">
               The biological foundation models we build on, with the paper that introduced each one
-              and where to get its code or weights.
+              and where to get its code or weights, followed by the open agent skill libraries that
+              connect models and public databases to AI agents.
             </p>
           </div>
 
@@ -162,6 +242,17 @@ export default function ResourcesIndex() {
               </ul>
             </section>
           ))}
+
+          <section aria-labelledby="cat-skills" className="pt-6">
+            <h2 id="cat-skills" className="text-[1.15rem] font-normal">
+              Agent skills &amp; research assistants
+            </h2>
+            <ul>
+              {toolkits.map((t) => (
+                <ToolkitEntry key={t.codeUrl} t={t} />
+              ))}
+            </ul>
+          </section>
         </main>
 
         <Colophon />
