@@ -104,6 +104,15 @@ function CourseGlyph({ slug }: { slug: string }) {
           <circle cx="64" cy="31" r="3.5" fill="#fff" />
         </g>
       )
+    case 'ai-for-biological-discovery':
+      // An open book with a spark: the handbook-led seminar.
+      return (
+        <g {...stroke}>
+          <path d="M40 18c-8-5-18-5-26-2v30c8-3 18-3 26 2 8-5 18-5 26-2V16c-8-3-18-3-26 2z" />
+          <path d="M40 18v30" opacity={0.6} />
+          <path d="M54 6v8M50 10h8" strokeWidth={2} />
+        </g>
+      )
     default:
       return (
         <g {...stroke}>
@@ -124,7 +133,7 @@ function Entry({ c }: { c: Course }) {
         <strong>{c.level}</strong>
         <span className="text-[color:var(--home-muted)]"> · {c.weeks} weeks</span>
       </p>
-      <p>{c.tools.slice(0, 5).join(' · ')}</p>
+      <p>{c.tools?.length ? c.tools.slice(0, 5).join(' · ') : c.primaryText ? 'Primary text: The Life Sciences AI Handbook' : null}</p>
       <p>
         <Link href={href} className={pubLink}>
           view syllabus

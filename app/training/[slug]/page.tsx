@@ -14,6 +14,7 @@ import {
   RUBRIC_LEVELS,
   placeholderTeam,
   type CourseTeamMember,
+  type Reading,
 } from '@/lib/training/courses'
 import { teamMembers } from '@/lib/team/data'
 import { iscbCompetencies, ISCB_FRAMEWORK_URL } from '@/lib/training/iscb'
@@ -103,12 +104,39 @@ function TeamCard({ member }: { member: CourseTeamMember }) {
   )
 }
 
+/** A reading list; linked titles open the source in a new tab. */
+function ReadingList({ items }: { items: Reading[] }) {
+  return (
+    <ul className="mt-1 list-disc space-y-0.5 pl-5">
+      {items.map((r) => (
+        <li key={r.title}>
+          {r.href ? (
+            <a href={r.href} target="_blank" rel="noopener noreferrer" className={link}>
+              {r.title}
+            </a>
+          ) : (
+            r.title
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+/** Bold run-in label for the parts of a syllabus week. */
+const weekLabel = 'mt-3 text-[0.8rem] font-semibold uppercase tracking-wide text-[color:var(--home-muted)]'
+
 export default async function CourseSyllabus({ params }: { params: Promise<Params> }) {
   const { slug } = await params
   const c = courses.find((x) => x.slug === slug)
   if (!c) notFound()
 
   const rubric = c.rubric ?? defaultRubric
+  const rubricLevels = c.rubricLevels ?? RUBRIC_LEVELS
+  const policy = c.aiPolicy ?? aiPolicy
+  const evaluation = c.evaluation ?? courseEvaluation
+  const showDue = c.assessment.some((a) => a.due)
+  const showDescription = c.assessment.some((a) => a.description)
   const team = c.team?.length ? c.team : placeholderTeam
   const others = courses.filter((x) => x.slug !== c.slug)
 
@@ -163,18 +191,50 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     <dt className="font-semibold">Level</dt>
                     <dd>{c.level}</dd>
                   </div>
+                  {c.audience && (
+                    <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
+                      <dt className="font-semibold">For</dt>
+                      <dd>{c.audience}</dd>
+                    </div>
+                  )}
                   <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
                     <dt className="font-semibold">Duration</dt>
                     <dd>{c.weeks} weeks</dd>
                   </div>
+                  {c.format && (
+                    <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
+                      <dt className="font-semibold">Format</dt>
+                      <dd>{c.format}</dd>
+                    </div>
+                  )}
                   <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
                     <dt className="font-semibold">Prerequisites</dt>
                     <dd>{c.prerequisites}</dd>
                   </div>
-                  <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
-                    <dt className="font-semibold">Tools</dt>
-                    <dd className="font-mono text-[0.85rem]">{c.tools.join(' · ')}</dd>
-                  </div>
+                  {c.primaryText && (
+                    <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
+                      <dt className="font-semibold">Primary text</dt>
+                      <dd>
+                        <a href={c.primaryText.href} target="_blank" rel="noopener noreferrer" className={link}>
+                          {c.primaryText.citation}
+                        </a>
+                        {c.primaryText.doi && (
+                          <>
+                            {' '}
+                            <a href={`https://doi.org/${c.primaryText.doi}`} target="_blank" rel="noopener noreferrer" className={`font-mono text-[0.85rem] ${link}`}>
+                              doi:{c.primaryText.doi}
+                            </a>
+                          </>
+                        )}
+                      </dd>
+                    </div>
+                  )}
+                  {c.tools?.length ? (
+                    <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
+                      <dt className="font-semibold">Tools</dt>
+                      <dd className="font-mono text-[0.85rem]">{c.tools.join(' · ')}</dd>
+                    </div>
+                  ) : null}
                 </dl>
               </section>
 
@@ -203,12 +263,53 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                   {c.syllabus.map((w, i) => (
                     <li key={w.title} className="grid gap-1 py-4 sm:grid-cols-[6rem_1fr]">
                       <p className="font-mono text-[0.85rem] text-[color:var(--home-muted)] sm:pt-1">Week {i + 1}</p>
-                      <div>
-                        <p className="font-semibold">{w.title}</p>
-                        <p className="mt-1 text-[0.95rem]">{w.topics.join(' · ')}</p>
-                        <p className="mt-1.5 text-[0.95rem] text-[color:var(--home-muted)]">
-                          <span className="font-semibold text-[color:var(--home-ink)]">Lab:</span> {w.lab}
-                        </p>
+                      <div className="text-[0.95rem]">
+                        <p className="text-[1.05rem] font-semibold sm:text-[1.1rem]">{w.title}</p>
+                        {w.theme && <p className="mt-0.5 italic text-[color:var(--home-muted)]">{w.theme}</p>}
+                        {w.topics && <p className="mt-1">{w.topics.join(' · ')}</p>}
+                        {w.lab && (
+                          <p className="mt-1.5 text-[color:var(--home-muted)]">
+                            <span className="font-semibold text-[color:var(--home-ink)]">Lab:</span> {w.lab}
+                          </p>
+                        )}
+                        {w.note && <p className="mt-2">{w.note}</p>}
+                        {w.readings && (
+                          <>
+                            <p className={weekLabel}>{w.note ? 'Options' : 'Required reading'}</p>
+                            <ReadingList items={w.readings} />
+                          </>
+                        )}
+                        {w.optionalReadings && (
+                          <>
+                            <p className={weekLabel}>Optional reading</p>
+                            <ReadingList items={w.optionalReadings} />
+                          </>
+                        )}
+                        {w.objectives && (
+                          <>
+                            <p className={weekLabel}>Learning objectives</p>
+                            <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                              {w.objectives.map((o) => (
+                                <li key={o}>{o}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                        {w.questions && (
+                          <>
+                            <p className={weekLabel}>Discussion questions</p>
+                            <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                              {w.questions.map((q) => (
+                                <li key={q}>{q}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                        {w.assignment && (
+                          <p className="mt-3 border-l-2 border-[color:var(--home-accent)] pl-3">
+                            <span className="font-semibold">Assessment:</span> {w.assignment}
+                          </p>
+                        )}
                       </div>
                     </li>
                   ))}
@@ -241,12 +342,14 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
 
               <section id="assessment" className="scroll-mt-8">
                 <h2 className={h2}>Assessment</h2>
+                {c.assessmentNote && <p className="mb-4">{c.assessmentNote}</p>}
                 <table className="w-full border-collapse text-left text-[0.95rem]">
                   <thead>
                     <tr className={`border-b ${rule}`}>
                       <th className="py-2 pr-4 font-semibold">Component</th>
                       <th className="py-2 pr-4 font-semibold">Weight</th>
-                      <th className="py-2 font-semibold">Description</th>
+                      {showDue && <th className="py-2 pr-4 font-semibold">Due</th>}
+                      {showDescription && <th className="py-2 font-semibold">Description</th>}
                     </tr>
                   </thead>
                   <tbody>
@@ -254,7 +357,8 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                       <tr key={a.item} className={`border-b ${rule} align-top`}>
                         <td className="py-2.5 pr-4 font-medium">{a.item}</td>
                         <td className="py-2.5 pr-4 font-mono text-[0.9rem]">{a.weight}%</td>
-                        <td className="py-2.5">{a.description}</td>
+                        {showDue && <td className="py-2.5 pr-4">{a.due}</td>}
+                        {showDescription && <td className="py-2.5">{a.description}</td>}
                       </tr>
                     ))}
                   </tbody>
@@ -263,13 +367,13 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
 
               <section id="rubric" className="scroll-mt-8">
                 <h2 className={h2}>Grading Rubric</h2>
-                <p>Labs and the capstone are marked against these criteria.</p>
+                <p>{c.rubricIntro ?? 'Labs and the capstone are marked against these criteria.'}</p>
                 <div className="mt-4 overflow-x-auto">
                   <table className="w-full min-w-[40rem] border-collapse text-left text-[0.85rem] leading-[1.5]">
                     <thead>
                       <tr className={`border-b ${rule}`}>
                         <th className="w-[8.5rem] py-2 pr-3 font-semibold">Criterion</th>
-                        {RUBRIC_LEVELS.map((l) => (
+                        {rubricLevels.map((l) => (
                           <th key={l} className="py-2 pr-3 font-semibold">{l}</th>
                         ))}
                       </tr>
@@ -286,40 +390,51 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     </tbody>
                   </table>
                 </div>
-                <p className="mt-6 font-semibold">Final grade</p>
-                <ul className={`mt-2 divide-y ${rule} border-y ${rule} text-[0.95rem]`}>
-                  {gradeBands.map((g) => (
-                    <li key={g.band} className="grid grid-cols-[6.5rem_1fr] gap-2 py-2">
-                      <span className="font-mono text-[0.85rem]">{g.band}</span>
-                      <span>{g.grade}</span>
-                    </li>
-                  ))}
-                </ul>
+                {c.rubricNotes?.map((n) => (
+                  <p key={n} className="mt-4">{n}</p>
+                ))}
+                {c.showGradeBands !== false && (
+                  <>
+                    <p className="mt-6 font-semibold">Final grade</p>
+                    <ul className={`mt-2 divide-y ${rule} border-y ${rule} text-[0.95rem]`}>
+                      {gradeBands.map((g) => (
+                        <li key={g.band} className="grid grid-cols-[6.5rem_1fr] gap-2 py-2">
+                          <span className="font-mono text-[0.85rem]">{g.band}</span>
+                          <span>{g.grade}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </section>
 
               <section id="ai" className="scroll-mt-8">
                 <h2 className={h2}>Learner Use of Generative AI</h2>
-                <p>{aiPolicy.lead}</p>
-                <p className="mt-4 font-semibold">Encouraged</p>
-                <ul className="mt-1.5 list-disc space-y-1.5 pl-5">
-                  {aiPolicy.allowed.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-                <p className="mt-4 font-semibold">Not allowed</p>
-                <ul className="mt-1.5 list-disc space-y-1.5 pl-5">
-                  {aiPolicy.notAllowed.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-                <p className="mt-4">{aiPolicy.disclosure}</p>
+                {policy.lead && <p className="mb-4">{policy.lead}</p>}
+                {policy.groups.map((g, i) => (
+                  <div key={g.heading ?? i} className="mt-4 first:mt-0">
+                    {g.heading && <p className="font-semibold">{g.heading}</p>}
+                    <ul className="mt-1.5 list-disc space-y-1.5 pl-5">
+                      {g.items.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                {policy.closing?.map((x) => (
+                  <p key={x} className="mt-4">{x}</p>
+                ))}
               </section>
 
               <section id="evaluation" className="scroll-mt-8">
                 <h2 className={h2}>Evaluating the Course</h2>
+                {evaluation.lead && <p className="mb-3">{evaluation.lead}</p>}
                 <ul className="list-disc space-y-1.5 pl-5">
-                  {courseEvaluation.map((x) => (
-                    <li key={x}>{x}</li>
+                  {evaluation.items.map((x) => (
+                    <li key={x.text}>
+                      {x.label && <span className="font-semibold">{x.label}: </span>}
+                      {x.text}
+                    </li>
                   ))}
                 </ul>
               </section>
@@ -335,6 +450,19 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     </li>
                   ))}
                 </ul>
+                {c.credit && (
+                  <p className="mt-5 text-[0.9rem] text-[color:var(--home-muted)]">
+                    {c.credit.text}{' '}
+                    <a href={c.credit.source.href} target="_blank" rel="noopener noreferrer" className={link}>
+                      {c.credit.source.label}
+                    </a>
+                    , licensed{' '}
+                    <a href={c.credit.license.href} target="_blank" rel="noopener noreferrer" className={link}>
+                      {c.credit.license.label}
+                    </a>
+                    .
+                  </p>
+                )}
               </section>
             </div>
 
