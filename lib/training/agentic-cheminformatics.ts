@@ -1,5 +1,5 @@
 /**
- * Agentic AI for Cheminformatics.
+ * Cheminformatics with AI Agents.
  *
  * A verification-first course: learners drive agent skills through a standard
  * cheminformatics workflow (retrieve, curate, analyse, model) and check every
@@ -17,8 +17,8 @@ const HANDBOOK = 'https://lifesciencesaihandbook.com'
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const agenticCheminformatics: Course = {
-  slug: 'agentic-ai-cheminformatics',
-  title: 'Agentic AI for Cheminformatics',
+  slug: 'cheminformatics-with-ai-agents',
+  title: 'Cheminformatics with AI Agents',
   level: 'Advanced',
   weeks: 6,
   summary:
@@ -28,7 +28,7 @@ export const agenticCheminformatics: Course = {
     'This course teaches both halves. Learners drive an agent through a standard cheminformatics workflow with the open Science skills, and at each step they check the agent against the primary source: the assay record behind an activity value, the standardisation rule behind a structure, the split behind a performance number. The final week appraises the published agentic cheminformatics case study on its own evidence.',
   ],
   prerequisites:
-    'Python for Data Science in Biology or equivalent Python experience, and undergraduate organic chemistry. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+    'Python for Data Science in Biology or equivalent Python experience, and undergraduate organic chemistry. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
   tools: ['Science skills', 'RDKit', 'ChEMBL', 'PubChem', 'Python', 'pandas', 'scikit-learn'],
   objectives: [
     'Install and drive agent skills for cheminformatics, and state what each skill does and does not do.',

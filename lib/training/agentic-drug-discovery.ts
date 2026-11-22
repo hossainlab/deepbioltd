@@ -1,8 +1,8 @@
 /**
- * Agentic AI for Drug Discovery.
+ * Drug Discovery with AI Agents.
  *
  * The target-and-evidence half of the pipeline, deliberately complementary to
- * Agentic Cheminformatics: that course starts from compounds, this one starts
+ * Cheminformatics with AI Agents: that course starts from compounds, this one starts
  * from targets and ends at a go/no-go decision record. Built on the Science
  * skills for Open Targets, ChEMBL, Reactome, STRING, ClinicalTrials.gov and
  * openFDA.
@@ -19,8 +19,8 @@ const HANDBOOK = 'https://lifesciencesaihandbook.com'
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const agenticDrugDiscovery: Course = {
-  slug: 'agentic-ai-drug-discovery',
-  title: 'Agentic AI for Drug Discovery',
+  slug: 'drug-discovery-with-ai-agents',
+  title: 'Drug Discovery with AI Agents',
   level: 'Advanced',
   weeks: 8,
   summary:
@@ -28,10 +28,10 @@ export const agenticDrugDiscovery: Course = {
   overview: [
     'Most drug programs fail, and they usually fail for reasons that were visible in the evidence before the program started: a target whose genetic support was thin, a mechanism with no modality to act on it, a safety signal already present in the literature. Agent skills can now assemble that evidence quickly — Open Targets for target–disease associations, Reactome and STRING for mechanism, ChEMBL for chemical matter, ClinicalTrials.gov for the clinical landscape, openFDA for safety reports.',
     'Assembling it quickly is not the hard part. This course is about weighing it. Each week adds one layer of evidence to a target dossier and asks what that layer is worth: which evidence types actually predict approval, what an association score is and is not, when a trial landscape means a target is validated and when it means it is crowded, and why a disproportionality signal in a spontaneous reporting system is a hypothesis rather than a finding.',
-    'It starts where Agentic Cheminformatics does not: that course works from compounds, this one from targets, and the two meet at tractability in Week 4.',
+    'It starts where Cheminformatics with AI Agents does not: that course works from compounds, this one from targets, and the two meet at tractability in Week 4.',
   ],
   prerequisites:
-    'Graduate-level molecular biology or pharmacology, and basic statistics. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+    'Graduate-level molecular biology or pharmacology, and basic statistics. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
   tools: ['Science skills', 'Open Targets', 'ChEMBL', 'Reactome', 'STRING', 'ClinicalTrials.gov', 'openFDA'],
   objectives: [
     'Describe where drug programs fail and which decisions the evidence has to support.',

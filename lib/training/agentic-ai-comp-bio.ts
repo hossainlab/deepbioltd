@@ -1,5 +1,5 @@
 /**
- * Agentic AI for Computational Biology.
+ * Computational Biology with AI Agents.
  *
  * Hands-on course: learners build, evaluate and govern LLM agents that call
  * biological databases, run analyses and read the literature. Every reading
@@ -13,8 +13,8 @@ const HANDBOOK = 'https://lifesciencesaihandbook.com'
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const agenticAiCompBio: Course = {
-  slug: 'agentic-ai-computational-biology',
-  title: 'Agentic AI for Computational Biology',
+  slug: 'computational-biology-with-ai-agents',
+  title: 'Computational Biology with AI Agents',
   level: 'Advanced',
   weeks: 8,
   summary:

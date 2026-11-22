@@ -1,5 +1,5 @@
 /**
- * Agentic AI for Antimicrobial Peptide Discovery.
+ * Antimicrobial Peptide Discovery with AI Agents.
  *
  * Built around the published DeepMind walkthrough, which mines natural
  * bacteriocins out of sequence databases and corroborates one candidate with
@@ -22,8 +22,8 @@ const BLOG = 'https://deepmind.google/blog/accelerating-antimicrobial-discovery/
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const ampDiscovery: Course = {
-  slug: 'agentic-ai-antimicrobial-peptide-discovery',
-  title: 'Agentic AI for Antimicrobial Peptide Discovery',
+  slug: 'antimicrobial-peptide-discovery-with-ai-agents',
+  title: 'Antimicrobial Peptide Discovery with AI Agents',
   level: 'Advanced',
   weeks: 6,
   summary:
@@ -34,7 +34,7 @@ export const ampDiscovery: Course = {
     'It connects directly to DeepBio’s own AMR research programs, which is where a credible candidate from this course would go next.',
   ],
   prerequisites:
-    'Comfort with sequence databases and the command line, and basic microbiology. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+    'Comfort with sequence databases and the command line, and basic microbiology. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
   tools: ['Science skills', 'UniProt', 'EMBL-EBI BLAST', 'AlphaFold DB', 'Foldseek', 'InterPro', 'DBAASP'],
   objectives: [
     'Explain where natural antimicrobial peptides come from, how bacteriocins are organised in the genome, and the main mechanisms by which they act.',
