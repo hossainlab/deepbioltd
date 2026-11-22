@@ -419,9 +419,4 @@ export const aiBiologicalDiscovery: Course = {
     { label: 'Glossary', href: `${HANDBOOK}/appendices/glossary.html` },
     { label: 'Handbook changelog', href: `${HANDBOOK}/changelog.html` },
   ],
-  credit: {
-    text: 'This syllabus is adapted from the Course Syllabus appendix of The Life Sciences AI Handbook (Tegomoh, 2026):',
-    source: { label: 'lifesciencesaihandbook.com', href: `${HANDBOOK}/appendices/course-syllabus.html` },
-    license: { label: 'CC BY 4.0', href: 'https://creativecommons.org/licenses/by/4.0/' },
-  },
 }
