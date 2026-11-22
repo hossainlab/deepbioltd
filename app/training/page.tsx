@@ -10,7 +10,7 @@ import { ISCB_FRAMEWORK_URL } from '@/lib/training/iscb'
 export const metadata: Metadata = {
   title: 'Training | DeepBio',
   description:
-    'DeepBio training courses in bioinformatics and computational biology, designed to the ISCB Competency Framework 3.0.',
+    'DeepBio training courses in bioinformatics, computational biology, and AI, designed to the ISCB Competency Framework 3.0.',
 }
 
 /** Line drawings standing in for course thumbnails, keyed by course slug. */
@@ -145,7 +145,7 @@ export default function TrainingIndex() {
           <div className="pb-8 pt-8 text-center">
             <h1 className="text-[1.05rem] text-[color:var(--home-accent)]">Training</h1>
             <p className="mt-2 text-[13px] text-[color:var(--home-muted)]">
-              Courses in bioinformatics and computational biology, designed to the{' '}
+              Courses in bioinformatics, computational biology, and AI, designed to the{' '}
               <a href={ISCB_FRAMEWORK_URL} target="_blank" rel="noopener noreferrer" className={pubLink}>
                 ISCB Competency Framework 3.0
               </a>
