@@ -136,6 +136,10 @@ export interface Course {
   credit?: { text: string; source: { label: string; href: string }; license: { label: string; href: string } }
 }
 
+/** Who DeepBio courses are for, unless a course overrides it with `audience`. */
+export const defaultAudience =
+  'Undergraduates, graduates and working professionals in the life sciences.'
+
 export const RUBRIC_LEVELS = ['Excellent', 'Proficient', 'Developing', 'Beginning']
 
 /** Shared rubric for labs and the capstone project, used unless a course sets its own. */

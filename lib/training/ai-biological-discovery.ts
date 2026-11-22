@@ -23,9 +23,7 @@ export const aiBiologicalDiscovery: Course = {
   level: 'Advanced',
   weeks: 12,
   summary:
-    'A graduate seminar on reading, testing and acting on AI claims in biology, from protein structure and variant effects to clinical translation and self-driving laboratories.',
-  audience:
-    'PhD, MS and MD-PhD students, postdoctoral researchers, and biotechnology and pharmaceutical research teams.',
+    'A seminar course on reading, testing and acting on AI claims in biology, from protein structure and variant effects to clinical translation and self-driving laboratories.',
   format:
     'One 2-hour seminar per week (24 contact hours over 12 weeks), with about 4 hours of reading and assignment work outside class.',
   primaryText: {
@@ -39,7 +37,7 @@ export const aiBiologicalDiscovery: Course = {
     'Each week pairs chapters of The Life Sciences AI Handbook with case studies and discussion, moving from data and evaluation through molecules, genomes, cells, tissues and therapeutics to self-driving laboratories, reproducibility and information hazards.',
   ],
   prerequisites:
-    'Graduate coursework in biology, biochemistry, or chemistry, and introductory statistics. No prior AI knowledge required.',
+    'Undergraduate coursework in biology, biochemistry or chemistry, and introductory statistics. No prior AI knowledge required.',
   objectives: [
     'Explain how data infrastructure, pretraining, and task definition limit what a biological AI model can learn.',
     'Match a model claim to the split, baseline, metric, and experimental evidence that could support it.',

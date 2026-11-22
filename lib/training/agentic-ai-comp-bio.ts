@@ -24,7 +24,7 @@ export const agenticAiCompBio: Course = {
     'Each week pairs a short lecture and readings with a lab that adds one capability to a working agent: tool calling, biological database tools, the Model Context Protocol, literature retrieval, sandboxed code execution and multi-agent planning. The last weeks cover evaluation against benchmarks and scripted baselines, provenance logging, information hazards and the human sign-off gates an agentic workflow needs.',
   ],
   prerequisites:
-    'Python for Data Science in Biology or equivalent Python experience, and familiarity with common bioinformatics databases. Machine Learning for Biology is helpful but not required. Exercises need access to an LLM API; setup is covered in Week 1.',
+    'Working Python experience, and familiarity with common bioinformatics databases. Some machine learning background helps but is not required. Exercises need access to an LLM API; setup is covered in Week 1.',
   tools: ['Python', 'LLM APIs with tool calling', 'Model Context Protocol', 'LangGraph', 'Biopython', 'NCBI E-utilities', 'UniProt API', 'Docker'],
   objectives: [
     'Explain how tool-calling language models become agents, and when a fixed workflow is the better design.',

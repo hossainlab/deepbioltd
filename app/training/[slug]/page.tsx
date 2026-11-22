@@ -13,6 +13,7 @@ import {
   courseEvaluation,
   RUBRIC_LEVELS,
   placeholderTeam,
+  defaultAudience,
   type CourseTeamMember,
   type Reading,
 } from '@/lib/training/courses'
@@ -132,6 +133,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
   if (!c) notFound()
 
   const rubric = c.rubric ?? defaultRubric
+  const audience = c.audience ?? defaultAudience
   const rubricLevels = c.rubricLevels ?? RUBRIC_LEVELS
   const policy = c.aiPolicy ?? aiPolicy
   const evaluation = c.evaluation ?? courseEvaluation
@@ -191,12 +193,10 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     <dt className="font-semibold">Level</dt>
                     <dd>{c.level}</dd>
                   </div>
-                  {c.audience && (
-                    <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
-                      <dt className="font-semibold">For</dt>
-                      <dd>{c.audience}</dd>
-                    </div>
-                  )}
+                  <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
+                    <dt className="font-semibold">For</dt>
+                    <dd>{audience}</dd>
+                  </div>
                   <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
                     <dt className="font-semibold">Duration</dt>
                     <dd>{c.weeks} weeks</dd>

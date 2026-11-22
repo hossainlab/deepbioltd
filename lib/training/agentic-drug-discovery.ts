@@ -31,7 +31,7 @@ export const agenticDrugDiscovery: Course = {
     'It starts where Cheminformatics with AI Agents does not: that course works from compounds, this one from targets, and the two meet at tractability in Week 4.',
   ],
   prerequisites:
-    'Graduate-level molecular biology or pharmacology, and basic statistics. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+    'Molecular biology or pharmacology, and basic statistics. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
   tools: ['Science skills', 'Open Targets', 'ChEMBL', 'Reactome', 'STRING', 'ClinicalTrials.gov', 'openFDA'],
   objectives: [
     'Describe where drug programs fail and which decisions the evidence has to support.',
