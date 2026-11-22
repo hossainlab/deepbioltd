@@ -14,6 +14,7 @@ import { aiBiologicalDiscovery } from './ai-biological-discovery'
 import { agenticAiCompBio } from './agentic-ai-comp-bio'
 import { agenticCheminformatics } from './agentic-cheminformatics'
 import { ampDiscovery } from './amp-discovery'
+import { agenticDrugDiscovery } from './agentic-drug-discovery'
 
 /** A reading, linked when it has a public URL. */
 export interface Reading {
@@ -236,5 +237,6 @@ export const courses: Course[] = [
   aiBiologicalDiscovery,
   agenticAiCompBio,
   agenticCheminformatics,
+  agenticDrugDiscovery,
   ampDiscovery,
 ]

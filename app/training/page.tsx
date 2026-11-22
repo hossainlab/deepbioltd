@@ -16,6 +16,15 @@ export const metadata: Metadata = {
 /** Line drawings standing in for course thumbnails, keyed by course slug. */
 function CourseGlyph({ slug }: { slug: string }) {
   switch (slug) {
+    case 'agentic-drug-discovery-antigravity':
+      // Evidence layers funnelling to a single decision.
+      return (
+        <g {...stroke}>
+          <path d="M8 10h64L46 34v16l-12 6V34z" />
+          <path d="M20 22h40" opacity={0.45} />
+          <circle cx="40" cy="46" r="2.5" fill="currentColor" stroke="none" />
+        </g>
+      )
     case 'antimicrobial-peptide-discovery-antigravity':
       // A helical peptide meeting a bacterial membrane bilayer.
       return (
