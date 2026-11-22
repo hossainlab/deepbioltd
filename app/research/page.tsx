@@ -123,7 +123,7 @@ function Entry({ p }: { p: (typeof projects)[number] }) {
         />
       }
     >
-        <Link href={href} className={`font-bold ${link}`}>
+        <Link href={href} className={`font-bold ${link}`} prefetch={false}>
           {p.title}
         </Link>
         <p>
@@ -132,7 +132,7 @@ function Entry({ p }: { p: (typeof projects)[number] }) {
         </p>
         <p>{p.models.join(' · ')}</p>
         <p>
-          <Link href={href} className={link}>
+          <Link href={href} className={link} prefetch={false}>
             read more
           </Link>
         </p>

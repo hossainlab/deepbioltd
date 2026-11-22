@@ -22,12 +22,14 @@ export function SmartLink({
   href,
   className,
   children,
+  prefetch,
   ...rest
 }: {
   href: string
   className?: string
   children: ReactNode
   tabIndex?: number
+  prefetch?: boolean
   'aria-hidden'?: boolean | 'true'
 }) {
   if (isExternal(href)) {
@@ -38,7 +40,7 @@ export function SmartLink({
     )
   }
   return (
-    <Link href={href} className={className} {...rest}>
+    <Link href={href} className={className} prefetch={prefetch} {...rest}>
       {children}
     </Link>
   )
@@ -52,12 +54,15 @@ export function Thumb({
   fit = 'cover',
   glyph,
   label,
+  unoptimized,
 }: {
   href?: string
   src?: string
   alt?: string
   fit?: 'cover' | 'contain'
   glyph?: ReactNode
+  /** True for sources already generated at display size (scripts/gen-thumbs.mjs). */
+  unoptimized?: boolean
   label?: string
 }) {
   const body = src ? (
@@ -66,6 +71,7 @@ export function Thumb({
       alt={alt ?? ''}
       fill
       sizes="152px"
+      unoptimized={unoptimized}
       className={fit === 'cover' ? 'object-cover' : 'object-contain p-1.5'}
     />
   ) : (
@@ -80,7 +86,7 @@ export function Thumb({
   )
   if (!href) return <div className={frame}>{body}</div>
   return (
-    <SmartLink href={href} className={frame} tabIndex={-1} aria-hidden="true">
+    <SmartLink href={href} className={frame} tabIndex={-1} aria-hidden="true" prefetch={false}>
       {body}
     </SmartLink>
   )

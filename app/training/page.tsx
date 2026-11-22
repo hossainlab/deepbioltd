@@ -91,11 +91,12 @@ function Entry({ c }: { c: Course }) {
           src={c.thumb}
           alt={`Illustration for the ${c.title} course`}
           fit={c.thumbFit}
+          unoptimized
           glyph={<CourseGlyph slug={c.slug} />}
         />
       }
     >
-      <Link href={href} className={`font-bold ${pubLink}`}>
+      <Link href={href} className={`font-bold ${pubLink}`} prefetch={false}>
         {c.title}
       </Link>
       <p>
@@ -104,7 +105,7 @@ function Entry({ c }: { c: Course }) {
       </p>
       <p>{c.tools?.length ? c.tools.slice(0, 5).join(' · ') : c.primaryText ? 'Primary text: The Life Sciences AI Handbook' : null}</p>
       <p>
-        <Link href={href} className={pubLink}>
+        <Link href={href} className={pubLink} prefetch={false}>
           view syllabus
         </Link>
       </p>

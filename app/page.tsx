@@ -17,12 +17,12 @@ import { Colophon } from '@/components/minimal/Colophon'
  */
 
 const collaborators = [
-  { name: 'GNOBB', logo: '/partner_logos/clean/GNOBB.png', h: 58 },
-  { name: 'ASI School of Life', logo: '/partner_logos/clean/ASISchoolofLife.png', h: 46 },
-  { name: 'SPSB', logo: '/partner_logos/clean/SPSB.png', h: 56 },
-  { name: 'GSA Bioinformatics Internship', logo: '/partner_logos/clean/GSABioinformaticsInternship.png', h: 50 },
-  { name: 'cBLAST', logo: '/partner_logos/clean/cBLAST.png', h: 36 },
-  { name: 'One Health Lab', logo: '/partner_logos/clean/onehealthlab.png', h: 56 },
+  { name: 'GNOBB', logo: '/partner_logos/clean/GNOBB.webp', h: 58 },
+  { name: 'ASI School of Life', logo: '/partner_logos/clean/ASISchoolofLife.webp', h: 46 },
+  { name: 'SPSB', logo: '/partner_logos/clean/SPSB.webp', h: 56 },
+  { name: 'GSA Bioinformatics Internship', logo: '/partner_logos/clean/GSABioinformaticsInternship.webp', h: 50 },
+  { name: 'cBLAST', logo: '/partner_logos/clean/cBLAST.webp', h: 36 },
+  { name: 'One Health Lab', logo: '/partner_logos/clean/onehealthlab.webp', h: 56 },
 ]
 
 // Names left off the homepage roll. Filtered here rather than deleted from
@@ -73,6 +73,7 @@ export default function HomePage() {
                       alt=""
                       fill
                       sizes="152px"
+                      unoptimized
                       className={`object-cover object-top ${PORTRAIT_ZOOM[m.name] ?? ''}`}
                     />
                   </span>
@@ -121,6 +122,7 @@ export default function HomePage() {
                   width={200}
                   height={100}
                   sizes="(max-width: 640px) 40vw, 320px"
+                  unoptimized
                   style={{ maxHeight: c.h }}
                   className="h-auto w-auto max-w-full object-contain"
                 />
