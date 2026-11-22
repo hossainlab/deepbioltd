@@ -95,7 +95,7 @@ export const placeholderTeam: CourseTeamMember[] = [
 export interface Course {
   slug: string
   title: string
-  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Graduate seminar'
+  level: 'Beginner' | 'Intermediate' | 'Advanced'
   /** Who the course is for, when the level alone does not say. */
   audience?: string
   /** Teaching format, e.g. weekly seminar hours. */

@@ -20,7 +20,7 @@ const caseStudy = (title: string, anchor: string): Reading => ({
 export const aiBiologicalDiscovery: Course = {
   slug: 'foundation-models-for-biological-discovery',
   title: 'Foundation Models for Biological Discovery: Evidence, Evaluation, and Translation',
-  level: 'Graduate seminar',
+  level: 'Advanced',
   weeks: 12,
   summary:
     'A graduate seminar on reading, testing and acting on AI claims in biology, from protein structure and variant effects to clinical translation and self-driving laboratories.',
