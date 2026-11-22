@@ -421,7 +421,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     </ul>
                   </div>
                 ))}
-                {policy.closing?.map((x) => (
+                {[...(policy.closing ?? []), ...(c.aiPolicyExtra ?? [])].map((x) => (
                   <p key={x} className="mt-4">{x}</p>
                 ))}
               </section>

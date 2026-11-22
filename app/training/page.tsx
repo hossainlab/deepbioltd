@@ -104,6 +104,19 @@ function CourseGlyph({ slug }: { slug: string }) {
           <circle cx="64" cy="31" r="3.5" fill="#fff" />
         </g>
       )
+    case 'agentic-ai-computational-biology':
+      // An agent loop: a central node cycling through three tools.
+      return (
+        <g {...stroke}>
+          <circle cx="40" cy="30" r="7" />
+          <circle cx="40" cy="30" r="2" fill="currentColor" stroke="none" />
+          <circle cx="40" cy="8" r="4" />
+          <circle cx="60" cy="42" r="4" />
+          <circle cx="20" cy="42" r="4" />
+          <path d="M44 10c10 3 16 14 16 27M57 46c-10 7-24 7-34 0M20 37c0-13 6-24 16-27" opacity={0.6} />
+          <path d="M60 37l-2-4M23 46l3 3M36 10l3-3" />
+        </g>
+      )
     case 'ai-for-biological-discovery':
       // An open book with a spark: the handbook-led seminar.
       return (

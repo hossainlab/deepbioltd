@@ -11,6 +11,7 @@
 
 import type { IscbCode } from './iscb'
 import { aiBiologicalDiscovery } from './ai-biological-discovery'
+import { agenticAiCompBio } from './agentic-ai-comp-bio'
 
 /** A reading, linked when it has a public URL. */
 export interface Reading {
@@ -123,6 +124,8 @@ export interface Course {
   showGradeBands?: boolean
   /** Overrides the shared generative AI policy. */
   aiPolicy?: AiPolicy
+  /** Course-specific paragraphs added after the (shared or own) AI policy. */
+  aiPolicyExtra?: string[]
   /** Overrides the shared course evaluation. */
   evaluation?: CourseEvaluation
   resources: { label: string; href: string }[]
@@ -229,6 +232,7 @@ export const courseEvaluation: CourseEvaluation = {
 export const courses: Course[] = [
   // Flagship seminar, listed first.
   aiBiologicalDiscovery,
+  agenticAiCompBio,
   {
     slug: 'bioinformatics-101',
     title: 'Bioinformatics 101',
