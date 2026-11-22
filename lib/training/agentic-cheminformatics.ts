@@ -29,6 +29,8 @@ export const agenticCheminformatics: Course = {
   ],
   prerequisites:
     'Working Python experience and undergraduate organic chemistry. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+  // 4:3 crop of course_img/Small-molecule drug structure.jpeg
+  thumb: '/course_img/cheminformatics-card.jpeg',
   tools: ['Science skills', 'RDKit', 'ChEMBL', 'PubChem', 'Python', 'pandas', 'scikit-learn'],
   objectives: [
     'Install and drive agent skills for cheminformatics, and state what each skill does and does not do.',

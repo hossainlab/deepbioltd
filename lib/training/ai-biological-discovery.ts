@@ -21,6 +21,8 @@ export const aiBiologicalDiscovery: Course = {
   slug: 'foundation-models-for-biological-discovery',
   title: 'Foundation Models for Biological Discovery: Evidence, Evaluation, and Translation',
   level: 'Advanced',
+  // 4:3 crop of course_img/Genomic foundation models.jpeg
+  thumb: '/course_img/foundation-models-card.jpeg',
   weeks: 12,
   summary:
     'A seminar course on reading, testing and acting on AI claims in biology, from protein structure and variant effects to clinical translation and self-driving laboratories.',

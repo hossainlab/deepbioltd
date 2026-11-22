@@ -25,6 +25,8 @@ export const agenticAiCompBio: Course = {
   ],
   prerequisites:
     'Working Python experience, and familiarity with common bioinformatics databases. Some machine learning background helps but is not required. Exercises need access to an LLM API; setup is covered in Week 1.',
+  // 4:3 crop of course_img/Single-cell foundation models.jpeg
+  thumb: '/course_img/computational-biology-card.jpeg',
   tools: ['Python', 'LLM APIs with tool calling', 'Model Context Protocol', 'LangGraph', 'Biopython', 'NCBI E-utilities', 'UniProt API', 'Docker'],
   objectives: [
     'Explain how tool-calling language models become agents, and when a fixed workflow is the better design.',
