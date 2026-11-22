@@ -31,9 +31,9 @@ const HIDDEN_FROM_HOME = new Set(['Pritom Kundu', 'Tajrian Rahman'])
 
 // Some source photos are loose, full-length crops; zoom them so faces read at 76px.
 // Each value sets the crop anchor (object-position) and zoom around the face.
+// Md. Jubayer Hossain and Muhibullah Shahjahan are absent: their sources are
+// full-body shots, cropped to the face by scripts/gen-thumbs.mjs instead.
 const PORTRAIT_ZOOM: Record<string, string> = {
-  'Md. Jubayer Hossain': 'scale-[1.3] origin-[47%_40%]',
-  'Muhibullah Shahjahan': 'scale-[1.4] origin-[45%_26%]',
   'Nishat Mim': '!object-[48%_43%] scale-[2.2] origin-[48%_45%]',
   'Najnin Suktara': '!object-[47%_51%] scale-[2.7] origin-[47%_52%]',
 }

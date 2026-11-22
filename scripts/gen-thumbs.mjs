@@ -8,32 +8,88 @@
  * Run after adding or replacing a source image:  node scripts/gen-thumbs.mjs
  */
 import sharp from 'sharp'
-import { readdir } from 'node:fs/promises'
+import { readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 
-const jobs = [
-  // Course cards render at 152-176px wide; 400px covers 2x displays.
-  { dir: 'public/course_img', match: /-card\.jpe?g$/, width: 400, height: 300, fit: 'cover' },
-  // Team portraits render in a 76px circle, but some are zoomed up to 2.7x.
-  { dir: 'public/images/team', match: /\.(png|jpe?g)$/i, width: 400, height: 400, fit: 'cover' },
-  { dir: 'public/images/management', match: /\.(png|jpe?g)$/i, width: 400, height: 400, fit: 'cover' },
-  // Logos render up to 200px wide, on white, so keep the whole mark.
-  { dir: 'public/partner_logos/clean', match: /\.(png|jpe?g)$/i, width: 400, fit: 'inside' },
-]
+const SOURCE_EXTENSIONS = ['.png', '.jpg', '.jpeg']
 
-let made = 0, saved = 0
-for (const job of jobs) {
-  let files = []
-  try { files = await readdir(job.dir) } catch { continue }
-  for (const f of files.filter((f) => job.match.test(f))) {
-    const src = path.join(job.dir, f)
-    const out = path.join(job.dir, f.replace(/\.[^.]+$/, '.webp'))
-    const before = (await sharp(src).metadata()).size ?? 0
-    const img = sharp(src).resize({ width: job.width, height: job.height, fit: job.fit, withoutEnlargement: true })
-    await img.webp({ quality: 82 }).toFile(out)
-    const after = (await sharp(out).metadata()).size ?? 0
-    made++; saved += before - after
-    console.log(`${String(Math.round(before / 1024)).padStart(5)}k -> ${String(Math.round(after / 1024)).padStart(4)}k  ${out}`)
+async function firstExisting(base) {
+  for (const ext of SOURCE_EXTENSIONS) {
+    try {
+      await stat(base + ext)
+      return base + ext
+    } catch {}
   }
+  return null
 }
+
+async function convert(src, out, resize, crop) {
+  const before = (await stat(src)).size
+  let img = sharp(src)
+  if (crop) {
+    const { width, height } = await img.metadata()
+    const side = Math.round(Math.min(width, height) * crop.size)
+    img = img.extract({
+      left: Math.round(width * crop.left),
+      top: Math.round(height * crop.top),
+      width: side,
+      height: side,
+    })
+  }
+  await img.resize(resize).webp({ quality: 82 }).toFile(out)
+  const after = (await stat(out)).size
+  console.log(`${String(Math.round(before / 1024)).padStart(5)}k -> ${String(Math.round(after / 1024)).padStart(4)}k  ${out}`)
+  return before - after
+}
+
+let made = 0
+let saved = 0
+
+/**
+ * Team portraits. Aspect ratio is preserved, because the homepage frames each
+ * face with its own object-position and scale, tuned to the source's
+ * proportions — a square crop here silently reframes those portraits.
+ *
+ * Several people have both a .png and a .jpg holding *different* photos, so the
+ * source is resolved in a fixed order rather than by scanning the directory.
+ */
+/**
+ * Sources that are full-body shots rather than headshots. A square source fills
+ * a square frame exactly, so object-position cannot recentre it and the CSS
+ * zoom alone leaves the face high in the circle; crop to the face here instead.
+ * Values are fractions of the source width/height.
+ */
+const PORTRAIT_CROP = {
+  '/images/team/muhib.webp': { left: 0.15, top: 0.0, size: 0.58 },
+  '/images/team/jubayer.webp': { left: 0.135, top: 0.06, size: 0.67 },
+}
+
+const teamData = await readFile('lib/team/data.ts', 'utf8')
+const portraits = [...teamData.matchAll(/image: '([^']+)'/g)].map((m) => m[1])
+for (const ref of portraits) {
+  const base = path.join('public', ref).replace(/\.[^.]+$/, '')
+  const src = await firstExisting(base)
+  if (!src) {
+    console.warn(`  no source found for ${ref}`)
+    continue
+  }
+  const crop = PORTRAIT_CROP[ref]
+  saved += await convert(src, `${base}.webp`, { width: 400, fit: 'inside', withoutEnlargement: true }, crop)
+  made++
+}
+
+/** Course cards render at 152-176px wide; 400px covers 2x displays. */
+for (const f of (await readdir('public/course_img')).filter((f) => /-card\.jpe?g$/.test(f))) {
+  const src = path.join('public/course_img', f)
+  saved += await convert(src, src.replace(/\.[^.]+$/, '.webp'), { width: 400, height: 300, fit: 'cover' })
+  made++
+}
+
+/** Partner logos render up to 200px wide, on white, so keep the whole mark. */
+for (const f of (await readdir('public/partner_logos/clean')).filter((f) => /\.(png|jpe?g)$/i.test(f))) {
+  const src = path.join('public/partner_logos/clean', f)
+  saved += await convert(src, src.replace(/\.[^.]+$/, '.webp'), { width: 400, fit: 'inside', withoutEnlargement: true })
+  made++
+}
+
 console.log(`\n${made} files, ${Math.round(saved / 1024)}k saved`)
