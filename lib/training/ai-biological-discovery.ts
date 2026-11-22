@@ -1,5 +1,5 @@
 /**
- * AI for Biological Discovery: Evidence, Evaluation, and Translation.
+ * Foundation Models for Biological Discovery: Evidence, Evaluation, and Translation.
  *
  * Adapted from the Course Syllabus appendix of The Life Sciences AI Handbook
  * (Tegomoh, 2026), licensed CC BY 4.0:
@@ -18,8 +18,8 @@ const caseStudy = (title: string, anchor: string): Reading => ({
 })
 
 export const aiBiologicalDiscovery: Course = {
-  slug: 'ai-for-biological-discovery',
-  title: 'AI for Biological Discovery: Evidence, Evaluation, and Translation',
+  slug: 'foundation-models-for-biological-discovery',
+  title: 'Foundation Models for Biological Discovery: Evidence, Evaluation, and Translation',
   level: 'Graduate seminar',
   weeks: 12,
   summary:

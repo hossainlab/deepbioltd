@@ -63,7 +63,7 @@ function CourseGlyph({ slug }: { slug: string }) {
           <path d="M60 37l-2-4M23 46l3 3M36 10l3-3" />
         </g>
       )
-    case 'ai-for-biological-discovery':
+    case 'foundation-models-for-biological-discovery':
       // An open book with a spark: the handbook-led seminar.
       return (
         <g {...stroke}>
