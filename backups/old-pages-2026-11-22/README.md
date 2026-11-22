@@ -15,7 +15,9 @@ renders. Shared components (Navbar, Footer, ui/*, lib data) stay in the repo.
 | /research-programs, /labs/* | /research |
 | /methodology, /brochure | /services |
 | /research-assistant-recruitment, /lab-onboarding, /ambassadors, /our-ambassadors, /ambassador-handbook | /join-us |
-| /career-guide/*, /thesis-support, /training | https://deepbioacademy.com/ |
+| /career-guide/*, /thesis-support | https://deepbioacademy.com/ |
+
+/training was rebuilt in the minimal design on 2026-11-22 (app/training, lib/training).
 
 Restore one route (also delete its redirect in next.config.js):
     cp -R backups/old-pages-2026-11-22/app/about app/about

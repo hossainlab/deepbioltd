@@ -9,7 +9,7 @@ export const minimalNav: { name: string; href: string; external?: boolean }[] =
     { name: "Home", href: "/" },
     { name: "Research", href: "/research" },
     { name: "Services", href: "/services" },
-    { name: "Training", href: "https://deepbioacademy.com/", external: true },
+    { name: "Training", href: "/training" },
     { name: "Resources", href: "/resources" },
     { name: "Join Us", href: "/join-us" },
   ];

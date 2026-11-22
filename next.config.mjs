@@ -34,10 +34,8 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   // Allow static HTML files in public/ to be served directly
-  // Training lives on DeepBio Academy; forward old /training links there.
   async redirects() {
     return [
-      { source: '/training', destination: 'https://deepbioacademy.com/', permanent: false },
       // Retired pages from the pre-2026-11 site, archived in backups/old-pages-2026-11-22.
       // Permanent (308) so search engines drop the old URLs.
       { source: '/about', destination: '/', permanent: true },
