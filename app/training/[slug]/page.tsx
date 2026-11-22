@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Shell } from '@/components/minimal/Shell'
@@ -11,7 +12,10 @@ import {
   aiPolicy,
   courseEvaluation,
   RUBRIC_LEVELS,
+  placeholderTeam,
+  type CourseTeamMember,
 } from '@/lib/training/courses'
+import { teamMembers } from '@/lib/team/data'
 import { iscbCompetencies, ISCB_FRAMEWORK_URL } from '@/lib/training/iscb'
 
 type Params = { slug: string }
@@ -30,9 +34,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return { title: `${c.title} | Training | DeepBio`, description: c.summary }
 }
 
-/** The nine syllabus sections every course has, in order. */
+/** The syllabus sections every course has, in order. */
 const sections = [
   { id: 'overview', label: 'Overview' },
+  { id: 'team', label: 'Course Team' },
   { id: 'objectives', label: 'Learning Objectives' },
   { id: 'syllabus', label: 'Syllabus' },
   { id: 'iscb', label: 'ISCB Competency' },
@@ -47,12 +52,64 @@ const link = 'text-[color:var(--home-accent)] hover:opacity-70'
 const h2 = 'mb-3 text-[1.4rem] font-semibold tracking-[-0.015em]'
 const rule = 'border-[color:var(--home-rule-soft)]'
 
+/**
+ * One portrait in the course team grid, styled like the homepage Team row.
+ * DeepBio members are looked up by name; an unnamed slot renders as
+ * "To be announced" with a silhouette.
+ */
+function TeamCard({ member }: { member: CourseTeamMember }) {
+  const known = member.name ? teamMembers.find((m) => m.name === member.name) : undefined
+  const image = member.image ?? known?.image
+  const linkedin = member.linkedin ?? known?.linkedin
+  const name = member.name ?? 'To be announced'
+
+  const card = (
+    <>
+      <span className="relative mx-auto block h-[76px] w-[76px] overflow-hidden rounded-full bg-white ring-1 ring-[color:var(--home-rule-soft)] transition-transform duration-300 group-hover:-translate-y-0.5">
+        {image ? (
+          <Image src={image} alt="" fill sizes="152px" className="object-cover object-top" />
+        ) : (
+          <svg viewBox="0 0 76 76" aria-hidden="true" className="h-full w-full text-[color:var(--home-muted)] opacity-30">
+            <circle cx="38" cy="30" r="13" fill="currentColor" />
+            <path d="M12 72c2-16 13-24 26-24s24 8 26 24z" fill="currentColor" />
+          </svg>
+        )}
+      </span>
+      <span
+        className={`mt-2 block text-[12px] font-medium leading-[1.25] [text-wrap:balance] ${
+          member.name ? 'text-[color:var(--home-ink)] group-hover:text-[color:var(--home-accent)]' : 'italic text-[color:var(--home-muted)]'
+        }`}
+      >
+        {name}
+      </span>
+      <span className="mt-0.5 block text-[10.5px] leading-[1.3] text-[color:var(--home-muted)] [text-wrap:balance]">
+        {member.role}
+      </span>
+    </>
+  )
+
+  return (
+    <li className="w-1/3 px-1 text-center sm:w-1/4 md:w-[calc(100%/6)]">
+      {linkedin ? (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${name}, ${member.role} — LinkedIn`} className="group block">
+          {card}
+        </a>
+      ) : (
+        <div className="group block" aria-label={`${name}, ${member.role}`}>
+          {card}
+        </div>
+      )}
+    </li>
+  )
+}
+
 export default async function CourseSyllabus({ params }: { params: Promise<Params> }) {
   const { slug } = await params
   const c = courses.find((x) => x.slug === slug)
   if (!c) notFound()
 
   const rubric = c.rubric ?? defaultRubric
+  const team = c.team?.length ? c.team : placeholderTeam
   const others = courses.filter((x) => x.slug !== c.slug)
 
   return (
@@ -119,6 +176,15 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                     <dd className="font-mono text-[0.85rem]">{c.tools.join(' · ')}</dd>
                   </div>
                 </dl>
+              </section>
+
+              <section id="team" className="scroll-mt-8">
+                <h2 className={h2}>Course Team</h2>
+                <ul className="flex flex-wrap gap-y-5">
+                  {team.map((m, i) => (
+                    <TeamCard key={`${m.name ?? 'tba'}-${i}`} member={m} />
+                  ))}
+                </ul>
               </section>
 
               <section id="objectives" className="scroll-mt-8">

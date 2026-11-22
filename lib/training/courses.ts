@@ -3,7 +3,7 @@
  * syllabus pages. Course list carried over from the former Training page
  * (backups/homepage-2026-11-15/training → components/TrainingPage.tsx).
  *
- * Every syllabus has the same nine sections, in this order: Overview,
+ * Every syllabus has the same sections, in this order: Overview, Course Team,
  * Learning Objectives, Syllabus, ISCB Competency, Assessment, Grading Rubric,
  * Learner Use of Generative AI, Evaluating the Course, Supplementary Resources.
  * Courses are mapped to the ISCB Competency Framework 3.0 (lib/training/iscb.ts).
@@ -31,6 +31,27 @@ export interface RubricRow {
   levels: [string, string, string, string]
 }
 
+/**
+ * One person on a course team. Give `name` exactly as in lib/team/data.ts to
+ * pull that member's photo and LinkedIn; anyone else is a guest and can carry
+ * their own `image` and `linkedin`. Leave `name` out for a "to be announced" slot.
+ */
+export interface CourseTeamMember {
+  /** Role on this course, e.g. Lead instructor or Teaching assistant. */
+  role: string
+  name?: string
+  image?: string
+  linkedin?: string
+}
+
+/** Placeholder team shown until a course lists its own. */
+export const placeholderTeam: CourseTeamMember[] = [
+  { role: 'Lead instructor' },
+  { role: 'Instructor' },
+  { role: 'Teaching assistant' },
+  { role: 'Teaching assistant' },
+]
+
 export interface Course {
   slug: string
   title: string
@@ -42,6 +63,8 @@ export interface Course {
   overview: string[]
   prerequisites: string
   tools: string[]
+  /** Course team; falls back to placeholderTeam when not set. */
+  team?: CourseTeamMember[]
   objectives: string[]
   syllabus: CourseWeek[]
   /** Which ISCB 3.0 competencies the course builds, and how. */
