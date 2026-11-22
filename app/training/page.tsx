@@ -104,6 +104,18 @@ function CourseGlyph({ slug }: { slug: string }) {
           <circle cx="64" cy="31" r="3.5" fill="#fff" />
         </g>
       )
+    case 'agentic-cheminformatics-antigravity':
+      // A molecule with an agent loop running under it.
+      return (
+        <g {...stroke}>
+          <path d="M40 14l10 6v12l-10 6-10-6V20z" />
+          <path d="M50 20l9-5M30 20l-9-5M40 38v7" opacity={0.7} />
+          <circle cx="59" cy="15" r="2.5" />
+          <circle cx="21" cy="15" r="2.5" />
+          <path d="M16 40a26 20 0 0 0 48 0" strokeDasharray="3 4" opacity={0.55} />
+          <path d="M64 40l-5-3M64 40l-5 3" opacity={0.55} />
+        </g>
+      )
     case 'agentic-ai-computational-biology':
       // An agent loop: a central node cycling through three tools.
       return (

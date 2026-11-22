@@ -12,6 +12,7 @@
 import type { IscbCode } from './iscb'
 import { aiBiologicalDiscovery } from './ai-biological-discovery'
 import { agenticAiCompBio } from './agentic-ai-comp-bio'
+import { agenticCheminformatics } from './agentic-cheminformatics'
 
 /** A reading, linked when it has a public URL. */
 export interface Reading {
@@ -233,6 +234,7 @@ export const courses: Course[] = [
   // Flagship seminar, listed first.
   aiBiologicalDiscovery,
   agenticAiCompBio,
+  agenticCheminformatics,
   {
     slug: 'bioinformatics-101',
     title: 'Bioinformatics 101',
