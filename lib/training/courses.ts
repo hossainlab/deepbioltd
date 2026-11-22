@@ -109,6 +109,10 @@ export interface Course {
   overview: string[]
   prerequisites: string
   tools?: string[]
+  /** Card image; falls back to the drawn glyph in app/training/page.tsx. */
+  thumb?: string
+  /** 'cover' crops to the 4:3 card, 'contain' letterboxes the whole image. */
+  thumbFit?: 'cover' | 'contain'
   /** Course team; falls back to placeholderTeam when not set. */
   team?: CourseTeamMember[]
   objectives: string[]

@@ -84,7 +84,17 @@ function CourseGlyph({ slug }: { slug: string }) {
 function Entry({ c }: { c: Course }) {
   const href = `/training/${c.slug}`
   return (
-    <PubEntry thumb={<Thumb href={href} glyph={<CourseGlyph slug={c.slug} />} />}>
+    <PubEntry
+      thumb={
+        <Thumb
+          href={href}
+          src={c.thumb}
+          alt={`Illustration for the ${c.title} course`}
+          fit={c.thumbFit}
+          glyph={<CourseGlyph slug={c.slug} />}
+        />
+      }
+    >
       <Link href={href} className={`font-bold ${pubLink}`}>
         {c.title}
       </Link>

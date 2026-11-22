@@ -32,6 +32,8 @@ export const agenticDrugDiscovery: Course = {
   ],
   prerequisites:
     'Molecular biology or pharmacology, and basic statistics. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+  // 4:3 crop of course_img/drug-discovery.jpeg, framed on the ligand and docking box.
+  thumb: '/course_img/drug-discovery-card.jpeg',
   tools: ['Science skills', 'Open Targets', 'ChEMBL', 'Reactome', 'STRING', 'ClinicalTrials.gov', 'openFDA'],
   objectives: [
     'Describe where drug programs fail and which decisions the evidence has to support.',
