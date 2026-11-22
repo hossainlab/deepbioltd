@@ -177,7 +177,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
             </p>
             <h1 className="mt-3 text-[2rem] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[2.625rem]">{c.title}</h1>
             <p className="mt-5 text-[1.15rem] italic leading-[1.5] opacity-90 sm:text-[1.3rem]">{c.summary}</p>
-            <p className="mt-6 text-[15px] font-semibold">DeepBio Training</p>
+            <p className="mt-6 text-[15px] font-semibold">DeepBio Academy</p>
             <p className="mt-1 text-[13px] text-[color:var(--home-muted)]">{c.weeks} weeks · Online and Dhaka, Bangladesh</p>
 
             <div className="mt-10 space-y-12 text-[1.05rem] leading-[1.7] sm:text-[1.15rem]">
