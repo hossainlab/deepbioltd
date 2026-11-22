@@ -35,8 +35,8 @@ export const ampDiscovery: Course = {
   ],
   prerequisites:
     'Comfort with sequence databases and the command line, and basic microbiology. Computational Biology with AI Agents is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
-  // 4:3 crop of course_img/Protein foundation models.jpeg
-  thumb: '/course_img/amp-card.jpeg',
+  // 4:3 crop of course_img/Antimicrobial Peptides.jpeg
+  thumb: '/course_img/antimicrobial-peptides-card.jpeg',
   tools: ['Science skills', 'UniProt', 'EMBL-EBI BLAST', 'AlphaFold DB', 'Foldseek', 'InterPro', 'DBAASP'],
   objectives: [
     'Explain where natural antimicrobial peptides come from, how bacteriocins are organised in the genome, and the main mechanisms by which they act.',
