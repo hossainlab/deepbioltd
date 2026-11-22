@@ -224,11 +224,22 @@ export default function ResourcesIndex() {
           <div className="pb-4 pt-8">
             <h1 className="text-center text-[1.05rem] text-[color:var(--home-accent)]">Resources</h1>
             <p className="mt-3 text-[13.5px] leading-[1.55]">
-              The biological foundation models we build on, with the paper that introduced each one
-              and where to get its code or weights, followed by the open agent skill libraries that
-              connect models and public databases to AI agents.
+              The open agent skill libraries that connect models and public databases to AI agents,
+              followed by the biological foundation models we build on, with the paper that
+              introduced each one and where to get its code or weights.
             </p>
           </div>
+
+          <section aria-labelledby="cat-skills" className="pt-6">
+            <h2 id="cat-skills" className="text-[1.15rem] font-normal">
+              Agent skills &amp; research assistants
+            </h2>
+            <ul>
+              {toolkits.map((t) => (
+                <ToolkitEntry key={t.codeUrl} t={t} />
+              ))}
+            </ul>
+          </section>
 
           {modelCategories.map((cat) => (
             <section key={cat.id} aria-labelledby={`cat-${cat.id}`} className="pt-6">
@@ -242,17 +253,6 @@ export default function ResourcesIndex() {
               </ul>
             </section>
           ))}
-
-          <section aria-labelledby="cat-skills" className="pt-6">
-            <h2 id="cat-skills" className="text-[1.15rem] font-normal">
-              Agent skills &amp; research assistants
-            </h2>
-            <ul>
-              {toolkits.map((t) => (
-                <ToolkitEntry key={t.codeUrl} t={t} />
-              ))}
-            </ul>
-          </section>
         </main>
 
         <Colophon />
