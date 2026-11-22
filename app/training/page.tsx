@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 /** Line drawings standing in for course thumbnails, keyed by course slug. */
 function CourseGlyph({ slug }: { slug: string }) {
   switch (slug) {
-    case 'agentic-drug-discovery-antigravity':
+    case 'agentic-ai-drug-discovery':
       // Evidence layers funnelling to a single decision.
       return (
         <g {...stroke}>
@@ -25,7 +25,7 @@ function CourseGlyph({ slug }: { slug: string }) {
           <circle cx="40" cy="46" r="2.5" fill="currentColor" stroke="none" />
         </g>
       )
-    case 'antimicrobial-peptide-discovery-antigravity':
+    case 'agentic-ai-antimicrobial-peptide-discovery':
       // A helical peptide meeting a bacterial membrane bilayer.
       return (
         <g {...stroke}>
@@ -38,7 +38,7 @@ function CourseGlyph({ slug }: { slug: string }) {
           <path d="M44 20l6 6-6 6" opacity={0.7} />
         </g>
       )
-    case 'agentic-cheminformatics-antigravity':
+    case 'agentic-ai-cheminformatics':
       // A molecule with an agent loop running under it.
       return (
         <g {...stroke}>

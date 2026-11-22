@@ -1,5 +1,5 @@
 /**
- * Antimicrobial Peptide Discovery with Google Antigravity.
+ * Agentic AI for Antimicrobial Peptide Discovery.
  *
  * Built around the published DeepMind walkthrough, which mines natural
  * bacteriocins out of sequence databases and corroborates one candidate with
@@ -22,8 +22,8 @@ const BLOG = 'https://deepmind.google/blog/accelerating-antimicrobial-discovery/
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const ampDiscovery: Course = {
-  slug: 'antimicrobial-peptide-discovery-antigravity',
-  title: 'Antimicrobial Peptide Discovery with Google Antigravity',
+  slug: 'agentic-ai-antimicrobial-peptide-discovery',
+  title: 'Agentic AI for Antimicrobial Peptide Discovery',
   level: 'Advanced',
   weeks: 6,
   summary:
@@ -34,8 +34,8 @@ export const ampDiscovery: Course = {
     'It connects directly to DeepBio’s own AMR research programs, which is where a credible candidate from this course would go next.',
   ],
   prerequisites:
-    'Comfort with sequence databases and the command line, and basic microbiology. Agentic AI for Computational Biology is helpful but not required. Needs Google Antigravity with the Science plugin, or the same open skills installed into another agent client; setup is covered in Week 1.',
-  tools: ['Google Antigravity', 'Science skills', 'UniProt', 'EMBL-EBI BLAST', 'AlphaFold DB', 'Foldseek', 'InterPro', 'DBAASP'],
+    'Comfort with sequence databases and the command line, and basic microbiology. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+  tools: ['Science skills', 'UniProt', 'EMBL-EBI BLAST', 'AlphaFold DB', 'Foldseek', 'InterPro', 'DBAASP'],
   objectives: [
     'Explain where natural antimicrobial peptides come from, how bacteriocins are organised in the genome, and the main mechanisms by which they act.',
     'Drive agent skills to search UniProt and narrow millions of entries to a defensible candidate list, recording every filter.',

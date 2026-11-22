@@ -1,5 +1,5 @@
 /**
- * Agentic Cheminformatics with Google Antigravity.
+ * Agentic AI for Cheminformatics.
  *
  * A verification-first course: learners drive agent skills through a standard
  * cheminformatics workflow (retrieve, curate, analyse, model) and check every
@@ -17,19 +17,19 @@ const HANDBOOK = 'https://lifesciencesaihandbook.com'
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const agenticCheminformatics: Course = {
-  slug: 'agentic-cheminformatics-antigravity',
-  title: 'Agentic Cheminformatics with Google Antigravity',
+  slug: 'agentic-ai-cheminformatics',
+  title: 'Agentic AI for Cheminformatics',
   level: 'Advanced',
   weeks: 6,
   summary:
     'Run cheminformatics workflows through AI agent skills, and verify every structure, activity value and model result against its source.',
   overview: [
     'Agent skills now connect a language model to RDKit, ChEMBL and PubChem, so an agent can retrieve a compound series, curate it, compute descriptors and fit a potency model in an afternoon. The speed is real, and so is the risk: a plausible-looking table with the wrong units, a duplicated structure, or a model validated on a split that leaks is worse than no analysis at all.',
-    'This course teaches both halves. Learners drive Google Antigravity with the open Science skills through a standard cheminformatics workflow, and at each step they check the agent against the primary source: the assay record behind an activity value, the standardisation rule behind a structure, the split behind a performance number. The final week appraises the published agentic cheminformatics case study on its own evidence.',
+    'This course teaches both halves. Learners drive an agent through a standard cheminformatics workflow with the open Science skills, and at each step they check the agent against the primary source: the assay record behind an activity value, the standardisation rule behind a structure, the split behind a performance number. The final week appraises the published agentic cheminformatics case study on its own evidence.',
   ],
   prerequisites:
-    'Python for Data Science in Biology or equivalent Python experience, and undergraduate organic chemistry. Agentic AI for Computational Biology is helpful but not required. Needs Google Antigravity with the Science plugin; the same skills also install with npx into other agent clients, which is covered in Week 1.',
-  tools: ['Google Antigravity', 'Science skills', 'RDKit', 'ChEMBL', 'PubChem', 'Python', 'pandas', 'scikit-learn'],
+    'Python for Data Science in Biology or equivalent Python experience, and undergraduate organic chemistry. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+  tools: ['Science skills', 'RDKit', 'ChEMBL', 'PubChem', 'Python', 'pandas', 'scikit-learn'],
   objectives: [
     'Install and drive agent skills for cheminformatics, and state what each skill does and does not do.',
     'Explain how molecules are represented as SMILES, InChI, SDF and IUPAC names, and why a representation choice changes a result.',
@@ -43,11 +43,10 @@ export const agenticCheminformatics: Course = {
     {
       title: 'Agent Skills and Molecular Representation',
       theme: 'Setting up the workbench, and what a molecule is to a computer',
-      topics: ['Antigravity and the Science plugin', 'Skill anatomy: instructions, scripts, references', 'SMILES, InChI, SDF, IUPAC names', 'RDKit basics'],
+      topics: ['Installing and running agent skills', 'Skill anatomy: instructions, scripts, references', 'SMILES, InChI, SDF, IUPAC names', 'RDKit basics'],
       lab: 'Install the Science skills, run a first skill, and compare how the same compound is represented across four formats.',
       readings: [
         r('Science Skills (Google DeepMind)', 'https://github.com/google-deepmind/science-skills'),
-        r('Antigravity for science', 'https://antigravity.google/use-cases/science'),
         r('RDKit documentation', 'https://www.rdkit.org/docs/'),
       ],
       questions: [
@@ -150,7 +149,6 @@ export const agenticCheminformatics: Course = {
   resources: [
     { label: 'Agentic cheminformatics with Google Antigravity (Google DeepMind)', href: 'https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/' },
     { label: 'Science Skills repository', href: 'https://github.com/google-deepmind/science-skills' },
-    { label: 'Antigravity for science', href: 'https://antigravity.google/use-cases/science' },
     { label: 'RDKit documentation', href: 'https://www.rdkit.org/docs/' },
     { label: 'ChEMBL', href: 'https://www.ebi.ac.uk/chembl/' },
     { label: 'PubChem', href: 'https://pubchem.ncbi.nlm.nih.gov/' },

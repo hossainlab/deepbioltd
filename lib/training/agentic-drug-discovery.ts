@@ -1,5 +1,5 @@
 /**
- * Agentic Drug Discovery with Google Antigravity.
+ * Agentic AI for Drug Discovery.
  *
  * The target-and-evidence half of the pipeline, deliberately complementary to
  * Agentic Cheminformatics: that course starts from compounds, this one starts
@@ -19,8 +19,8 @@ const HANDBOOK = 'https://lifesciencesaihandbook.com'
 const r = (title: string, href: string): Reading => ({ title, href })
 
 export const agenticDrugDiscovery: Course = {
-  slug: 'agentic-drug-discovery-antigravity',
-  title: 'Agentic Drug Discovery with Google Antigravity',
+  slug: 'agentic-ai-drug-discovery',
+  title: 'Agentic AI for Drug Discovery',
   level: 'Advanced',
   weeks: 8,
   summary:
@@ -31,8 +31,8 @@ export const agenticDrugDiscovery: Course = {
     'It starts where Agentic Cheminformatics does not: that course works from compounds, this one from targets, and the two meet at tractability in Week 4.',
   ],
   prerequisites:
-    'Graduate-level molecular biology or pharmacology, and basic statistics. Agentic AI for Computational Biology is helpful but not required. Needs Google Antigravity with the Science plugin, or the same open skills in another agent client; setup is covered in Week 1.',
-  tools: ['Google Antigravity', 'Science skills', 'Open Targets', 'ChEMBL', 'Reactome', 'STRING', 'ClinicalTrials.gov', 'openFDA'],
+    'Graduate-level molecular biology or pharmacology, and basic statistics. Agentic AI for Computational Biology is helpful but not required. Needs an agent client that supports the open Agent Skills standard, with the Science skills installed; setup is covered in Week 1.',
+  tools: ['Science skills', 'Open Targets', 'ChEMBL', 'Reactome', 'STRING', 'ClinicalTrials.gov', 'openFDA'],
   objectives: [
     'Describe where drug programs fail and which decisions the evidence has to support.',
     'Assemble target–disease evidence with agent skills, and distinguish genetic, expression, pathway and literature evidence by what each predicts.',
@@ -188,7 +188,6 @@ export const agenticDrugDiscovery: Course = {
     { label: 'ClinicalTrials.gov', href: 'https://clinicaltrials.gov/' },
     { label: 'openFDA', href: 'https://open.fda.gov/' },
     { label: 'Science Skills repository', href: 'https://github.com/google-deepmind/science-skills' },
-    { label: 'Antigravity for science', href: 'https://antigravity.google/use-cases/science' },
     { label: 'The Life Sciences AI Handbook: therapeutic discovery', href: `${HANDBOOK}/therapeutics/targets.html` },
   ],
 }
