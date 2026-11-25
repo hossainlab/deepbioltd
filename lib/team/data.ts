@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
     role: 'CEO & Founder',
     image: '/images/team/jubayer.webp',
     group: 'science',
-    linkedin: 'https://www.linkedin.com/in/mjhossain/',
+    linkedin: 'https://www.linkedin.com/in/hossainmj/',
   },
   {
     name: 'Muhibullah Shahjahan',

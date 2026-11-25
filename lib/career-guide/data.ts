@@ -4,7 +4,7 @@ export const speakers = [
     title: "CEO & Founder, DeepBio Limited",
     bio: "Mr. Hossain is a bioinformatics expert with over 8 years of experience in computational biology and genomic surveillance.",
     image: "/images/career-guide/speakers/jubayer.png",
-    linkedin: "https://www.linkedin.com/in/mjhossain/"
+    linkedin: "https://www.linkedin.com/in/hossainmj/"
   },
   {
     name: "Muhibullah Shahjahan",
