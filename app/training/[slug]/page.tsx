@@ -54,7 +54,7 @@ const sections = [
   { id: 'resources', label: 'Supplementary Resources' },
 ]
 
-/** Line icons for teaching method steps; soft fills stay legible in both themes. */
+/** Line icons for teaching method steps, filled from the brand palette (tailwind.config.ts); soft fills stay legible in both themes. */
 function StepIcon({ icon }: { icon: TeachingStepIcon }) {
   const line = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
   switch (icon) {
@@ -62,7 +62,7 @@ function StepIcon({ icon }: { icon: TeachingStepIcon }) {
       // A lit bulb.
       return (
         <g {...line}>
-          <path d="M32 14a12 12 0 0 0-7 21.7c1.3 1 2 2.4 2 4V43h10v-3.3c0-1.6.7-3 2-4A12 12 0 0 0 32 14z" fill="#FACC15" fillOpacity={0.55} />
+          <path d="M32 14a12 12 0 0 0-7 21.7c1.3 1 2 2.4 2 4V43h10v-3.3c0-1.6.7-3 2-4A12 12 0 0 0 32 14z" fill="#D97706" fillOpacity={0.35} />
           <path d="M27 47h10M28.5 51h7M32 4v4M16 12l3 3M48 12l-3 3M10 26h4M50 26h4" />
           <path d="M29 34l3-6 3 6" opacity={0.7} />
         </g>
@@ -71,7 +71,7 @@ function StepIcon({ icon }: { icon: TeachingStepIcon }) {
       // A laptop showing a code tag.
       return (
         <g {...line}>
-          <rect x="13" y="14" width="38" height="26" rx="2.5" fill="#60A5FA" fillOpacity={0.15} />
+          <rect x="13" y="14" width="38" height="26" rx="2.5" fill="#0284C7" fillOpacity={0.15} />
           <path d="M8 46h48l-3 4H11z" />
           <path d="M26 23l-5 4 5 4M38 23l5 4-5 4M34 21l-4 12" />
         </g>
@@ -81,20 +81,20 @@ function StepIcon({ icon }: { icon: TeachingStepIcon }) {
       return (
         <g {...line}>
           <path d="M8 50h48" />
-          <rect x="12" y="34" width="7" height="16" fill="#FACC15" fillOpacity={0.55} />
-          <rect x="22" y="24" width="7" height="26" fill="#4ADE80" fillOpacity={0.45} />
-          <rect x="32" y="14" width="7" height="36" fill="#60A5FA" fillOpacity={0.45} />
-          <rect x="42" y="38" width="7" height="12" fill="#F472B6" fillOpacity={0.45} />
+          <rect x="12" y="34" width="7" height="16" fill="#D97706" fillOpacity={0.35} />
+          <rect x="22" y="24" width="7" height="26" fill="#059669" fillOpacity={0.35} />
+          <rect x="32" y="14" width="7" height="36" fill="#0284C7" fillOpacity={0.35} />
+          <rect x="42" y="38" width="7" height="12" fill="#1E4E79" fillOpacity={0.35} />
         </g>
       )
     case 'forward':
       // A rocket leaving a launch burst: using the method on your own.
       return (
         <g {...line}>
-          <path d="M40 10c6 0 12 0 14 0 0 6 0 10-4 16L36 40l-12-12 14-14c1-1 1.5-4 2-4z" fill="#60A5FA" fillOpacity={0.2} />
+          <path d="M40 10c6 0 12 0 14 0 0 6 0 10-4 16L36 40l-12-12 14-14c1-1 1.5-4 2-4z" fill="#0284C7" fillOpacity={0.15} />
           <circle cx="44" cy="20" r="3.5" />
           <path d="M24 28l-8 1-5 6 9 1M36 40l-1 8-6 5-1-9" />
-          <path d="M20 44c-4 1-8 5-9 9 4-1 8-5 9-9z" fill="#FACC15" fillOpacity={0.7} />
+          <path d="M20 44c-4 1-8 5-9 9 4-1 8-5 9-9z" fill="#D97706" fillOpacity={0.45} />
         </g>
       )
   }
@@ -299,7 +299,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-[2.5px] border-[color:var(--home-accent)] font-mono text-[1rem] font-bold text-[color:var(--home-accent)]">
                             {i + 1}
                           </span>
-                          <span className="-rotate-1 bg-[#FACC15]/70 px-2 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wide text-[#0A1118]">
+                          <span className="rounded-sm bg-[color-mix(in_srgb,#0284C7_14%,transparent)] px-2 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wide text-[color:var(--home-accent)]">
                             {step.label}
                           </span>
                         </div>
