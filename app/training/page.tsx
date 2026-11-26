@@ -4,7 +4,7 @@ import { Shell } from '@/components/minimal/Shell'
 import { Masthead } from '@/components/minimal/Masthead'
 import { Colophon } from '@/components/minimal/Colophon'
 import { PubEntry, Thumb, pubLink, glyphStroke as stroke } from '@/components/minimal/PubEntry'
-import { courses, type Course } from '@/lib/training/courses'
+import { courses, duration, type Course } from '@/lib/training/courses'
 import { ISCB_FRAMEWORK_URL } from '@/lib/training/iscb'
 
 export const metadata: Metadata = {
@@ -63,6 +63,18 @@ function CourseGlyph({ slug }: { slug: string }) {
           <path d="M60 37l-2-4M23 46l3 3M36 10l3-3" />
         </g>
       )
+    case 'agentic-ai-for-life-sciences':
+      // A terminal prompt beside a branching workflow of steps.
+      return (
+        <g {...stroke}>
+          <rect x="8" y="12" width="30" height="34" rx="3" />
+          <path d="M14 22l5 4-5 4M22 32h9" />
+          <circle cx="56" cy="14" r="4" />
+          <circle cx="66" cy="44" r="4" />
+          <circle cx="48" cy="44" r="4" />
+          <path d="M38 29h8M56 18v8l10 14M56 26l-8 14" opacity={0.6} />
+        </g>
+      )
     case 'foundation-models-for-biological-discovery':
       // An open book with a spark: the handbook-led seminar.
       return (
@@ -101,7 +113,7 @@ function Entry({ c }: { c: Course }) {
       </Link>
       <p>
         <strong>{c.level}</strong>
-        <span className="text-[color:var(--home-muted)]"> · {c.weeks} weeks</span>
+        <span className="text-[color:var(--home-muted)]"> · {duration(c)}</span>
       </p>
       <p>{c.tools?.length ? c.tools.slice(0, 5).join(' · ') : c.primaryText ? 'Primary text: The Life Sciences AI Handbook' : null}</p>
       <p>

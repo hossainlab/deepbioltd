@@ -15,6 +15,7 @@ import { agenticAiCompBio } from './agentic-ai-comp-bio'
 import { agenticCheminformatics } from './agentic-cheminformatics'
 import { ampDiscovery } from './amp-discovery'
 import { agenticDrugDiscovery } from './agentic-drug-discovery'
+import { agenticAiLifeSciences } from './agentic-ai-life-sciences'
 
 /** A reading, linked when it has a public URL. */
 export interface Reading {
@@ -84,9 +85,9 @@ export interface CourseTeamMember {
   linkedin?: string
 }
 
-/** Placeholder team shown until a course lists its own. */
+/** Default team shown until a course lists its own; Jubayer leads every course. */
 export const placeholderTeam: CourseTeamMember[] = [
-  { role: 'Lead instructor' },
+  { role: 'Lead instructor', name: 'Md. Jubayer Hossain' },
   { role: 'Instructor' },
   { role: 'Teaching assistant' },
   { role: 'Teaching assistant' },
@@ -102,8 +103,10 @@ export interface Course {
   format?: string
   /** Set text the course is built on. */
   primaryText?: { citation: string; href: string; doi?: string }
-  /** Length in weeks; the syllabus has one entry per week. */
+  /** Length in syllabus units (weeks unless `unit` says days); one syllabus entry per unit. */
   weeks: number
+  /** What one syllabus entry is; defaults to 'week'. */
+  unit?: 'week' | 'day'
   /** One-sentence lede for the index card and article subtitle. */
   summary: string
   overview: string[]
@@ -139,6 +142,12 @@ export interface Course {
   /** Attribution for adapted material, shown under Supplementary Resources. */
   credit?: { text: string; source: { label: string; href: string }; license: { label: string; href: string } }
 }
+
+/** Course length for display, e.g. "8 weeks" or "6 days". */
+export const duration = (c: Course) => `${c.weeks} ${c.unit ?? 'week'}${c.weeks === 1 ? '' : 's'}`
+
+/** Label for syllabus entry `i` (zero-based), e.g. "Week 3" or "Day 3". */
+export const unitLabel = (c: Course, i: number) => `${c.unit === 'day' ? 'Day' : 'Week'} ${i + 1}`
 
 /** Who DeepBio courses are for, unless a course overrides it with `audience`. */
 export const defaultAudience =
@@ -243,6 +252,7 @@ export const courseEvaluation: CourseEvaluation = {
 export const courses: Course[] = [
   // Flagship seminar, listed first.
   aiBiologicalDiscovery,
+  agenticAiLifeSciences,
   agenticAiCompBio,
   agenticCheminformatics,
   agenticDrugDiscovery,

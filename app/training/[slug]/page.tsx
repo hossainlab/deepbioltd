@@ -13,6 +13,8 @@ import {
   courseEvaluation,
   RUBRIC_LEVELS,
   placeholderTeam,
+  duration,
+  unitLabel,
   defaultAudience,
   type CourseTeamMember,
   type Reading,
@@ -178,7 +180,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
             <h1 className="mt-3 text-[2rem] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[2.625rem]">{c.title}</h1>
             <p className="mt-5 text-[1.15rem] italic leading-[1.5] opacity-90 sm:text-[1.3rem]">{c.summary}</p>
             <p className="mt-6 text-[15px] font-semibold">DeepBio Academy</p>
-            <p className="mt-1 text-[13px] text-[color:var(--home-muted)]">{c.weeks} weeks · Online and Dhaka, Bangladesh</p>
+            <p className="mt-1 text-[13px] text-[color:var(--home-muted)]">{duration(c)} · Online and Dhaka, Bangladesh</p>
 
             <div className="mt-10 space-y-12 text-[1.05rem] leading-[1.7] sm:text-[1.15rem]">
               <section id="overview" className="scroll-mt-8">
@@ -199,7 +201,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                   </div>
                   <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
                     <dt className="font-semibold">Duration</dt>
-                    <dd>{c.weeks} weeks</dd>
+                    <dd>{duration(c)}</dd>
                   </div>
                   {c.format && (
                     <div className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr]">
@@ -262,7 +264,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                 <ol className={`divide-y ${rule} border-y ${rule}`}>
                   {c.syllabus.map((w, i) => (
                     <li key={w.title} className="grid gap-1 py-4 sm:grid-cols-[6rem_1fr]">
-                      <p className="font-mono text-[0.85rem] text-[color:var(--home-muted)] sm:pt-1">Week {i + 1}</p>
+                      <p className="font-mono text-[0.85rem] text-[color:var(--home-muted)] sm:pt-1">{unitLabel(c, i)}</p>
                       <div className="text-[0.95rem]">
                         <p className="text-[1.05rem] font-semibold sm:text-[1.1rem]">{w.title}</p>
                         {w.theme && <p className="mt-0.5 italic text-[color:var(--home-muted)]">{w.theme}</p>}
