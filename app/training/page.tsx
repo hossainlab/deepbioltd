@@ -75,6 +75,16 @@ function CourseGlyph({ slug }: { slug: string }) {
           <path d="M38 29h8M56 18v8l10 14M56 26l-8 14" opacity={0.6} />
         </g>
       )
+    case 'mathematical-foundations-for-biologists':
+      // A bell curve beside a matrix and a vector: probability, statistics, linear algebra.
+      return (
+        <g {...stroke}>
+          <path d="M6 46h30" />
+          <path d="M6 45c6 0 8-26 15-26s9 26 15 26" />
+          <path d="M46 14h-3v32h3M70 14h3v32h-3" />
+          <path d="M50 22h4M60 22h4M50 30h4M60 30h4M50 38h4M60 38h4" opacity={0.6} />
+        </g>
+      )
     case 'foundation-models-for-biological-discovery':
       // An open book with a spark: the handbook-led seminar.
       return (

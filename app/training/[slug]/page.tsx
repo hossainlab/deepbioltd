@@ -17,6 +17,7 @@ import {
   unitLabel,
   defaultAudience,
   type CourseTeamMember,
+  type TeachingStepIcon,
   type Reading,
 } from '@/lib/training/courses'
 import { teamMembers } from '@/lib/team/data'
@@ -41,6 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 /** The syllabus sections every course has, in order. */
 const sections = [
   { id: 'overview', label: 'Overview' },
+  { id: 'method', label: 'Teaching Method', optional: true },
   { id: 'team', label: 'Course Team' },
   { id: 'objectives', label: 'Learning Objectives' },
   { id: 'syllabus', label: 'Syllabus' },
@@ -51,6 +53,52 @@ const sections = [
   { id: 'evaluation', label: 'Evaluating the Course' },
   { id: 'resources', label: 'Supplementary Resources' },
 ]
+
+/** Line icons for teaching method steps; soft fills stay legible in both themes. */
+function StepIcon({ icon }: { icon: TeachingStepIcon }) {
+  const line = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
+  switch (icon) {
+    case 'concept':
+      // A lit bulb.
+      return (
+        <g {...line}>
+          <path d="M32 14a12 12 0 0 0-7 21.7c1.3 1 2 2.4 2 4V43h10v-3.3c0-1.6.7-3 2-4A12 12 0 0 0 32 14z" fill="#FACC15" fillOpacity={0.55} />
+          <path d="M27 47h10M28.5 51h7M32 4v4M16 12l3 3M48 12l-3 3M10 26h4M50 26h4" />
+          <path d="M29 34l3-6 3 6" opacity={0.7} />
+        </g>
+      )
+    case 'code':
+      // A laptop showing a code tag.
+      return (
+        <g {...line}>
+          <rect x="13" y="14" width="38" height="26" rx="2.5" fill="#60A5FA" fillOpacity={0.15} />
+          <path d="M8 46h48l-3 4H11z" />
+          <path d="M26 23l-5 4 5 4M38 23l5 4-5 4M34 21l-4 12" />
+        </g>
+      )
+    case 'interpret':
+      // A bar chart with a reading lens over it.
+      return (
+        <g {...line}>
+          <path d="M8 50h48" />
+          <rect x="12" y="34" width="7" height="16" fill="#FACC15" fillOpacity={0.55} />
+          <rect x="22" y="24" width="7" height="26" fill="#4ADE80" fillOpacity={0.45} />
+          <rect x="32" y="14" width="7" height="36" fill="#60A5FA" fillOpacity={0.45} />
+          <rect x="42" y="38" width="7" height="12" fill="#F472B6" fillOpacity={0.45} />
+        </g>
+      )
+    case 'forward':
+      // A rocket leaving a launch burst: using the method on your own.
+      return (
+        <g {...line}>
+          <path d="M40 10c6 0 12 0 14 0 0 6 0 10-4 16L36 40l-12-12 14-14c1-1 1.5-4 2-4z" fill="#60A5FA" fillOpacity={0.2} />
+          <circle cx="44" cy="20" r="3.5" />
+          <path d="M24 28l-8 1-5 6 9 1M36 40l-1 8-6 5-1-9" />
+          <path d="M20 44c-4 1-8 5-9 9 4-1 8-5 9-9z" fill="#FACC15" fillOpacity={0.7} />
+        </g>
+      )
+  }
+}
 
 const link = 'text-[color:var(--home-accent)] hover:opacity-70'
 const h2 = 'mb-3 text-[1.4rem] font-semibold tracking-[-0.015em]'
@@ -158,7 +206,7 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
               </Link>
               <p className="mt-6 text-[13px] font-semibold">Contents</p>
               <ul className="mt-3 space-y-2.5 text-[13px] leading-snug">
-                {sections.map((s) => (
+                {sections.filter((s) => !s.optional || (s.id === 'method' && c.teachingMethod)).map((s) => (
                   <li key={s.id}>
                     <a href={`#${s.id}`} className="block border-l-2 border-transparent pl-3 hover:border-[color:var(--home-accent)] hover:text-[color:var(--home-accent)]">
                       {s.label}
@@ -239,6 +287,36 @@ export default async function CourseSyllabus({ params }: { params: Promise<Param
                   ) : null}
                 </dl>
               </section>
+
+              {c.teachingMethod && (
+                <section id="method" className="scroll-mt-8">
+                  <h2 className={h2}>Teaching Method</h2>
+                  {c.teachingMethod.lead && <p>{c.teachingMethod.lead}</p>}
+                  <ol className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+                    {c.teachingMethod.steps.map((step, i, all) => (
+                      <li key={step.label} className="relative flex flex-col items-center text-center">
+                        <div className="flex items-center gap-2 self-start">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-[2.5px] border-[color:var(--home-accent)] font-mono text-[1rem] font-bold text-[color:var(--home-accent)]">
+                            {i + 1}
+                          </span>
+                          <span className="-rotate-1 bg-[#FACC15]/70 px-2 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wide text-[#0A1118]">
+                            {step.label}
+                          </span>
+                        </div>
+                        <svg viewBox="0 0 64 56" aria-hidden="true" className="mt-4 h-20 w-24 text-[color:var(--home-accent)]">
+                          <StepIcon icon={step.icon} />
+                        </svg>
+                        <p className="mt-3 text-[0.9rem] leading-[1.5] text-[color:var(--home-muted)] [text-wrap:balance]">{step.text}</p>
+                        {i < all.length - 1 && (
+                          <svg viewBox="0 0 24 12" aria-hidden="true" className="absolute -right-5 top-[5.5rem] hidden h-3 w-6 text-[color:var(--home-accent)] lg:block">
+                            <path d="M1 6h20M16 1.5L21 6l-5 4.5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              )}
 
               <section id="team" className="scroll-mt-8">
                 <h2 className={h2}>Course Team</h2>

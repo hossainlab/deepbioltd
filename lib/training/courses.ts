@@ -16,6 +16,7 @@ import { agenticCheminformatics } from './agentic-cheminformatics'
 import { ampDiscovery } from './amp-discovery'
 import { agenticDrugDiscovery } from './agentic-drug-discovery'
 import { agenticAiLifeSciences } from './agentic-ai-life-sciences'
+import { mathFoundationsBiologists } from './math-foundations-biologists'
 
 /** A reading, linked when it has a public URL. */
 export interface Reading {
@@ -93,6 +94,15 @@ export const placeholderTeam: CourseTeamMember[] = [
   { role: 'Teaching assistant' },
 ]
 
+/** Icons drawn for teaching method steps in app/training/[slug]/page.tsx. */
+export type TeachingStepIcon = 'concept' | 'code' | 'interpret' | 'forward'
+
+/** How a course teaches, shown as numbered steps after the Overview. */
+export interface TeachingMethod {
+  lead?: string
+  steps: { label: string; text: string; icon: TeachingStepIcon }[]
+}
+
 export interface Course {
   slug: string
   title: string
@@ -116,6 +126,8 @@ export interface Course {
   thumb?: string
   /** 'cover' crops to the 4:3 card, 'contain' letterboxes the whole image. */
   thumbFit?: 'cover' | 'contain'
+  /** Teaching method steps; the section shows only when set. */
+  teachingMethod?: TeachingMethod
   /** Course team; falls back to placeholderTeam when not set. */
   team?: CourseTeamMember[]
   objectives: string[]
@@ -253,6 +265,7 @@ export const courses: Course[] = [
   // Flagship seminar, listed first.
   aiBiologicalDiscovery,
   agenticAiLifeSciences,
+  mathFoundationsBiologists,
   agenticAiCompBio,
   agenticCheminformatics,
   agenticDrugDiscovery,
